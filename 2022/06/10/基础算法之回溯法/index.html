@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://s1.ax1x.com/2022/06/04/XawtN4.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://s1.ax1x.com/2022/06/04/XawN4J.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="回溯法​        回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。 ​        回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用剪枝函数判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础算法之回溯法">
+<meta property="og:url" content="https://fu-jingqi.github.io/2022/06/10/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E6%B3%95/index.html">
+<meta property="og:site_name" content="MJ.Smith">
+<meta property="og:description" content="回溯法​        回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。 ​        回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用剪枝函数判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CXvj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CH58.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CqPS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CvKs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6Czbq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6PpV0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6PFGF.png">
+<meta property="article:published_time" content="2022-06-10T04:45:17.000Z">
+<meta property="article:modified_time" content="2022-06-10T04:52:25.584Z">
+<meta property="article:author" content="MJ.Smith">
+<meta property="article:tag" content="分支界限算法">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/06/10/X6CXvj.png">
+
+<link rel="canonical" href="https://fu-jingqi.github.io/2022/06/10/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基础算法之回溯法 | MJ.Smith</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d8fec4edd4a201d268db80c0221228a2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MJ.Smith</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>link</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Fu-jingqi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/06/10/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
+      <meta itemprop="name" content="MJ.Smith">
+      <meta itemprop="description" content="fjq真的蟀气逼人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MJ.Smith">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基础算法之回溯法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-10 12:45:17 / 修改时间：12:52:25" itemprop="dateCreated datePublished" datetime="2022-06-10T12:45:17+08:00">2022-06-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><p>​        回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。</p>
+<p>​        回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用<strong>剪枝函数</strong>判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否则，进入该子树，继续按深度优先策略搜索。<br><span id="more"></span><br>剪枝函数包括两类：</p>
+<ol>
+<li>使用约束函数，剪去不满足约束条件的路径；</li>
+<li>使用限界函数，剪去不能得到最优解的路径。</li>
+</ol>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>​        <strong>回溯法解决的问题都可以抽象为树形结构</strong>，是的，我指的是所有回溯法的问题都可以抽象为树形结构！</p>
+<p>​        因为回溯法解决的都是在集合中递归查找子集，<strong>集合的大小就构成了树的宽度，递归的深度，都构成的树的深度</strong>。</p>
+<p>​        递归就要有终止条件，所以必然是一棵高度有限的树（N叉树）。</p>
+<h5 id="问题的解空间"><a href="#问题的解空间" class="headerlink" title="问题的解空间"></a>问题的解空间</h5><p>​        复杂问题常常有很多的可能解，这些可能解构成了问题的解空间。解空间也就是进行穷举的搜索空间，所以，解空间中应该包括所有的可能解。回溯法的解空间一般为子集树，排列树，n叉树……</p>
+<h5 id="子集树和排列树"><a href="#子集树和排列树" class="headerlink" title="子集树和排列树"></a>子集树和排列树</h5><ul>
+<li><p>子集树：问题是从n个元素的集合S中找出满足某种性质的子集时，相应的解空间成为子集树。<strong>（<del>似乎必然是二叉树</del>）</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">1</span>;i++) &#123;  </span><br><span class="line">        x[t]=i;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t)) <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>排列树：问题是确定n个元素满足某种性质的排列时，相应的解空间就是排列树。<strong>(如全排列问题，该树对应的解空间的时间复杂度为 n！)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> i=t;i&lt;=n;i++) &#123;  </span><br><span class="line">        <span class="built_in">swap</span>(x[t], x[i]);  </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t)) <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  </span><br><span class="line">        <span class="built_in">swap</span>(x[t], x[i]);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="回溯算法的使用条件"><a href="#回溯算法的使用条件" class="headerlink" title="回溯算法的使用条件"></a>回溯算法的使用条件</h4><p>当使用回溯算法时，要确保之前的每一步对最后答案的影响都是基于下一步能够由前一步的方案得到的前提之下。即需满足<strong>多米诺性质</strong>。下面由一个反例来做进一步理解：</p>
+<p>【例】求不等式的整数解：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CXvj"><img src="https://s1.ax1x.com/2022/06/10/X6CXvj.png" alt="X6CXvj.png"></a><br>利用回溯法，得到本题的解空间为一颗完全3叉树：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CH58"><img src="https://s1.ax1x.com/2022/06/10/X6CH58.png" alt="X6CH58.png"></a></p>
+<p>得到该题的解应该是：<1,1,1>,<1,1,2>,<1,1,3>$，然而<1,2,3>也应该是本题的解，但在回溯算法中进行第一次筛选时，被剪枝操作舍弃了，导致没有得到该答案。</p>
+<p>通过变换使得该问题满足多米诺性质。</p>
+<p>变换: 令  x<em>{3}=3-x</em>{3} , 则不等式变为:<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CqPS"><img src="https://s1.ax1x.com/2022/06/10/X6CqPS.png" alt="X6CqPS.png"></a><br>则该不等式满足多米诺性质，可以使用回溯算法，得到所有解。</p>
+<h4 id="回溯法实现"><a href="#回溯法实现" class="headerlink" title="回溯法实现"></a>回溯法实现</h4><ul>
+<li><p>回溯法的实现方法有两种：递归和递推（也称迭代）。一般来说，一个问题两种方法都可以实现，只是在算法效率和设计复杂度上有区别。</p>
+<ul>
+<li><p>递归，思路简单，设计容易，时间效率低。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对N叉树的递归回溯方法  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x); <span class="comment">//叶子节点，输出结果，x是可行解  </span></span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">       <span class="keyword">for</span> i = <span class="number">1</span> to k<span class="comment">//当前节点的所有子节点  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            x[t]=<span class="built_in">value</span>(i); <span class="comment">//每个子节点的值赋值给x  </span></span><br><span class="line">            <span class="comment">//满足约束条件和限界条件  </span></span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t))   </span><br><span class="line">                <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  <span class="comment">//递归下一层  </span></span><br><span class="line">        &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>递推，思路稍复杂，但时间效率相较于递归较高。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对N叉树的迭代回溯方法  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">iterativeBacktrack</span> <span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="type">int</span> t=<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">while</span> (t&gt;<span class="number">0</span>) &#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">ExistSubNode</span>(t)) <span class="comment">//当前节点的存在子节点  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span> i = <span class="number">1</span> to k  <span class="comment">//遍历当前节点的所有子节点  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                x[t]=<span class="built_in">value</span>(i);<span class="comment">//每个子节点的值赋值给x  </span></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t))<span class="comment">//满足约束条件和限界条件   </span></span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="comment">//solution表示在节点t处得到了一个解  </span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">solution</span>(t)) <span class="built_in">output</span>(x);<span class="comment">//得到问题的一个可行解，输出  </span></span><br><span class="line">                    <span class="keyword">else</span> t++;<span class="comment">//没有得到解，继续向下搜索  </span></span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="comment">//不存在子节点，返回上一层  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            t--;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="回溯法模板"><a href="#回溯法模板" class="headerlink" title="回溯法模板"></a>回溯法模板</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(参数)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (终止条件) &#123;</span><br><span class="line">        存放结果;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;</span><br><span class="line">        处理节点;</span><br><span class="line">        <span class="built_in">backtracking</span>(路径，选择列表); <span class="comment">// 递归</span></span><br><span class="line">        回溯，撤销处理结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="经典例题详解"><a href="#经典例题详解" class="headerlink" title="经典例题详解"></a>经典例题详解</h4><h5 id="图问题中的回溯法"><a href="#图问题中的回溯法" class="headerlink" title="图问题中的回溯法"></a>图问题中的回溯法</h5><h6 id="图的着色问题"><a href="#图的着色问题" class="headerlink" title="图的着色问题"></a>图的着色问题</h6><blockquote>
+<p>问题描述：给定无向连通图G和m种颜色，用这些颜色给图的顶点着色，每个顶点一种颜色.要求是：G的每条边的两个顶点着不同颜色，给出所有可能的着色方案；如果不存在着这样的方案，则回答“No”</p>
+</blockquote>
+<ul>
+<li>约束条件：该顶点邻接表中的顶点与该顶点没有同色的；</li>
+<li>搜索策略：深度优先</li>
+</ul>
+<p>以下图（无向图）为例：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CvKs"><img src="https://s1.ax1x.com/2022/06/10/X6CvKs.png" alt="X6CvKs.png"></a></p>
+<p>解：</p>
+<ul>
+<li>构建解空间树</li>
+<li>根据空间树进行递归、剪枝、筛选、回溯<ul>
+<li>起始时，我们从A点开始，进行第一次选择，对A进行选色，选择颜色 a ，完成第一次选择；</li>
+<li>再对B进行选色，由于在无向图中A结点与B结点连接相邻且相邻结点颜色不能相同，因此对B来说不能选择 a 色 ，选择 b 色后往下走；（也可以选择c色，但由于我们使用深度优先遍历时，找到一种情况后，搜索次序会继续向下走，因此暂时先不处理，只有当B选择b色的所有情况均不可行，即得不到可行解时，会回溯并令B填充c色）</li>
+<li>C与A、B相邻，因此C只能填充c色；</li>
+<li>D、E同理，最终得到A、B、C、D、E的可行解之一：a、b 、c 、c 、a（<del>也许是唯一解</del>）</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6Czbq"><img src="https://s1.ax1x.com/2022/06/10/X6Czbq.png" alt="X6Czbq.png"></a></p>
+<h6 id="哈密顿回路问题"><a href="#哈密顿回路问题" class="headerlink" title="哈密顿回路问题"></a>哈密顿回路问题</h6><blockquote>
+<p>问题描述：要求从一个城市出发，经过每个城市恰好一次，然后回到出发城市。</p>
+</blockquote>
+<ul>
+<li>约束条件：每个城市恰好一次；</li>
+<li>搜索策略：深度优先</li>
+</ul>
+<p><strong>解题思路同上</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6PpV0"><img src="https://s1.ax1x.com/2022/06/10/X6PpV0.png" alt="X6PpV0.png"></a></p>
+<h5 id="组合问题中的回溯法"><a href="#组合问题中的回溯法" class="headerlink" title="组合问题中的回溯法"></a>组合问题中的回溯法</h5><h6 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h6><blockquote>
+<p>问题描述：在8*8的棋盘上摆放8个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上。</p>
+</blockquote>
+<ul>
+<li>约束条件：<ul>
+<li>不能同行</li>
+<li>不能同列</li>
+<li>不能同斜线</li>
+</ul>
+</li>
+<li>搜索策略：深度优先</li>
+</ul>
+<p>将搜索过程抽象为一棵树：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6PFGF"><img src="https://s1.ax1x.com/2022/06/10/X6PFGF.png" alt="X6PFGF.png"></a></p>
+<p><strong>只要搜索到了树的叶子节点，说明就找到了皇后们的合理位置了</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col, vector&lt;string&gt;&amp; chessboard, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 检查列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123; <span class="comment">// 这是一个剪枝</span></span><br><span class="line">        <span class="keyword">if</span> (chessboard[i][col] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查 45度角是否有皇后</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = row - <span class="number">1</span>, j = col - <span class="number">1</span>; i &gt;=<span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (chessboard[i][j] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查 135度角是否有皇后</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = row - <span class="number">1</span>, j = col + <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; n; i--, j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (chessboard[i][j] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="批处理作业调度问题"><a href="#批处理作业调度问题" class="headerlink" title="批处理作业调度问题"></a>批处理作业调度问题</h6><blockquote>
+<p>问题描述：n个作业{1,2,……,n}要在两台机器上处理，每个作业必须先由机器1处理，然后再由机器2处理，机器1处理作业i所需时间为ai，机器2处理作业i所需时间为bi(1&lt;=i&lt;=n)，批处理作业调度问题要求确定这n个作业的最优处理顺序，使得从第1个作业在机器1上处理开始，到最后一个作业在机器2上处理结束所需时间最少。</p>
+</blockquote>
+<ul>
+<li>约束条件：每次作业按次序依次进行。</li>
+<li>搜索策略：深度优先</li>
+</ul>
+<h6 id="装载问题（0-1背包问题）"><a href="#装载问题（0-1背包问题）" class="headerlink" title="装载问题（0-1背包问题）"></a>装载问题（0-1背包问题）</h6><blockquote>
+<p>问题描述：给定n种物品和一背包。物品i的重量是wi，其价值为pi，背包的容量为C。问应如何选择装入背包的物品，使得装入背包中物品的总价值最大?</p>
+</blockquote>
+<ul>
+<li>约束条件：所装物品容量不得超过背包总容量；</li>
+<li>搜索策略：深度优先</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>MJ.Smith
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fu-jingqi.github.io/2022/06/10/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E6%B3%95/" title="基础算法之回溯法">https://fu-jingqi.github.io/2022/06/10/基础算法之回溯法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/fjq">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/fff">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://s1.ax1x.com/2022/06/05/XdbA3j.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%88%86%E6%94%AF%E7%95%8C%E9%99%90%E7%AE%97%E6%B3%95/" rel="tag"># 分支界限算法</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/09/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95/" rel="prev" title="基础算法之分支限界法">
+      <i class="fa fa-chevron-left"></i> 基础算法之分支限界法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81Mzc3OS8zMDI1Mg=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E7%A9%BA%E9%97%B4"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题的解空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%90%E9%9B%86%E6%A0%91%E5%92%8C%E6%8E%92%E5%88%97%E6%A0%91"><span class="nav-number">1.1.2.</span> <span class="nav-text">子集树和排列树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">回溯算法的使用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">回溯法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.4.</span> <span class="nav-text">回溯法模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.5.</span> <span class="nav-text">经典例题详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.5.1.</span> <span class="nav-text">图问题中的回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">图的着色问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%88%E5%AF%86%E9%A1%BF%E5%9B%9E%E8%B7%AF%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">哈密顿回路问题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.5.2.</span> <span class="nav-text">组合问题中的回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">八皇后问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">批处理作业调度问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%880-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">装载问题（0-1背包问题）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MJ.Smith"
+      src="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
+  <p class="site-author-name" itemprop="name">MJ.Smith</p>
+  <div class="site-description" itemprop="description">fjq真的蟀气逼人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fu-jingqi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fu-jingqi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/c972937" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;c972937" rel="noopener" target="_blank">ccz--NanFeng妹妹</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://inanb.github.io/" title="https:&#x2F;&#x2F;inanb.github.io&#x2F;" rel="noopener" target="_blank">lgy--遠神TQL</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.nan-bluesky.top/" title="http:&#x2F;&#x2F;www.nan-bluesky.top&#x2F;" rel="noopener" target="_blank">lks--DSB，不解释</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://weiyuexin.gitee.io/" title="https:&#x2F;&#x2F;weiyuexin.gitee.io&#x2F;" rel="noopener" target="_blank">wyx--大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://i-ron.cn/" title="http:&#x2F;&#x2F;i-ron.cn&#x2F;" rel="noopener" target="_blank">nhj--Henu第二蟀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MJ.Smith</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
