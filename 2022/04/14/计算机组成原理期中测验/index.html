@@ -20,23 +20,19 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本次题目取自HENU计算机组成原理期中测验 + 部分课上习题（感觉自己啥也不会啊啊啊）">
+  <meta name="description" content="本次题目取自HENU计算机组成原理期中测验 + 部分课上习题（感觉自己啥也不会啊啊啊）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成原理期中测验">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E4%B8%AD%E6%B5%8B%E9%AA%8C/index.html">
 <meta property="og:site_name" content="MJ.Smith">
-<meta property="og:description" content="本次题目取自HENU计算机组成原理期中测验 + 部分课上习题（感觉自己啥也不会啊啊啊）">
+<meta property="og:description" content="本次题目取自HENU计算机组成原理期中测验 + 部分课上习题（感觉自己啥也不会啊啊啊）">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xa2cLj.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xa2adI.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xa2BJf.png">
 <meta property="article:published_time" content="2022-04-14T04:11:33.000Z">
 <meta property="article:modified_time" content="2022-06-04T04:45:51.401Z">
 <meta property="article:author" content="MJ.Smith">
 <meta property="article:tag" content="cache">
 <meta property="article:tag" content="经典例题（计组）">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/06/04/Xa2cLj.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%9C%9F%E4%B8%AD%E6%B5%8B%E9%AA%8C/">
 
@@ -247,43 +243,61 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本次题目取自HENU计算机组成原理期中测验 + 部分课上习题（<del>感觉自己啥也不会啊啊啊</del>）<br><span id="more"></span></p>
-<ol>
-<li>(5分)已知某数采用IEEE754单精度浮点数格式表示为C6400000H,试分析该数对应的十进制真值是多少？请写出推导过程。<br><strong>解答：</strong><br>C6400000H = 1100 \ 0110 \ 0100 \ 0000 \ 0000 \ 0000 \ 0000 \ 0000 =  (1)(1000 \ 1100) (100 \ 0000 \ 0000 \ 0000 \ 0000 \ 0000)<br>阶码：1000 \ 1100 - 1000 \ 0000 + 1=0000 \ 1101 = 13<br>尾数：1.1<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xa2cLj"><img src="https://s1.ax1x.com/2022/06/04/Xa2cLj.png" alt="Xa2cLj.png"></a></li>
-<li><p>(5分)某存储系统的部分接线如图所示，图中存储芯片的总容量是多少？存储芯片A、B、C、D分配的地址范围各是多少？<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xa2adI"><img src="https://s1.ax1x.com/2022/06/04/Xa2adI.png" alt="Xa2adI.png"></a><br>由上图知：<br>对单个芯片而言：共有 11 根地址线， $8$根数据线，因此单个芯片的存储容量为：2K<em>8<br>对整个存储系统而言：有四个芯片，每个芯片都是 2K</em>8，因此存储系统总容量为：8K*8<br>总的地址线有 13 根，因此地址格式为：000x \ xxxx \ xxxx \ xxxx </p>
-<p>有效：<br>0000 0000 0000 0000~0000 0111 1111 1111  0000~07FF<br>0000 1000 0000 0000~0000 1111 1111 1111  0800~0FFF<br>无效：<br>0001 0000 0000 0000~0001 0111 1111 1111  1000~17FF<br>0001 1000 0000 0000~0001 1111 1111 1111  1800~1FFF<br>有效：<br>0010 0000 0000 0000~0010 0111 1111 1111  2000~27FF<br>0010 1000 0000 0000~0010 1111 1111 1111  2800~2FFF<br>无效：<br>0011 0000 0000 0000~0011 0111 1111 1111  3000~37FF<br>0011 1000 0000 0000~0011 1111 1111 1111  3800~3FFF</p>
-</li>
+        <p>本次题目取自HENU计算机组成原理期中测验 +
+部分课上习题（<del>感觉自己啥也不会啊啊啊</del>） <span id="more"></span> 1.
+(5分)已知某数采用IEEE754单精度浮点数格式表示为C6400000H,试分析该数对应的十进制真值是多少？请写出推导过程。
+<strong>解答：</strong> C6400000H = 1100  0110  0100  0000  0000  0000
+ 0000  0000 = (1)(1000  1100) (100  0000  0000  0000  0000  0000)
+阶码：1000  1100 - 1000  0000 + 1=0000  1101 = 13 尾数：1.1 <a
+target="_blank" rel="noopener" href="https://imgtu.com/i/Xa2cLj"><img
+src="https://s1.ax1x.com/2022/06/04/Xa2cLj.png" alt="Xa2cLj.png" /></a>
+2.
+(5分)某存储系统的部分接线如图所示，图中存储芯片的总容量是多少？存储芯片A、B、C、D分配的地址范围各是多少？
+<a target="_blank" rel="noopener" href="https://imgtu.com/i/Xa2adI"><img
+src="https://s1.ax1x.com/2022/06/04/Xa2adI.png" alt="Xa2adI.png" /></a>
+由上图知： 对单个芯片而言：共有 11 根地址线， <span
+class="math inline">\(8\)</span>根数据线，因此单个芯片的存储容量为：2K<em>8
+对整个存储系统而言：有四个芯片，每个芯片都是
+2K</em>8，因此存储系统总容量为：8K*8 总的地址线有 13
+根，因此地址格式为：000x  xxxx  xxxx  xxxx</p>
+<p>有效： 0000 0000 0000 0000~0000 0111 1111 1111 0000~07FF 0000 1000
+0000 0000~0000 1111 1111 1111 0800~0FFF 无效： 0001 0000 0000 0000~0001
+0111 1111 1111 1000~17FF 0001 1000 0000 0000~0001 1111 1111 1111
+1800~1FFF 有效： 0010 0000 0000 0000~0010 0111 1111 1111 2000~27FF 0010
+1000 0000 0000~0010 1111 1111 1111 2800~2FFF 无效： 0011 0000 0000
+0000~0011 0111 1111 1111 3000~37FF 0011 1000 0000 0000~0011 1111 1111
+1111 3800~3FFF</p>
+<ol start="3" type="1">
 <li><p>(10分)某系统的存储器为1MB,每字块为32B,存储字长为8位，若Cache为16KB,采用字节编址方式。</p>
-<ol>
+<ol type="1">
 <li>采用直接映射，主存地址格式是什么？请指出该主存地址每一构成部分的位数。</li>
 <li>采用16路组相联映射，主存地址格式是什么？Cache地址格式是什么？请指出地址每一构成培部分的位数。</li>
 <li>采用直接映射时，若地址为2A3CFH的主存块要调入Cache中，在Cache中的地址是什么？请写出具体的计算过程。</li>
 </ol>
 <ul>
 <li>第一问：</li>
-</ul>
-</li>
-<li><p>设某存储器中，最低的8K字的存储区为ROM区，相邻的2K字的为RAM区，主存字长为16位，按字寻址方式读写。拟采用8K×8的芯片构成其ROM区，采用<br>2K×8的芯片构成RAM区，请问：</p>
+</ul></li>
+<li><p>设某存储器中，最低的8K字的存储区为ROM区，相邻的2K字的为RAM区，主存字长为16位，按字寻址方式读写。拟采用8K×8的芯片构成其ROM区，采用
+2K×8的芯片构成RAM区，请问：</p>
 <ul>
 <li>各需要多少片上述芯片？</li>
 <li>试分析各块芯片的地址范围，并画出CPU与存储系统的连接图。</li>
-</ul>
-</li>
+</ul></li>
 <li><p>己知某机地址线16根，数据线8根。若使用4K×4位的RAM芯片组成该机所允许的最大主存空间，并选用模块板结构形式，每个模块板的容量为16K×8位。</p>
 <ul>
 <li>共需要几块这样的模块板？</li>
 <li>每个模块板内共有多少片这样的RAM芯片？</li>
 <li>主存共需多少片这样的RAM芯片？CPU如何选择各模块板？(无需画图，说明即可)</li>
-</ul>
-</li>
+</ul></li>
 <li><p>某一存储器系统的部分接线如下图所示，请回答：</p>
 <ul>
 <li>RAM和ROM的存储容量各是多少？</li>
 <li>RAM和ROM存储器地址分配范围各是多少？</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xa2BJf"><img src="https://s1.ax1x.com/2022/06/04/Xa2BJf.png" alt="Xa2BJf.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xa2BJf"><img
+src="https://s1.ax1x.com/2022/06/04/Xa2BJf.png"
+alt="Xa2BJf.png" /></a></p>
 
     </div>
 
@@ -454,7 +468,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
