@@ -20,30 +20,32 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="fjq真的蟀气逼人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJ.Smith">
-<meta property="og:url" content="https://fu-jingqi.github.io/index.html">
+  <meta name="description" content="计算机组成第二章 知识点一：BCD码  常见的\(BCD\)码分为两种：  有权\(BCD\)码\(【如8421、2421、5421等】\) 无权\(BCD\)码\(【余3码、格雷码等】\)   一般不加说明，默认为8421码；8421BCD码可以看作是十进制的一种表示形式  \(8421码\)  其与十进制的转化关系为：将十进制的每一位上的数字替换程由四位二进制的\(B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理">
+<meta property="og:url" content="https://fu-jingqi.github.io/2022/07/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="MJ.Smith">
-<meta property="og:description" content="fjq真的蟀气逼人">
+<meta property="og:description" content="计算机组成第二章 知识点一：BCD码  常见的\(BCD\)码分为两种：  有权\(BCD\)码\(【如8421、2421、5421等】\) 无权\(BCD\)码\(【余3码、格雷码等】\)   一般不加说明，默认为8421码；8421BCD码可以看作是十进制的一种表示形式  \(8421码\)  其与十进制的转化关系为：将十进制的每一位上的数字替换程由四位二进制的\(B">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-11T09:05:11.000Z">
+<meta property="article:modified_time" content="2022-07-11T09:07:29.124Z">
 <meta property="article:author" content="MJ.Smith">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://fu-jingqi.github.io/">
+<link rel="canonical" href="https://fu-jingqi.github.io/2022/07/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>MJ.Smith</title>
+  <title>计算机组成原理 | MJ.Smith</title>
   
 
 
@@ -172,175 +174,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/06/05/%E8%B5%84%E6%BA%90%E5%90%88%E8%BE%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
-      <meta itemprop="name" content="MJ.Smith">
-      <meta itemprop="description" content="fjq真的蟀气逼人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MJ.Smith">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-              <span class="post-sticky-flag" title="置顶">
-                <i class="fa fa-thumbtack"></i>
-              </span>
-            <a href="/2022/06/05/%E8%B5%84%E6%BA%90%E5%90%88%E8%BE%91/" class="post-title-link" itemprop="url">资源合辑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-06-05 12:30:33" itemprop="dateCreated datePublished" datetime="2022-06-05T12:30:33+08:00">2022-06-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-07 22:36:35" itemprop="dateModified" datetime="2022-06-07T22:36:35+08:00">2022-06-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>"My name is Tracy, this is not just a name, I hope that one day it
-can also become a symbol of nBA, a legend, this may be a distant dream,
-but I firmly believe that he has the power to realize this dream and
-unremitting struggle!" ---Tracy McGrady</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/06/05/%E8%B5%84%E6%BA%90%E5%90%88%E8%BE%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/07/19/%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
-      <meta itemprop="name" content="MJ.Smith">
-      <meta itemprop="description" content="fjq真的蟀气逼人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MJ.Smith">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/19/%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95/" class="post-title-link" itemprop="url">符号扩展</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-19 10:23:06 / 修改时间：10:28:48" itemprop="dateCreated datePublished" datetime="2022-07-19T10:23:06+08:00">2022-07-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2
-id="关于整型数据符号扩展的基础知识">关于整型数据符号扩展的基础知识：</h2>
-<h3
-id="一短数据类型扩展为长数据类型">一、短数据类型扩展为长数据类型</h3>
-<h4
-id="要扩展的短数据类型为有符号数">1.要扩展的短数据类型为有符号数</h4>
-<p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
-<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；
-2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
-<h4
-id="要扩展的短数据类型为无符号数">2.要扩展的短数据类型为无符号数</h4>
-<p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
-<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000
-10001001b； 2：unsigned char x=00001001b; short y=x; 则y的值应为00000000
-00001001b；</p>
-<h3
-id="二长数据类型缩减为短数据类型">二、长数据类型缩减为短数据类型</h3>
-<p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
-<h3
-id="三同一长度的数据类型中有符号数与无符号数的相互转化">三、同一长度的数据类型中有符号数与无符号数的相互转化</h3>
-<p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -356,10 +193,9 @@ id="三同一长度的数据类型中有符号数与无符号数的相互转化"
       <meta itemprop="name" content="MJ.Smith">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">计算机组成原理</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          计算机组成原理
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -373,6 +209,13 @@ id="三同一长度的数据类型中有符号数与无符号数的相互转化"
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -383,7 +226,7 @@ id="三同一长度的数据类型中有符号数与无符号数的相互转化"
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="计算机组成第二章">计算机组成第二章</h3>
+        <h3 id="计算机组成第二章">计算机组成第二章</h3>
 <h4 id="知识点一bcd码">知识点一：BCD码</h4>
 <ul>
 <li>常见的<span class="math inline">\(BCD\)</span>码分为两种：
@@ -1139,259 +982,110 @@ alt="image-20220511194245111" />
 </figure></li>
 </ul>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/06/30/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E5%AF%B9%E7%A7%B0%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
-      <meta itemprop="name" content="MJ.Smith">
-      <meta itemprop="description" content="fjq真的蟀气逼人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MJ.Smith">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/30/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E5%AF%B9%E7%A7%B0%E6%80%A7/" class="post-title-link" itemprop="url">Rotation symmetry of double integrals</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-06-30 15:36:11 / 修改时间：15:59:00" itemprop="dateCreated datePublished" datetime="2022-06-30T15:36:11+08:00">2022-06-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">数学知识</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          文章被加密, 请输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/06/30/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E5%AF%B9%E7%A7%B0%E6%80%A7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>MJ.Smith
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fu-jingqi.github.io/2022/07/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title="计算机组成原理">https://fu-jingqi.github.io/2022/07/11/计算机组成原理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/06/29/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
-      <meta itemprop="name" content="MJ.Smith">
-      <meta itemprop="description" content="fjq真的蟀气逼人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MJ.Smith">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/29/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86/" class="post-title-link" itemprop="url">多元函数微分</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-06-29 11:36:36 / 修改时间：15:50:41" itemprop="dateCreated datePublished" datetime="2022-06-29T11:36:36+08:00">2022-06-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">数学知识</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="多元微分学">多元微分学</h2>
-<p>对于<strong>一元函数</strong>来说，按照导数的定义式：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jmhHxA"><img
-src="https://s1.ax1x.com/2022/06/29/jmhHxA.png"
-alt="jmhHxA.png" /></a></p>
-<p>称f(x)在x=x0处可导，极限值为该点的导数值。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/06/29/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/06/15/err-Error-Spawn-failed/">
+    <div class="social-list">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
-      <meta itemprop="name" content="MJ.Smith">
-      <meta itemprop="description" content="fjq真的蟀气逼人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MJ.Smith">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/15/err-Error-Spawn-failed/" class="post-title-link" itemprop="url">err: Error: Spawn failed</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-06-15 20:47:19 / 修改时间：20:56:06" itemprop="dateCreated datePublished" datetime="2022-06-15T20:47:19+08:00">2022-06-15</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/fjq">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
             </span>
 
-          
-
+            <span class="label">Twitter</span>
+          </a>
         </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/fff">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
 
-      
-          <h2
-id="hexo部署出现错误err-error-spawn-failed解决方式">Hexo部署出现错误err:
-Error: Spawn failed解决方式</h2>
-<h3 id="错误如下">错误如下：</h3>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XT4Pbt"><img
-src="https://s1.ax1x.com/2022/06/15/XT4Pbt.png" alt="XT4Pbt.png" /></a>
-### 解决方案： #### 方案一： *
-删除blog文件目录下的<code>.deploy_git</code>文件夹 *
-终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署
-#### 方案二： *
-编辑<code>host</code>文件，在末行添加<code>github.com</code>的ip * <a
-target="_blank" rel="noopener" href="https://ipaddress.com/website/github.com">查询ip网址</a>或自行百度
-<a target="_blank" rel="noopener" href="https://imgtu.com/i/XTILEq"><img
-src="https://s1.ax1x.com/2022/06/15/XTILEq.png" alt="XTILEq.png" /></a>
-*
-终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署</p>
+            <span class="label">Telegram</span>
+          </a>
+        </div>
 
-      
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://s1.ax1x.com/2022/06/05/XdbA3j.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
     </div>
+  </div>
 
-    
-    
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/30/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86%E7%9A%84%E8%BD%AE%E6%8D%A2%E5%AF%B9%E7%A7%B0%E6%80%A7/" rel="prev" title="Rotation symmetry of double integrals">
+      <i class="fa fa-chevron-left"></i> Rotation symmetry of double integrals
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/19/%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95/" rel="next" title="符号扩展">
+      符号扩展 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81Mzc3OS8zMDI1Mg=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1438,6 +1132,8 @@ src="https://s1.ax1x.com/2022/06/15/XTILEq.png" alt="XTILEq.png" /></a>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">计算机组成第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%80bcd%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">知识点一：BCD码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BA%8Cascii%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">知识点二：ASCII码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%89%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">知识点三：校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">奇偶校验码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81crc"><span class="nav-number">1.3.2.</span> <span class="nav-text">循环冗余校验码CRC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="nav-number">1.3.3.</span> <span class="nav-text">海明码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%A0%A1%E9%AA%8C%E7%A0%81%E4%BD%8D%E6%95%B0r"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">确定校验码位数\(r\)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%A3%80%E9%AA%8C%E7%A0%81%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">确定检验码位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%A0%81%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">确定数据码的位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B1%82%E5%87%BA%E6%A0%A1%E9%AA%8C%E4%BD%8D%E7%9A%84%E5%80%BC"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">求出校验位的值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81%E7%9A%84%E6%A0%A1%E9%AA%8C"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">海明码的校验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E5%9B%9B%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">知识点四：浮点数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.4.1.</span> <span class="nav-text">浮点数的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0-n-%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">浮点数 \(N\) 的一般格式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ieee754-%E6%A0%87%E5%87%86"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">\(IEEE754\)
+标准</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.2.</span> <span class="nav-text">浮点数的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">基本操作流程：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E4%BA%94%E5%AE%9A%E7%82%B9%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">知识五：定点数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.5.1.</span> <span class="nav-text">定点数的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.5.2.</span> <span class="nav-text">定点数的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">定点数的移位运算</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E6%B3%95"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">定点数的加法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%87%8F%E6%B3%95"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">定点数的减法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">定点数的乘法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E9%99%A4%E6%B3%95"><span class="nav-number">1.5.2.5.</span> <span class="nav-text">定点数的除法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%AD%E6%BA%A2%E5%87%BA%E5%88%A4%E6%96%AD"><span class="nav-number">1.6.</span> <span class="nav-text">知识点六：溢出判断</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E7%9B%B4%E6%8E%A5%E5%88%A4%E5%AE%9A%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">方法一：直接判定法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8F%98%E5%BD%A2%E8%A1%A5%E7%A0%81%E5%88%A4%E5%88%AB%E6%B3%95"><span class="nav-number">1.6.2.</span> <span class="nav-text">方法二：变形补码判别法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%953%E8%BF%9B%E4%BD%8D%E5%88%A4%E5%88%AB%E6%B3%95"><span class="nav-number">1.6.3.</span> <span class="nav-text">方法3：进位判别法</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1620,62 +1316,24 @@ src="https://s1.ax1x.com/2022/06/15/XTILEq.png" alt="XTILEq.png" /></a>
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '[object Object]';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
