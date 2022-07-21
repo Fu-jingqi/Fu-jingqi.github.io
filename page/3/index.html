@@ -541,7 +541,7 @@ class="math inline">\((0,1)\)</span>，故先介绍<strong>线性回归函数</s
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-04 12:45:51" itemprop="dateModified" datetime="2022-06-04T12:45:51+08:00">2022-06-04</time>
+                <time title="修改时间：2022-07-21 09:13:37" itemprop="dateModified" datetime="2022-07-21T09:13:37+08:00">2022-07-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -564,7 +564,57 @@ class="math inline">\((0,1)\)</span>，故先介绍<strong>线性回归函数</s
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>某系统的存储器为1MB,每字块为32B,存储字长为8位，若Cache为16KB,采用字节编址方式。</p>
+<ol type="1">
+<li>采用直接映射，主存地址格式是什么？请指出该主存地址每一构成部分的位数。</li>
+<li>采用16路组相联映射，主存地址格式是什么？Cache地址格式是什么？请指出地址每一构成培部分的位数。</li>
+<li>采用直接映射时，若地址为2A3CFH的主存块要调入Cache中，在Cache中的地址是什么？请写出具体的计算过程。</li>
+</ol>
+<ul>
+<li><p>第一问：</p>
+<ul>
+<li><p>首先明确按字节编址</p></li>
+<li><p>每字块为32B即2的5次方B；字块内地址为5</p></li>
+<li><p>16KB/32B=2的9次方B；Cache字块地址为9</p></li>
+<li><p>主存字块标记为20-5-9=6</p></li>
+<li><p>即主存地址格式为：6位主存字块标记 + 9位Cache字块地址 +
+5位字块内地址</p></li>
+<li><div class="line-block">主存字块标记 | Cache字块地址 | 字块内地址 |
+| ------------ | ------------- | ---------- |<br />
+6位 | 9位 | 5位 |</div></li>
+</ul></li>
+<li><p>第二问：</p>
+<ol type="1">
+<li><ul>
+<li><p>每字块为32B即2的5次方B；字块内地址为5</p></li>
+<li><p>16KB/32B/16=2的5次方B；Cache字块地址为5</p></li>
+<li><p>主存字块标记为20-5-5=10</p></li>
+<li><p>即主存地址格式为：10位主存字块标记 + 5位Cache字块地址 +
+5位字块内地址</p></li>
+<li><div class="line-block">主存字块标记 | Cache字块地址 | 字块内地址 |
+| ------------ | ------------- | ---------- |<br />
+10位 | 5位 | 5位 |</div></li>
+</ul></li>
+</ol></li>
+</ul>
+<ol start="2" type="1">
+<li><ul>
+<li><p>由于采用16路组相联映射，故而组内行号用4位来确定</p></li>
+<li><p>组号由cache行号9 - 组内行号4 = 5</p></li>
+<li><p>即Cache地址格式为：5位组号 + 4位组内行号 + 5位字块内地址</p></li>
+<li><div class="line-block">组号 | 组内行号 | 字块内地址 | | ---- |
+-------- | ---------- |<br />
+5位 | 4位 | 5位 |</div></li>
+</ul></li>
+</ol>
+<ul>
+<li><p>第三问：</p>
+<ul>
+<li>2A3CFH = 0010 1010 0011 1100 1111 B</li>
+<li>由第二问的Cache地址格式得Cache内地址格式为：10 0011 1100 1111B，23CF
+H</li>
+</ul></li>
+</ul>
 
       
     </div>
