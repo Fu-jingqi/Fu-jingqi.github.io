@@ -226,10 +226,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>"My name is Tracy, this is not just a name, I hope that one day it
-can also become a symbol of nBA, a legend, this may be a distant dream,
-but I firmly believe that he has the power to realize this dream and
-unremitting struggle!" ---Tracy McGrady</p>
+          <p>“My name is Tracy, this is not just a name, I hope that one day it can also become a symbol of nBA, a legend, this may be a distant dream, but I firmly believe that he has the power to realize this dream and unremitting struggle!”  —-Tracy McGrady</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/05/%E8%B5%84%E6%BA%90%E5%90%88%E8%BE%91/#more" rel="contents">
@@ -370,27 +367,12 @@ unremitting struggle!" ---Tracy McGrady</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2
-id="关于整型数据符号扩展的基础知识">关于整型数据符号扩展的基础知识：</h2>
-<h3
-id="一短数据类型扩展为长数据类型">一、短数据类型扩展为长数据类型</h3>
-<h4
-id="要扩展的短数据类型为有符号数">1.要扩展的短数据类型为有符号数</h4>
-<p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
-<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；
-2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
-<h4
-id="要扩展的短数据类型为无符号数">2.要扩展的短数据类型为无符号数</h4>
-<p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
-<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000
-10001001b； 2：unsigned char x=00001001b; short y=x; 则y的值应为00000000
-00001001b；</p>
-<h3
-id="二长数据类型缩减为短数据类型">二、长数据类型缩减为短数据类型</h3>
-<p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
-<h3
-id="三同一长度的数据类型中有符号数与无符号数的相互转化">三、同一长度的数据类型中有符号数与无符号数的相互转化</h3>
-<p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
+          <h2 id="关于整型数据符号扩展的基础知识："><a href="#关于整型数据符号扩展的基础知识：" class="headerlink" title="关于整型数据符号扩展的基础知识："></a>关于整型数据符号扩展的基础知识：</h2><h3 id="一、短数据类型扩展为长数据类型"><a href="#一、短数据类型扩展为长数据类型" class="headerlink" title="一、短数据类型扩展为长数据类型"></a>一、短数据类型扩展为长数据类型</h3><h4 id="1-要扩展的短数据类型为有符号数"><a href="#1-要扩展的短数据类型为有符号数" class="headerlink" title="1.要扩展的短数据类型为有符号数"></a>1.要扩展的短数据类型为有符号数</h4><p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
+<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；<br>2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
+<h4 id="2-要扩展的短数据类型为无符号数"><a href="#2-要扩展的短数据类型为无符号数" class="headerlink" title="2.要扩展的短数据类型为无符号数"></a>2.要扩展的短数据类型为无符号数</h4><p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
+<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000 10001001b；<br>2：unsigned char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
+<h3 id="二、长数据类型缩减为短数据类型"><a href="#二、长数据类型缩减为短数据类型" class="headerlink" title="二、长数据类型缩减为短数据类型"></a>二、长数据类型缩减为短数据类型</h3><p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
+<h3 id="三、同一长度的数据类型中有符号数与无符号数的相互转化"><a href="#三、同一长度的数据类型中有符号数与无符号数的相互转化" class="headerlink" title="三、同一长度的数据类型中有符号数与无符号数的相互转化"></a>三、同一长度的数据类型中有符号数与无符号数的相互转化</h3><p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
 
       
     </div>
@@ -533,12 +515,9 @@ id="三同一长度的数据类型中有符号数与无符号数的相互转化"
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="多元微分学">多元微分学</h2>
-<p>对于<strong>一元函数</strong>来说，按照导数的定义式：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jmhHxA"><img
-src="https://s1.ax1x.com/2022/06/29/jmhHxA.png"
-alt="jmhHxA.png" /></a></p>
-<p>称f(x)在x=x0处可导，极限值为该点的导数值。
+          <h2 id="多元微分学"><a href="#多元微分学" class="headerlink" title="多元微分学"></a>多元微分学</h2><p>对于<strong>一元函数</strong>来说，按照导数的定义式：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jmhHxA"><img src="https://s1.ax1x.com/2022/06/29/jmhHxA.png" alt="jmhHxA.png"></a></p>
+<p>称f(x)在x=x0处可导，极限值为该点的导数值。<br>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/29/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86/#more" rel="contents">
@@ -604,22 +583,16 @@ alt="jmhHxA.png" /></a></p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2
-id="hexo部署出现错误err-error-spawn-failed解决方式">Hexo部署出现错误err:
-Error: Spawn failed解决方式</h2>
-<h3 id="错误如下">错误如下：</h3>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XT4Pbt"><img
-src="https://s1.ax1x.com/2022/06/15/XT4Pbt.png" alt="XT4Pbt.png" /></a>
-### 解决方案： #### 方案一： *
-删除blog文件目录下的<code>.deploy_git</code>文件夹 *
-终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署
-#### 方案二： *
-编辑<code>host</code>文件，在末行添加<code>github.com</code>的ip * <a
-target="_blank" rel="noopener" href="https://ipaddress.com/website/github.com">查询ip网址</a>或自行百度
-<a target="_blank" rel="noopener" href="https://imgtu.com/i/XTILEq"><img
-src="https://s1.ax1x.com/2022/06/15/XTILEq.png" alt="XTILEq.png" /></a>
-*
-终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署</p>
+          <h2 id="Hexo部署出现错误err-Error-Spawn-failed解决方式"><a href="#Hexo部署出现错误err-Error-Spawn-failed解决方式" class="headerlink" title="Hexo部署出现错误err: Error: Spawn failed解决方式"></a>Hexo部署出现错误err: Error: Spawn failed解决方式</h2><h3 id="错误如下："><a href="#错误如下：" class="headerlink" title="错误如下："></a>错误如下：</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XT4Pbt"><img src="https://s1.ax1x.com/2022/06/15/XT4Pbt.png" alt="XT4Pbt.png"></a></p>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><h4 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h4><ul>
+<li>删除blog文件目录下的<code>.deploy_git</code>文件夹</li>
+<li>终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署<h4 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h4></li>
+<li>编辑<code>host</code>文件，在末行添加<code>github.com</code>的ip<ul>
+<li><a target="_blank" rel="noopener" href="https://ipaddress.com/website/github.com">查询ip网址</a>或自行百度<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/XTILEq"><img src="https://s1.ax1x.com/2022/06/15/XTILEq.png" alt="XTILEq.png"></a></li>
+<li>终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
