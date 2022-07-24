@@ -20,27 +20,19 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="回溯法​        回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。 ​        回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用剪枝函数判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否">
+  <meta name="description" content="回溯法 ​ 回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。 ​ 回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用剪枝函数判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否则，进入该子树，继">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础算法之回溯法">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/06/10/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E6%B3%95/index.html">
 <meta property="og:site_name" content="MJ.Smith">
-<meta property="og:description" content="回溯法​        回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。 ​        回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用剪枝函数判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否">
+<meta property="og:description" content="回溯法 ​ 回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。 ​ 回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用剪枝函数判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否则，进入该子树，继">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CXvj.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CH58.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CqPS.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6CvKs.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6Czbq.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6PpV0.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/10/X6PFGF.png">
 <meta property="article:published_time" content="2022-06-10T04:45:17.000Z">
 <meta property="article:modified_time" content="2022-06-10T04:52:25.584Z">
 <meta property="article:author" content="MJ.Smith">
 <meta property="article:tag" content="分支界限算法">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/06/10/X6CXvj.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/06/10/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9B%9E%E6%BA%AF%E6%B3%95/">
 
@@ -245,44 +237,63 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><p>​        回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。</p>
-<p>​        回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用<strong>剪枝函数</strong>判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否则，进入该子树，继续按深度优先策略搜索。<br><span id="more"></span><br>剪枝函数包括两类：</p>
-<ol>
+        <h3 id="回溯法">回溯法</h3>
+<p>​
+回溯法就是把问题的解空间转化成了图或者树的结构表示，然后使用深度优先搜索策略进行遍历，遍历的过程中记录和寻找所有可行解或者最优解。</p>
+<p>​
+回溯法按深度优先策略搜索问题的解空间树。首先从根节点出发搜索解空间树，当算法搜索至解空间树的某一节点时，先利用<strong>剪枝函数</strong>判断该节点是否可行（即能得到问题的解）。如果不可行，则跳过对该节点为根的子树的搜索，逐层向其祖先节点回溯；否则，进入该子树，继续按深度优先策略搜索。
+<span id="more"></span> 剪枝函数包括两类：</p>
+<ol type="1">
 <li>使用约束函数，剪去不满足约束条件的路径；</li>
 <li>使用限界函数，剪去不能得到最优解的路径。</li>
 </ol>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>​        <strong>回溯法解决的问题都可以抽象为树形结构</strong>，是的，我指的是所有回溯法的问题都可以抽象为树形结构！</p>
-<p>​        因为回溯法解决的都是在集合中递归查找子集，<strong>集合的大小就构成了树的宽度，递归的深度，都构成的树的深度</strong>。</p>
-<p>​        递归就要有终止条件，所以必然是一棵高度有限的树（N叉树）。</p>
-<h5 id="问题的解空间"><a href="#问题的解空间" class="headerlink" title="问题的解空间"></a>问题的解空间</h5><p>​        复杂问题常常有很多的可能解，这些可能解构成了问题的解空间。解空间也就是进行穷举的搜索空间，所以，解空间中应该包括所有的可能解。回溯法的解空间一般为子集树，排列树，n叉树……</p>
-<h5 id="子集树和排列树"><a href="#子集树和排列树" class="headerlink" title="子集树和排列树"></a>子集树和排列树</h5><ul>
+<h4 id="概述">概述</h4>
+<p>​
+<strong>回溯法解决的问题都可以抽象为树形结构</strong>，是的，我指的是所有回溯法的问题都可以抽象为树形结构！</p>
+<p>​
+因为回溯法解决的都是在集合中递归查找子集，<strong>集合的大小就构成了树的宽度，递归的深度，都构成的树的深度</strong>。</p>
+<p>​ 递归就要有终止条件，所以必然是一棵高度有限的树（N叉树）。</p>
+<h5 id="问题的解空间">问题的解空间</h5>
+<p>​
+复杂问题常常有很多的可能解，这些可能解构成了问题的解空间。解空间也就是进行穷举的搜索空间，所以，解空间中应该包括所有的可能解。回溯法的解空间一般为子集树，排列树，n叉树......</p>
+<h5 id="子集树和排列树">子集树和排列树</h5>
+<ul>
 <li><p>子集树：问题是从n个元素的集合S中找出满足某种性质的子集时，相应的解空间成为子集树。<strong>（<del>似乎必然是二叉树</del>）</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">1</span>;i++) &#123;  </span><br><span class="line">        x[t]=i;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t)) <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>排列树：问题是确定n个元素满足某种性质的排列时，相应的解空间就是排列树。<strong>(如全排列问题，该树对应的解空间的时间复杂度为 n！)</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> i=t;i&lt;=n;i++) &#123;  </span><br><span class="line">        <span class="built_in">swap</span>(x[t], x[i]);  </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t)) <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  </span><br><span class="line">        <span class="built_in">swap</span>(x[t], x[i]);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">1</span>;i++) &#123;  </span><br><span class="line">        x[t]=i;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t)) <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>排列树：问题是确定n个元素满足某种性质的排列时，相应的解空间就是排列树。<strong>(如全排列问题，该树对应的解空间的时间复杂度为
+n！)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> i=t;i&lt;=n;i++) &#123;  </span><br><span class="line">        <span class="built_in">swap</span>(x[t], x[i]);  </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t)) <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  </span><br><span class="line">        <span class="built_in">swap</span>(x[t], x[i]);  </span><br><span class="line">      &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="回溯算法的使用条件"><a href="#回溯算法的使用条件" class="headerlink" title="回溯算法的使用条件"></a>回溯算法的使用条件</h4><p>当使用回溯算法时，要确保之前的每一步对最后答案的影响都是基于下一步能够由前一步的方案得到的前提之下。即需满足<strong>多米诺性质</strong>。下面由一个反例来做进一步理解：</p>
-<p>【例】求不等式的整数解：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CXvj"><img src="https://s1.ax1x.com/2022/06/10/X6CXvj.png" alt="X6CXvj.png"></a><br>利用回溯法，得到本题的解空间为一颗完全3叉树：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CH58"><img src="https://s1.ax1x.com/2022/06/10/X6CH58.png" alt="X6CH58.png"></a></p>
-<p>得到该题的解应该是：<1,1,1>,<1,1,2>,<1,1,3>$，然而<1,2,3>也应该是本题的解，但在回溯算法中进行第一次筛选时，被剪枝操作舍弃了，导致没有得到该答案。</p>
+<h4 id="回溯算法的使用条件">回溯算法的使用条件</h4>
+<p>当使用回溯算法时，要确保之前的每一步对最后答案的影响都是基于下一步能够由前一步的方案得到的前提之下。即需满足<strong>多米诺性质</strong>。下面由一个反例来做进一步理解：</p>
+<p>【例】求不等式的整数解： <a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CXvj"><img
+src="https://s1.ax1x.com/2022/06/10/X6CXvj.png" alt="X6CXvj.png" /></a>
+利用回溯法，得到本题的解空间为一颗完全3叉树：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CH58"><img
+src="https://s1.ax1x.com/2022/06/10/X6CH58.png"
+alt="X6CH58.png" /></a></p>
+<p>得到该题的解应该是：&lt;1,1,1&gt;,&lt;1,1,2&gt;,&lt;1,1,3&gt;$，然而&lt;1,2,3&gt;也应该是本题的解，但在回溯算法中进行第一次筛选时，被剪枝操作舍弃了，导致没有得到该答案。</p>
 <p>通过变换使得该问题满足多米诺性质。</p>
-<p>变换: 令  x<em>{3}=3-x</em>{3} , 则不等式变为:<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CqPS"><img src="https://s1.ax1x.com/2022/06/10/X6CqPS.png" alt="X6CqPS.png"></a><br>则该不等式满足多米诺性质，可以使用回溯算法，得到所有解。</p>
-<h4 id="回溯法实现"><a href="#回溯法实现" class="headerlink" title="回溯法实现"></a>回溯法实现</h4><ul>
+<p>变换: 令 x_{3}=3-x_{3} , 则不等式变为: <a
+target="_blank" rel="noopener" href="https://imgtu.com/i/X6CqPS"><img
+src="https://s1.ax1x.com/2022/06/10/X6CqPS.png" alt="X6CqPS.png" /></a>
+则该不等式满足多米诺性质，可以使用回溯算法，得到所有解。</p>
+<h4 id="回溯法实现">回溯法实现</h4>
+<ul>
 <li><p>回溯法的实现方法有两种：递归和递推（也称迭代）。一般来说，一个问题两种方法都可以实现，只是在算法效率和设计复杂度上有区别。</p>
 <ul>
 <li><p>递归，思路简单，设计容易，时间效率低。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对N叉树的递归回溯方法  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x); <span class="comment">//叶子节点，输出结果，x是可行解  </span></span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">       <span class="keyword">for</span> i = <span class="number">1</span> to k<span class="comment">//当前节点的所有子节点  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            x[t]=<span class="built_in">value</span>(i); <span class="comment">//每个子节点的值赋值给x  </span></span><br><span class="line">            <span class="comment">//满足约束条件和限界条件  </span></span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t))   </span><br><span class="line">                <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  <span class="comment">//递归下一层  </span></span><br><span class="line">        &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对N叉树的递归回溯方法  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtrack</span> <span class="params">(<span class="type">int</span> t)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (t&gt;n) <span class="built_in">output</span>(x); <span class="comment">//叶子节点，输出结果，x是可行解  </span></span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">       <span class="keyword">for</span> i = <span class="number">1</span> to k<span class="comment">//当前节点的所有子节点  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            x[t]=<span class="built_in">value</span>(i); <span class="comment">//每个子节点的值赋值给x  </span></span><br><span class="line">            <span class="comment">//满足约束条件和限界条件  </span></span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t))   </span><br><span class="line">                <span class="built_in">backtrack</span>(t+<span class="number">1</span>);  <span class="comment">//递归下一层  </span></span><br><span class="line">        &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure></li>
 <li><p>递推，思路稍复杂，但时间效率相较于递归较高。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对N叉树的迭代回溯方法  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">iterativeBacktrack</span> <span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="type">int</span> t=<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">while</span> (t&gt;<span class="number">0</span>) &#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">ExistSubNode</span>(t)) <span class="comment">//当前节点的存在子节点  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span> i = <span class="number">1</span> to k  <span class="comment">//遍历当前节点的所有子节点  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                x[t]=<span class="built_in">value</span>(i);<span class="comment">//每个子节点的值赋值给x  </span></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t))<span class="comment">//满足约束条件和限界条件   </span></span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="comment">//solution表示在节点t处得到了一个解  </span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">solution</span>(t)) <span class="built_in">output</span>(x);<span class="comment">//得到问题的一个可行解，输出  </span></span><br><span class="line">                    <span class="keyword">else</span> t++;<span class="comment">//没有得到解，继续向下搜索  </span></span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="comment">//不存在子节点，返回上一层  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            t--;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对N叉树的迭代回溯方法  </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">iterativeBacktrack</span> <span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="type">int</span> t=<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">while</span> (t&gt;<span class="number">0</span>) &#123;  </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">ExistSubNode</span>(t)) <span class="comment">//当前节点的存在子节点  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">for</span> i = <span class="number">1</span> to k  <span class="comment">//遍历当前节点的所有子节点  </span></span><br><span class="line">            &#123;  </span><br><span class="line">                x[t]=<span class="built_in">value</span>(i);<span class="comment">//每个子节点的值赋值给x  </span></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">constraint</span>(t)&amp;&amp;<span class="built_in">bound</span>(t))<span class="comment">//满足约束条件和限界条件   </span></span><br><span class="line">                &#123;  </span><br><span class="line">                    <span class="comment">//solution表示在节点t处得到了一个解  </span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">solution</span>(t)) <span class="built_in">output</span>(x);<span class="comment">//得到问题的一个可行解，输出  </span></span><br><span class="line">                    <span class="keyword">else</span> t++;<span class="comment">//没有得到解，继续向下搜索  </span></span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="comment">//不存在子节点，返回上一层  </span></span><br><span class="line">        &#123;  </span><br><span class="line">            t--;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="回溯法模板"><a href="#回溯法模板" class="headerlink" title="回溯法模板"></a>回溯法模板</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(参数)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (终止条件) &#123;</span><br><span class="line">        存放结果;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;</span><br><span class="line">        处理节点;</span><br><span class="line">        <span class="built_in">backtracking</span>(路径，选择列表); <span class="comment">// 递归</span></span><br><span class="line">        回溯，撤销处理结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="经典例题详解"><a href="#经典例题详解" class="headerlink" title="经典例题详解"></a>经典例题详解</h4><h5 id="图问题中的回溯法"><a href="#图问题中的回溯法" class="headerlink" title="图问题中的回溯法"></a>图问题中的回溯法</h5><h6 id="图的着色问题"><a href="#图的着色问题" class="headerlink" title="图的着色问题"></a>图的着色问题</h6><blockquote>
+<h4 id="回溯法模板">回溯法模板</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(参数)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (终止条件) &#123;</span><br><span class="line">        存放结果;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;</span><br><span class="line">        处理节点;</span><br><span class="line">        <span class="built_in">backtracking</span>(路径，选择列表); <span class="comment">// 递归</span></span><br><span class="line">        回溯，撤销处理结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="经典例题详解">经典例题详解</h4>
+<h5 id="图问题中的回溯法">图问题中的回溯法</h5>
+<h6 id="图的着色问题">图的着色问题</h6>
+<blockquote>
 <p>问题描述：给定无向连通图G和m种颜色，用这些颜色给图的顶点着色，每个顶点一种颜色.要求是：G的每条边的两个顶点着不同颜色，给出所有可能的着色方案；如果不存在着这样的方案，则回答“No”</p>
 </blockquote>
 <ul>
@@ -290,20 +301,29 @@
 <li>搜索策略：深度优先</li>
 </ul>
 <p>以下图（无向图）为例：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CvKs"><img src="https://s1.ax1x.com/2022/06/10/X6CvKs.png" alt="X6CvKs.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6CvKs"><img
+src="https://s1.ax1x.com/2022/06/10/X6CvKs.png"
+alt="X6CvKs.png" /></a></p>
 <p>解：</p>
 <ul>
 <li>构建解空间树</li>
-<li>根据空间树进行递归、剪枝、筛选、回溯<ul>
-<li>起始时，我们从A点开始，进行第一次选择，对A进行选色，选择颜色 a ，完成第一次选择；</li>
-<li>再对B进行选色，由于在无向图中A结点与B结点连接相邻且相邻结点颜色不能相同，因此对B来说不能选择 a 色 ，选择 b 色后往下走；（也可以选择c色，但由于我们使用深度优先遍历时，找到一种情况后，搜索次序会继续向下走，因此暂时先不处理，只有当B选择b色的所有情况均不可行，即得不到可行解时，会回溯并令B填充c色）</li>
+<li>根据空间树进行递归、剪枝、筛选、回溯
+<ul>
+<li>起始时，我们从A点开始，进行第一次选择，对A进行选色，选择颜色 a
+，完成第一次选择；</li>
+<li>再对B进行选色，由于在无向图中A结点与B结点连接相邻且相邻结点颜色不能相同，因此对B来说不能选择
+a 色 ，选择 b
+色后往下走；（也可以选择c色，但由于我们使用深度优先遍历时，找到一种情况后，搜索次序会继续向下走，因此暂时先不处理，只有当B选择b色的所有情况均不可行，即得不到可行解时，会回溯并令B填充c色）</li>
 <li>C与A、B相邻，因此C只能填充c色；</li>
-<li>D、E同理，最终得到A、B、C、D、E的可行解之一：a、b 、c 、c 、a（<del>也许是唯一解</del>）</li>
+<li>D、E同理，最终得到A、B、C、D、E的可行解之一：a、b 、c 、c
+、a（<del>也许是唯一解</del>）</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6Czbq"><img src="https://s1.ax1x.com/2022/06/10/X6Czbq.png" alt="X6Czbq.png"></a></p>
-<h6 id="哈密顿回路问题"><a href="#哈密顿回路问题" class="headerlink" title="哈密顿回路问题"></a>哈密顿回路问题</h6><blockquote>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6Czbq"><img
+src="https://s1.ax1x.com/2022/06/10/X6Czbq.png"
+alt="X6Czbq.png" /></a></p>
+<h6 id="哈密顿回路问题">哈密顿回路问题</h6>
+<blockquote>
 <p>问题描述：要求从一个城市出发，经过每个城市恰好一次，然后回到出发城市。</p>
 </blockquote>
 <ul>
@@ -311,31 +331,39 @@
 <li>搜索策略：深度优先</li>
 </ul>
 <p><strong>解题思路同上</strong></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6PpV0"><img src="https://s1.ax1x.com/2022/06/10/X6PpV0.png" alt="X6PpV0.png"></a></p>
-<h5 id="组合问题中的回溯法"><a href="#组合问题中的回溯法" class="headerlink" title="组合问题中的回溯法"></a>组合问题中的回溯法</h5><h6 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h6><blockquote>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6PpV0"><img
+src="https://s1.ax1x.com/2022/06/10/X6PpV0.png"
+alt="X6PpV0.png" /></a></p>
+<h5 id="组合问题中的回溯法">组合问题中的回溯法</h5>
+<h6 id="八皇后问题">八皇后问题</h6>
+<blockquote>
 <p>问题描述：在8*8的棋盘上摆放8个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上。</p>
 </blockquote>
 <ul>
-<li>约束条件：<ul>
+<li>约束条件：
+<ul>
 <li>不能同行</li>
 <li>不能同列</li>
 <li>不能同斜线</li>
-</ul>
-</li>
+</ul></li>
 <li>搜索策略：深度优先</li>
 </ul>
 <p>将搜索过程抽象为一棵树：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6PFGF"><img src="https://s1.ax1x.com/2022/06/10/X6PFGF.png" alt="X6PFGF.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/X6PFGF"><img
+src="https://s1.ax1x.com/2022/06/10/X6PFGF.png"
+alt="X6PFGF.png" /></a></p>
 <p><strong>只要搜索到了树的叶子节点，说明就找到了皇后们的合理位置了</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col, vector&lt;string&gt;&amp; chessboard, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 检查列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123; <span class="comment">// 这是一个剪枝</span></span><br><span class="line">        <span class="keyword">if</span> (chessboard[i][col] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查 45度角是否有皇后</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = row - <span class="number">1</span>, j = col - <span class="number">1</span>; i &gt;=<span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (chessboard[i][j] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查 135度角是否有皇后</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = row - <span class="number">1</span>, j = col + <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; n; i--, j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (chessboard[i][j] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="批处理作业调度问题"><a href="#批处理作业调度问题" class="headerlink" title="批处理作业调度问题"></a>批处理作业调度问题</h6><blockquote>
+<h6 id="批处理作业调度问题">批处理作业调度问题</h6>
+<blockquote>
 <p>问题描述：n个作业{1,2,……,n}要在两台机器上处理，每个作业必须先由机器1处理，然后再由机器2处理，机器1处理作业i所需时间为ai，机器2处理作业i所需时间为bi(1&lt;=i&lt;=n)，批处理作业调度问题要求确定这n个作业的最优处理顺序，使得从第1个作业在机器1上处理开始，到最后一个作业在机器2上处理结束所需时间最少。</p>
 </blockquote>
 <ul>
 <li>约束条件：每次作业按次序依次进行。</li>
 <li>搜索策略：深度优先</li>
 </ul>
-<h6 id="装载问题（0-1背包问题）"><a href="#装载问题（0-1背包问题）" class="headerlink" title="装载问题（0-1背包问题）"></a>装载问题（0-1背包问题）</h6><blockquote>
+<h6 id="装载问题0-1背包问题">装载问题（0-1背包问题）</h6>
+<blockquote>
 <p>问题描述：给定n种物品和一背包。物品i的重量是wi，其价值为pi，背包的容量为C。问应如何选择装入背包的物品，使得装入背包中物品的总价值最大?</p>
 </blockquote>
 <ul>
@@ -497,7 +525,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E7%A9%BA%E9%97%B4"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题的解空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%90%E9%9B%86%E6%A0%91%E5%92%8C%E6%8E%92%E5%88%97%E6%A0%91"><span class="nav-number">1.1.2.</span> <span class="nav-text">子集树和排列树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">回溯算法的使用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">回溯法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.4.</span> <span class="nav-text">回溯法模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.5.</span> <span class="nav-text">经典例题详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.5.1.</span> <span class="nav-text">图问题中的回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">图的着色问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%88%E5%AF%86%E9%A1%BF%E5%9B%9E%E8%B7%AF%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">哈密顿回路问题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.5.2.</span> <span class="nav-text">组合问题中的回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">八皇后问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">批处理作业调度问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%880-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">装载问题（0-1背包问题）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E7%A9%BA%E9%97%B4"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题的解空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%90%E9%9B%86%E6%A0%91%E5%92%8C%E6%8E%92%E5%88%97%E6%A0%91"><span class="nav-number">1.1.2.</span> <span class="nav-text">子集树和排列树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">回溯算法的使用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">回溯法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.4.</span> <span class="nav-text">回溯法模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.5.</span> <span class="nav-text">经典例题详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.5.1.</span> <span class="nav-text">图问题中的回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">图的着色问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%88%E5%AF%86%E9%A1%BF%E5%9B%9E%E8%B7%AF%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">哈密顿回路问题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="nav-number">1.5.2.</span> <span class="nav-text">组合问题中的回溯法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">八皇后问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">批处理作业调度问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%980-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">装载问题（0-1背包问题）</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -513,7 +541,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

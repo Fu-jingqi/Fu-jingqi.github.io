@@ -20,21 +20,19 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="例题： 设阶码3位，尾数6位，按浮点运算方法，完成下列取值的[x+y]、[x-y]运算：">
+  <meta name="description" content="例题： 设阶码3位，尾数6位，按浮点运算方法，完成下列取值的[x+y]、[x-y]运算：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成原理题目透析（2）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/03/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%A2%98%E7%9B%AE%E9%80%8F%E6%9E%90%EF%BC%882%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smith">
-<meta property="og:description" content="例题： 设阶码3位，尾数6位，按浮点运算方法，完成下列取值的[x+y]、[x-y]运算：">
+<meta property="og:description" content="例题： 设阶码3位，尾数6位，按浮点运算方法，完成下列取值的[x+y]、[x-y]运算：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xagd8U.png">
 <meta property="article:published_time" content="2022-03-08T03:52:31.000Z">
 <meta property="article:modified_time" content="2022-06-04T04:45:51.386Z">
 <meta property="article:author" content="MJ.Smith">
 <meta property="article:tag" content="cache">
 <meta property="article:tag" content="经典例题（计组）">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/06/04/Xagd8U.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/03/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%A2%98%E7%9B%AE%E9%80%8F%E6%9E%90%EF%BC%882%EF%BC%89/">
 
@@ -247,46 +245,61 @@
       
         <p>例题：</p>
 <p>设阶码3位，尾数6位，按浮点运算方法，完成下列取值的[x+y]、[x-y]运算：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xagd8U"><img src="https://s1.ax1x.com/2022/06/04/Xagd8U.png" alt="Xagd8U.png"></a></p>
-<p><hr></hr><br><span id="more"></span></p>
-<font color = "red">解</font> ：先将  x   与  y   化为浮点数的一般格式：(双符号位)
-
-x = 11       011,       00.      100101
-
-y = 11       101,       11.      011110
-
-1. 阶数对齐：
-
-[![XagaCT.png](https://s1.ax1x.com/2022/06/04/XagaCT.png)](https://imgtu.com/i/XagaCT)
-
-[![Xag0v4.png](https://s1.ax1x.com/2022/06/04/Xag0v4.png)](https://imgtu.com/i/Xag0v4)
-
-* 本着低阶向高阶看齐：所以应该让   y   的阶数加二。对应的   y   的尾数右移，此时：
-
-*   y= 11       011,        11.        110111(10)
-
-*   x = 11       011,       00.      100101
-
-2. 尾数求和
-
-[![Xagw2F.png](https://s1.ax1x.com/2022/06/04/Xagw2F.png)](https://imgtu.com/i/Xagw2F)
-
-* 得到  [x+y]=11      011,      00.      011100(10)
-
-3. 规格化处理
-
-*   [x+y] = 11        100,      00.      111001(0)
-
-4. 舍入处理
-
-* 采用**0  舍  1  入法**处理，所以舍弃   0
-
-5. 判溢出
-
-[![XagDKJ.png](https://s1.ax1x.com/2022/06/04/XagDKJ.png)](https://imgtu.com/i/XagDKJ)
-
-<font color = "orange">在判断溢出时，若尾数符号位为  01  或  10  时，虽然此时数值发生了溢出，我们认可通过对这个<font color = "red">浮点数</font>进行规格化（向左或向右规格化处理），从而使得数值的尾数不溢出，但是当我们调整尾数，对它进行规格化后，（尾数不溢出）阶码溢出了，我们就认定这个机器数已经是溢出了的。</font> <font color = "red">注：定点运算发生溢出时，应发生报错信息。</font>
-
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xagd8U"><img
+src="https://s1.ax1x.com/2022/06/04/Xagd8U.png"
+alt="Xagd8U.png" /></a></p>
+<hr>
+</hr>
+<span id="more"></span>
+<p><font color = "red">解</font> ：先将 x 与 y
+化为浮点数的一般格式：(双符号位)</p>
+<p>x = 11 011, 00. 100101</p>
+<p>y = 11 101, 11. 011110</p>
+<ol type="1">
+<li>阶数对齐：</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XagaCT"><img
+src="https://s1.ax1x.com/2022/06/04/XagaCT.png"
+alt="XagaCT.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xag0v4"><img
+src="https://s1.ax1x.com/2022/06/04/Xag0v4.png"
+alt="Xag0v4.png" /></a></p>
+<ul>
+<li><p>本着低阶向高阶看齐：所以应该让 y 的阶数加二。对应的 y
+的尾数右移，此时：</p></li>
+<li><p>y= 11 011, 11. 110111(10)</p></li>
+<li><p>x = 11 011, 00. 100101</p></li>
+</ul>
+<ol start="2" type="1">
+<li>尾数求和</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xagw2F"><img
+src="https://s1.ax1x.com/2022/06/04/Xagw2F.png"
+alt="Xagw2F.png" /></a></p>
+<ul>
+<li>得到 [x+y]=11 011, 00. 011100(10)</li>
+</ul>
+<ol start="3" type="1">
+<li>规格化处理</li>
+</ol>
+<ul>
+<li>[x+y] = 11 100, 00. 111001(0)</li>
+</ul>
+<ol start="4" type="1">
+<li>舍入处理</li>
+</ol>
+<ul>
+<li>采用<strong>0 舍 1 入法</strong>处理，所以舍弃 0</li>
+</ul>
+<ol start="5" type="1">
+<li>判溢出</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XagDKJ"><img
+src="https://s1.ax1x.com/2022/06/04/XagDKJ.png"
+alt="XagDKJ.png" /></a></p>
+<p><font color = "orange">在判断溢出时，若尾数符号位为 01 或 10
+时，虽然此时数值发生了溢出，我们认可通过对这个<font color = "red">浮点数</font>进行规格化（向左或向右规格化处理），从而使得数值的尾数不溢出，但是当我们调整尾数，对它进行规格化后，（尾数不溢出）阶码溢出了，我们就认定这个机器数已经是溢出了的。</font>
+<font color = "red">注：定点运算发生溢出时，应发生报错信息。</font></p>
 
     </div>
 
@@ -457,7 +470,7 @@ y = 11       101,       11.      011110
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

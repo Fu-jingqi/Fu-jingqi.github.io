@@ -226,7 +226,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>“My name is Tracy, this is not just a name, I hope that one day it can also become a symbol of nBA, a legend, this may be a distant dream, but I firmly believe that he has the power to realize this dream and unremitting struggle!”  —-Tracy McGrady</p>
+          <p>"My name is Tracy, this is not just a name, I hope that one day it
+can also become a symbol of nBA, a legend, this may be a distant dream,
+but I firmly believe that he has the power to realize this dream and
+unremitting struggle!" ---Tracy McGrady</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/05/%E8%B5%84%E6%BA%90%E5%90%88%E8%BE%91/#more" rel="contents">
@@ -235,6 +238,80 @@
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/07/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%89%E7%A7%8D%E5%AD%97%E9%95%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
+      <meta itemprop="name" content="MJ.Smith">
+      <meta itemprop="description" content="fjq真的蟀气逼人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MJ.Smith">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%89%E7%A7%8D%E5%AD%97%E9%95%BF/" class="post-title-link" itemprop="url">计算机组成原理三种字长</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-24 10:41:44 / 修改时间：10:53:36" itemprop="dateCreated datePublished" datetime="2022-07-24T10:41:44+08:00">2022-07-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="字长">字长：</h3>
+<p><strong>一个字中的二进制位的位数</strong>，是计算机系统结构中的一个重要特性。字长在计算机结构和操作的多个方面均有体现。<strong>计算机中大多数寄存器的大小是一个字长。</strong>计算机处理的典型数值也可能是以字长为单位。<strong>CPU和内存之间的数据传送单位也通常是一个字长。</strong>还有内存中用于指明一个存储位置的地址也经常是以字长为单位的。现代计算机的字长通常为16、32、64位。字长为8位的编码称为<strong>字节</strong>，是计算机中的基本编码单位。字长越大计算机的处理数据的速度就越快。</p>
+<h3 id="机器字长">机器字长：</h3>
+<p>计算机能直接处理的二进制数据的位数。<strong>机器字长</strong>通常与<strong>主存单元</strong>的位数一致。计算机中运算器进行算术运算和逻辑运算。机器字长也就是运算器进行定点数运算的字长，通常也是CPU内部数据通路的宽度。</p>
+<p>机器字长反映了计算机的运算精度，即字长越长，数的表示范围也越大，精度也越高。机器的字长也会影响机器的运算速度。倘若CPU字长较短，又要运算位数较多的数据，那么需要经过两次或多次的运算才能完成，这样势必影响整机的运行速度。</p>
+<p><strong>机器字长</strong>与<strong>主存储器字长</strong>通常是相同的，但也可以不同。不同的情况下，一般是主存储器字长小于机器字长，例如机器字长是32位，主存储器字长可以是32位，也可以是16位，当然，两者都会影响CPU的工作效率。</p>
+<h3 id="指令字长">指令字长：</h3>
+<p>一个指令字中包含二进制代码的总位数。指令字长取决于从<strong>操作码的长度</strong>、<strong>操作码地址的长度</strong>和<strong>操作码地址的个数</strong>。不同的指令的字长是不同的。早期计算机的存储字长一般和机器的指令字长与数据字长相等，故访问一次主存便可取一条指令或一个数据。随着计算机的应用范围的不断扩大，解题精度的不断提高，往往要求指令字长是可变的，数据字长也要求可变。为了适应指令和数据字长的可变性，其长度不由存储字长来确定，而用字节的个数来表示。1个字节（Byte)被定义为由8位（Bit）二进制代码组成。当然，此时存储字长、指令字长、数据字长三者可各不相同，但它们必须是字节的整数倍。</p>
+<p>指令字长等于机器字长的指令，称为单字长指令；
+指令字长等于半个机器字长的指令，称为半字长指令；
+指令字长等于两个机器字长的指令，称为双字长指令。</p>
+<p>例如，IBM370系列，它的指令格式有16位（半字）的，有32位（单字）的，还有48位（一个半字）的。</p>
+<p>指令字长固定：指令字长小于等于存储字长
+指令字长可变：按字节的倍数变化</p>
+<h3 id="存储字长">存储字长：</h3>
+<p>一个存储单元存储二进制代码的位数。存储字长可以是8位、16位、32位等。早期计算机的<strong>存储字长一般和机器的指令字长与数据字长相等</strong>，故访问一次主存便可取一条指令或一个数据。随着计算机的应用范围的不断扩大，解题精度的不断提高，往往要求指令字长是可变的，数据字长也要求可变。为了适应指令和数据字长的可变性，其长度不由存储字长来确定，而由字节的个数来表示。</p>
+
       
     </div>
 
@@ -367,12 +444,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="关于整型数据符号扩展的基础知识："><a href="#关于整型数据符号扩展的基础知识：" class="headerlink" title="关于整型数据符号扩展的基础知识："></a>关于整型数据符号扩展的基础知识：</h2><h3 id="一、短数据类型扩展为长数据类型"><a href="#一、短数据类型扩展为长数据类型" class="headerlink" title="一、短数据类型扩展为长数据类型"></a>一、短数据类型扩展为长数据类型</h3><h4 id="1-要扩展的短数据类型为有符号数"><a href="#1-要扩展的短数据类型为有符号数" class="headerlink" title="1.要扩展的短数据类型为有符号数"></a>1.要扩展的短数据类型为有符号数</h4><p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
-<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；<br>2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
-<h4 id="2-要扩展的短数据类型为无符号数"><a href="#2-要扩展的短数据类型为无符号数" class="headerlink" title="2.要扩展的短数据类型为无符号数"></a>2.要扩展的短数据类型为无符号数</h4><p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
-<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000 10001001b；<br>2：unsigned char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
-<h3 id="二、长数据类型缩减为短数据类型"><a href="#二、长数据类型缩减为短数据类型" class="headerlink" title="二、长数据类型缩减为短数据类型"></a>二、长数据类型缩减为短数据类型</h3><p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
-<h3 id="三、同一长度的数据类型中有符号数与无符号数的相互转化"><a href="#三、同一长度的数据类型中有符号数与无符号数的相互转化" class="headerlink" title="三、同一长度的数据类型中有符号数与无符号数的相互转化"></a>三、同一长度的数据类型中有符号数与无符号数的相互转化</h3><p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
+          <h2
+id="关于整型数据符号扩展的基础知识">关于整型数据符号扩展的基础知识：</h2>
+<h3
+id="一短数据类型扩展为长数据类型">一、短数据类型扩展为长数据类型</h3>
+<h4
+id="要扩展的短数据类型为有符号数">1.要扩展的短数据类型为有符号数</h4>
+<p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
+<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；
+2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
+<h4
+id="要扩展的短数据类型为无符号数">2.要扩展的短数据类型为无符号数</h4>
+<p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
+<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000
+10001001b； 2：unsigned char x=00001001b; short y=x; 则y的值应为00000000
+00001001b；</p>
+<h3
+id="二长数据类型缩减为短数据类型">二、长数据类型缩减为短数据类型</h3>
+<p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
+<h3
+id="三同一长度的数据类型中有符号数与无符号数的相互转化">三、同一长度的数据类型中有符号数与无符号数的相互转化</h3>
+<p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
 
       
     </div>
@@ -515,9 +607,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="多元微分学"><a href="#多元微分学" class="headerlink" title="多元微分学"></a>多元微分学</h2><p>对于<strong>一元函数</strong>来说，按照导数的定义式：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jmhHxA"><img src="https://s1.ax1x.com/2022/06/29/jmhHxA.png" alt="jmhHxA.png"></a></p>
-<p>称f(x)在x=x0处可导，极限值为该点的导数值。<br>
+          <h2 id="多元微分学">多元微分学</h2>
+<p>对于<strong>一元函数</strong>来说，按照导数的定义式：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/jmhHxA"><img
+src="https://s1.ax1x.com/2022/06/29/jmhHxA.png"
+alt="jmhHxA.png" /></a></p>
+<p>称f(x)在x=x0处可导，极限值为该点的导数值。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/29/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86/#more" rel="contents">
@@ -526,74 +621,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/06/15/err-Error-Spawn-failed/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s1.ax1x.com/2022/06/03/XNqqCd.jpg">
-      <meta itemprop="name" content="MJ.Smith">
-      <meta itemprop="description" content="fjq真的蟀气逼人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MJ.Smith">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/15/err-Error-Spawn-failed/" class="post-title-link" itemprop="url">err: Error: Spawn failed</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-06-15 20:47:19 / 修改时间：20:56:06" itemprop="dateCreated datePublished" datetime="2022-06-15T20:47:19+08:00">2022-06-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Hexo部署出现错误err-Error-Spawn-failed解决方式"><a href="#Hexo部署出现错误err-Error-Spawn-failed解决方式" class="headerlink" title="Hexo部署出现错误err: Error: Spawn failed解决方式"></a>Hexo部署出现错误err: Error: Spawn failed解决方式</h2><h3 id="错误如下："><a href="#错误如下：" class="headerlink" title="错误如下："></a>错误如下：</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XT4Pbt"><img src="https://s1.ax1x.com/2022/06/15/XT4Pbt.png" alt="XT4Pbt.png"></a></p>
-<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><h4 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h4><ul>
-<li>删除blog文件目录下的<code>.deploy_git</code>文件夹</li>
-<li>终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署<h4 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h4></li>
-<li>编辑<code>host</code>文件，在末行添加<code>github.com</code>的ip<ul>
-<li><a target="_blank" rel="noopener" href="https://ipaddress.com/website/github.com">查询ip网址</a>或自行百度<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/XTILEq"><img src="https://s1.ax1x.com/2022/06/15/XTILEq.png" alt="XTILEq.png"></a></li>
-<li>终端命令窗口<code>hexo clean</code>,<code>hexo g</code>,<code>hexo d</code>,完成部署</li>
-</ul>
-</li>
-</ul>
-
       
     </div>
 
@@ -679,7 +706,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
