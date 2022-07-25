@@ -20,19 +20,22 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="某计算机的主存地址空间大小为256 MB，按字节编址。指令Cache和数据Cache分离，均有8个Cache行，每个Cache行大小为64 B，数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下所示：   图片.png  假定int类型数据用32位补码表示，程序编译时i, j, sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制数）。请">
+  <meta name="description" content="某计算机的主存地址空间大小为256 MB，按字节编址。指令Cache和数据Cache分离，均有8个Cache行，每个Cache行大小为64 B，数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下所示：  假定int类型数据用32位补码表示，程序编译时i, j, sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制数）。请回答下列问题，要求说明理由或给出计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成原理题目透析（1）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/03/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%A2%98%E7%9B%AE%E9%80%8F%E6%9E%90%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smith">
-<meta property="og:description" content="某计算机的主存地址空间大小为256 MB，按字节编址。指令Cache和数据Cache分离，均有8个Cache行，每个Cache行大小为64 B，数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下所示：   图片.png  假定int类型数据用32位补码表示，程序编译时i, j, sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制数）。请">
+<meta property="og:description" content="某计算机的主存地址空间大小为256 MB，按字节编址。指令Cache和数据Cache分离，均有8个Cache行，每个Cache行大小为64 B，数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下所示：  假定int类型数据用32位补码表示，程序编译时i, j, sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制数）。请回答下列问题，要求说明理由或给出计">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qn-sc0.yuketang.cn/ue_i/20220421/3ddc69aa-baa8-4077-9066-a45a0a14332b.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xacqc4.png">
 <meta property="article:published_time" content="2022-03-08T02:55:36.000Z">
 <meta property="article:modified_time" content="2022-06-04T04:45:51.392Z">
 <meta property="article:author" content="MJ.Smith">
 <meta property="article:tag" content="cache">
 <meta property="article:tag" content="经典例题（计组）">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qn-sc0.yuketang.cn/ue_i/20220421/3ddc69aa-baa8-4077-9066-a45a0a14332b.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/03/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%A2%98%E7%9B%AE%E9%80%8F%E6%9E%90%EF%BC%881%EF%BC%89/">
 
@@ -243,110 +246,95 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>某计算机的主存地址空间大小为256
-MB，按字节编址。指令Cache和数据Cache分离，均有8个Cache行，每个Cache行大小为64
-B，数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下所示：</p>
-<figure>
-<img
-src="https://qn-sc0.yuketang.cn/ue_i/20220421/3ddc69aa-baa8-4077-9066-a45a0a14332b.png"
-alt="图片.png" />
-<figcaption aria-hidden="true">图片.png</figcaption>
-</figure>
-<p>假定int类型数据用32位补码表示，程序编译时i, j,
-sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制数）。请回答下列问题，要求说明理由或给出计算过程。</p>
+        <p>某计算机的主存地址空间大小为256 MB，按字节编址。指令Cache和数据Cache分离，均有8个Cache行，每个Cache行大小为64 B，数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下所示：</p>
+<p><img src="https://qn-sc0.yuketang.cn/ue_i/20220421/3ddc69aa-baa8-4077-9066-a45a0a14332b.png" alt="图片.png"></p>
+<p>假定int类型数据用32位补码表示，程序编译时i, j, sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制数）。请回答下列问题，要求说明理由或给出计算过程。</p>
 <p>（1）若不考虑用于Cache一致性维护和替换算法的控制位，则数据Cache的总容量为多少？</p>
 <p>（2）数组元素a[0][31]和a[1][1]各自所在的主存块对应的Cache行号分别是多少（Cache行号从0开始）？</p>
 <p>（3）程序A和B的数据访问命中率各是多少？哪个程序的执行时间更短？</p>
 <span id="more"></span>
-<hr>
-</hr>
-<p><font color="red">分析：</font></p>
+<hr></hr>
+
+<font color="red">分析：</font>
+
 <ul>
-<li>主存地址空间大小为256 MB
-<ul>
+<li>主存地址空间大小为256 MB<ul>
 <li>主存总容量为 2^{28}B</li>
-</ul></li>
-<li>按字节编址
-<ul>
+</ul>
+</li>
+<li>按字节编址<ul>
 <li>单位为字节</li>
-</ul></li>
-<li>指令Cache和数据Cache分离
-<ul>
+</ul>
+</li>
+<li>指令Cache和数据Cache分离<ul>
 <li>这句话意味着在计算Cache容量时，不单单是计算Cache数据容量那么简单了，还需加上指令所占的容量。</li>
-</ul></li>
-<li>8个Cache行，每个Cache行大小为64 B
-<ul>
-<li>计算出Cache的总容量为8*64=2<sup>9B，同时也告诉了我们主存一个块有64B(2</sup>6)大小,一共有2<sup>{28}/2</sup>{6}
-= 2^{22} 个块。</li>
-</ul></li>
-<li>数据Cache采用直接映射方式
-<ul>
+</ul>
+</li>
+<li>8个Cache行，每个Cache行大小为64 B<ul>
+<li>计算出Cache的总容量为8*64=2^9B，同时也告诉了我们主存一个块有64B(2^6)大小,一共有2^{28}/2^{6} = 2^{22} 个块。</li>
+</ul>
+</li>
+<li>数据Cache采用直接映射方式<ul>
 <li>直接映射意味着Cache的指令包含着标记位+有效位</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>整理得：</p>
-<ol type="1">
-<li>对于主存
-<ol type="1">
-<li>主存总容量为 2^{28}B</li>
-<li>一共有 2^{22} 个块，一个块有 2^6 大小</li>
-</ol></li>
-<li>对于 Cache
-<ol type="1">
-<li>Cache 的总容量为 2^9B</li>
-<li>一共有 2^3 个块，一个块有 2^6 大小</li>
-</ol></li>
-<li>Cache总容量 = Cache数据容量+Cache指令容量</li>
+<ol>
+<li>对于主存<ol>
+<li>主存总容量为  2^{28}B </li>
+<li>一共有  2^{22}  个块，一个块有 2^6 大小</li>
 </ol>
-<hr>
-</hr>
-<p>对于第一题：数据 Cache 的总容量为 Cache数据容量+Cache指令容量</p>
-<p>Cache数据容量: 64 * 8</p>
-<p>Cache指令容量(标记位+有效位): 有效位始终为1位 ，下面来求标记位：</p>
-<p>首先明确标记位来自于哪里，标记位是为了找到主存中某一块内容在 Cache
-中的映射位置，所以它来源于主存块地址</p>
+</li>
+<li>对于 Cache <ol>
+<li>Cache 的总容量为 2^9B </li>
+<li>一共有  2^3  个块，一个块有 2^6 大小</li>
+</ol>
+</li>
+<li>Cache总容量 = Cache数据容量+Cache指令容量 </li>
+</ol>
+<hr></hr>
+
+<p>对于第一题：数据 Cache 的总容量为  Cache数据容量+Cache指令容量 </p>
+<p> Cache数据容量:    64 * 8 </p>
+<p> Cache指令容量(标记位+有效位):    有效位始终为1位 ，下面来求标记位：</p>
+<p>首先明确标记位来自于哪里，标记位是为了找到主存中某一块内容在 Cache 中的映射位置，所以它来源于主存块地址</p>
 <p>主存地址</p>
 <ul>
-<li>主存块号（直观看出主存有多少块）
-<ul>
+<li>主存块号（直观看出主存有多少块）<ul>
 <li>标记（<strong>就是通过它来与</strong> Cache 建立联系）</li>
 <li>行号（直观看出 Cache 有多少行（块））</li>
-</ul></li>
+</ul>
+</li>
 <li>块内地址</li>
 </ul>
-<p>因此可以明确的是:对于本题，主存地址： 28 = 22 (19 + 3) + 6
-，因此得出结论 Cache指令容量的标记位为19 ，最终得出本题答案 512 + 19 + 1
-= 532</p>
-<p><font color = "rwdd">简介写法：</font></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xacqc4"><img
-src="https://s1.ax1x.com/2022/06/04/Xacqc4.png"
-alt="Xacqc4.png" /></a></p>
-<hr>
-</hr>
-<p>对于第二题：一个 int 型数据 4 个字节，而主存（ Cache ）一个块 64
-个字节，故而得出一个块可以存放 16 个 int 型数据</p>
-<p>对于 a[0][31] ， 32 mod 16 == 0 不难知道该元素的主存地址为 320 + 31 *
-4 = 444= 0000....0001 1011 1100</p>
+<p>因此可以明确的是:对于本题，主存地址： 28 = 22 (19 + 3) + 6 ，因此得出结论 Cache指令容量的标记位为19 ，最终得出本题答案 512 + 19 + 1 = 532 </p>
+<font color = "rwdd">简介写法：</font>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xacqc4"><img src="https://s1.ax1x.com/2022/06/04/Xacqc4.png" alt="Xacqc4.png"></a></p>
+<hr></hr>
+
+<p>对于第二题：一个 int 型数据 4 个字节，而主存（ Cache ）一个块 64 个字节，故而得出一个块可以存放 16 个 int 型数据</p>
+<p>对于 a[0][31] ， 32 mod 16 == 0 不难知道该元素的主存地址为 320 + 31 * 4 = 444=   0000….0001   1011   1100 </p>
 <ul>
-<li>六位块内地址为 111100</li>
-<li>22位主存块号 0000....0110</li>
+<li>六位块内地址为 111100 </li>
+<li>22位主存块号 0000….0110 </li>
 </ul>
 <p>观察22位储存块号的后四位得到该元素处于 Cache 的第六块</p>
-<p><font color = "rwdd">简介写法：</font></p>
+<font color = "rwdd">简介写法：</font>
+
 <ul>
 <li>算出改元素的主存地址</li>
-<li>直接将其与 Cache 块大小取余得到结果</li>
+<li><p>直接将其与 Cache 块大小取余得到结果</p>
+<p>444 mod 64 = 6 </p>
+</li>
 </ul>
-<p>444 mod 64 = 6</p>
-<hr>
-</hr>
+<hr></hr>
+
 <p>对于第三题：</p>
 <ul>
-<li>当程序A存入一个元素时，由于 Cache
-会一下子将给元素的附近的（包括该元素）共16个元素一起存入，再次访问该元素的下一个元素时，由于元素按行再按列存入，元素的存储顺序与使用顺序高度吻合，除了访问的第一个元素不会命中，剩下15个均会命中，因此命中率位
-16/15 = 93.75% 。</li>
-<li>第二个程序按列执行循环，在执行内层循环时，将连续访问不同行的同一列数据，不同行的同一列数据使用的是同一
-Cache 单元，每次都不会命中，命中率为0。</li>
+<li>当程序A存入一个元素时，由于 Cache  会一下子将给元素的附近的（包括该元素）共16个元素一起存入，再次访问该元素的下一个元素时，由于元素按行再按列存入，元素的存储顺序与使用顺序高度吻合，除了访问的第一个元素不会命中，剩下15个均会命中，因此命中率位 16/15  =  93.75% 。</li>
+<li>第二个程序按列执行循环，在执行内层循环时，将连续访问不同行的同一列数据，不同行的同一列数据使用的是同一 Cache 单元，每次都不会命中，命中率为0。</li>
 <li>显然A快于B</li>
 </ul>
 
