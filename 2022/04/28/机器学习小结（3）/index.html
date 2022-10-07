@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://s1.ax1x.com/2022/06/04/XawtN4.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://s1.ax1x.com/2022/06/04/XawN4J.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="什么是逻辑回归  逻辑回归是通过回归的思想来解决二分类问题的算法  逻辑回归的原理是用逻辑函数把线性回归的结果\((-∞,∞)\)映射到\((0,1)\)，故先介绍线性回归函数和逻辑函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习小结（3）">
+<meta property="og:url" content="https://fu-jingqi.github.io/2022/04/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%883%EF%BC%89/index.html">
+<meta property="og:site_name" content="MJ.Smi">
+<meta property="og:description" content="什么是逻辑回归  逻辑回归是通过回归的思想来解决二分类问题的算法  逻辑回归的原理是用逻辑函数把线性回归的结果\((-∞,∞)\)映射到\((0,1)\)，故先介绍线性回归函数和逻辑函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-28T04:55:40.000Z">
+<meta property="article:modified_time" content="2022-06-04T05:07:23.390Z">
+<meta property="article:author" content="MJ.Smi">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fu-jingqi.github.io/2022/04/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%883%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>机器学习小结（3） | MJ.Smi</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d8fec4edd4a201d268db80c0221228a2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MJ.Smi</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>link</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Fu-jingqi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/04/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%883%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/08/04/vey5o6.png">
+      <meta itemprop="name" content="MJ.Smi">
+      <meta itemprop="description" content="fjq真的蟀气逼人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MJ.Smi">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习小结（3）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-28 12:55:40" itemprop="dateCreated datePublished" datetime="2022-04-28T12:55:40+08:00">2022-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-04 13:07:23" itemprop="dateModified" datetime="2022-06-04T13:07:23+08:00">2022-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="什么是逻辑回归">什么是逻辑回归</h3>
+<ul>
+<li>逻辑回归是通过回归的思想来解决二分类问题的算法</li>
+</ul>
+<p><strong>逻辑回归</strong>的<strong>原理</strong>是<strong>用逻辑函数</strong>把<strong>线性回归的结果</strong><span
+class="math inline">\((-∞,∞)\)</span><strong>映射到</strong><span
+class="math inline">\((0,1)\)</span>，故先介绍<strong>线性回归函数</strong>和<strong>逻辑函数</strong>
+<span id="more"></span> #### 线性回归函数</p>
+<p>线性回归函数的数学表达式: <a target="_blank" rel="noopener" href="https://imgtu.com/i/XahKXD"><img
+src="https://s1.ax1x.com/2022/06/04/XahKXD.png"
+alt="XahKXD.png" /></a></p>
+<p>其中<span class="math inline">\(x_i\)</span>是自变量，<span
+class="math inline">\(y\)</span> 是因变量，<span
+class="math inline">\(y\)</span> 的值域为<span
+class="math inline">\((-∞,∞)\)</span>，<span
+class="math inline">\(θ_0\)</span> 是常数项，<span
+class="math inline">\(θ_i(i=1,2,...,n)\)</span>是待求系数，不同的权重
+<span class="math inline">\(θ_i\)</span>
+反映了自变量对因变量不同的<strong>贡献程度</strong>。回归分析中包括两个或两个以上自变量的回归分析，称为多元线性回归分析。不管是一元线性回归分析还是多元线性回归分析，都是线性回归分析。</p>
+<h4 id="逻辑函数">逻辑函数</h4>
+<h3 id="sigmoid函数">sigmoid函数</h3>
+<h4 id="逻辑函数的数学表达式">逻辑函数的数学表达式</h4>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XahJht"><img
+src="https://s1.ax1x.com/2022/06/04/XahJht.png"
+alt="XahJht.png" /></a></p>
+<p>其导数：(这在后面用<strong>梯度下降法</strong>求解参数时会用到)</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xaht9P"><img
+src="https://s1.ax1x.com/2022/06/04/Xaht9P.png"
+alt="Xaht9P.png" /></a></p>
+<h4 id="逻辑回归函数">逻辑回归函数</h4>
+<p>前文中也提到过逻辑回归的原理是用逻辑函数把线性回归的结果从(-∞,∞)映射到(0,1)。我们用公式描述上面这句话：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XahajS"><img
+src="https://s1.ax1x.com/2022/06/04/XahajS.png"
+alt="XahajS.png" /></a></p>
+<p>把线性回归函数的结果y，放到<span
+class="math inline">\(sigmod\)</span>函数中去，就构造了<strong>逻辑回归函数</strong>。</p>
+<p>我们转换一下逻辑回归函数，过程如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xah0BQ"><img
+src="https://s1.ax1x.com/2022/06/04/Xah0BQ.png"
+alt="Xah0BQ.png" /></a></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/icfo12e6zb.png?imageView2/2/w/1620"
+alt="image-20220403150311492" />
+<figcaption aria-hidden="true">image-20220403150311492</figcaption>
+</figure>
+<p>这些标签就是逻辑回归函数中的xi，我们可以用这些样本数据训练逻辑回归模型，并求解得到变量x的参数(系数)θ。</p>
+<p>标签数据年龄、工资等是已有信息，如果参数(系数)θ也已经求出，把标签数据和参数代入逻辑回归模型，就可以预测任一客户违约的概率。</p>
+<p>那如何求解逻辑回归模型中的参数？在第二章中做简要说明，在<span
+class="math inline">\(Python\)</span>中已有现成的封装函数，直接调用即可。</p>
+<h3 id="如何求解逻辑回归中的参数">如何求解逻辑回归中的参数</h3>
+<h4 id="极大似然函数">极大似然函数</h4>
+<p>先来看一个小例子：如果小华这次考试考了90分以上，妈妈99%会奖励小华一个手机，如果没有考到90分以上，妈妈99%不会奖励小华手机。现在小华没有得到手机，问小华这次有没有考到90分。可能我们的第一反应是小华大概率没有考到90分以上。这种利用已知样本结果，反推最有可能导致这样结果的参数值，就是极大似然估计。</p>
+<p>结合逻辑回归函数，如果我们已经积累了大量的违约客户和正常客户的样本数据，利用极大似然函数由果溯因，估计出<strong>使得目前结果的可能性最大</strong>参数(系数)θ，有了参数我们就可以求任何一个客户违约的概率了。</p>
+<p>我们上文提到过客户违约的后验概率：</p>
+<p><span class="math display">\[
+p(Y=1|x) = \frac{1}{1+e^{-\theta ^{T}x}}
+\]</span></p>
+<p>相应的可以得到客户不违约的概率：</p>
+<p>$p(Y=0|x) = 1 - p(Y=1|x) = 1 - = $</p>
+<p>如果令</p>
+<p><span class="math inline">\(\frac{1}{1+e^{-\theta ^{T}x}} =
+g(y)=g_\theta (x)\)</span></p>
+<p>违约的后验概率可以写成：</p>
+<p><span class="math inline">\(p(Y=1|x)=g_\theta (x)\)</span></p>
+<p>不违约的后验概率可以写成：</p>
+<p><span class="math inline">\(p(Y=0|x)=1-g_\theta (x)\)</span></p>
+<p>对于某一个客户，我们采集到了样本数据(x,y)。对于这个样本，他的标签是y的概率可以定义成：</p>
+<p><span class="math inline">\(p(y|x,\theta) =(g_\theta
+(x))^{y}(1-g_\theta (x))^{1-y}\)</span></p>
+<p>其中y∈{0,1}。当y=0时，上式为不违约的后验概率，当y=1时，上式为违约的后验概率。</p>
+<p>现在我们有m个客户的观测样本</p>
+<p><span class="math display">\[
+D = \left \{ (X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n) \right \}
+\]</span></p>
+<p>将每一个样本发生的概率相乘，就是这个合成在一起得到的合事件发生的总概率(利用概率中的乘法公式)，即为似然函数，可以写成：</p>
+<p><span class="math inline">\(L(\theta) = \prod_{i=1}^{m}
+p(y_i|x_i;\theta ) = \prod_{i=1}^{m}(g_\theta (x_i))^{y_i}(1-g_\theta
+(x_i))^{1-y_i}\)</span></p>
+<p>其中 <span class="math inline">\(θ\)</span> 为待求参数。</p>
+<p><strong>注</strong>：我们总是希望出现目前结果的可能性最大，所以想要得到极大化似然函数对应的参数θ。</p>
+<p>为便于求解，我们引入不改变函数单调性的对数函数ln，把连乘变成加法，得到对数似然函数：</p>
+<p><span class="math inline">\(l(\theta ) =ln(L(\theta )) =
+\sum_{i=1}^{m} (y_iln(g_\theta (x_i)) + (1-y_i)ln(1-g_\theta
+(x_i)))\)</span></p>
+<p>至此，可以用梯度上升法求解对数似然函数，求出使得目前结果的可能性最大的参数θ。也可以由对数似然函数构造损失函数，用梯度下降法求出使得损失最小对应的参数θ，接下来看下逻辑回归中的损失函数。</p>
+<p><strong>注：</strong>使用对数似然函数，不仅仅把连乘变成加法，便于求解，而且对数似然函对应的损失函数是关于未知参数的高阶连续可导的凸函数，便于求其全局最优解。</p>
+<h4 id="构造损失函数">构造损失函数</h4>
+<p>在机器学习中有损失函数的概念，我们知道损失函数一般定义为预测值和真实值的差，比如我们预测小华在这次考试中能考98分，成绩出来了小华实际考了97分，小华的成绩预测值和真实值差为1，这个1通俗理解就是损失函数的值。</p>
+<p>从上面的案例知，如果损失函数越小，说明模型预测越准。所以在函数比较复杂没有确定解(解析解)或很难求出确定解的情况下，一般求的是数值解(近似解)。一般模型求数值解可以求出使得损失函数最小对应的参数θ。</p>
+<p>结合逻辑回归中的极大似然函数，如果取整个数据集上的<strong>平均对数似然损失</strong>，我们可以得到:</p>
+<p>$J() = -ln(L()) $</p>
+<p>其中<span
+class="math inline">\(J(θ)\)</span>为<strong>损失函数</strong>，由对数似然函数前面添加负号取平均得到。</p>
+<p>即在逻辑回归模型中，最大化似然函数和最小化损失函数实际上是等价的(求最大化对数似然函数对应的参数θ和求最小化平均对数似然损失对应的参数θ是一致的)，即：<span
+class="math inline">\(max\)</span> <span
+class="math inline">\(ln(L(\theta))\)</span> <span
+class="math inline">\(&lt;==&gt;\)</span> <span
+class="math inline">\(min\)</span> <span
+class="math inline">\(J(\theta)\)</span></p>
+<p>那如何求得损失函数最小对应的参数呢？可以用下节讲到的方法：梯度下降法。</p>
+<h4 id="用梯度下降法求解参数">用梯度下降法求解参数</h4>
+<p>先以一个人下山为例讲解梯度下降法的步骤：</p>
+<ul>
+<li>step1：明确自己现在所处的位置；</li>
+<li>step2：找到现在所处位置下降最快的方向；</li>
+<li>step3:
+沿着第二步找到的方向走一个步长，到达新的位置，且新位置低于刚才的位置；</li>
+<li>step4：判断是否下山，如果还没有到最低点继续步骤一，如果已经到最低点，则停止。</li>
+</ul>
+<p>从上面的分析知，用梯度下降法求解参数最重要的是找到<strong>下降最快的方向</strong>和确定要走的<strong>步长</strong>。</p>
+<p>那么什么是函数下降最快的方向？</p>
+<p>如果学过一元函数的导数，应该知道导数的几何意义是某点切线的斜率。除此之外导数还可以表示函数在该点的变化率，导数越大，表示函数在该点的变化越大。</p>
+<p>对于多维向量</p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/4v675mcowc.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>它的导数叫做梯度(偏导数)，当求某个变量的导数时，把其它变量视为常量，对整个函数求导，也就是分别对于它的每个分量求导数，即</p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/j9yz4ygq1z.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>对于函数的某个特定点，它的梯度就表示从该点出发，函数值变化最为迅猛的方向。至此梯度下降法求解参数的方向已经找到，那就是函数的梯度方向。</p>
+<p>接下来推导损失函数的梯度(偏导数)：</p>
+<p>由<strong>损失函数</strong>的公式知：</p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/pjaih6q9sr.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>对损失函数求偏导：</p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/0n4za2d9jl.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/ofme4wwct.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>至此，找到了梯度下降中的方向，只要给定一个步长就可以用迭代的方式来求待求参数，迭代的公式为：</p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/ooejbe6xjw.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img
+src="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/5s8cmmtc5a.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>MJ.Smi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fu-jingqi.github.io/2022/04/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%883%EF%BC%89/" title="机器学习小结（3）">https://fu-jingqi.github.io/2022/04/28/机器学习小结（3）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/fjq">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/fff">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://s1.ax1x.com/2022/06/05/XdbA3j.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%882%EF%BC%89/" rel="prev" title="机器学习小结（2）">
+      <i class="fa fa-chevron-left"></i> 机器学习小结（2）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="next" title="基础算法之贪心算法">
+      基础算法之贪心算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81Mzc3OS8zMDI1Mg=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">什么是逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">sigmoid函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">逻辑函数的数学表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">逻辑回归函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">如何求解逻辑回归中的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">极大似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">构造损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E6%B1%82%E8%A7%A3%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">用梯度下降法求解参数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MJ.Smi"
+      src="https://s1.ax1x.com/2022/08/04/vey5o6.png">
+  <p class="site-author-name" itemprop="name">MJ.Smi</p>
+  <div class="site-description" itemprop="description">fjq真的蟀气逼人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fu-jingqi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fu-jingqi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/c972937" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;c972937" rel="noopener" target="_blank">ccz--NanFeng妹妹</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://inanb.github.io/" title="https:&#x2F;&#x2F;inanb.github.io&#x2F;" rel="noopener" target="_blank">lgy--遠神TQL</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.nan-bluesky.top/" title="http:&#x2F;&#x2F;www.nan-bluesky.top&#x2F;" rel="noopener" target="_blank">lks--wwt的father</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://weiyuexin.gitee.io/" title="https:&#x2F;&#x2F;weiyuexin.gitee.io&#x2F;" rel="noopener" target="_blank">wyx--大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://i-ron.cn/" title="http:&#x2F;&#x2F;i-ron.cn&#x2F;" rel="noopener" target="_blank">nhj--Henu第二蟀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MJ.Smith</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

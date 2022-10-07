@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://s1.ax1x.com/2022/06/04/XawtN4.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://s1.ax1x.com/2022/06/04/XawN4J.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="正在更新中。。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成考察范围整理">
+<meta property="og:url" content="https://fu-jingqi.github.io/2022/07/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E8%80%83%E5%AF%9F%E8%8C%83%E5%9B%B4%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="MJ.Smi">
+<meta property="og:description" content="正在更新中。。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-19T02:30:56.000Z">
+<meta property="article:modified_time" content="2022-07-24T03:01:18.676Z">
+<meta property="article:author" content="MJ.Smi">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fu-jingqi.github.io/2022/07/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E8%80%83%E5%AF%9F%E8%8C%83%E5%9B%B4%E6%95%B4%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机组成考察范围整理 | MJ.Smi</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d8fec4edd4a201d268db80c0221228a2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MJ.Smi</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>link</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Fu-jingqi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/07/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E8%80%83%E5%AF%9F%E8%8C%83%E5%9B%B4%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/08/04/vey5o6.png">
+      <meta itemprop="name" content="MJ.Smi">
+      <meta itemprop="description" content="fjq真的蟀气逼人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MJ.Smi">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机组成考察范围整理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-19 10:30:56" itemprop="dateCreated datePublished" datetime="2022-07-19T10:30:56+08:00">2022-07-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-24 11:01:18" itemprop="dateModified" datetime="2022-07-24T11:01:18+08:00">2022-07-24</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="bf81db4ad23afeadf20a59367cbdeca7fbbefb0175b8cad8708853d3dd6bc2e3">838bc3e490d714b2b0e7569291d019417a608d02cfb397b95ec0d4849b52ef25cf66db3c4ea88349e2d57879c505eeacce271d331538533d0f1c40695365ebaaabe2e0b8b2cecf74b9512253cae470ad1ba7ed9dbbc793dd15614f555c8c32844f8ba3371003adf1ab10d8eb0c7d2563aafb335f0d4f958ddedc586b70d5ce7ddee6a866fa80d482ce039625e0cd09320234c732694410caff9dcb9d2c0f7a97fa17e86da6e203728a914d88d3ff3bcf6bf5570109c30c3c0e4674cbbcfbb6e4f98801d6f3f9a8c3429d64f82b95ef64d13b4c191b8c6f6821ecd6f0d4eb7c5be754d77a7428af43e831c3506ed889ed1972801a3d00d1820eff603c9192b38a9920ea9358b8f0da894869ec01a69d3a1275f7e01d672f5fba92ebed2ce011472334556a9ba3a98eb605af121d0eb81fbe049b9ed99e5f0db43af0eb3e0f4217d472058c40eeadda7999cf05a5d160c86498a6375ccb9b7c16a5ad1f76a06ee5c59c6bca4215c7e322c36a2c8ee246e36b6c24fe01b625a2fe1d176e75c98f8ecfde55e299b676b1ed29b80a27b0413d3061e1c32c6999aaa727385e8129a2c564789af162ff63af3b51f9ee88ba6eadf2ddaad26c9212d06ee07ea70e23bd8a398e23acbefccbbaa200717ff258f6008bc4ac7010030ca868e62bd4078899b5fd11b739ab99d17baa33984f5c6b4905bf20297698c900b5a95b36795c22259564904926218514e1fbf6503d19ffb4d76effd065c80289648f410f029d757b9c33fa47242b2e0e019df62206bcc950ebd2155af7ae3fe66643db46c3d6f1c769a8f79fe5fe674223f698c77523c92b47f262cdd4f9013e0fedb34b8b4aa0f7877583c5760ddbad51e6293525bd9dde1ab9282e0cc3a76855d9d06e96148e41590f7f035a6719a9a335cc86de0635a11481c9d9862ce5b2638d5fb547b3c3c854a2acfa17f2bfd774bd79b69d32e0341b2f78e47dd5ce2b7a981696cb6f13c88e0bd9f95d66501e88b6a65901f41b9f77f2c77e61cffeb86e1ea02fa9ca5f411fd2fa92f3e16deac135232e033b01e779b13f5bbe205fc236deacc688eee31fe7b887834f763a663619dd2ca01214ebdbe1976ffa56944d745bd48802161503706ba6518cf37f22f31732ba68d9a588e69f9ad095346d91c3079eb2c0f515a1bf353c1d78272511f8708bfe43d9e8388d25906fc6529dd02f213ea9ad1877620697abd9335c2f90aebb403000a5fb02236f2d0ecb251b082055efbcf87354ee77df40f0c13f229261a75a0ea050b3aa0eb8ed1b200c3bacd0647abf031898c1773c84e5cd6b1325a36d5193c41592b2dce9b465765bd6c747bab1026d20bbb2e240fa197ec2746454a45303bcb9402d9c53714e9d46384c81a235058ca8daa995d62da2fd2ac7a0be4fce762f315e4b34dfdc0a9f3f199cd836d686a4291b381c8bde7b81e1f10c8fb12fd80013c7a3c065de2d5c22292b323138678f0eea3336bc7492e561d0f9656c7b30546a717d3f32fa6352177a29f66ce43f36c660bb659ba5dcf1de88f4a662a56a7081ca8051a88ba37eb7ba26ecb40a369eefaa3afd83e9e98aeca273b9a0e8b7cae8b96c0da7699d060c25d8c601906af58e1ef6110d74651650f920bda701f56a43e2f8090f911b66d5b8d0ff657faa772a4144637b49b4dbf5efcf46cd2abcca5e07fe254dfa3d147ac1bd9ca9bbf5a36455b59340d30807317a9f51980c5b070635c953857283b4841a0fea4d18475f06a81fb291080db73760fdffb89303e8a1c95b4da64ffcf5d2469571cb5178ccd4ee88430c6d800f7195cb34ba3a5ec29425e3c194642644a233f70ec77b4d0012d11ae4fa03b9c9f663d576f503ad982839cb40dd2d78625ffa2f2e0c1334f6961f8f8c57974adaf2f440d4a839e2a0ecb107349ebf25c69caaa78d89c12af72535854a66f2a8af9e6b5e68590a4c8bc9fa2a22298c15ae0f7a1fd22a9504559f0b03d5a120a45004dc9e4ad63f3d7d8a25a1c08d7acc2489b1cd54ab91027e5036f1e8f25e44519ab6146b288950842f7b3c67557318e94adf317a79e9a32ca97a87d5faddb427f14f172bc697eccfa6ee4bb30e4d8c2b61c9ae008c5d87e4fa17cc89ac87a876344acfa39bc93aee2c4242bb343c074240795f4f4e4a42e04996bb0a10fc651cfb4f82eaab67ce6cc7f1b6abdc397fa820cfc7d165b46b5af27ea127749fe3f624abb6f59343b6e1521882fbfdb2c390ef0add028cd2c57a724c187bf863a5c55e1b6e3786427a8d4f42fa41b48d02a043b71bad09a7697acfd23aeab712b5abada7d7d0848cc7f9a744a4c8a2185d0c546202814b2a57670660da120a2a580db5098a91cbb3d3c0b6d3ce16109b00d806f3f1eb9599328c30084a156b95006cfaa2a0b1c6d57d2daf2ff74ea77f5ac5b5d985892fb6523cb8202aa13f713cf8925c7510964f388cb41de148656f4545c201c50a5d4bc4505605a5289fa2f2a2e8576427f791e162418eb0f062822d6438b5b494c1ecdd2ec13b46a84ad38e917b0e16ec596159b2551dddeafc1b2fec0ffaa6ddc56aced8654b811baba44a828d6ca27d490f76306a76c70c6cb6a962a59324585f8f637cd57b6b382855d07c46ecb026c725cac56a7f8b6d92c52fb9c9be2ba3cca65493e6a81a3644bc18f8bb5aab16a5a4af0760080384fec29f6e21fa6ef2923af9ce967a825673cbb0ce7116e8ef1e34866cff3a9a9e2e100aa1e4b22f5de51c023ef8293bad1831ca321cf5e674b326217962b1f5e7b8262436ec60070e361863382d616f3298210bc649bffa2c2af5caa29c9835e221eb6bf323f546de12572a53de32bd524eda657fc3b9d05d54c6b87133708560ac764d2e7f22aa564c28ae649ea8b24bf0b53f7a13439fa3c82be6e5201b41cb007053404afcb5d854d3274aa101c6553042754b25f12e948a91a7afb9e9614a5b40aa3a5d4684d15a8b9fc2f52ec8a26b9fa98c4417855335200e7c244311fb5f2c2447153fb0755aa9eb5eafb3aea8a9c6f25c7248e960c0a4685ef762ba754090c88f0499ce0926995d0e28f63051fcd9ffbe5732579f28f9d1f45c51f1e246a31d86dd0a3707e66522de97d44da9f874a5d19eeb95b931d4863e5069e279096684cc0df1335c3e221510574af2675fd613031bb91101b796ef6ae712cc1f253965d6c6f0ca7c4e507985a0459e243e5dfa3f2d03a58df9f1933a8e4d404a494a805e7f510268397d35ce6f8e4a3a3a718b9b89780b78c650f0f61dee2abac7a3b15f5506b007f294c603d1020772342eeb3089d91a3b52028631d8f4d11ca4d60d22287e710dc10e79714d6562f87b89780fbae2b2ae5834970da12c02e46adc17cbcc11a7dab00a4826f7f78bbba06c21c88269d9b6122125b217a094a783f00d52d16905d8bf1b8fe7c5feadcf5b43592dd6e61f0d957adf4311389a67554abc12a4b9ff5cc6bd04118ede46ccc757323dcf1b5449d8ca0b5f224f3b6c062584753b0668d5d4ea3aabf9f79b276c90c7ed47c918d2c87c1c7179ebec78658649a916eca1455fbb0572ed03d4fbb2fd756f58880a445531f3c5f29ce79571426932e1da9f96a81a73c77ed438fecc94c232cb88c11e75e7715f4d9e0fb1e1602b1c9a2b65db14ea7e333caa6e2a92572d420873d772ad795e820749077bea7d84c9bb993978fb8bbc777d4d60004ecc18ede0666315cd10c24fd12dc1b13543f15523b8eba1909d626b12f7c91a08cda143f554f34aa14103e98ae554107822658035546b4f52c83a107c5684480420028196f540d57eb0e1bf096b7a3c3a4ae956640829dc2549a80b5fbf676d089b3ce0d1c1c3aab41a9dbb3f56475e6f6aa07d912b1586bbb419ca23ffc7c269d9f5803900c7b8dc0c24e1dd7316a60ac6cbfc828afefd04bb191be1c5282a3a379a326f01ed6fe095f2d34a6961ab34368238fedca8f7c547f3a9e7e75777ff1ac2e29073d5f4e3c268c365d447f8e6e3858ef2b49c10f8c35fe96dc2b7d8f7fea8b63dcd0c4344f7571eb50b2fbcacd2a9eda5570de59c78bc7bd4f47a48a67dbe7e0f2c62a540620c70f956815d34cb9b05e5ce733cf4b72522c72a499255e8517916e7ecbc74e8c40585f56fee87effe1845b3fbe744a02cefbbe0d53ca54ef0392c919b23a9c2a9cb7a8be4c19db6334332a1d3f9800d727d5a569751cce031b380983b7dfa66fc2f18c4233a11ed220b5af816acb40f797146ad92aa16771f2cda9898a916fe0b677ca0d2fa112383055e75e4de90bc1b17b5a4ad925fe74fc1e26bd6bfde887cfe5e5d6dd552de84a77045580519568cde71914aa0b2e38e57bc7c82077f8b54740e318acc981789bde363db4fd656b9ce8a74d5b813eda7f0489b3f500c949d7db1a18c89c79e96a953f5ec90f5578d9e59b86907125d6f02c7bd5b64caa4f717cf57a26771a13b1befa71acd6951e5e6d02e419775e7106e548c340b14901b9ed59a74baba835c563054eca72b9d63e0990ffebbdecf2b3dad4cc75ce8a7b0722f55c321bf1fcb4af87665d8410d29bd0a1793881741979a7e9656639fe334db498ba5fa0d52f36b9d6a85700b2e3dbefe96d2fe9acd88502444dacf222591356d479d692319eefeb6b5ac67c84391f96d8b8e1a1d7b870b5fcf88391b39cef05197e2e81fd0a2d16b83b1f0aad077724c3be9f5a0e3df1cc5dbf6b2815d401c917664256404ee07847b2ded6e9c0a059f60cd48f1b20f8d4bf4e0333e61de3791b79baeac16148bcf5328e7c7af78873d4765ce2e7144ac3299cb88f386983e9e2be3bd4e0c625e21db5766e52cc08627558efb8992562b7849abc18729504bc051a3a3d61837f7c15e4853b23b8e70e0274ffe7ce5c1cda27c7aed3d6e5b341757f1f96d08c16e3da8e5740316745c2f6d1b550e0ee9c5b8f3e69d64731a952fde432de7283188a503d6157f2cd04123b640a48ae96d1765573cc8f6abf28a3b6222afabacf0268efed51e25bf508469a0ac165ecd463c463785dc8753615c61429a9c20132edc528e38ccdc941c9680f05ec16f71131c4b26b48d1dcc9325f3936ae43b40f6900584f5ba1f4401cc587f1259f9d4669347e402f823e2269a797fb099e3a6870d2f3d62dbfb5f1e43bcea48141746785969236a473a0c69eae88c98d499c7442ed6ec9f17da75556c109adb77947b68ec51c773f451cb64f371cc302c7fbdd4f1ecb16c171c6d4cb3a898f1a707267320f7faf20823b7d2e6de9692798a5617fb438549feed89bfa8aa6e92a2420578b75d7be915ff962e2d59079977cd1fd6fb8793fe57d722b79d88880259115d1ad13565696aa38e63029a2bd0551093ca6db54d43d8682cc6e8c69844084182c4a63460970908ce7b9cc4840ba9eb2fec7b6c6ad7923abe2ce8c5feb2b8878bede9e4625f4728ed788c7e02de8c5b9bf7ff814948e34fb71fa1e87640b47dce1689c090995f46506be64b36ec770a657626208513e166783ed264808577f8cedbeb5862a04ca1810a2b4674ebf7d0555c57c0bfb83cbf217fbfb8146d6fa02251551c707292496342c0a8f6fab23fa4941b821c30650ab80ed42f06712afcf47a9784f9180f17c2046be181e4a46d734fa647fa730f1af87d2b860a3ea8cfa8227350192b0eed3e5026dae61a0f711ef9c96aa9289c9942e0b9eb685ba5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>MJ.Smi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fu-jingqi.github.io/2022/07/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E8%80%83%E5%AF%9F%E8%8C%83%E5%9B%B4%E6%95%B4%E7%90%86/" title="计算机组成考察范围整理">https://fu-jingqi.github.io/2022/07/19/计算机组成考察范围整理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/fjq">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/fff">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://s1.ax1x.com/2022/06/05/XdbA3j.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/19/%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95/" rel="prev" title="符号扩展">
+      <i class="fa fa-chevron-left"></i> 符号扩展
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%89%E7%A7%8D%E5%AD%97%E9%95%BF/" rel="next" title="计算机组成原理三种字长">
+      计算机组成原理三种字长 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81Mzc3OS8zMDI1Mg=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MJ.Smi"
+      src="https://s1.ax1x.com/2022/08/04/vey5o6.png">
+  <p class="site-author-name" itemprop="name">MJ.Smi</p>
+  <div class="site-description" itemprop="description">fjq真的蟀气逼人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fu-jingqi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fu-jingqi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/c972937" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;c972937" rel="noopener" target="_blank">ccz--NanFeng妹妹</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://inanb.github.io/" title="https:&#x2F;&#x2F;inanb.github.io&#x2F;" rel="noopener" target="_blank">lgy--遠神TQL</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.nan-bluesky.top/" title="http:&#x2F;&#x2F;www.nan-bluesky.top&#x2F;" rel="noopener" target="_blank">lks--wwt的father</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://weiyuexin.gitee.io/" title="https:&#x2F;&#x2F;weiyuexin.gitee.io&#x2F;" rel="noopener" target="_blank">wyx--大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://i-ron.cn/" title="http:&#x2F;&#x2F;i-ron.cn&#x2F;" rel="noopener" target="_blank">nhj--Henu第二蟀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MJ.Smith</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

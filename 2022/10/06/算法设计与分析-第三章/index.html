@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://s1.ax1x.com/2022/06/04/XawtN4.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://s1.ax1x.com/2022/06/04/XawN4J.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="大二下学期课程--算法设计与分析复习第三章 针对老师的ppt精简内容中的知识点，仅具参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法设计与分析--第三章">
+<meta property="og:url" content="https://fu-jingqi.github.io/2022/10/06/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%B8%89%E7%AB%A0/index.html">
+<meta property="og:site_name" content="MJ.Smi">
+<meta property="og:description" content="大二下学期课程--算法设计与分析复习第三章 针对老师的ppt精简内容中的知识点，仅具参考">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-06T04:51:08.000Z">
+<meta property="article:modified_time" content="2022-10-06T07:28:30.723Z">
+<meta property="article:author" content="MJ.Smi">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fu-jingqi.github.io/2022/10/06/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%B8%89%E7%AB%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>算法设计与分析--第三章 | MJ.Smi</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d8fec4edd4a201d268db80c0221228a2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MJ.Smi</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-link">
+
+    <a href="/links/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>link</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Fu-jingqi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fu-jingqi.github.io/2022/10/06/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%B8%89%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/08/04/vey5o6.png">
+      <meta itemprop="name" content="MJ.Smi">
+      <meta itemprop="description" content="fjq真的蟀气逼人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MJ.Smi">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法设计与分析--第三章
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-06 12:51:08 / 修改时间：15:28:30" itemprop="dateCreated datePublished" datetime="2022-10-06T12:51:08+08:00">2022-10-06</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2
+id="大二下学期课程--算法设计与分析复习第三章">大二下学期课程--算法设计与分析复习第三章</h2>
+<p>针对老师的ppt精简内容中的知识点，仅具参考 <span id="more"></span></p>
+<h3 id="第三章-动态规划">第三章 动态规划</h3>
+<ul>
+<li>动态规划(DynamicProgramming)技术已经广泛应用于许多<strong>组合优化问题</strong>的算法设计中，比如图的多起点与多终点的最短路径问题、矩阵链的乘法问题、最大效益投资问题、背包问题、最长公共子序列问题、图像压缩问题、最大子段和问题、最优二分检索树问题、RNA的最优二级结构问题等。</li>
+<li><strong>组合优化</strong>问题的解分布在搜索空间中，其中满足约束条件的解称为<strong>可行解</strong>，而在可行解中使得目标函数达到最小（或最大）值的解称为<strong>最优解</strong>，比如货郎问题需要找到最短的旅行路线，是极小化问题：而背包问题需要找到一组能够放人背包并且使背包价值达到最大的物品，是极大化问题。所谓<strong>求解组合优化问题就是找到该问题的最优解</strong>。</li>
+<li>动态规划技术把求解过程变成一个<strong>多步判断</strong>的过程，每一步都对应于某个<strong>子问题</strong>。算法细心地划分子问题的边界，从小的子问题开始，逐层<strong>向上求解</strong>。通过<strong>子问题之间的依赖关系</strong>，有效利用前面己经得到的结果，最大限度减少重复工作，以提高算法效率。将许多时间复杂度为指数级别的算法优化为多项式级别。动态规划技术需要<strong>较大的存储空间</strong>来<strong>存储子问题的中间结果</strong>。</li>
+</ul>
+<h4 id="典例一-多起点多终点问题">典例一 多起点多终点问题</h4>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x139eg"><img
+src="https://s1.ax1x.com/2022/10/06/x139eg.png"
+alt="x139eg.png" /></a></p>
+<h5 id="算法一蛮力算法">算法一：蛮力算法</h5>
+<p>穷举所有路径输出最小值，时间复杂度：O(m*2^n)，其中m为起点个数，n为路网层数</p>
+<h5 id="算法二动态规划">算法二：动态规划</h5>
+<p>从终点往起点推：</p>
+<ul>
+<li><p>第一步：从以C(i)为起点到T(j)终点的最短路径；如F(Ci)=min{C1T1,C1T2}=C1T1=2</p></li>
+<li><p>第二步：从以B(i)为起点到T(j)为终点的最短路径；如F(B(1))=B1C1+F(C1)
+= 9 + 2 = 11 F(B(2)) = min{B2C1+F(C1)，B2C2+F(C2)} 即当2 &lt; i &lt; 5
+时，F(Bi) = min{BiCi-1 + F(Ci-1) , BiCi + F(Ci) }</p>
+<p>处理边界：当 i = 1或i = 5时： F(B1) = B1C1 + F(C1) F(B5) = B5C4 +
+F(C4)</p></li>
+<li><p>类似得到： F(Aj) = min{AjBk + F(Bk)} F(Si) = min{SiAj +
+F(Aj)}</p></li>
+</ul>
+<p>时间复杂度：O(m * n)，其中m是每次节点数，n是层数</p>
+<h4 id="动态规划基本思想">动态规划基本思想</h4>
+<ul>
+<li>求解的问题是多阶段决策（优化）问题；求解过程是多步判断，<strong>从小到大依次求解每个子问题</strong>，最后求解的子问题就是原始问题。</li>
+<li>子问题目标函数的最小值之间存在<strong>依赖关系</strong>，将<strong>子问题的解记录下来</strong>,以备后面求解时使用。其中关于<strong>子问题目标函数的最小值之间的依赖关系</strong>是最关键的。</li>
+<li><strong>优化原则</strong>：一个最优决策序列的任何子序列本身一定是相对于子序列的初始和结束状态的最优的决策序列。</li>
+</ul>
+<h4 id="典例二-矩阵链的乘法问题">典例二 矩阵链的乘法问题</h4>
+<p>实例：P=&lt;10,100,5,50&gt; A1:10×100，A2:100×5，A3:5×50,
+<strong>乘法次序</strong> (41A2)A3 = 10×100×5+10×5×50=7500 A1(A2A3) =
+10×100×50+100×5×50=75000 工作量相差达到10倍之多</p>
+<blockquote>
+<p>矩阵链的乘法问题是：给定向量P,确定一种乘法次序，使得基本运算的总次数达到最少。</p>
+</blockquote>
+<h5 id="算法一蛮力算法-1">算法一：蛮力算法</h5>
+<p>枚举所有可能的情况，找到最小运算次序</p>
+<p>算法的时间复杂度为指数级别。</p>
+<h5 id="算法二动态规划-1">算法二：动态规划</h5>
+<p>例子：</p>
+<p>P = {30 , 35 , 15 , 5 , 10 , 20 } 矩阵链 ： A1 A2 A3 A4 A5</p>
+<ul>
+<li>当规模为 1 时： m[1,1] = 0<br />
+m[2,2] = 0 m[3,3] = 0 m[4,4] = 0 m[5,5] = 0</li>
+<li>当规模为 2 时： m[1,2] = 30 * 35 * 15 m[2,3] = 35 * 15 * 5 m[3,4] =
+15 * 5 * 10 m[4,5] = 5 * 10 * 20</li>
+<li>当规模为 3 时： m[1,3] = min {m[1,2] + 30 * 15 * 5 ，m[2,3] + 30 *
+35 * 5 } m[2,4] = min{m[2,3] + 35 * 5 * 10 , m[3,4] + 35 * 15 * 10 }
+m[3,5] = min{m[3,4] + 15 * 10 * 20 ，m[4,5] + 15 * 5 * 20 }</li>
+<li>当规模为 4 时： m[1,4] = min{m[2,4] + 30 * 35 * 10 ，m[1,2] + m[3,4]
++ 30 * 15 * 10，m[1,3] + 30 * 5 * 10 } m[2,5] = min{m[2.3] + m[4,5] + 35
+* 5 * 20，m[3,5] + 35 * 15 * 20，m[2,4] + 35 * 10 * 20 }</li>
+<li>当规模为 5 时：即原问题 m[1,5] = min{m[2,5] + 30 * 35 * 20，m[1,2] +
+m[3,5] + 30 * 15 * 20，m[1,3] + m[4,5] + 30 * 5 * 20，m[1,4] + 30 * 10 *
+20}</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1YcCj"><img
+src="https://s1.ax1x.com/2022/10/06/x1YcCj.png"
+alt="x1YcCj.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1YRvq"><img
+src="https://s1.ax1x.com/2022/10/06/x1YRvq.png"
+alt="x1YRvq.png" /></a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MatrixChain(P,n)</span><br><span class="line">输入：矩阵链A的输入为向量P=&lt;P1,P2,P3,....&gt;,其中<span class="number">1</span>≤i≤j≤n</span><br><span class="line">输出：计算A的所需最小乘法运算次数m[,和最后一次运算的位置s[i,j]</span><br><span class="line"><span class="number">1</span>.令所有的m[i,初值为<span class="number">0</span>，s[i,引初值为i</span><br><span class="line"><span class="number">2</span>.<span class="keyword">for</span> r←-<span class="number">2</span> to n <span class="keyword">do</span> ∥r为当前计算的链长（子问题规模）</span><br><span class="line"><span class="number">3</span>.	<span class="keyword">for</span> i←<span class="number">1</span> to n-+<span class="number">1</span> <span class="keyword">do</span> <span class="regexp">//</span>n-+<span class="number">1</span>为最后一个链的前边界</span><br><span class="line"><span class="number">4</span>.		j←i+r-<span class="number">1</span> ∥计算前边界为i,长为r链的后边界j</span><br><span class="line"><span class="number">5</span>.		m[i,j]<span class="number">1</span>←m[i+<span class="number">1</span>,j]+p(i-<span class="number">1</span>)*pi*pj <span class="regexp">//</span>划分为A;(A+<span class="number">1</span>…A),*为普通乘法</span><br><span class="line"><span class="number">6</span>.		s[i,j]←i <span class="regexp">//</span>记录分割位置</span><br><span class="line"><span class="number">7</span>.		<span class="keyword">for</span> k←i+<span class="number">1</span> to i-<span class="number">1</span> <span class="keyword">do</span></span><br><span class="line"><span class="number">8</span>.			t←m[i,k]+m[k+<span class="number">1</span>,j]+p(i-<span class="number">1</span>)*pi*pj <span class="regexp">//</span>划分位置(A.A)(Ak+<span class="number">1</span>…A)</span><br><span class="line"><span class="number">9</span>.			<span class="keyword">if</span> t&lt;m[i,j]	<span class="regexp">//</span>用更好的值替换</span><br><span class="line"><span class="number">10</span>.			then m[i,j] ← t</span><br><span class="line"><span class="number">11</span>.				s[i,j]←k</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用<strong>递归</strong>实现动态规划算法求解矩阵链相乘最佳运算次序的算法时间复杂度是<strong>指数级</strong></li>
+<li>用<strong>迭代</strong>实现动态规划算法求解矩阵链相乘最佳运算次序的算法时间复杂度是<strong>多项式级</strong></li>
+</ul>
+<h4 id="动态规划算法的基本要素">动态规划算法的基本要素</h4>
+<ul>
+<li>最优子结构：设计动态规划算法的第一步通常是要刻画最优解的结构。当问题的最优解包含了其子问题的最优解时，称该问题具有最优子结构性质。</li>
+<li>重叠子问题：可用动态规划算法求解的问题应具备的另一基本要素是子问题的重叠性质。在用递归算法自顶向下解此问题时，每次产生的子问题并不总是新问题，有些子问题被反复计算。动态规划算法正是利用了这种子问题的重叠性质，对每个子问题只解一次，然后将其解保存在一个表格中（备忘录），当再次需要解此子问题时，只是简单地用常数时问查看一下结果。</li>
+</ul>
+<h5 id="动态规划算法设计步骤">动态规划算法设计步骤</h5>
+<ul>
+<li>划分子问题
+用参数表达子问题的边界，将问题求解转变成多步判断的过程。</li>
+<li>确定优化函数
+以该函数的极大（或极小）作为判断的依据，确定是否满足优化原则。</li>
+<li>列出关于优化函数的递推方程（或不等式）和边界条件。</li>
+<li>考虑是否需要设立标记函数。</li>
+<li>自底向上计算，以备忘录方法（表格）存储中间结果。</li>
+<li>根据备忘录（和标记函数）通过追溯给出最优解。</li>
+</ul>
+<h4 id="典例三-背包问题">典例三 背包问题</h4>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1t3Mq"><img
+src="https://s1.ax1x.com/2022/10/06/x1t3Mq.png"
+alt="x1t3Mq.png" /></a></p>
+<h4 id="典例四-最长公共子序列">典例四 最长公共子序列</h4>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1t8s0"><img
+src="https://s1.ax1x.com/2022/10/06/x1t8s0.png"
+alt="x1t8s0.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1tYZT"><img
+src="https://s1.ax1x.com/2022/10/06/x1tYZT.png"
+alt="x1tYZT.png" /></a></p>
+<h4 id="典例五-图像压缩">典例五 图像压缩</h4>
+<ul>
+<li><p>问题分析</p>
+<ul>
+<li><p>一般来说，在一幅图片中许多连续区域中像点的灰度值是接近的.比如有些交通标志图片，大片的区域是白的，可能少量区域有颜色，而且是比较单调的颜色.</p></li>
+<li><p>对这样的图片可以采用<strong>分段存储</strong>的方法：对<strong>灰度值较小的段的像素采用比较少的位数</strong>，比如2位；对<strong>灰度值较大的段的像素采用较多的位数</strong>，比如8位，这样就可能减少空间的占用，这就是变位压缩技术的基本想法。</p></li>
+<li><p>变位压缩技术技术节省了空间，但在读取图像时带来了新的问题.在每个像素8位的存储方法中，读取图像时每8位就是一个像素的灰度值，不会出错但是对于分段压缩的图像，看起来就是一个长长的0-1序列.当读取这个序列时，怎么知道每段的划分位置及每段像素占用的二进制位数呢？这里需要对段的划分和段中像素使用的二进制位数（要求同一段内不同像素用的存储位数都一样)给出明确的信息。为此，我们对每个段给出两个整数值</p>
+<blockquote>
+<p>一个表示该段含有的像素个数 一个表示每个像素所占用的二进制位数.</p>
+</blockquote></li>
+<li><p>比如第段，有个像素，每个像素用b位.由于某些技术要求，规定每段像素总数不超过256，即≤256.于是可以用8位来表示[(8位二进制数恰好有256个值).此外，由于每个灰度值在0~255之间，表达每个灰度值所用二进制数的位数b[不超过8，于是记录b[i]还需要3个二进制位</p></li>
+<li><p>对每段来说，这<strong>额外的11位</strong>作为段头信息.从直觉上来说，分段越多，每段内部像素所占用的位数会减少，但过多的段头会消耗较多的二进制位.相反，分段越少，段内像素的空间消耗会增加，但是段头消耗少</p></li>
+</ul></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1tdJJ"><img
+src="https://s1.ax1x.com/2022/10/06/x1tdJJ.png"
+alt="x1tdJJ.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1twW9"><img
+src="https://s1.ax1x.com/2022/10/06/x1twW9.png"
+alt="x1twW9.png" /></a></p>
+<p>S[5] = 50 S[6] = 57</p>
+<h4 id="典例六-最大子段和">典例六 最大子段和</h4>
+<p>实例：&lt;-2,11，-4,13，-5，-2&gt; 解：最大子段和a2+a3+a4=20</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1tHw8"><img
+src="https://s1.ax1x.com/2022/10/06/x1tHw8.png"
+alt="x1tHw8.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1trsx"><img
+src="https://s1.ax1x.com/2022/10/06/x1trsx.png"
+alt="x1trsx.png" /></a></p>
+<p>三种算法：</p>
+<ul>
+<li>蛮力（暴力）时间复杂度：O(n^3)</li>
+<li>分治时间复杂度：O(nlogn)</li>
+<li>动态规划时间复杂度：O(n)</li>
+</ul>
+<h4 id="典例七-最优二叉检索树">典例七 最优二叉检索树</h4>
+<p>最优二分检索树：在给定存取概率分布下平均比较次数最少的二分检索树。</p>
+<ul>
+<li>一个实例</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1t5QI"><img
+src="https://s1.ax1x.com/2022/10/06/x1t5QI.png"
+alt="x1t5QI.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1toOP"><img
+src="https://s1.ax1x.com/2022/10/06/x1toOP.png"
+alt="x1toOP.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1tLFg"><img
+src="https://s1.ax1x.com/2022/10/06/x1tLFg.png"
+alt="x1tLFg.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x1tXWj"><img
+src="https://s1.ax1x.com/2022/10/06/x1tXWj.png"
+alt="x1tXWj.png" /></a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>MJ.Smi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://fu-jingqi.github.io/2022/10/06/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%B8%89%E7%AB%A0/" title="算法设计与分析--第三章">https://fu-jingqi.github.io/2022/10/06/算法设计与分析-第三章/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/fjq">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/fff">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://s1.ax1x.com/2022/06/05/XdbA3j.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/04/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" rel="prev" title="算法设计与分析--第二章">
+      <i class="fa fa-chevron-left"></i> 算法设计与分析--第二章
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/07/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E5%9B%9B%E7%AB%A0/" rel="next" title="算法设计与分析--第四章">
+      算法设计与分析--第四章 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81Mzc3OS8zMDI1Mg=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E4%BA%8C%E4%B8%8B%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B--%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%A4%8D%E4%B9%A0%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">大二下学期课程--算法设计与分析复习第三章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.1.</span> <span class="nav-text">第三章 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%80-%E5%A4%9A%E8%B5%B7%E7%82%B9%E5%A4%9A%E7%BB%88%E7%82%B9%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">典例一 多起点多终点问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%B8%80%E8%9B%AE%E5%8A%9B%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">算法一：蛮力算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%BA%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">算法二：动态规划</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.2.</span> <span class="nav-text">动态规划基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%BA%8C-%E7%9F%A9%E9%98%B5%E9%93%BE%E7%9A%84%E4%B9%98%E6%B3%95%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.3.</span> <span class="nav-text">典例二 矩阵链的乘法问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%B8%80%E8%9B%AE%E5%8A%9B%E7%AE%97%E6%B3%95-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">算法一：蛮力算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%BA%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-1"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">算法二：动态规划</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="nav-number">1.1.4.</span> <span class="nav-text">动态规划算法的基本要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">动态规划算法设计步骤</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%89-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.5.</span> <span class="nav-text">典例三 背包问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E5%9B%9B-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-number">1.1.6.</span> <span class="nav-text">典例四 最长公共子序列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%BA%94-%E5%9B%BE%E5%83%8F%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.1.7.</span> <span class="nav-text">典例五 图像压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E5%85%AD-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C"><span class="nav-number">1.1.8.</span> <span class="nav-text">典例六 最大子段和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%83-%E6%9C%80%E4%BC%98%E4%BA%8C%E5%8F%89%E6%A3%80%E7%B4%A2%E6%A0%91"><span class="nav-number">1.1.9.</span> <span class="nav-text">典例七 最优二叉检索树</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MJ.Smi"
+      src="https://s1.ax1x.com/2022/08/04/vey5o6.png">
+  <p class="site-author-name" itemprop="name">MJ.Smi</p>
+  <div class="site-description" itemprop="description">fjq真的蟀气逼人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Fu-jingqi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Fu-jingqi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/yourname" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/c972937" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;c972937" rel="noopener" target="_blank">ccz--NanFeng妹妹</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://inanb.github.io/" title="https:&#x2F;&#x2F;inanb.github.io&#x2F;" rel="noopener" target="_blank">lgy--遠神TQL</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.nan-bluesky.top/" title="http:&#x2F;&#x2F;www.nan-bluesky.top&#x2F;" rel="noopener" target="_blank">lks--wwt的father</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://weiyuexin.gitee.io/" title="https:&#x2F;&#x2F;weiyuexin.gitee.io&#x2F;" rel="noopener" target="_blank">wyx--大佬</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://i-ron.cn/" title="http:&#x2F;&#x2F;i-ron.cn&#x2F;" rel="noopener" target="_blank">nhj--Henu第二蟀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MJ.Smith</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
