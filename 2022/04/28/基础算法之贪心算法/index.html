@@ -20,13 +20,16 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="贪心算法 贪心算法的基本要素  最优子元素 贪心选择性质  贪心算法的设计要素  适用于组合优化问题 求解过程是多步判断的过程，最终的判断序列对应于问题的最优解 判断依据某种“短视的”贪心选择性质，性质的好坏决定了算法的成败 贪心法必须进行严格的证明">
+  <meta name="description" content="贪心算法贪心算法的基本要素 最优子元素 贪心选择性质  贪心算法的设计要素 适用于组合优化问题 求解过程是多步判断的过程，最终的判断序列对应于问题的最优解 判断依据某种“短视的”贪心选择性质，性质的好坏决定了算法的成败 贪心法必须进行严格的证明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础算法之贪心算法">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="贪心算法 贪心算法的基本要素  最优子元素 贪心选择性质  贪心算法的设计要素  适用于组合优化问题 求解过程是多步判断的过程，最终的判断序列对应于问题的最优解 判断依据某种“短视的”贪心选择性质，性质的好坏决定了算法的成败 贪心法必须进行严格的证明">
+<meta property="og:description" content="贪心算法贪心算法的基本要素 最优子元素 贪心选择性质  贪心算法的设计要素 适用于组合优化问题 求解过程是多步判断的过程，最终的判断序列对应于问题的最优解 判断依据某种“短视的”贪心选择性质，性质的好坏决定了算法的成败 贪心法必须进行严格的证明">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/07/x3HRgg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/07/x3bmVI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/07/x3buIP.png">
 <meta property="og:image" content="d:/md%E8%AE%B0%E5%BD%95/image-20220428185140678.png">
 <meta property="article:published_time" content="2022-04-28T06:24:25.000Z">
 <meta property="article:modified_time" content="2022-10-07T06:33:51.224Z">
@@ -34,7 +37,7 @@
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="贪心算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/md%E8%AE%B0%E5%BD%95/image-20220428185140678.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/07/x3HRgg.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
 
@@ -245,18 +248,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="贪心算法">贪心算法</h2>
-<h3 id="贪心算法的基本要素">贪心算法的基本要素</h3>
-<ul>
+        <h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><h3 id="贪心算法的基本要素"><a href="#贪心算法的基本要素" class="headerlink" title="贪心算法的基本要素"></a>贪心算法的基本要素</h3><ul>
 <li>最优子元素</li>
 <li>贪心选择性质</li>
 </ul>
-<h3 id="贪心算法的设计要素">贪心算法的设计要素</h3>
-<ul>
+<h3 id="贪心算法的设计要素"><a href="#贪心算法的设计要素" class="headerlink" title="贪心算法的设计要素"></a>贪心算法的设计要素</h3><ul>
 <li>适用于组合优化问题</li>
 <li>求解过程是多步判断的过程，最终的判断序列对应于问题的最优解</li>
 <li>判断依据某种“短视的”贪心选择性质，性质的好坏决定了算法的成败</li>
-<li>贪心法必须进行严格的证明 <span id="more"></span> ### 贪心算法的应用</li>
+<li>贪心法必须进行严格的证明<span id="more"></span>
+<h3 id="贪心算法的应用"><a href="#贪心算法的应用" class="headerlink" title="贪心算法的应用"></a>贪心算法的应用</h3></li>
 </ul>
 <p>贪心算法在许多优化算法中有广泛运用：</p>
 <ul>
@@ -266,11 +267,8 @@
 <li>数据压缩的<code>Huffman</code>算法等</li>
 </ul>
 <p>由一个简单的例子来介绍：</p>
-<h4 id="活动安排问题">活动安排问题</h4>
-<p><strong>【问题描述】</strong></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3HRgg"><img
-src="https://s1.ax1x.com/2022/10/07/x3HRgg.png" alt="x3HRgg.png" /></a>
-【输入格式】</p>
+<h4 id="活动安排问题"><a href="#活动安排问题" class="headerlink" title="活动安排问题"></a>活动安排问题</h4><p><strong>【问题描述】</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3HRgg"><img src="https://s1.ax1x.com/2022/10/07/x3HRgg.png" alt="x3HRgg.png"></a><br>【输入格式】</p>
 <p>第一行一个整数 n；</p>
 <p>接下来的 n 行，每行两个整数 s_i 和 f_i。</p>
 <p>【输出格式】</p>
@@ -282,91 +280,78 @@ src="https://s1.ax1x.com/2022/10/07/x3HRgg.png" alt="x3HRgg.png" /></a>
 <p><strong>定义声明变量：</strong></p>
 <ul>
 <li><code>st[i]</code>来存储是否选中了活动 <code>i</code></li>
-<li><code>Act[i].start</code> 用来存储第 <code>i</code>
-个活动的开始时间</li>
-<li><code>Act[i].end</code> 用来存储第 <code>i</code>
-个活动的结束时间</li>
+<li><code>Act[i].start</code> 用来存储第 <code>i</code> 个活动的开始时间</li>
+<li><code>Act[i].end</code> 用来存储第 <code>i</code> 个活动的结束时间</li>
 <li><code>j</code> 表示最近一次加入选中的活动</li>
 <li><code>cnt</code>存储选中活动的数目</li>
 </ul>
-<h5 id="解题步骤">解题步骤</h5>
-<ul>
+<h5 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h5><ul>
 <li><p>步骤一：</p>
 <ul>
 <li>用结构体数组来存储活动起始时间，优点是方便按照活动结束时间对活动进行排序。</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Activity</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> start ;</span><br><span class="line">	<span class="type">int</span> end ;</span><br><span class="line">&#125;Act[<span class="number">1005</span>];</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Activity</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> start ;</span><br><span class="line">	<span class="type">int</span> end ;</span><br><span class="line">&#125;Act[<span class="number">1005</span>];</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>步骤二：</p>
 <ul>
 <li>对活动按照终止时间从小到大进行排序</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Activity a,Activity b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.end&lt;b.end ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(Act+<span class="number">1</span>,Act+<span class="number">1</span>+n,cmp);</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Activity a,Activity b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.end&lt;b.end ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(Act+<span class="number">1</span>,Act+<span class="number">1</span>+n,cmp);</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>步骤三</p>
 <ul>
 <li>决定是否选择下一个活动,当下一个活动的开始时间小于等于选中的最晚时间时，将这下一个活动选中，并更新<code>j</code></li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span> ; i &lt; n ; i ++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(Act[i].start &gt;= Act[j].end)&#123;</span><br><span class="line">			cnt ++ ;</span><br><span class="line">			st[j] = <span class="literal">true</span> ;</span><br><span class="line">			j = i ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span> ; i &lt; n ; i ++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(Act[i].start &gt;= Act[j].end)&#123;</span><br><span class="line">			cnt ++ ;</span><br><span class="line">			st[j] = <span class="literal">true</span> ;</span><br><span class="line">			j = i ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h5 id="源码">源码</h5>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span> ;</span><br><span class="line"><span class="type">bool</span> st[N] ;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Activity</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> start ;</span><br><span class="line">	<span class="type">int</span> end ;</span><br><span class="line">&#125;Act[<span class="number">1005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Activity a,Activity b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.end&lt;b.end ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n ;</span><br><span class="line">	cin &gt;&gt; n ;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++)&#123;</span><br><span class="line">		cin &gt;&gt; Act[i].start &gt;&gt; Act[i].end ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(Act+<span class="number">1</span>,Act+<span class="number">1</span>+n,cmp);</span><br><span class="line">	<span class="type">int</span> j = <span class="number">1</span> ;</span><br><span class="line">	st[<span class="number">1</span>] = <span class="literal">true</span> ;</span><br><span class="line">	<span class="type">int</span> cnt = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span> ; i &lt; n ; i ++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(Act[i].start &gt;= Act[j].end)&#123;</span><br><span class="line">			cnt ++ ;</span><br><span class="line">			st[j] = <span class="literal">true</span> ;</span><br><span class="line">			j = i ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; cnt ;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="最小延迟调度">最小延迟调度</h4>
-<p><strong>【问题描述】</strong></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3bmVI"><img
-src="https://s1.ax1x.com/2022/10/07/x3bmVI.png"
-alt="x3bmVI.png" /></a></p>
-<p>【输入形式】客户数 <code>n</code>，各客户服务时间及期望完成时间
-【输出形式】最小延迟时间调度安排及延迟时间 【样例输入】</p>
+<h5 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span> ;</span><br><span class="line"><span class="type">bool</span> st[N] ;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Activity</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> start ;</span><br><span class="line">	<span class="type">int</span> end ;</span><br><span class="line">&#125;Act[<span class="number">1005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Activity a,Activity b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.end&lt;b.end ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n ;</span><br><span class="line">	cin &gt;&gt; n ;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++)&#123;</span><br><span class="line">		cin &gt;&gt; Act[i].start &gt;&gt; Act[i].end ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(Act+<span class="number">1</span>,Act+<span class="number">1</span>+n,cmp);</span><br><span class="line">	<span class="type">int</span> j = <span class="number">1</span> ;</span><br><span class="line">	st[<span class="number">1</span>] = <span class="literal">true</span> ;</span><br><span class="line">	<span class="type">int</span> cnt = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span> ; i &lt; n ; i ++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(Act[i].start &gt;= Act[j].end)&#123;</span><br><span class="line">			cnt ++ ;</span><br><span class="line">			st[j] = <span class="literal">true</span> ;</span><br><span class="line">			j = i ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; cnt ;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="最小延迟调度"><a href="#最小延迟调度" class="headerlink" title="最小延迟调度"></a>最小延迟调度</h4><p><strong>【问题描述】</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3bmVI"><img src="https://s1.ax1x.com/2022/10/07/x3bmVI.png" alt="x3bmVI.png"></a></p>
+<p>【输入形式】客户数 <code>n</code>，各客户服务时间及期望完成时间<br>【输出形式】最小延迟时间调度安排及延迟时间<br>【样例输入】</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line"><span class="symbol">5 </span><span class="number">8</span> <span class="number">4</span> <span class="number">10</span> <span class="number">3</span></span><br><span class="line"><span class="symbol">10 </span><span class="number">12</span> <span class="number">15</span> <span class="number">11</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
 <p>【样例输出】</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">1 </span><span class="number">4</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span></span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>
 <p>求最大延迟达到的最小调度就是求 <code>f</code> 使得</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3buIP"><img
-src="https://s1.ax1x.com/2022/10/07/x3buIP.png"
-alt="x3buIP.png" /></a></p>
-<h5 id="样例解释">样例解释</h5>
-<ul>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3buIP"><img src="https://s1.ax1x.com/2022/10/07/x3buIP.png" alt="x3buIP.png"></a></p>
+<h5 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h5><ul>
 <li>客户集合：A = {1 , 2 , 3 , 4 , 5}</li>
 <li>服务时间集合：T = {5 , 8 , 4 , 10 , 3}</li>
 <li>截止时间：D = {10 , 12 , 15 , 11 , 20}</li>
 </ul>
 <p>假设调度安排按照顺序</p>
-<figure>
-<img src="D:/md%E8%AE%B0%E5%BD%95/image-20220428185140678.png"
-alt="image-20220428185140678" />
-<figcaption aria-hidden="true">image-20220428185140678</figcaption>
-</figure>
-<p>不难得出 f1(1) = 0 ,f1(2) = 5,f1(3)=13,f1(4) = 17,f1(5) = 27</p>
+<p><img src="D:/md%E8%AE%B0%E5%BD%95/image-20220428185140678.png" alt="image-20220428185140678"></p>
+<p>不难得出 f1(1) = 0  ,f1(2) = 5,f1(3)=13,f1(4) = 17,f1(5) = 27</p>
 <p>各个任务延迟：0,1,2,16,10</p>
 <p>最大延迟为 ：16</p>
 <p>我们的任务就是在所有的调度情况下找到最大延迟最小的那种情况，并输出其最大延迟与分配调度。</p>
 <p><strong>定义声明变量：</strong></p>
 <ul>
-<li><code>now</code>来存储选择某方案情况下，服务时间之和。 在 now
-的更新过程中，也是对最大延迟时间的更新。</li>
+<li><code>now</code>来存储选择某方案情况下，服务时间之和。 在 now 的更新过程中，也是对最大延迟时间的更新。</li>
 <li><code>ans</code> 用来存储最大延迟时间</li>
 </ul>
-<h5 id="解题步骤-1">解题步骤</h5>
-<ul>
+<h5 id="解题步骤-1"><a href="#解题步骤-1" class="headerlink" title="解题步骤"></a>解题步骤</h5><ul>
 <li><p>步骤一：</p>
 <ul>
 <li>用结构体数组来存储活动起始时间，优点是方便按照活动结束时间对活动进行排序。</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> first,second;</span><br><span class="line">    <span class="type">int</span> id;<span class="comment">// 这里的id代表客户的num</span></span><br><span class="line">&#125;arr[maxn];</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> first,second;</span><br><span class="line">    <span class="type">int</span> id;<span class="comment">// 这里的id代表客户的num</span></span><br><span class="line">&#125;arr[maxn];</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>步骤二：</p>
 <ul>
 <li>对活动按照终止时间从小到大进行排序</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.second&lt;=b.second;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>,cmp);</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.second&lt;=b.second;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>,cmp);</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>步骤三：</p>
 <ul>
-<li><p>对每个服务时间和截止时间进行判定，now 来累加总的服务时间。若 now
-大于截止时间就更新 ans ，经过 n 次迭代, ans 被更新为 n
-个延迟中最大的那个延迟。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    cout&lt;&lt;arr[i].id;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;n) cout&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    now+=arr[i].first;</span><br><span class="line">    <span class="keyword">if</span>(now&gt;arr[i].second) ans=<span class="built_in">max</span>(ans,now-arr[i].second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul></li>
+<li><p>对每个服务时间和截止时间进行判定，now 来累加总的服务时间。若 now 大于截止时间就更新 ans ，经过 n 次迭代, ans 被更新为 n 个延迟中最大的那个延迟。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    cout&lt;&lt;arr[i].id;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;n) cout&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    now+=arr[i].first;</span><br><span class="line">    <span class="keyword">if</span>(now&gt;arr[i].second) ans=<span class="built_in">max</span>(ans,now-arr[i].second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h5 id="源码-1">源码</h5>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> first,second;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">&#125;arr[maxn];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.second&lt;=b.second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n;cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;arr[i].first;</span><br><span class="line">		arr[i].id=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin&gt;&gt;arr[i].second;</span><br><span class="line">	<span class="built_in">sort</span>(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>,cmp);</span><br><span class="line">	<span class="type">int</span> now=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		cout&lt;&lt;arr[i].id;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;n) cout&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">		now+=arr[i].first;</span><br><span class="line">		<span class="keyword">if</span>(now&gt;arr[i].second) ans=<span class="built_in">max</span>(ans,now-arr[i].second);</span><br><span class="line">	&#125;cout&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> first,second;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">&#125;arr[maxn];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.second&lt;=b.second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n;cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;arr[i].first;</span><br><span class="line">		arr[i].id=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin&gt;&gt;arr[i].second;</span><br><span class="line">	<span class="built_in">sort</span>(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>,cmp);</span><br><span class="line">	<span class="type">int</span> now=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		cout&lt;&lt;arr[i].id;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;n) cout&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">		now+=arr[i].first;</span><br><span class="line">		<span class="keyword">if</span>(now&gt;arr[i].second) ans=<span class="built_in">max</span>(ans,now-arr[i].second);</span><br><span class="line">	&#125;cout&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -522,7 +507,7 @@ alt="image-20220428185140678" />
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="nav-number">1.1.</span> <span class="nav-text">贪心算法的基本要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">贪心算法的设计要素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">活动安排问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">最小延迟调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">样例解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4-1"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81-1"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">源码</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="nav-number">1.1.</span> <span class="nav-text">贪心算法的基本要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">贪心算法的设计要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">贪心算法的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">活动安排问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6"><span class="nav-number">1.3.2.</span> <span class="nav-text">最小延迟调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">样例解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4-1"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">解题步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81-1"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">源码</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,17 +20,23 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="大二下学期课程--算法设计与分析复习第二章 针对老师的ppt精简内容中的知识点，仅具参考">
+  <meta name="description" content="大二下学期课程—算法设计与分析复习第二章针对老师的ppt精简内容中的知识点，仅具参考">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法设计与分析--第二章">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/10/04/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%8C%E7%AB%A0/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="大二下学期课程--算法设计与分析复习第二章 针对老师的ppt精简内容中的知识点，仅具参考">
+<meta property="og:description" content="大二下学期课程—算法设计与分析复习第二章针对老师的ppt精简内容中的知识点，仅具参考">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/04/xlZew6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/04/xlnOhT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/05/xl5Evt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/05/xl5aaF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/05/xl50PJ.png">
 <meta property="article:published_time" content="2022-10-04T15:43:18.000Z">
 <meta property="article:modified_time" content="2022-10-07T06:03:56.315Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/04/xlZew6.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/10/04/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
 
@@ -232,112 +238,83 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2
-id="大二下学期课程--算法设计与分析复习第二章">大二下学期课程--算法设计与分析复习第二章</h2>
-<p>针对老师的ppt精简内容中的知识点，仅具参考 <span id="more"></span></p>
-<h3 id="第二章-递归与分支策略">第二章 递归与分支策略</h3>
-<h4 id="递归的理解">递归的理解</h4>
-<ol type="1">
+        <h2 id="大二下学期课程—算法设计与分析复习第二章"><a href="#大二下学期课程—算法设计与分析复习第二章" class="headerlink" title="大二下学期课程—算法设计与分析复习第二章"></a>大二下学期课程—算法设计与分析复习第二章</h2><p>针对老师的ppt精简内容中的知识点，仅具参考<br><span id="more"></span></p>
+<h3 id="第二章-递归与分支策略"><a href="#第二章-递归与分支策略" class="headerlink" title="第二章  递归与分支策略"></a>第二章  递归与分支策略</h3><h4 id="递归的理解"><a href="#递归的理解" class="headerlink" title="递归的理解"></a>递归的理解</h4><ol>
 <li>在计算思维中最重的是一种<strong>自顶向下、先全局后局部</strong>的逆向思维，他被称为<strong>递归</strong>。与之相对应的是人类所采用的<strong>自底向上、先局部后全局</strong>的正向思维称之为<strong>递推</strong>。</li>
 <li>简单来说就是自己调用自己。</li>
 </ol>
-<h4 id="递归的分类">递归的分类</h4>
-<ol type="1">
+<h4 id="递归的分类"><a href="#递归的分类" class="headerlink" title="递归的分类"></a>递归的分类</h4><ol>
 <li>直接递归：自己调用自己</li>
 <li>间接递归：A调用B，B调用A</li>
 </ol>
-<h4 id="递归的特点">递归的特点</h4>
-<p>将问题分解为形式上更简单的子问题来进行求解。</p>
-<h4 id="递归算法模型">递归算法模型</h4>
-<p>以前面的斐波那契数列为例：</p>
-<p><span class="math inline">\(f(1) = 1\)</span> .......(1) <span
-class="math inline">\(f(n) = f(n-1) * n\)</span> .......(2)</p>
-<p>式子(1)称为递归边界，式子(2)称为递归体。
-即一个递归体由<strong>递归边界</strong>与<strong>递归体两部分</strong>组成。</p>
+<h4 id="递归的特点"><a href="#递归的特点" class="headerlink" title="递归的特点"></a>递归的特点</h4><p>将问题分解为形式上更简单的子问题来进行求解。</p>
+<h4 id="递归算法模型"><a href="#递归算法模型" class="headerlink" title="递归算法模型"></a>递归算法模型</h4><p>以前面的斐波那契数列为例：</p>
+<p>$f(1) = 1$                            …….(1)<br>$f(n) = f(n-1) * n$         …….(2)</p>
+<p>式子(1)称为递归边界，式子(2)称为递归体。<br>即一个递归体由<strong>递归边界</strong>与<strong>递归体两部分</strong>组成。</p>
 <ul>
 <li>实际上递归的思路是把一个不能或者不好直接求解的“大问题转化为一个或者几个“小问题”来解决；</li>
 <li>再把“小问题”进一步分解为更小的“小问题”来解决：如此分解，直到“小问题”可以直接求解。</li>
 </ul>
-<h4 id="递归算法的设计">递归算法的设计</h4>
-<ul>
+<h4 id="递归算法的设计"><a href="#递归算法的设计" class="headerlink" title="递归算法的设计"></a>递归算法的设计</h4><ul>
 <li>先将整个问题划分为若干个子问题，通过分别求解子问题，最后获得整个问题的解。而这些子问题具有与原问题相同的求解方法，于是可以再将它们划分成若干个子问题，分别求解，如此反复进行，直到不能再划分成子问题，或已经可以求解为止。</li>
 <li>这种自上而下将问题分解、求解，再自下而上引用、合并，求出最后解答的过程称为递归求解过程。</li>
 </ul>
-<h4 id="递归的例子">递归的例子</h4>
-<ul>
+<h4 id="递归的例子"><a href="#递归的例子" class="headerlink" title="递归的例子"></a>递归的例子</h4><ul>
 <li><p>阶乘</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xlZew6"><img
-src="https://s1.ax1x.com/2022/10/04/xlZew6.png"
-alt="xlZew6.png" /></a></p></li>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xlZew6"><img src="https://s1.ax1x.com/2022/10/04/xlZew6.png" alt="xlZew6.png"></a></p>
+</li>
 <li><p>折半查找</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch</span><span class="params">(<span class="type">int</span> b[],<span class="type">int</span> x, <span class="type">int</span> L,<span class="type">int</span> R)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> mid ;</span><br><span class="line">    </span><br><span class="line">   	<span class="keyword">if</span>(L &gt; R) <span class="keyword">return</span> <span class="number">-1</span> ;</span><br><span class="line">    mid = (L + R) / <span class="number">2</span> ;</span><br><span class="line">    <span class="keyword">if</span>(x == b[mid]) <span class="keyword">return</span> mid ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x &lt; b[mid]) </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">bsearch</span>(b,x,L,mid - <span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">bsearch</span>(b,x,mid + <span class="number">1</span>,R) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>斐波那契序列</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xlnOhT"><img
-src="https://s1.ax1x.com/2022/10/04/xlnOhT.png"
-alt="xlnOhT.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xlnOhT"><img src="https://s1.ax1x.com/2022/10/04/xlnOhT.png" alt="xlnOhT.png"></a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">long</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">fib</span>(n<span class="number">-1</span>)+<span class="built_in">fib</span>(n<span class="number">-2</span>) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>汉诺塔问题</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Hanoi</span><span class="params">(<span class="type">int</span> n,<span class="type">char</span> a,<span class="type">char</span> b,<span class="type">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;将第&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;个盘片从&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;移动到&quot;</span> &lt;&lt; c &lt;&lt; endl ;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">Hanoi</span>(n<span class="number">-1</span>,a,c,b);</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;将第&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;个盘片从&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;移动到&quot;</span> &lt;&lt; c &lt;&lt; endl ;</span><br><span class="line">        <span class="built_in">Hanoi</span>(n<span class="number">-1</span>,b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Hanoi</span><span class="params">(<span class="type">int</span> n,<span class="type">char</span> a,<span class="type">char</span> b,<span class="type">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;将第&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;个盘片从&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;移动到&quot;</span> &lt;&lt; c &lt;&lt; endl ;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">Hanoi</span>(n<span class="number">-1</span>,a,c,b);</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;将第&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;个盘片从&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;移动到&quot;</span> &lt;&lt; c &lt;&lt; endl ;</span><br><span class="line">        <span class="built_in">Hanoi</span>(n<span class="number">-1</span>,b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h4 id="递归执行过程">递归执行过程</h4>
-<p>递归执行过程中的算法调用与返回的过程</p>
-<ol type="1">
-<li>算法调用
-当在一个算法的运行期间调用另一个算法时，在运行该被调用算法之前，需先完成三项任务：
+</li>
+</ul>
+<h4 id="递归执行过程"><a href="#递归执行过程" class="headerlink" title="递归执行过程"></a>递归执行过程</h4><p>递归执行过程中的算法调用与返回的过程</p>
+<ol>
+<li><p>算法调用<br>当在一个算法的运行期间调用另一个算法时，在运行该被调用算法之前，需先完成三项任务：</p>
 <ul>
 <li>将<strong>返回地址</strong>、所有<strong>实参</strong>等信息传递给被调用算法保存：</li>
 <li>为被调用算法的<strong>局部变量</strong>分配存储区</li>
 <li>将<strong>控制</strong>转移到被调用算法的入口。</li>
-</ul></li>
-<li>算法返回 从被调用算法返回调用算法之前，应该完成下列三项任务：
+</ul>
+</li>
+<li><p>算法返回<br>从被调用算法返回调用算法之前，应该完成下列三项任务：</p>
 <ul>
 <li>保存被调算法的计算<strong>结果</strong>；</li>
 <li>释放被调算法保存<strong>局部变量</strong>的数据区；</li>
 <li>依照被调算法保存的<strong>返回地址</strong>将<strong>控制</strong>转移到调用算法。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
-<h4 id="分治的基本思想">分治的基本思想</h4>
-<ol type="1">
+<h4 id="分治的基本思想"><a href="#分治的基本思想" class="headerlink" title="分治的基本思想"></a>分治的基本思想</h4><ol>
 <li>首先，它将一个复杂的问题分成若干个简单的子问题并进行解决，这一步被称为分割(divide)</li>
 <li>然后解决每一个子问题，这一部被称为征服或解决(conquer),也就是分治这个词中“治”的来源。在这一步中，如果子问题非常简单，就直接解决了。如果子问题依然很大，那么还需要递归调用分治算法，把子问题分成更小一级的问题来解决，直到那些被分出的子问题能够直接解决为止。</li>
 <li>最后对子问题的结果进行合并(combine),得到原有问题的解。</li>
 </ol>
-<h4 id="分治法的适用条件选择题">分治法的适用条件（选择题）</h4>
-<p>1）该问题的规模缩小到一定的程度就可以容易地解决；<br />
-2）该问题可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质<br />
-3）利用该问题分解出的子问题的解可以合并为该问题的解；<br />
-4）该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。</p>
+<h4 id="分治法的适用条件（选择题）"><a href="#分治法的适用条件（选择题）" class="headerlink" title="分治法的适用条件（选择题）"></a>分治法的适用条件（选择题）</h4><p>1）该问题的规模缩小到一定的程度就可以容易地解决；<br>2）该问题可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质<br>3）利用该问题分解出的子问题的解可以合并为该问题的解；<br>4）该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子问题。</p>
 <p>合并排序</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MergeSort</span><span class="params">(Type a[], <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123; </span><br><span class="line">     <span class="keyword">if</span> (left&lt;right) &#123;<span class="comment">//至少有 2 个元素 </span></span><br><span class="line">		<span class="type">int</span> i=(left+right)/<span class="number">2</span>; <span class="comment">//取中点 </span></span><br><span class="line">         <span class="built_in">mergeSort</span>(a, left, i);</span><br><span class="line">         <span class="built_in">mergeSort</span>(a, i+<span class="number">1</span>, right); </span><br><span class="line">         <span class="built_in">merge</span>(a, b, left, i, right); <span class="comment">//合并到数组 b </span></span><br><span class="line"> 		<span class="built_in">copy</span>(a, b, left, right); <span class="comment">//复制回数组 a </span></span><br><span class="line"> 	&#125; </span><br><span class="line"> &#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>最坏时间复杂度：O(nlogn)<br />
-平均时间复杂度：O(nlogn)<br />
-辅助空间：O(n)</p>
+<p>最坏时间复杂度：O(nlogn)<br>平均时间复杂度：O(nlogn)<br>辅助空间：O(n)</p>
 <p>快速排序</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> Type&gt; </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">RandomizedPartition</span> <span class="params">(Type a[], <span class="type">int</span> p, <span class="type">int</span> r)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line"> <span class="type">int</span> i = <span class="built_in">Random</span>(p,r); </span><br><span class="line"> <span class="built_in">Swap</span>(a[i], a[p]); </span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">Partition</span> (a, p, r); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>最坏时间复杂度：O(n2)<br />
-平均时间复杂度：O(nlogn)<br />
-辅助空间：O(n)或 O(logn)</p>
-<h5 id="找第二大">找第二大</h5>
-<p><strong>锦标赛算法</strong>(伪代码)</p>
+<p>最坏时间复杂度：O(n2)<br>平均时间复杂度：O(nlogn)<br>辅助空间：O(n)或 O(logn) </p>
+<h5 id="找第二大"><a href="#找第二大" class="headerlink" title="找第二大"></a>找第二大</h5><p><strong>锦标赛算法</strong>(伪代码)</p>
 <figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FindSecond</span><br><span class="line">输入：<span class="built_in">n</span>个数的数组L</span><br><span class="line">输出：<span class="built_in">Second</span></span><br><span class="line">	<span class="number">1</span>.k←-<span class="built_in">n</span></span><br><span class="line">	<span class="number">2</span>.将k个元素两两一组，分成Lk/<span class="number">2</span>」组</span><br><span class="line">	<span class="number">3</span>.每组的<span class="number">2</span>个数比较，找到较大的数</span><br><span class="line">	<span class="number">4</span>.将被淘汰的较小的数在淘汰它的数所指向的链表中</span><br><span class="line">	做记录</span><br><span class="line">	<span class="number">5</span>.ifk为奇数then k←Lk/<span class="number">2</span>+<span class="number">1</span></span><br><span class="line">	<span class="number">6</span>.esek←Lk/<span class="number">2</span>」</span><br><span class="line">	<span class="number">7</span>.<span class="built_in">if</span> k&gt;<span class="number">1</span> then goto <span class="number">2</span></span><br><span class="line">	<span class="number">8</span>.mx←最大数</span><br><span class="line">	<span class="number">9</span>.<span class="built_in">Second</span>←<span class="built_in">max</span>的链表中的最大</span><br></pre></td></tr></table></figure>
 <p>时间复杂度：O(n)</p>
-<h4 id="算法select-分治选择算法">算法Select 分治选择算法</h4>
-<p>目的：寻址数组中第K小的元素 时间复杂度：O(n)</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xl5Evt"><img
-src="https://s1.ax1x.com/2022/10/05/xl5Evt.png"
-alt="xl5Evt.png" /></a></p>
+<h4 id="算法Select-分治选择算法"><a href="#算法Select-分治选择算法" class="headerlink" title="算法Select 分治选择算法"></a>算法Select 分治选择算法</h4><p>目的：寻址数组中第K小的元素<br>时间复杂度：O(n)</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xl5Evt"><img src="https://s1.ax1x.com/2022/10/05/xl5Evt.png" alt="xl5Evt.png"></a></p>
 <p>B和C部分一定是满足B中任何元素大于m※；C中元素小于m※；他们各自分在数组S1和S2中，再将m※与A、C作比较，看将其放到S1还是S2中</p>
 <p>一个例子：</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xl5aaF"><img
-src="https://s1.ax1x.com/2022/10/05/xl5aaF.png"
-alt="xl5aaF.png" /></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xl50PJ"><img
-src="https://s1.ax1x.com/2022/10/05/xl50PJ.png"
-alt="xl50PJ.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xl5aaF"><img src="https://s1.ax1x.com/2022/10/05/xl5aaF.png" alt="xl5aaF.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xl50PJ"><img src="https://s1.ax1x.com/2022/10/05/xl50PJ.png" alt="xl50PJ.png"></a></p>
 
     </div>
 
@@ -489,7 +466,7 @@ alt="xl50PJ.png" /></a></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E4%BA%8C%E4%B8%8B%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B--%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%A4%8D%E4%B9%A0%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">大二下学期课程--算法设计与分析复习第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%94%AF%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">第二章 递归与分支策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">递归的理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.2.</span> <span class="nav-text">递归的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">递归的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">递归算法模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">递归算法的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.6.</span> <span class="nav-text">递归的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.7.</span> <span class="nav-text">递归执行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.8.</span> <span class="nav-text">分治的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95%E7%9A%84%E9%80%82%E7%94%A8%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E9%A2%98"><span class="nav-number">1.1.9.</span> <span class="nav-text">分治法的适用条件（选择题）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E7%AC%AC%E4%BA%8C%E5%A4%A7"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">找第二大</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95select-%E5%88%86%E6%B2%BB%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.10.</span> <span class="nav-text">算法Select 分治选择算法</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E4%BA%8C%E4%B8%8B%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E2%80%94%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%A4%8D%E4%B9%A0%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">大二下学期课程—算法设计与分析复习第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%94%AF%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">第二章  递归与分支策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">递归的理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.2.</span> <span class="nav-text">递归的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">递归的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">递归算法模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">递归算法的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.6.</span> <span class="nav-text">递归的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.7.</span> <span class="nav-text">递归执行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.8.</span> <span class="nav-text">分治的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95%E7%9A%84%E9%80%82%E7%94%A8%E6%9D%A1%E4%BB%B6%EF%BC%88%E9%80%89%E6%8B%A9%E9%A2%98%EF%BC%89"><span class="nav-number">1.1.9.</span> <span class="nav-text">分治法的适用条件（选择题）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E7%AC%AC%E4%BA%8C%E5%A4%A7"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">找第二大</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95Select-%E5%88%86%E6%B2%BB%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.10.</span> <span class="nav-text">算法Select 分治选择算法</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

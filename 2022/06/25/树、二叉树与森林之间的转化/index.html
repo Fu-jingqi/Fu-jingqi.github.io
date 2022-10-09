@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="将二叉树转换成树  加线：若P结点是双亲结点的左孩子，则将P的右孩子，右孩子的右孩子，…沿分支找到的所有右孩子，都与的双亲用线连起来 抹线：抹掉原二叉树中双亲与右孩子之间的连线 调整：将结点按层次排列，形成树结构   将树转换成二叉树  加线：在兄弟之间加一连线 抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系 旋转：将同一孩子的连线绕左孩子旋转45度角。">
+  <meta name="description" content="将二叉树转换成树 加线：若P结点是双亲结点的左孩子，则将P的右孩子，右孩子的右孩子，…沿分支找到的所有右孩子，都与的双亲用线连起来抹线：抹掉原二叉树中双亲与右孩子之间的连线调整：将结点按层次排列，形成树结构  将树转换成二叉树 加线：在兄弟之间加一连线抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系旋转：将同一孩子的连线绕左孩子旋转45度角。  二叉树转换成森林 抹线：将二叉树中根结点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树、二叉树与森林之间的转化">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/06/25/%E6%A0%91%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%8E%E6%A3%AE%E6%9E%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="将二叉树转换成树  加线：若P结点是双亲结点的左孩子，则将P的右孩子，右孩子的右孩子，…沿分支找到的所有右孩子，都与的双亲用线连起来 抹线：抹掉原二叉树中双亲与右孩子之间的连线 调整：将结点按层次排列，形成树结构   将树转换成二叉树  加线：在兄弟之间加一连线 抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系 旋转：将同一孩子的连线绕左孩子旋转45度角。">
+<meta property="og:description" content="将二叉树转换成树 加线：若P结点是双亲结点的左孩子，则将P的右孩子，右孩子的右孩子，…沿分支找到的所有右孩子，都与的双亲用线连起来抹线：抹掉原二叉树中双亲与右孩子之间的连线调整：将结点按层次排列，形成树结构  将树转换成二叉树 加线：在兄弟之间加一连线抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系旋转：将同一孩子的连线绕左孩子旋转45度角。  二叉树转换成森林 抹线：将二叉树中根结点">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/08/04/vesWUf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/08/04/ves6KA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/08/04/veylZt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/08/04/veymxH.png">
 <meta property="article:published_time" content="2022-06-25T07:15:27.000Z">
 <meta property="article:modified_time" content="2022-08-04T07:33:47.670Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/08/04/vesWUf.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/06/25/%E6%A0%91%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%8E%E6%A3%AE%E6%9E%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96/">
 
@@ -232,38 +237,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="将二叉树转换成树">将二叉树转换成树</h3>
-<blockquote>
-<p>加线：若P结点是双亲结点的左孩子，则将P的右孩子，右孩子的右孩子，…沿分支找到的所有右孩子，都与的双亲用线连起来
-抹线：抹掉原二叉树中双亲与右孩子之间的连线
-调整：将结点按层次排列，形成树结构 <a
-target="_blank" rel="noopener" href="https://imgtu.com/i/vesWUf"><img
-src="https://s1.ax1x.com/2022/08/04/vesWUf.png"
-alt="vesWUf.png" /></a></p>
+        <h3 id="将二叉树转换成树"><a href="#将二叉树转换成树" class="headerlink" title="将二叉树转换成树"></a>将二叉树转换成树</h3><blockquote>
+<p>加线：若P结点是双亲结点的左孩子，则将P的右孩子，右孩子的右孩子，…沿分支找到的所有右孩子，都与的双亲用线连起来<br>抹线：抹掉原二叉树中双亲与右孩子之间的连线<br>调整：将结点按层次排列，形成树结构<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/vesWUf"><img src="https://s1.ax1x.com/2022/08/04/vesWUf.png" alt="vesWUf.png"></a></p>
 </blockquote>
-<h3 id="将树转换成二叉树">将树转换成二叉树</h3>
-<blockquote>
-<p>加线：在兄弟之间加一连线
-抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系
-旋转：将同一孩子的连线绕左孩子旋转45度角。 <a
-target="_blank" rel="noopener" href="https://imgtu.com/i/ves6KA"><img
-src="https://s1.ax1x.com/2022/08/04/ves6KA.png"
-alt="ves6KA.png" /></a></p>
+<h3 id="将树转换成二叉树"><a href="#将树转换成二叉树" class="headerlink" title="将树转换成二叉树"></a>将树转换成二叉树</h3><blockquote>
+<p>加线：在兄弟之间加一连线<br>抹线：对每个结点，除了其左孩子外，去除其与其余孩子之间的关系<br>旋转：将同一孩子的连线绕左孩子旋转45度角。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/ves6KA"><img src="https://s1.ax1x.com/2022/08/04/ves6KA.png" alt="ves6KA.png"></a></p>
 </blockquote>
-<h3 id="二叉树转换成森林">二叉树转换成森林</h3>
-<blockquote>
-<p>抹线：将二叉树中根结点与其右孩子连线，及沿右分支搜索到的所有右孩子间连线全部抹掉，使之变成孤立的二叉树
-还原：将孤立的二叉树还原成树 <a target="_blank" rel="noopener" href="https://imgtu.com/i/veylZt"><img
-src="https://s1.ax1x.com/2022/08/04/veylZt.png"
-alt="veylZt.png" /></a></p>
+<h3 id="二叉树转换成森林"><a href="#二叉树转换成森林" class="headerlink" title="二叉树转换成森林"></a>二叉树转换成森林</h3><blockquote>
+<p>抹线：将二叉树中根结点与其右孩子连线，及沿右分支搜索到的所有右孩子间连线全部抹掉，使之变成孤立的二叉树<br>还原：将孤立的二叉树还原成树<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/veylZt"><img src="https://s1.ax1x.com/2022/08/04/veylZt.png" alt="veylZt.png"></a></p>
 </blockquote>
-<h3 id="森林转换成二叉树">森林转换成二叉树</h3>
-<blockquote>
-<p>将各棵树分别转换成二叉树 将每棵树的根结点用线相连
-以第一棵树根结点为二叉树的根，再以根结点为轴心进行调整。 <a
-target="_blank" rel="noopener" href="https://imgtu.com/i/veymxH"><img
-src="https://s1.ax1x.com/2022/08/04/veymxH.png"
-alt="veymxH.png" /></a></p>
+<h3 id="森林转换成二叉树"><a href="#森林转换成二叉树" class="headerlink" title="森林转换成二叉树"></a>森林转换成二叉树</h3><blockquote>
+<p>将各棵树分别转换成二叉树<br>将每棵树的根结点用线相连<br>以第一棵树根结点为二叉树的根，再以根结点为轴心进行调整。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/veymxH"><img src="https://s1.ax1x.com/2022/08/04/veymxH.png" alt="veymxH.png"></a></p>
 </blockquote>
 
     </div>
