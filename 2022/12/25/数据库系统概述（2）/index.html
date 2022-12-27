@@ -20,20 +20,17 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、关系概念一个关系就是一个 Table（表），关系模型就是处理 Table 的，它由三个部分组成：  描述 DB 各种数据的基本结构形式  描述 Table 与 Table 之间所可能发生的各种操作(关系运算)  描述这些操作所应遵循的约束条件(完整性约束)   二、关系模型三要素1. 数据结构2. 数据操作传统的集合运算：(1)并 (2)差 (3)交 (4)笛卡尔积 专门的关系运算：(1)选择">
+  <meta name="description" content="一、关系概念 一个关系就是一个 Table（表），关系模型就是处理 Table 的，它由三个部分组成：  描述 DB 各种数据的基本结构形式 描述 Table 与 Table 之间所可能发生的各种操作(关系运算) 描述这些操作所应遵循的约束条件(完整性约束)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库系统概述（2）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/12/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%882%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="一、关系概念一个关系就是一个 Table（表），关系模型就是处理 Table 的，它由三个部分组成：  描述 DB 各种数据的基本结构形式  描述 Table 与 Table 之间所可能发生的各种操作(关系运算)  描述这些操作所应遵循的约束条件(完整性约束)   二、关系模型三要素1. 数据结构2. 数据操作传统的集合运算：(1)并 (2)差 (3)交 (4)笛卡尔积 专门的关系运算：(1)选择">
+<meta property="og:description" content="一、关系概念 一个关系就是一个 Table（表），关系模型就是处理 Table 的，它由三个部分组成：  描述 DB 各种数据的基本结构形式 描述 Table 与 Table 之间所可能发生的各种操作(关系运算) 描述这些操作所应遵循的约束条件(完整性约束)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200420193223364.png">
-<meta property="og:image" content="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200404215853499.png">
 <meta property="article:published_time" content="2022-12-25T11:05:24.000Z">
-<meta property="article:modified_time" content="2022-12-27T06:46:22.426Z">
+<meta property="article:modified_time" content="2022-12-27T06:52:58.287Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200420193223364.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/12/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%882%EF%BC%89/">
 
@@ -214,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-27 14:46:22" itemprop="dateModified" datetime="2022-12-27T14:46:22+08:00">2022-12-27</time>
+                <time title="修改时间：2022-12-27 14:52:58" itemprop="dateModified" datetime="2022-12-27T14:52:58+08:00">2022-12-27</time>
               </span>
 
           
@@ -235,35 +232,58 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、关系概念"><a href="#一、关系概念" class="headerlink" title="一、关系概念"></a>一、关系概念</h2><p>一个<strong>关系</strong>就是一个 Table（表），关系模型就是处理 Table 的，它由三个部分组成：</p>
-<ol>
-<li><p>描述 DB 各种数据的<strong>基本结构形式</strong></p>
-</li>
-<li><p>描述 Table 与 Table 之间所可能发生的<strong>各种操作(关系运算)</strong></p>
-</li>
-<li><p>描述这些操作所应遵循的<strong>约束条件(完整性约束)</strong></p>
-</li>
+        <h2 id="一关系概念">一、关系概念</h2>
+<p>一个<strong>关系</strong>就是一个 Table（表），关系模型就是处理 Table
+的，它由三个部分组成：</p>
+<ol type="1">
+<li><p>描述 DB 各种数据的<strong>基本结构形式</strong></p></li>
+<li><p>描述 Table 与 Table
+之间所可能发生的<strong>各种操作(关系运算)</strong></p></li>
+<li><p>描述这些操作所应遵循的<strong>约束条件(完整性约束)</strong></p></li>
 </ol>
-<h2 id="二、关系模型三要素"><a href="#二、关系模型三要素" class="headerlink" title="二、关系模型三要素"></a>二、关系模型三要素</h2><h3 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1. 数据结构"></a>1. 数据结构</h3><h3 id="2-数据操作"><a href="#2-数据操作" class="headerlink" title="2. 数据操作"></a>2. 数据操作</h3><h4 id="传统的集合运算："><a href="#传统的集合运算：" class="headerlink" title="传统的集合运算："></a>传统的集合运算：</h4><p>(1)并 (2)差 (3)交 (4)笛卡尔积</p>
-<h4 id="专门的关系运算："><a href="#专门的关系运算：" class="headerlink" title="专门的关系运算："></a>专门的关系运算：</h4><p>(1)选择：针对行</p>
+<span id="more"></span>
+<h2 id="二关系模型三要素">二、关系模型三要素</h2>
+<h3 id="数据结构">1. 数据结构</h3>
+<h3 id="数据操作">2. 数据操作</h3>
+<h4 id="传统的集合运算">传统的集合运算：</h4>
+<p>(1)并 (2)差 (3)交 (4)笛卡尔积</p>
+<h4 id="专门的关系运算">专门的关系运算：</h4>
+<p>(1)选择：针对行</p>
 <p>(2)投影：针对列，也可能取消某些行，避免重复</p>
 <p>(3)连接</p>
 <p>(4)等值连接</p>
 <p>(5)非等值连接</p>
 <p>(6)自然连接</p>
-<p><img src="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200420193223364.png" alt=""></p>
-<h3 id="3-完整性约束"><a href="#3-完整性约束" class="headerlink" title="3. 完整性约束"></a>3. 完整性约束</h3><h4 id="1-实体完整性"><a href="#1-实体完整性" class="headerlink" title="(1)实体完整性"></a>(1)实体完整性</h4><p>主键（主码/主关键）字不能为空值，若有多个主键，则都不能空。</p>
-<h4 id="2-参照完整性"><a href="#2-参照完整性" class="headerlink" title="(2)参照完整性"></a>(2)参照完整性</h4><p>参照和被参照关系可以是同一个，外键不一定要与相应的主键同名。</p>
-<h4 id="3-用户定义完整性"><a href="#3-用户定义完整性" class="headerlink" title="(3)用户定义完整性"></a>(3)用户定义完整性</h4><p>用户针对具体的应用环境定义的完整性约束条件。</p>
-<h2 id="三、表的基本构成要素"><a href="#三、表的基本构成要素" class="headerlink" title="三、表的基本构成要素"></a>三、表的基本构成要素</h2><h3 id="1-基本构成要素"><a href="#1-基本构成要素" class="headerlink" title="1. 基本构成要素"></a>1. 基本构成要素</h3><p><img src="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200404215853499.png" alt=""></p>
-<h3 id="2-关系-—-表的严格定义"><a href="#2-关系-—-表的严格定义" class="headerlink" title="2. 关系 — 表的严格定义"></a>2. 关系 — 表的严格定义</h3><h4 id="1-域（Domain）"><a href="#1-域（Domain）" class="headerlink" title="(1)域（Domain）"></a>(1)域（Domain）</h4><p>一组具有相同数据类型的值的集合；集合中元素的个数称为域的<strong>基数</strong>。</p>
-<h4 id="2-笛卡儿积"><a href="#2-笛卡儿积" class="headerlink" title="(2)笛卡儿积"></a>(2)笛卡儿积</h4><p>每个域的基数相乘 = 行数</p>
-<h4 id="3-候选键-候选码"><a href="#3-候选键-候选码" class="headerlink" title="(3)候选键/候选码"></a>(3)候选键/候选码</h4><p>关系中的一个属性组，其值能唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质了，这样的属性组称作<strong>候选键</strong>。</p>
-<h4 id="4-主键-主码"><a href="#4-主键-主码" class="headerlink" title="(4)主键/主码"></a>(4)主键/主码</h4><p>当有多个候选码时，可以选定一个作为<strong>主键</strong>。DBMS 以主键为主要线索管理关系中的各个元组。</p>
-<h4 id="5-主属性与非主属性"><a href="#5-主属性与非主属性" class="headerlink" title="(5)主属性与非主属性"></a>(5)主属性与非主属性</h4><p>包含在任何一个候选码中的属性被称作<strong>主属性</strong>，而其他属性被称作<strong>非主属性</strong>。</p>
+<p><img
+src="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200420193223364.png" /></p>
+<h3 id="完整性约束">3. 完整性约束</h3>
+<h4 id="实体完整性">(1)实体完整性</h4>
+<p>主键（主码/主关键）字不能为空值，若有多个主键，则都不能空。</p>
+<h4 id="参照完整性">(2)参照完整性</h4>
+<p>参照和被参照关系可以是同一个，外键不一定要与相应的主键同名。</p>
+<h4 id="用户定义完整性">(3)用户定义完整性</h4>
+<p>用户针对具体的应用环境定义的完整性约束条件。</p>
+<h2 id="三表的基本构成要素">三、表的基本构成要素</h2>
+<h3 id="基本构成要素">1. 基本构成要素</h3>
+<p><img
+src="https://npm.elemecdn.com/hassan-assets/posts/Database/image-20200404215853499.png" /></p>
+<h3 id="关系----表的严格定义">2. 关系 -- 表的严格定义</h3>
+<h4 id="域domain">(1)域（Domain）</h4>
+<p>一组具有相同数据类型的值的集合；集合中元素的个数称为域的<strong>基数</strong>。</p>
+<h4 id="笛卡儿积">(2)笛卡儿积</h4>
+<p>每个域的基数相乘 = 行数</p>
+<h4 id="候选键候选码">(3)候选键/候选码</h4>
+<p>关系中的一个属性组，其值能唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质了，这样的属性组称作<strong>候选键</strong>。</p>
+<h4 id="主键主码">(4)主键/主码</h4>
+<p>当有多个候选码时，可以选定一个作为<strong>主键</strong>。DBMS
+以主键为主要线索管理关系中的各个元组。</p>
+<h4 id="主属性与非主属性">(5)主属性与非主属性</h4>
+<p>包含在任何一个候选码中的属性被称作<strong>主属性</strong>，而其他属性被称作<strong>非主属性</strong>。</p>
 <p>最简单的，候选码只包含一个属性，</p>
 <p>最极端的，所有属性构成这个关系的候选码，称为<strong>全码(All-Key)</strong>。</p>
-<h4 id="6-外键-外码"><a href="#6-外键-外码" class="headerlink" title="(6)外键/外码"></a>(6)外键/外码</h4><p>关系 A 中的一个属性组，它不是 A 的候选码，但它与另一个关系 B 的候选码相对应，则称这个属性组为 A 的<strong>外码或外键</strong>。</p>
+<h4 id="外键外码">(6)外键/外码</h4>
+<p>关系 A 中的一个属性组，它不是 A 的候选码，但它与另一个关系 B
+的候选码相对应，则称这个属性组为 A 的<strong>外码或外键</strong>。</p>
 
     </div>
 
@@ -415,7 +435,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%B3%E7%B3%BB%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、关系概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">二、关系模型三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">1. 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">2. 数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97%EF%BC%9A"><span class="nav-number">2.2.1.</span> <span class="nav-text">传统的集合运算：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%93%E9%97%A8%E7%9A%84%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%EF%BC%9A"><span class="nav-number">2.2.2.</span> <span class="nav-text">专门的关系运算：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.</span> <span class="nav-text">3. 完整性约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">2.3.1.</span> <span class="nav-text">(1)实体完整性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">2.3.2.</span> <span class="nav-text">(2)参照完整性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">2.3.3.</span> <span class="nav-text">(3)用户定义完整性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">三、表的基本构成要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="nav-number">3.1.</span> <span class="nav-text">1. 基本构成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B3%E7%B3%BB-%E2%80%94-%E8%A1%A8%E7%9A%84%E4%B8%A5%E6%A0%BC%E5%AE%9A%E4%B9%89"><span class="nav-number">3.2.</span> <span class="nav-text">2. 关系 — 表的严格定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%9F%EF%BC%88Domain%EF%BC%89"><span class="nav-number">3.2.1.</span> <span class="nav-text">(1)域（Domain）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF"><span class="nav-number">3.2.2.</span> <span class="nav-text">(2)笛卡儿积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%80%99%E9%80%89%E9%94%AE-%E5%80%99%E9%80%89%E7%A0%81"><span class="nav-number">3.2.3.</span> <span class="nav-text">(3)候选键&#x2F;候选码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%BB%E9%94%AE-%E4%B8%BB%E7%A0%81"><span class="nav-number">3.2.4.</span> <span class="nav-text">(4)主键&#x2F;主码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%B8%BB%E5%B1%9E%E6%80%A7%E4%B8%8E%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7"><span class="nav-number">3.2.5.</span> <span class="nav-text">(5)主属性与非主属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%A4%96%E9%94%AE-%E5%A4%96%E7%A0%81"><span class="nav-number">3.2.6.</span> <span class="nav-text">(6)外键&#x2F;外码</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%85%B3%E7%B3%BB%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、关系概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">二、关系模型三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">1. 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">2. 数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97"><span class="nav-number">2.2.1.</span> <span class="nav-text">传统的集合运算：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%93%E9%97%A8%E7%9A%84%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97"><span class="nav-number">2.2.2.</span> <span class="nav-text">专门的关系运算：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.</span> <span class="nav-text">3. 完整性约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">2.3.1.</span> <span class="nav-text">(1)实体完整性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">2.3.2.</span> <span class="nav-text">(2)参照完整性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">2.3.3.</span> <span class="nav-text">(3)用户定义完整性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">三、表的基本构成要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="nav-number">3.1.</span> <span class="nav-text">1. 基本构成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB----%E8%A1%A8%E7%9A%84%E4%B8%A5%E6%A0%BC%E5%AE%9A%E4%B9%89"><span class="nav-number">3.2.</span> <span class="nav-text">2. 关系 -- 表的严格定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9Fdomain"><span class="nav-number">3.2.1.</span> <span class="nav-text">(1)域（Domain）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF"><span class="nav-number">3.2.2.</span> <span class="nav-text">(2)笛卡儿积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%99%E9%80%89%E9%94%AE%E5%80%99%E9%80%89%E7%A0%81"><span class="nav-number">3.2.3.</span> <span class="nav-text">(3)候选键&#x2F;候选码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%94%AE%E4%B8%BB%E7%A0%81"><span class="nav-number">3.2.4.</span> <span class="nav-text">(4)主键&#x2F;主码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E5%B1%9E%E6%80%A7%E4%B8%8E%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7"><span class="nav-number">3.2.5.</span> <span class="nav-text">(5)主属性与非主属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E9%94%AE%E5%A4%96%E7%A0%81"><span class="nav-number">3.2.6.</span> <span class="nav-text">(6)外键&#x2F;外码</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

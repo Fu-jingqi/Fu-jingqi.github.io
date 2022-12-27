@@ -226,7 +226,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>“My name is Tracy, this is not just a name, I hope that one day it can also become a symbol of nBA, a legend, this may be a distant dream, but I firmly believe that he has the power to realize this dream and unremitting struggle!”  —-Tracy McGrady</p>
+          <p>"My name is Tracy, this is not just a name, I hope that one day it
+can also become a symbol of nBA, a legend, this may be a distant dream,
+but I firmly believe that he has the power to realize this dream and
+unremitting struggle!" ---Tracy McGrady</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/05/%E8%B5%84%E6%BA%90%E5%90%88%E8%BE%91/#more" rel="contents">
@@ -278,7 +281,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:48:25 / 修改时间：14:48:40" itemprop="dateCreated datePublished" datetime="2022-12-27T14:48:25+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:48:25 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:48:25+08:00">2022-12-27</time>
             </span>
 
           
@@ -292,85 +295,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、数据建模：思想与方法"><a href="#一、数据建模：思想与方法" class="headerlink" title="一、数据建模：思想与方法"></a>一、数据建模：思想与方法</h2><h3 id="概念模型-与-数据模型"><a href="#概念模型-与-数据模型" class="headerlink" title="概念模型 与 数据模型"></a>概念模型 与 数据模型</h3><p>计算机世界里的“<strong>数据模型</strong>”采用的是<strong>关系模型</strong>，也分“<strong>逻辑</strong>”层面的模型，具体实现方面涉及“<strong>物理</strong>”模型。</p>
-<h4 id="模型的几个层面"><a href="#模型的几个层面" class="headerlink" title="模型的几个层面"></a>模型的几个层面</h4><h5 id="1-现实世界"><a href="#1-现实世界" class="headerlink" title="1. 现实世界"></a>1. 现实世界</h5><p>存在于人脑之外的客观世界。</p>
-<h5 id="2-信息世界"><a href="#2-信息世界" class="headerlink" title="2. 信息世界"></a>2. 信息世界</h5><p>信息世界是对现实世界的<strong>理解</strong>与<strong>抽象</strong>表达信息世界的模型层概念数据模型，简称<strong>概念模型</strong>，比如<strong>E-R模型</strong>（Entity-Relationship Model）。</p>
-<h5 id="3-计算机世界"><a href="#3-计算机世界" class="headerlink" title="3. 计算机世界"></a>3. 计算机世界</h5><p>表达计算机世界的模型称<strong>数据模型</strong>；比如<strong>关系模型</strong>、层次模型、网状模型及面向对象的模型等。属于逻辑层的模型。</p>
-<h2 id="二、数据库设计过程"><a href="#二、数据库设计过程" class="headerlink" title="二、数据库设计过程"></a>二、数据库设计过程</h2><p><strong>现实世界</strong>到<strong>信息世界</strong>是一个理解、抽象的过程（<strong>数据建模</strong>），这是<strong>概念级抽象</strong>。</p>
-<p><strong>信息世界</strong>到<strong>计算机世界</strong>是一个抽象/设计的过程（<strong>数据库设计</strong>），这是<strong>实现级抽象</strong>。</p>
-<h3 id="1-抽象概念"><a href="#1-抽象概念" class="headerlink" title="1. 抽象概念"></a>1. 抽象概念</h3><ol>
-<li><strong>理解</strong>：理解现实世界的一些事物。</li>
-<li><strong>区分</strong>：表与表的区分，表内数据项的区分，数据项之间关系的区分等。</li>
-<li><strong>命名</strong>：命名表、命名数据项、命名表之间的联系。</li>
-<li><strong>表达</strong>：用他人能理解的方法来表达。</li>
-</ol>
-<h3 id="2-数据模型概念"><a href="#2-数据模型概念" class="headerlink" title="2. 数据模型概念"></a>2. 数据模型概念</h3><p><strong>数据模型</strong>是一组相互关联且严格定义的概念集合，是用于科化或描述现实世界、信息世界或计算机世界的模型。</p>
-<h3 id="3-E-R-模型"><a href="#3-E-R-模型" class="headerlink" title="3. E-R 模型"></a>3. E-R 模型</h3><h4 id="1-E-R-模型的基本观点"><a href="#1-E-R-模型的基本观点" class="headerlink" title="(1) E-R 模型的基本观点"></a>(1) E-R 模型的基本观点</h4><p>世界是由一组称作<strong>实体</strong>的基本对象和这些<strong>对象之间的联系</strong>构成的。</p>
-<h4 id="2-E-R-模型的基本概念"><a href="#2-E-R-模型的基本概念" class="headerlink" title="(2) E-R 模型的基本概念"></a>(2) E-R 模型的基本概念</h4><h5 id="A-实体"><a href="#A-实体" class="headerlink" title="A. 实体"></a>A. 实体</h5><p><strong>实体</strong>：客观存在并可相互区分的事物。实体有<strong>类</strong>（实体的型）和<strong>个体</strong>（实体的<strong>实例</strong>，实体价值）的概念。我们可以用“一个个”、“一件件”等<strong>重叠量词</strong>形容，而非“一个”、“一件”。</p>
-<h5 id="B-属性"><a href="#B-属性" class="headerlink" title="B. 属性"></a>B. 属性</h5><p><strong>属性分类</strong>：</p>
-<ul>
-<li><strong>单一属性与复合属性</strong></li>
-<li><strong>单值属性和多值属性</strong>：每个实例的属性值是一个还是多个。</li>
-<li><strong>可空值属性和非空值属性</strong>：每个实例的属性值能否为空值。</li>
-<li><strong>导出属性</strong>：由其他属性计算而得。</li>
-</ul>
-<h5 id="C-联系"><a href="#C-联系" class="headerlink" title="C. 联系"></a>C. 联系</h5><p><strong>联系</strong>：指一个实体的实例和其他实体实例之间所可能发生的联系。</p>
-<h6 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h6><ul>
-<li><strong>一元联系</strong></li>
-<li><strong>二元联系</strong>：</li>
-</ul>
-<ol>
-<li><p><strong>一对一</strong>：实体A的实例只能和实体B的一个实例发生联系。</p>
-<p>例：人蹲坑。一个人只能蹲一个坑，同样一个坑只能被一个人蹲。</p>
-</li>
-<li><p>一对多：实体A的实例能和实体B的多个实例发生关系。</p>
-<p>例：画家绘制作品。一位画家能绘制多幅作品，但一个作品只能由一位画家来完成。</p>
-</li>
-<li><p>多对多：实体A的实例能和实体B的多个实例发生关系，相反也成立。</p>
-<p>例：学生学习课程。一位学生可以选多门课程，同样一门课程可由多位学生来选学。</p>
-</li>
-</ol>
-<h5 id="D-关键字-码"><a href="#D-关键字-码" class="headerlink" title="D. 关键字/码"></a>D. 关键字/码</h5><p>实体中用<strong>关键字/码</strong>唯一区分开。</p>
-<h4 id="3-E-R-模型表达方式"><a href="#3-E-R-模型表达方式" class="headerlink" title="(3) E-R 模型表达方式"></a>(3) E-R 模型表达方式</h4><h5 id="A-Chen方法的基本图元及其含义"><a href="#A-Chen方法的基本图元及其含义" class="headerlink" title="A. Chen方法的基本图元及其含义"></a>A. Chen方法的基本图元及其含义</h5><ul>
-<li><p><strong>实体</strong>：矩形框</p>
-</li>
-<li><p><strong>属性</strong>：椭圆</p>
-</li>
-<li><p><strong>多值属性</strong>：双线椭圆</p>
-</li>
-<li><p><strong>导出属性</strong>：虚线椭圆</p>
-</li>
-<li><p><strong>关键字/码</strong>：下划线</p>
-</li>
-<li><p><strong>连接实体和属性</strong>：直线</p>
-</li>
-<li><p><strong>联系</strong>：菱形框</p>
-</li>
-<li><p><strong>连接实体与联系</strong>：直线</p>
-</li>
-<li><p><strong>连接联系和属性</strong>：直线</p>
-</li>
-<li><strong>复合关键字</strong>：标有相同数字</li>
-<li><strong>多组关键字</strong>：标有不同数字</li>
-</ul>
-<h5 id="B-Chen方法中不同“联系”的区分方法"><a href="#B-Chen方法中不同“联系”的区分方法" class="headerlink" title="B. Chen方法中不同“联系”的区分方法"></a>B. Chen方法中不同“联系”的区分方法</h5><h6 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h6><ul>
-<li><p><strong>一对一联系</strong>：箭头直线，由联系指向实体。</p>
-</li>
-<li><p><strong>一对多联系</strong>：指向一端为箭头直线，指向多端为无箭头直线。</p>
-</li>
-<li><p><strong>多对多联系</strong>：无箭头直线。</p>
-</li>
-<li><p><strong>完全参与联系</strong>：双直线</p>
-</li>
-<li><p><strong>部分参与联系</strong>：单直线</p>
-</li>
-</ul>
-<h6 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h6><ul>
-<li><strong>一端实体</strong>：直线旁标1</li>
-<li><strong>多段实体</strong>：直线旁边标m或n</li>
-<li>完全/部分参与联系也可以标注<strong><code>最小基数..最大基数</code></strong>进行区分，最小基数0表示部分，1表示完全。</li>
-</ul>
-<h4 id="4-E-R-模型构造步骤"><a href="#4-E-R-模型构造步骤" class="headerlink" title="(4) E-R 模型构造步骤"></a>(4) E-R 模型构造步骤</h4><h5 id="步骤1：理解需求，寻找实体"><a href="#步骤1：理解需求，寻找实体" class="headerlink" title="步骤1：理解需求，寻找实体"></a>步骤1：理解需求，寻找实体</h5><h5 id="步骤2：用属性和关键字刻画每一个实体"><a href="#步骤2：用属性和关键字刻画每一个实体" class="headerlink" title="步骤2：用属性和关键字刻画每一个实体"></a>步骤2：用<u>属性</u>和<u>关键字</u>刻画每一个实体</h5><h5 id="步骤3：⭐分析实体键的联系"><a href="#步骤3：⭐分析实体键的联系" class="headerlink" title="步骤3：⭐分析实体键的联系"></a>步骤3：⭐分析实体键的联系</h5><h2 id="三、函数依赖以及公理定理"><a href="#三、函数依赖以及公理定理" class="headerlink" title="三、函数依赖以及公理定理"></a>三、函数依赖以及公理定理</h2><h2 id="四、关系模式设计之规范化形式"><a href="#四、关系模式设计之规范化形式" class="headerlink" title="四、关系模式设计之规范化形式"></a>四、关系模式设计之规范化形式</h2><h2 id="五、模式分解存在的问题及解决"><a href="#五、模式分解存在的问题及解决" class="headerlink" title="五、模式分解存在的问题及解决"></a>五、模式分解存在的问题及解决</h2>
+          <h2 id="一数据建模思想与方法">一、数据建模：思想与方法</h2>
+<h3 id="概念模型-与-数据模型">概念模型 与 数据模型</h3>
+<p>计算机世界里的“<strong>数据模型</strong>”采用的是<strong>关系模型</strong>，也分“<strong>逻辑</strong>”层面的模型，具体实现方面涉及“<strong>物理</strong>”模型。</p>
+<h4 id="模型的几个层面">模型的几个层面</h4>
+<h5 id="现实世界">1. 现实世界</h5>
+<p>存在于人脑之外的客观世界。</p>
+<h5 id="信息世界">2. 信息世界</h5>
+<p>信息世界是对现实世界的<strong>理解</strong>与<strong>抽象</strong>表达信息世界的模型层概念数据模型，简称<strong>概念模型</strong>，比如<strong>E-R模型</strong>（Entity-Relationship
+Model）。</p>
+<h5 id="计算机世界">3. 计算机世界</h5>
+<p>表达计算机世界的模型称<strong>数据模型</strong>；比如<strong>关系模型</strong>、层次模型、网状模型及面向对象的模型等。属于逻辑层的模型。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%888%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -414,7 +357,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:48:19 / 修改时间：14:48:31" itemprop="dateCreated datePublished" datetime="2022-12-27T14:48:19+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:48:19 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:48:19+08:00">2022-12-27</time>
             </span>
 
           
@@ -428,190 +371,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>在程序执行过程中，其值是可以改变的量，可以利用变量存储程序执行过程中涉及的数据。如计算结果，用户输入的字符串以及对象的状态等。</p>
-<h3 id="2-构成"><a href="#2-构成" class="headerlink" title="2. 构成"></a>2. 构成</h3><p>由<strong>变量名</strong>和<strong>变量值</strong>构成。</p>
-<h3 id="3-类型"><a href="#3-类型" class="headerlink" title="3. 类型"></a>3. 类型</h3><h4 id="1-系统变量"><a href="#1-系统变量" class="headerlink" title="(1) 系统变量"></a>(1) 系统变量</h4><p>MySQL中的系统变量分为<strong>全局 (global) 变量</strong>，<strong>会话 (session) 变量</strong>。</p>
-<ul>
-<li><code>SESSION</code>变量只对当前对话（当前连接）有效</li>
-<li><code>GLOBAL</code>变量则对整个服务器全局有效</li>
-</ul>
-<h5 id="设置变量"><a href="#设置变量" class="headerlink" title="设置变量"></a>设置变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET [@@][GLOBAL | SESSION][.]变量名 = 值;</span><br></pre></td></tr></table></figure>
-<h5 id="查看变量"><a href="#查看变量" class="headerlink" title="查看变量"></a>查看变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW [GLOBAL | SESSION] VARIABLES [LIKE 值/模糊语句];  (global可以省略)</span><br><span class="line">SELECT @@[[GLOBAL | SESSION].]变量名;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：不指定级别时优先查看<code>SELECT</code> 或 设置<code>SET</code> <strong>会话变量</strong></p>
-</blockquote>
-<h4 id="2-用户变量"><a href="#2-用户变量" class="headerlink" title="(2) 用户变量"></a>(2) 用户变量</h4><p>用户变量无需声明，变量名以一个@开头，在当前对话中有效。</p>
-<h5 id="设置变量-1"><a href="#设置变量-1" class="headerlink" title="设置变量"></a>设置变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SET @变量名[:]= 值[,...];</span><br><span class="line">SELECT 值/查询语句 INTO @变量名;</span><br></pre></td></tr></table></figure>
-<h5 id="查看变量-1"><a href="#查看变量-1" class="headerlink" title="查看变量"></a>查看变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 变量名;</span><br><span class="line">SELECT @变量名:= 值; （等同于先SET，再查看其值）</span><br></pre></td></tr></table></figure>
-<h4 id="3-局部变量"><a href="#3-局部变量" class="headerlink" title="(3) 局部变量"></a>(3) 局部变量</h4><ul>
-<li><p>定义局部变量并指定类型和长度，&lt;u&gt;变量名前面不加@&lt;/u&gt;。</p>
-</li>
-<li><p>只能在程序中使用（<strong>存储过程、函数、触发器等</strong>），或作为程序的参数。</p>
-</li>
-<li>设置和查看变量与<strong>用户变量</strong>基本相同。</li>
-</ul>
-<h5 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DECLARE 变量名 变量类型 [DEFAULT 值];</span><br></pre></td></tr></table></figure>
-<h2 id="二、函数（自学）"><a href="#二、函数（自学）" class="headerlink" title="二、函数（自学）"></a>二、函数（自学）</h2><h2 id="三、程序流程控制"><a href="#三、程序流程控制" class="headerlink" title="三、程序流程控制"></a>三、程序流程控制</h2><h3 id="1-IF-语句"><a href="#1-IF-语句" class="headerlink" title="1. IF 语句"></a>1. IF 语句</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IF 条件 THEN</span><br><span class="line">语句;</span><br><span class="line">[ELSEIF 条件1 THEN 语句1;]</span><br><span class="line">...</span><br><span class="line">[ELSE 语句2;]</span><br><span class="line">END IF;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：若条件包含<code>SELECT</code>语句，必须用圆括号括起来。</p>
-</blockquote>
-<h3 id="2-CASE-语句"><a href="#2-CASE-语句" class="headerlink" title="2. CASE 语句"></a>2. CASE 语句</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CASE (case_value)</span><br><span class="line">WHEN 值1 THEN 值a</span><br><span class="line">WHEN 值2 THEN 值b</span><br><span class="line">...</span><br><span class="line">[ELSE 值n]</span><br><span class="line">END CASE [AS 别名];</span><br><span class="line">----------------------------</span><br><span class="line">CASE</span><br><span class="line">WHEN 条件1 THEN 值a</span><br><span class="line">WHEN 条件2 THEN 值b</span><br><span class="line">...</span><br><span class="line">ELSE 值n</span><br><span class="line">END CASE [AS 别名];</span><br></pre></td></tr></table></figure>
-<h3 id="3-WHILE-循环"><a href="#3-WHILE-循环" class="headerlink" title="3. WHILE 循环"></a>3. WHILE 循环</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[开始标签:] WHILE 条件 DO</span><br><span class="line">语句块;</span><br><span class="line">END WHILE [结束标签];</span><br></pre></td></tr></table></figure>
-<h3 id="4-LOOP-循环"><a href="#4-LOOP-循环" class="headerlink" title="4. LOOP 循环"></a>4. LOOP 循环</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[开始标签:] LOOP</span><br><span class="line">语句块;</span><br><span class="line">END LOOP [结束标签];</span><br></pre></td></tr></table></figure>
-<h4 id="1-LEAVE-语句"><a href="#1-LEAVE-语句" class="headerlink" title="(1) LEAVE 语句"></a>(1) LEAVE 语句</h4><p><code>LOOP</code>语句没有停止循环的语句，必须和<code>LEAVE</code>语句结合使用来停止循环（<code>LEAVE</code>相当于高级语言中的<code>BREAK</code>）。</p>
-<h4 id="2-ITERATE-语句"><a href="#2-ITERATE-语句" class="headerlink" title="(2) ITERATE 语句"></a>(2) ITERATE 语句</h4><p><code>ITERATE</code>语句：作用相当于高级语言的<code>CONTINUE</code>。</p>
-<h3 id="5-REPEAT-循环"><a href="#5-REPEAT-循环" class="headerlink" title="5. REPEAT 循环"></a>5. REPEAT 循环</h3><p><code>REPEAT</code>语句是有<strong>条件控制</strong>的循环语句，当满足特定条件时，就会跳出循环语句。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[开始标签:] REPEAT</span><br><span class="line">语句块;</span><br><span class="line">UNTIL 条件;</span><br><span class="line">END REPEAT [结束标签];</span><br></pre></td></tr></table></figure>
-<h2 id="四、异常处理"><a href="#四、异常处理" class="headerlink" title="四、异常处理"></a>四、异常处理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DECLARE &#123;CONTINUE | EXIT&#125; HANDLER FOR </span><br><span class="line">&#123;error_code | SQLSTATE [VALUE] sqlstate_value | condition_name | SQLWARNING | NOT FOUND | SQLEXCEPTION&#125; </span><br><span class="line">[statement]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>说明：</p>
-<blockquote>
-<p><strong>CONTINUE</strong>：发生异常时继续执行当前程序。</p>
-<p><strong>EXIT</strong>：发生异常时退出该定义语句所在的<code>begin...end</code>程序块。</p>
-</blockquote>
-</blockquote>
-<ul>
-<li><p>error_code：MySQL定义的整数型错误编号，如1064为语法错误，1051为表不存在等，0为成功执行</p>
-</li>
-<li><p>sqlstate_value：SQL 标准错误代码，包含五个字符的字符串，’00‘开头的表示成功执行，1501对应的sqlstate为‘42S02’</p>
-</li>
-<li><p>condition_name：自定义的CONDITION名称</p>
-</li>
-<li><p><strong>SQLWARNING</strong>： 代表sqlstate值为’01‘开头的所有异常</p>
-</li>
-<li><p><strong>NOT FOUND</strong>：代表sqlstate值为’02‘开头的所有异常</p>
-</li>
-<li><p><strong>SQLEXCEPTION</strong>：代表sqlstate值除了’00‘，’01‘，’02‘开头之外的所有异常</p>
-</li>
-<li><p>Statement：发生异常后的处理，可以是一句简单的命令，也可以是一个begin…end程序块</p>
-</li>
-</ul>
-<h3 id="获取异常信息命令格式"><a href="#获取异常信息命令格式" class="headerlink" title="获取异常信息命令格式"></a>获取异常信息命令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET DIAGNOSTICS｛</span><br><span class="line">[@v1 = NUMBER][, @v2 = ROW_COUNT]</span><br><span class="line">｜CONDITION condition_number</span><br><span class="line">[@v3= RETURNED_SQLSTATE][, @v4= MESSAGE_TEXT]</span><br><span class="line">[, @v5=MYSQL_ERRNO][, @v6=CONSTRAINT_NAME]</span><br><span class="line">[, @v7= SCHEMA_NAME][, @v8= TABLE_NAME]</span><br><span class="line">[, @v9= COLUMN_NAME][, @v10= CURSOR_NAME]｝</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>说明：</p>
-<blockquote>
-<ul>
-<li><p>获取的信息分为命令信息和异常信息</p>
-</li>
-<li><p>命令信息返回：</p>
-<ul>
-<li><p>NUMBER返回可用的异常信息区个数（最多3个）</p>
-</li>
-<li><p>ROW_COUNT返回影响的行数，结果等同于ROW_COUNT()</p>
-</li>
-</ul>
-</li>
-<li><p>异常信息返回：</p>
-<ul>
-<li><p>RETURNED_SQLSTATE：返回SQLSTATE的值</p>
-</li>
-<li><p>MESSAGE_TEXT：返回错误消息</p>
-</li>
-<li><p>MYSQL_ERRNO：返回MySQL错误号</p>
-</li>
-<li><p>XXX_NAME：返回引发异常的对象名，总是空值</p>
-</li>
-</ul>
-</li>
-<li><p>condition_number：异常信息区号，可通过NUMBER获得</p>
-</li>
-</ul>
-</blockquote>
-</blockquote>
-<h2 id="五、使用游标"><a href="#五、使用游标" class="headerlink" title="五、使用游标"></a>五、使用游标</h2><p><strong>背景</strong>：</p>
-<p>SELECT语句实现对数据集的查询操作，若需要对单行记录进行处理，就需要使用游标（Cursor）对象进行逐条处理。</p>
-<p><strong>游标</strong>：</p>
-<p>游标是一种数据访问机制允许用户访问数据集中的某一行，类似c语言中指针的功能。</p>
-<h3 id="1-声明游标"><a href="#1-声明游标" class="headerlink" title="1. 声明游标"></a>1. 声明游标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DECLARE 游标名 CURSOR FOR SELECT语句;</span><br></pre></td></tr></table></figure>
-<h3 id="2-打开游标"><a href="#2-打开游标" class="headerlink" title="2. 打开游标"></a>2. 打开游标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OPEN 游标名;</span><br></pre></td></tr></table></figure>
-<h3 id="3-使用游标"><a href="#3-使用游标" class="headerlink" title="3. 使用游标"></a>3. 使用游标</h3><p><code>FETCH</code>关键字来获取游标当前指针的记录，并将记录值传给指定<strong>变量列表</strong>。</p>
-<p>其中<strong>变量列表</strong>用于存储游标中的<code>SELECT</code>语句查询的结果信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FETCH 游标名 INTO 变量1[,..];</span><br></pre></td></tr></table></figure>
-<h3 id="4-关闭游标"><a href="#4-关闭游标" class="headerlink" title="4. 关闭游标"></a>4. 关闭游标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CLOSE 游标名;</span><br></pre></td></tr></table></figure>
-<p>关闭后要<strong>使用游标</strong>重新打开。</p>
-<h2 id="六、存储过程"><a href="#六、存储过程" class="headerlink" title="六、存储过程"></a>六、存储过程</h2><h3 id="1-创建存储过程"><a href="#1-创建存储过程" class="headerlink" title="1. 创建存储过程"></a>1. 创建存储过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE PROCEDURE 存储过程名([IN | OUT | INOUT] 参数名 参数类型) </span><br><span class="line">[&#123;COMMENT &#x27;string&#x27; | [NOT] DETERMINSITIC | &#123;CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA&#125;&#125;]</span><br><span class="line">BEGIN</span><br><span class="line">SQL语句;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>存储过程类不允许使用命令和事务命令。</li>
-<li>允许返回结果集，如SELECT、SHOW等命令。</li>
-<li><u>不能使用<code>RETURN</code>语句，退出不能使用<code>USE</code>命令。</u></li>
-<li><strong>[NOT] DETERMINISTIC</strong>：当输入参数相同时，返回的结果也相同声明为DETERMINSITIC，默认为<strong>NOT DETERMINSITIC</strong>。</li>
-<li><strong>CONTAINS SQL</strong>：存储过程或函数中不包含需要读写数据的命令。</li>
-<li><strong>NO SQL</strong>：存储过程或函数中不包含SQL命令。</li>
-<li><strong>READS SQL DATA</strong>：存储过程或函数中包含读数据的SQL命令。</li>
-<li><strong>MODIFIES SQL DATA</strong>：存储过程或函数中包含写数据的SQL命令。</li>
-</ul>
-<h3 id="2-调用存储过程"><a href="#2-调用存储过程" class="headerlink" title="2. 调用存储过程"></a>2. 调用存储过程</h3><p>MySQL 中使用<strong><code>CALL</code>语句</strong>来调用存储过程。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CALL 存储过程名;</span><br></pre></td></tr></table></figure>
-<h3 id="3-查看存储过程"><a href="#3-查看存储过程" class="headerlink" title="3. 查看存储过程"></a>3. 查看存储过程</h3><p>模糊语句用来匹配存储过程的名称。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW PROCEDURE STATUS [模糊语句];</span><br></pre></td></tr></table></figure>
-<h3 id="4-删除存储过程"><a href="#4-删除存储过程" class="headerlink" title="4. 删除存储过程"></a>4. 删除存储过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP PROCEDURE [IF EXISTS] 存储过程名;</span><br></pre></td></tr></table></figure>
-<h2 id="七、自定义函数"><a href="#七、自定义函数" class="headerlink" title="七、自定义函数"></a>七、自定义函数</h2><h3 id="1-创建自定义函数"><a href="#1-创建自定义函数" class="headerlink" title="1. 创建自定义函数"></a>1. 创建自定义函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION 函数名(参数 参数类型,...)</span><br><span class="line">RETURNS 返回值类型</span><br><span class="line">BEGIN</span><br><span class="line">SQL语句;</span><br><span class="line">RETURN 返回值;</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<h3 id="2-调用自定义函数"><a href="#2-调用自定义函数" class="headerlink" title="2. 调用自定义函数"></a>2. 调用自定义函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 函数名(参数列表)/IF语句 [AS 别名];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>IF语句：IF(条件式,  满足返回的值,  不满足返回的值)</p>
-</blockquote>
-<h3 id="3-查看自定义函数"><a href="#3-查看自定义函数" class="headerlink" title="3. 查看自定义函数"></a>3. 查看自定义函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW FUNCTION STATUS Like [模糊语句]; </span><br></pre></td></tr></table></figure>
-<h3 id="4-删除自定义函数"><a href="#4-删除自定义函数" class="headerlink" title="4. 删除自定义函数"></a>4. 删除自定义函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION [IF EXISTS] 函数名;</span><br></pre></td></tr></table></figure>
-<h3 id="🆚存储过程与自定义函数的区别"><a href="#🆚存储过程与自定义函数的区别" class="headerlink" title="🆚存储过程与自定义函数的区别"></a>🆚存储过程与自定义函数的区别</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>存储过程</th>
-<th>自定义函数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>实现过程较复杂</td>
-<td>针对性较强</td>
-</tr>
-<tr>
-<td>可有多个返回值</td>
-<td>只有一个返回值</td>
-</tr>
-<tr>
-<td>一般独立来执行</td>
-<td>往往作为其他SQL语句的一部分来使用</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="八、触发器"><a href="#八、触发器" class="headerlink" title="八、触发器"></a>八、触发器</h2><ul>
-<li><strong>触发器</strong>：是一种特殊的存储过程，与<u>特定的一个表相连</u>，当对表进行操作（insert, delete, update）时就会激活它执行。</li>
-<li>触发器是<u>自动的</u>，<u>不能直接调用</u>自动激活，因而<u>无参数无返回值</u>。</li>
-<li>表对任何动作可以有多个触发器。</li>
-<li>触发器通常用来实现复杂的完整性约束。</li>
-<li>数据完整性检查组是在触发器之前执行。</li>
-</ul>
-<h3 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER 触发器名 &#123;BEFORE | AFTER&#125; &#123;INSERT | UPDATE | DELETE&#125; </span><br><span class="line">ON 表名 FOR EACH ROW</span><br><span class="line">[&#123;FOLLOWS | PRECEDES&#125; 其他触发器]</span><br><span class="line">BEGIN</span><br><span class="line">触发器语句;</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>说明：</p>
-<blockquote>
-<ul>
-<li>触发器的执行时间：<strong>BEFORE</strong>在触发事件动作执行之前执行，<strong>AFTER</strong>在动作执行之后执行。</li>
-<li><strong>NEW</strong>代表新添加或修改之后的行，<strong>OLD</strong>代表删除或修改之前的行。</li>
-<li>触发器类不能使用动态SQL语句。</li>
-<li>删除表时，该表上建立所有触发器一并删除。</li>
-</ul>
-<p><strong>触发器的触发事件：</strong></p>
-<ul>
-<li><p><strong>INSERT</strong> ：对表进行INSERT操作时激活触发器，如INSERT、LOAD DATA、REPLACE等操作。</p>
-</li>
-<li><p><strong>UPDATE</strong>：对表进行UPDATE操作时激活触发器。</p>
-</li>
-<li><p><strong>DELETE</strong>： 对表进行DELETE操作时激活触发器，如DELETE、 REPLACE。</p>
-</li>
-</ul>
-<p><strong>触发器执行顺序：</strong></p>
-<ul>
-<li><p>对相同的执行时间和触发事件，允许定义多个触发器，默认以创建时间的先后顺序执行。</p>
-</li>
-<li><p>自定义触发器的执行顺序：PRECEDES指明该触发器在某个触发器之前执行， FOLLOWS为在之后执行。            </p>
-</li>
-</ul>
-</blockquote>
-</blockquote>
-
+          <h2 id="一变量">一、变量</h2>
+<h3 id="概念">1. 概念</h3>
+<p>在程序执行过程中，其值是可以改变的量，可以利用变量存储程序执行过程中涉及的数据。如计算结果，用户输入的字符串以及对象的状态等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%887%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -655,7 +425,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:47:53 / 修改时间：14:48:05" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:53+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:47:53 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:53+08:00">2022-12-27</time>
             </span>
 
           
@@ -669,74 +439,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、视图"><a href="#一、视图" class="headerlink" title="一、视图"></a>一、视图</h2><h3 id="1-创建视图"><a href="#1-创建视图" class="headerlink" title="1. 创建视图"></a>1. 创建视图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW 视图名 [(字段名1, 字段名2,...)]</span><br><span class="line">AS (子查询)</span><br></pre></td></tr></table></figure>
+          <h2 id="一视图">一、视图</h2>
+<h3 id="创建视图">1. 创建视图</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW 视图名 [(字段名1, 字段名2,...)]</span><br><span class="line">AS (子查询)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：若省略视图的字段名表，则自动获得Select查询返回的列名</p>
 </blockquote>
-<h3 id="2-删除视图"><a href="#2-删除视图" class="headerlink" title="2. 删除视图"></a>2. 删除视图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW 视图名;</span><br></pre></td></tr></table></figure>
-<h3 id="3-更新视图"><a href="#3-更新视图" class="headerlink" title="3. 更新视图"></a>3. 更新视图</h3><p>语法与基本表的查询相同。</p>
-<h4 id="SQL视图更新："><a href="#SQL视图更新：" class="headerlink" title="SQL视图更新："></a>SQL视图更新：</h4><p>是比较复杂的问题，因视图不保存数据，对视图的更新最终要反映到对基本表的更新上，而有时，视图定义的映射不是可逆的。</p>
-<h4 id="更新的可执行性："><a href="#更新的可执行性：" class="headerlink" title="更新的可执行性："></a>更新的可执行性：</h4><ol>
-<li><p>如果视图的select目标列包含<u>聚集函数</u>，则不能更新。</p>
-</li>
-<li><p>如果视图的select子句使用了<u>unique或distinct</u>，则不能更新。</p>
-</li>
-<li><p>如果视图中包括了<u>group by</u>子句，则不能更新。</p>
-</li>
-<li><p>如果视图中包括经<u>算术表达式</u>计算出来的列，则不能更新。</p>
-</li>
-<li><p>如果视图是由单个表的列构成，但并<u>没有包括主键</u>，则不能更新。</p>
-</li>
-</ol>
-<ul>
-<li>对于由单一Table子集构成的视图，即如果视图是从单个基本表使用选择、投影操作导出的，并且包含了基本表的主键，则可以更新。</li>
-</ul>
-<h3 id="4-查询视图"><a href="#4-查询视图" class="headerlink" title="4. 查询视图"></a>4. 查询视图</h3><p>语法与基本表的查询相同。</p>
-<h2 id="二、索引"><a href="#二、索引" class="headerlink" title="二、索引"></a>二、索引</h2><h3 id="1-索引概念："><a href="#1-索引概念：" class="headerlink" title="1. 索引概念："></a>1. 索引概念：</h3><p>定义在存储表(Table)基础之上，有助于无需检查所有记录而快速定位所需记录的一种<strong>辅助存储结构</strong>，类似于字典的目录页（索引表）。</p>
-<h3 id="2-索引类型："><a href="#2-索引类型：" class="headerlink" title="2. 索引类型："></a>2. 索引类型：</h3><h4 id="1-聚集索引"><a href="#1-聚集索引" class="headerlink" title="(1) 聚集索引"></a>(1) 聚集索引</h4><ol>
-<li><p>创建主键时自动创建一个聚集索引(CLUSTERED INDEX)，索引名为PRIMARY</p>
-</li>
-<li><p>主键值与行数据存放在一起，即表的物理行顺序和索引的行顺序是一样的。</p>
-</li>
-<li><p>一个表中只能有一个聚集索引。</p>
-</li>
-<li><p>表中没定义主键时第一个不允许为NULL的唯一索引作为聚集索引。</p>
-</li>
-<li><p>没有主键又没有不为空的唯一索引时，MySQL自动添加一个自增长ID列并在该列创建聚集索引GEN_CLUST_INDEX（隐含） 。</p>
-</li>
-</ol>
-<h4 id="2-非聚集索引（二级索引）"><a href="#2-非聚集索引（二级索引）" class="headerlink" title="(2) 非聚集索引（二级索引）"></a>(2) 非聚集索引（二级索引）</h4><ol>
-<li><p>非聚集索引可以在堆（没有聚集索引的表）上创建，也可以在有聚集索引的表上建立。</p>
-</li>
-<li><p>非聚集索引的每条记录包含主键值和二级索引键值</p>
-</li>
-<li><p>非聚集索引类型包含：</p>
-<ul>
-<li><p>唯一索引UNIQUE INDEX：不允许有重复值但允许多个NULL值</p>
-</li>
-<li><p>全文索引FULLTEXT INDEX：只能在CHAR, VARCHAR, TEXT列上创建。</p>
-</li>
-<li><p>空间索引SPATIAL INDEX：只能在空间类型的列上创建</p>
-</li>
-<li><p>普通索引INDEX或KEY</p>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>注：KEY可为PRIMARY KEY的简写如SNO CHAR(10) KEY，也可为INDEX的同义词如KEY(SNO)</p>
-</blockquote>
-<h3 id="3-创建索引"><a href="#3-创建索引" class="headerlink" title="3. 创建索引"></a>3. 创建索引</h3><ol>
-<li><p>UNIQUE|FULLTEXT|SPATIAL：是可选参数，三者选一，分别表示<strong>唯一索引、全文索引和空间索引</strong>。此参数不选，则默认为<strong>普通索引</strong>。</p>
-</li>
-<li><p>表达式可使用函数（主键索引不支持）。</p>
-</li>
-<li><p><strong>主键索引(聚集)只能由主键定义创建</strong>。</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE [ UNIQUE | FULLTEXT | SPATIAL] INDEX</span><br><span class="line">索引名 ON 表名(字段);</span><br></pre></td></tr></table></figure>
-<h3 id="4-删除索引"><a href="#4-删除索引" class="headerlink" title="4. 删除索引"></a>4. 删除索引</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX 索引名 ON 表名;</span><br></pre></td></tr></table></figure>
-
+<h3 id="删除视图">2. 删除视图</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW 视图名;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%886%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -780,7 +498,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:47:11 / 修改时间：14:47:47" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:11+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:47:11 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:11+08:00">2022-12-27</time>
             </span>
 
           
@@ -794,26 +512,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、嵌套查询"><a href="#一、嵌套查询" class="headerlink" title="一、嵌套查询"></a>一、嵌套查询</h2><ol>
-<li><p>一个 SELECT - FROM - WHERE 语句称为一个<strong>查询块</strong></p>
-</li>
-<li><p>将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为<strong>嵌套查询</strong></p>
-</li>
+          <h2 id="一嵌套查询">一、嵌套查询</h2>
+<ol type="1">
+<li><p>一个 SELECT - FROM - WHERE
+语句称为一个<strong>查询块</strong></p></li>
+<li><p>将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING
+短语的条件中的查询称为<strong>嵌套查询</strong></p></li>
 </ol>
-<h3 id="1-NOT-IN-谓词子查询"><a href="#1-NOT-IN-谓词子查询" class="headerlink" title="1. (NOT) IN 谓词子查询"></a>1. (NOT) IN 谓词子查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 [NOT] IN (子查询);</span><br></pre></td></tr></table></figure>
-<h3 id="2-SOME-与-ALL-子查询"><a href="#2-SOME-与-ALL-子查询" class="headerlink" title="2. SOME 与 ALL 子查询"></a>2. SOME 与 ALL 子查询</h3><h4 id="1-SOME"><a href="#1-SOME" class="headerlink" title="(1) SOME"></a>(1) SOME</h4><p>表达式的值<u>至少</u>与子查询结果中的<u>一个值</u>相比满足条件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 &gt;/&lt;/= SOME (子查询);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：IN 可以等效于 ’= SOME‘。</p>
-</blockquote>
-<h4 id="2-ALL"><a href="#2-ALL" class="headerlink" title="(2) ALL"></a>(2) ALL</h4><p>表达式的值与子查询结果中的<u>所有值</u>相比满足条件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 &gt;/&lt;/= ALL (子查询);</span><br></pre></td></tr></table></figure>
-<h3 id="3-NOT-EXISTS-子查询"><a href="#3-NOT-EXISTS-子查询" class="headerlink" title="3. (NOT) EXISTS 子查询"></a>3. (NOT) EXISTS 子查询</h3><p>子查询结果中有无元组存在</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 [NOT] EXISTS (子查询);</span><br></pre></td></tr></table></figure>
-<h2 id="二、集合查询"><a href="#二、集合查询" class="headerlink" title="二、集合查询"></a>二、集合查询</h2><h3 id="1-UNION（并操作）"><a href="#1-UNION（并操作）" class="headerlink" title="1. UNION（并操作）"></a>1. UNION（并操作）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) UNION (查询);</span><br></pre></td></tr></table></figure>
-<h3 id="2-INTERSECT（交操作）"><a href="#2-INTERSECT（交操作）" class="headerlink" title="2. INTERSECT（交操作）"></a>2. INTERSECT（交操作）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) INTERSECT (查询);</span><br></pre></td></tr></table></figure>
-<h3 id="3-EXCEPT（差操作）"><a href="#3-EXCEPT（差操作）" class="headerlink" title="3. EXCEPT（差操作）"></a>3. EXCEPT（差操作）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) EXCEPT (查询);</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%885%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -857,7 +570,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:47:04 / 修改时间：14:47:37" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:04+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:47:04 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:04+08:00">2022-12-27</time>
             </span>
 
           
@@ -871,158 +584,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、简单查询"><a href="#一、简单查询" class="headerlink" title="一、简单查询"></a>一、简单查询</h2><h3 id="1-单表查询"><a href="#1-单表查询" class="headerlink" title="1. 单表查询"></a>1. 单表查询</h3><h4 id="1-查询指定字段内容"><a href="#1-查询指定字段内容" class="headerlink" title="(1) 查询指定字段内容"></a>(1) 查询指定字段内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名1, 字段名2,... FROM 表名;</span><br></pre></td></tr></table></figure>
-<h4 id="2-查询表中所有内容"><a href="#2-查询表中所有内容" class="headerlink" title="(2) 查询表中所有内容"></a>(2) 查询表中所有内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名;</span><br></pre></td></tr></table></figure>
-<h3 id="2-检索查询-—-WHERE字句"><a href="#2-检索查询-—-WHERE字句" class="headerlink" title="2. 检索查询 — WHERE字句"></a>2. 检索查询 — WHERE字句</h3><h4 id="1-WHERE-字句常用查询条件"><a href="#1-WHERE-字句常用查询条件" class="headerlink" title="(1) WHERE 字句常用查询条件"></a>(1) WHERE 字句常用查询条件</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>查询条件</th>
-<th>谓词</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>比较</td>
-<td>=，&gt;，&lt;，&gt;=，&lt;=，!=</td>
-</tr>
-<tr>
-<td>确定范围</td>
-<td>BETWEEN… AND，NOT  BETWEEN AND</td>
-</tr>
-<tr>
-<td>确定集合</td>
-<td>IN，NOT IN</td>
-</tr>
-<tr>
-<td>字符匹配</td>
-<td>LIKE，NOT LIKE</td>
-</tr>
-<tr>
-<td>空值</td>
-<td>IS NULL，IS NOT NULL</td>
-</tr>
-<tr>
-<td>多重条件</td>
-<td>AND，OR</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="2-BETWEEN…AND"><a href="#2-BETWEEN…AND" class="headerlink" title="(2) BETWEEN…AND"></a>(2) BETWEEN…AND</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM 表名 WHERE 字段名 [NOT] BETWEEN 值1 AND 值2;</span><br></pre></td></tr></table></figure>
-<h4 id="3-IN"><a href="#3-IN" class="headerlink" title="(3) IN"></a>(3) IN</h4><p>（不）满足其中某个值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM 表名 WHERE 字段名 [NOT] IN (值1, 值2,...);</span><br></pre></td></tr></table></figure>
-<h4 id="4-LIKE（模糊查询）"><a href="#4-LIKE（模糊查询）" class="headerlink" title="(4) LIKE（模糊查询）"></a>(4) LIKE（模糊查询）</h4><p>“ <strong>%</strong> ” 代表出现它的位置充当<u>任意多个</u>字符。</p>
-<p>“ _ ” 代表出现它的位置充当<u>一个</u>字符。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM 表名 WHERE 字段名 LIKE &#x27;_字符%&#x27;;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：其中 % 和 _ 的位置可以根据需要放在字符间指定位置。</p>
-</blockquote>
-<h4 id="5-NULL"><a href="#5-NULL" class="headerlink" title="(5) NULL"></a>(5) NULL</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM 表名 WHERE 字段名 IS [NOT] NULL;</span><br></pre></td></tr></table></figure>
-<h4 id="6-AND"><a href="#6-AND" class="headerlink" title="(6) AND"></a>(6) AND</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM 表名 WHERE 表达式1 AND 表达式2 AND...;</span><br></pre></td></tr></table></figure>
-<h4 id="7-OR"><a href="#7-OR" class="headerlink" title="(7) OR"></a>(7) OR</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM 表名 WHERE 表达式1 OR 表达式2 OR...;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：OR 可以和 AND 一起使用，但 AND 的优先级要高于 OR 的优先级。</p>
-</blockquote>
-<h3 id="3-检索结果"><a href="#3-检索结果" class="headerlink" title="3. 检索结果"></a>3. 检索结果</h3><h4 id="1-DISTINCT"><a href="#1-DISTINCT" class="headerlink" title="(1) DISTINCT"></a>(1) DISTINCT</h4><p>去除重复结果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT 字段名 FROM 表名;</span><br></pre></td></tr></table></figure>
-<h4 id="2-ORDER-BY"><a href="#2-ORDER-BY" class="headerlink" title="(2) ORDER BY"></a>(2) ORDER BY</h4><p>对结果进行排序。DESC 是降序，ASC是升序。若省略排序关键字，则默认 <u>ASC升序</u>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELCET 字段... FROM 表... ORDER BY 字段名 DESC / ASC</span><br></pre></td></tr></table></figure>
-<h2 id="二、连接查询"><a href="#二、连接查询" class="headerlink" title="二、连接查询"></a>二、连接查询</h2><p>在查询中，<strong>同时涉及两个或两个以上的表</strong>，要根据表中数据的情况作连接。</p>
-<h3 id="1-等值连接-和-自然连接"><a href="#1-等值连接-和-自然连接" class="headerlink" title="1. 等值连接 和 自然连接"></a>1. 等值连接 和 自然连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段... FROM 表1, 表2,... WHERE 表1.字段a = 表2.字段a AND ... </span><br></pre></td></tr></table></figure>
-<p><strong>重名处理</strong>：若表与表之间存在重名属性，需要使用<strong>别名</strong>来限定属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 别名.字段 FROM 表 [as] 别名 WHERE 检索条件;</span><br></pre></td></tr></table></figure>
-<h3 id="2-自身连接"><a href="#2-自身连接" class="headerlink" title="2. 自身连接"></a>2. 自身连接</h3><p>一个表与自己进行连接，需要起<strong>别名</strong>以示区别</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 别名1.字段a, 别名2.字段b FROM 表A 别名1, 表A 别名2 WHERE 检索条件;</span><br></pre></td></tr></table></figure>
-<h3 id="3-内连接（普通连接）"><a href="#3-内连接（普通连接）" class="headerlink" title="3. 内连接（普通连接）"></a>3. 内连接（普通连接）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段... FROM 表1 INNER JOIN 表2 ON (表1.字段 = 表2.字段);</span><br></pre></td></tr></table></figure>
-<h3 id="4-外连接"><a href="#4-外连接" class="headerlink" title="4. 外连接"></a>4. 外连接</h3><h4 id="1-左外连接"><a href="#1-左外连接" class="headerlink" title="(1) 左外连接"></a>(1) 左外连接</h4><p>列出左边关系中所有的元组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段... FROM 表1 LEFT [OUTER] JOIN 表2 ON (表1.字段 = 表2.字段) where...;</span><br></pre></td></tr></table></figure>
-<h4 id="2-右外连接"><a href="#2-右外连接" class="headerlink" title="(2) 右外连接"></a>(2) 右外连接</h4><p>列出右边关系中所有的元组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段... FROM 表1 RIGHT [OUTER] JOIN 表2 ON (表1.字段 = 表2.字段) where...;</span><br></pre></td></tr></table></figure>
-<h2 id="三、聚集计算-和-分组统计"><a href="#三、聚集计算-和-分组统计" class="headerlink" title="三、聚集计算 和 分组统计"></a>三、聚集计算 和 分组统计</h2><h3 id="1-聚集函数"><a href="#1-聚集函数" class="headerlink" title="1. 聚集函数"></a>1. 聚集函数</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数名</th>
-<th>释义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count()</td>
-<td>求个数</td>
-</tr>
-<tr>
-<td>sum()</td>
-<td>求和</td>
-</tr>
-<tr>
-<td>avg()</td>
-<td>求均值</td>
-</tr>
-<tr>
-<td>max()</td>
-<td>求最大值</td>
-</tr>
-<tr>
-<td>min()</td>
-<td>求最小值</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>注：where 子句中不能用聚集函数，只能在 having 语句中用</p>
-</blockquote>
-<h3 id="2-分组查询"><a href="#2-分组查询" class="headerlink" title="2.分组查询"></a>2.分组查询</h3><h4 id="1-Group-By-子句"><a href="#1-Group-By-子句" class="headerlink" title="(1) Group By 子句"></a>(1) Group By 子句</h4><p>Group By 子句可以将查询结果表的各行，按一列或多列取值相等的原则进行分组。</p>
-<p>使用目的：为了细化聚集函数的作用对象</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 聚集函数([DISTINCT] 字段1) FROM 表 GROUP BY 字段2;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：写在 Where 语句之后</p>
-</blockquote>
-<h4 id="2-Having-子句"><a href="#2-Having-子句" class="headerlink" title="(2) Having 子句"></a>(2) Having 子句</h4><p>可以针对聚集函数的结果值进行筛选，它是作用于分组计算的结果集</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 聚集函数([DISTINCT] 字段1) FROM 表 GROUP BY 字段2 HAVING 聚集函数检索条件;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：写在Group By子句的后面，有 Group By 才有HAVING</p>
-</blockquote>
-<h2 id="本章补充与小结"><a href="#本章补充与小结" class="headerlink" title="本章补充与小结"></a>本章补充与小结</h2><ol>
-<li><p>获得当前时间的函数：NOW(), SYSDATE();</p>
-<p>格式： date + time</p>
-<p>两者区别：NOW()是在执行时直接获得当前时间，SYSDATE()在函数执行时动态获得其值.</p>
-<p>例子：<strong>SELECT+</strong></p>
-</li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>SLEEP(3),</th>
-<th>3秒后的时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>SYSDATE(),</strong></td>
-<td><strong>当前的时间</strong></td>
-</tr>
-<tr>
-<td><strong>NOW();</strong></td>
-<td><strong>当前的时间</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol>
-<li><p>WHERE查询条件使用括号可以确定优先级。</p>
-</li>
-<li><p>ORDER BY 语句多个顺序的优先级遵循就近原则，即第一个排序优先，依次往后排。</p>
-</li>
-<li><p>将两时间的时间差转化为天数 DATEDIFF (time1, time2) 运行后得到 time1 - time2 的天数。</p>
-</li>
-<li><p><u>GROUP BY 子句必须在 WHERE 子句之后, ORDER BY 之前</u>。因为WHERE关键字无法与聚合函数一起使用，HAVING子句可以让我们筛选分组后的各组数据，故HAVING常常用在 GROUP BY 之后。</p>
-</li>
-</ol>
-
+          <h2 id="一简单查询">一、简单查询</h2>
+<h3 id="单表查询">1. 单表查询</h3>
+<h4 id="查询指定字段内容">(1) 查询指定字段内容</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名1, 字段名2,... FROM 表名;</span><br></pre></td></tr></table></figure>
+<h4 id="查询表中所有内容">(2) 查询表中所有内容</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%884%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

@@ -20,32 +20,18 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="什么是逻辑回归 逻辑回归是通过回归的思想来解决二分类问题的算法  逻辑回归的原理是用逻辑函数把线性回归的结果$(-∞,∞)$映射到$(0,1)$，故先介绍线性回归函数和逻辑函数">
+  <meta name="description" content="什么是逻辑回归  逻辑回归是通过回归的思想来解决二分类问题的算法  逻辑回归的原理是用逻辑函数把线性回归的结果\((-∞,∞)\)映射到\((0,1)\)，故先介绍线性回归函数和逻辑函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习小结（3）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/04/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%883%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="什么是逻辑回归 逻辑回归是通过回归的思想来解决二分类问题的算法  逻辑回归的原理是用逻辑函数把线性回归的结果$(-∞,∞)$映射到$(0,1)$，故先介绍线性回归函数和逻辑函数">
+<meta property="og:description" content="什么是逻辑回归  逻辑回归是通过回归的思想来解决二分类问题的算法  逻辑回归的原理是用逻辑函数把线性回归的结果\((-∞,∞)\)映射到\((0,1)\)，故先介绍线性回归函数和逻辑函数">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/XahKXD.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/XahJht.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xaht9P.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/XahajS.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/04/Xah0BQ.png">
-<meta property="og:image" content="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/icfo12e6zb.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-7700422/4v675mcowc.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-7700422/j9yz4ygq1z.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-7700422/pjaih6q9sr.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-7700422/0n4za2d9jl.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-7700422/ofme4wwct.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-7700422/ooejbe6xjw.png?imageView2/2/w/1620">
-<meta property="og:image" content="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/5s8cmmtc5a.png?imageView2/2/w/1620">
 <meta property="article:published_time" content="2022-04-28T04:55:40.000Z">
 <meta property="article:modified_time" content="2022-06-04T05:07:23.390Z">
 <meta property="article:author" content="MJ.Smi">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/06/04/XahKXD.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/04/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93%EF%BC%883%EF%BC%89/">
 
@@ -256,80 +242,168 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="什么是逻辑回归"><a href="#什么是逻辑回归" class="headerlink" title="什么是逻辑回归"></a>什么是逻辑回归</h3><ul>
+        <h3 id="什么是逻辑回归">什么是逻辑回归</h3>
+<ul>
 <li>逻辑回归是通过回归的思想来解决二分类问题的算法</li>
 </ul>
-<p><strong>逻辑回归</strong>的<strong>原理</strong>是<strong>用逻辑函数</strong>把<strong>线性回归的结果</strong>$(-∞,∞)$<strong>映射到</strong>$(0,1)$，故先介绍<strong>线性回归函数</strong>和<strong>逻辑函数</strong><br><span id="more"></span></p>
-<h4 id="线性回归函数"><a href="#线性回归函数" class="headerlink" title="线性回归函数"></a>线性回归函数</h4><p>线性回归函数的数学表达式:  <a target="_blank" rel="noopener" href="https://imgtu.com/i/XahKXD"><img src="https://s1.ax1x.com/2022/06/04/XahKXD.png" alt="XahKXD.png"></a></p>
-<p>其中$x_i$是自变量，$y$ 是因变量，$y$ 的值域为$(-∞,∞)$，$θ_0$ 是常数项，$θ_i(i=1,2,…,n)$是待求系数，不同的权重 $θ_i$ 反映了自变量对因变量不同的<strong>贡献程度</strong>。回归分析中包括两个或两个以上自变量的回归分析，称为多元线性回归分析。不管是一元线性回归分析还是多元线性回归分析，都是线性回归分析。</p>
-<h4 id="逻辑函数"><a href="#逻辑函数" class="headerlink" title="逻辑函数"></a>逻辑函数</h4><h3 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h3><h4 id="逻辑函数的数学表达式"><a href="#逻辑函数的数学表达式" class="headerlink" title="逻辑函数的数学表达式"></a>逻辑函数的数学表达式</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XahJht"><img src="https://s1.ax1x.com/2022/06/04/XahJht.png" alt="XahJht.png"></a></p>
+<p><strong>逻辑回归</strong>的<strong>原理</strong>是<strong>用逻辑函数</strong>把<strong>线性回归的结果</strong><span
+class="math inline">\((-∞,∞)\)</span><strong>映射到</strong><span
+class="math inline">\((0,1)\)</span>，故先介绍<strong>线性回归函数</strong>和<strong>逻辑函数</strong>
+<span id="more"></span> #### 线性回归函数</p>
+<p>线性回归函数的数学表达式: <a target="_blank" rel="noopener" href="https://imgtu.com/i/XahKXD"><img
+src="https://s1.ax1x.com/2022/06/04/XahKXD.png"
+alt="XahKXD.png" /></a></p>
+<p>其中<span class="math inline">\(x_i\)</span>是自变量，<span
+class="math inline">\(y\)</span> 是因变量，<span
+class="math inline">\(y\)</span> 的值域为<span
+class="math inline">\((-∞,∞)\)</span>，<span
+class="math inline">\(θ_0\)</span> 是常数项，<span
+class="math inline">\(θ_i(i=1,2,...,n)\)</span>是待求系数，不同的权重
+<span class="math inline">\(θ_i\)</span>
+反映了自变量对因变量不同的<strong>贡献程度</strong>。回归分析中包括两个或两个以上自变量的回归分析，称为多元线性回归分析。不管是一元线性回归分析还是多元线性回归分析，都是线性回归分析。</p>
+<h4 id="逻辑函数">逻辑函数</h4>
+<h3 id="sigmoid函数">sigmoid函数</h3>
+<h4 id="逻辑函数的数学表达式">逻辑函数的数学表达式</h4>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XahJht"><img
+src="https://s1.ax1x.com/2022/06/04/XahJht.png"
+alt="XahJht.png" /></a></p>
 <p>其导数：(这在后面用<strong>梯度下降法</strong>求解参数时会用到)</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xaht9P"><img src="https://s1.ax1x.com/2022/06/04/Xaht9P.png" alt="Xaht9P.png"></a></p>
-<h4 id="逻辑回归函数"><a href="#逻辑回归函数" class="headerlink" title="逻辑回归函数"></a>逻辑回归函数</h4><p>前文中也提到过逻辑回归的原理是用逻辑函数把线性回归的结果从(-∞,∞)映射到(0,1)。我们用公式描述上面这句话：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XahajS"><img src="https://s1.ax1x.com/2022/06/04/XahajS.png" alt="XahajS.png"></a></p>
-<p>把线性回归函数的结果y，放到$sigmod$函数中去，就构造了<strong>逻辑回归函数</strong>。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xaht9P"><img
+src="https://s1.ax1x.com/2022/06/04/Xaht9P.png"
+alt="Xaht9P.png" /></a></p>
+<h4 id="逻辑回归函数">逻辑回归函数</h4>
+<p>前文中也提到过逻辑回归的原理是用逻辑函数把线性回归的结果从(-∞,∞)映射到(0,1)。我们用公式描述上面这句话：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XahajS"><img
+src="https://s1.ax1x.com/2022/06/04/XahajS.png"
+alt="XahajS.png" /></a></p>
+<p>把线性回归函数的结果y，放到<span
+class="math inline">\(sigmod\)</span>函数中去，就构造了<strong>逻辑回归函数</strong>。</p>
 <p>我们转换一下逻辑回归函数，过程如下：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xah0BQ"><img src="https://s1.ax1x.com/2022/06/04/Xah0BQ.png" alt="Xah0BQ.png"></a></p>
-<p><img src="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/icfo12e6zb.png?imageView2/2/w/1620" alt="image-20220403150311492"></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xah0BQ"><img
+src="https://s1.ax1x.com/2022/06/04/Xah0BQ.png"
+alt="Xah0BQ.png" /></a></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/icfo12e6zb.png?imageView2/2/w/1620"
+alt="image-20220403150311492" />
+<figcaption aria-hidden="true">image-20220403150311492</figcaption>
+</figure>
 <p>这些标签就是逻辑回归函数中的xi，我们可以用这些样本数据训练逻辑回归模型，并求解得到变量x的参数(系数)θ。</p>
 <p>标签数据年龄、工资等是已有信息，如果参数(系数)θ也已经求出，把标签数据和参数代入逻辑回归模型，就可以预测任一客户违约的概率。</p>
-<p>那如何求解逻辑回归模型中的参数？在第二章中做简要说明，在$Python$中已有现成的封装函数，直接调用即可。</p>
-<h3 id="如何求解逻辑回归中的参数"><a href="#如何求解逻辑回归中的参数" class="headerlink" title="如何求解逻辑回归中的参数"></a>如何求解逻辑回归中的参数</h3><h4 id="极大似然函数"><a href="#极大似然函数" class="headerlink" title="极大似然函数"></a>极大似然函数</h4><p>先来看一个小例子：如果小华这次考试考了90分以上，妈妈99%会奖励小华一个手机，如果没有考到90分以上，妈妈99%不会奖励小华手机。现在小华没有得到手机，问小华这次有没有考到90分。可能我们的第一反应是小华大概率没有考到90分以上。这种利用已知样本结果，反推最有可能导致这样结果的参数值，就是极大似然估计。</p>
+<p>那如何求解逻辑回归模型中的参数？在第二章中做简要说明，在<span
+class="math inline">\(Python\)</span>中已有现成的封装函数，直接调用即可。</p>
+<h3 id="如何求解逻辑回归中的参数">如何求解逻辑回归中的参数</h3>
+<h4 id="极大似然函数">极大似然函数</h4>
+<p>先来看一个小例子：如果小华这次考试考了90分以上，妈妈99%会奖励小华一个手机，如果没有考到90分以上，妈妈99%不会奖励小华手机。现在小华没有得到手机，问小华这次有没有考到90分。可能我们的第一反应是小华大概率没有考到90分以上。这种利用已知样本结果，反推最有可能导致这样结果的参数值，就是极大似然估计。</p>
 <p>结合逻辑回归函数，如果我们已经积累了大量的违约客户和正常客户的样本数据，利用极大似然函数由果溯因，估计出<strong>使得目前结果的可能性最大</strong>参数(系数)θ，有了参数我们就可以求任何一个客户违约的概率了。</p>
 <p>我们上文提到过客户违约的后验概率：</p>
-<script type="math/tex; mode=display">
-p(Y=1|x) = \frac{1}{1+e^{-\theta ^{T}x}}</script><p>相应的可以得到客户不违约的概率：</p>
-<p>$p(Y=0|x) = 1 - p(Y=1|x)  = 1 - \frac{1}{1+e^{-\theta ^{T}x}} =  \frac{1}{1+e^{\theta ^{T}x}} $</p>
+<p><span class="math display">\[
+p(Y=1|x) = \frac{1}{1+e^{-\theta ^{T}x}}
+\]</span></p>
+<p>相应的可以得到客户不违约的概率：</p>
+<p>$p(Y=0|x) = 1 - p(Y=1|x) = 1 - = $</p>
 <p>如果令</p>
-<p>$\frac{1}{1+e^{-\theta ^{T}x}} = g(y)=g_\theta (x)$</p>
+<p><span class="math inline">\(\frac{1}{1+e^{-\theta ^{T}x}} =
+g(y)=g_\theta (x)\)</span></p>
 <p>违约的后验概率可以写成：</p>
-<p>$p(Y=1|x)=g_\theta (x)$</p>
+<p><span class="math inline">\(p(Y=1|x)=g_\theta (x)\)</span></p>
 <p>不违约的后验概率可以写成：</p>
-<p>$p(Y=0|x)=1-g_\theta (x)$</p>
+<p><span class="math inline">\(p(Y=0|x)=1-g_\theta (x)\)</span></p>
 <p>对于某一个客户，我们采集到了样本数据(x,y)。对于这个样本，他的标签是y的概率可以定义成：</p>
-<p>$p(y|x,\theta) =(g<em>\theta (x))^{y}(1-g</em>\theta (x))^{1-y}$</p>
+<p><span class="math inline">\(p(y|x,\theta) =(g_\theta
+(x))^{y}(1-g_\theta (x))^{1-y}\)</span></p>
 <p>其中y∈{0,1}。当y=0时，上式为不违约的后验概率，当y=1时，上式为违约的后验概率。</p>
 <p>现在我们有m个客户的观测样本</p>
-<script type="math/tex; mode=display">
-D = \left \{ (X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n) \right \}</script><p>将每一个样本发生的概率相乘，就是这个合成在一起得到的合事件发生的总概率(利用概率中的乘法公式)，即为似然函数，可以写成：</p>
-<p>$L(\theta) = \prod<em>{i=1}^{m} p(y_i|x_i;\theta ) = \prod</em>{i=1}^{m}(g<em>\theta (x_i))^{y_i}(1-g</em>\theta (x_i))^{1-y_i}$</p>
-<p>其中 $θ$ 为待求参数。</p>
+<p><span class="math display">\[
+D = \left \{ (X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n) \right \}
+\]</span></p>
+<p>将每一个样本发生的概率相乘，就是这个合成在一起得到的合事件发生的总概率(利用概率中的乘法公式)，即为似然函数，可以写成：</p>
+<p><span class="math inline">\(L(\theta) = \prod_{i=1}^{m}
+p(y_i|x_i;\theta ) = \prod_{i=1}^{m}(g_\theta (x_i))^{y_i}(1-g_\theta
+(x_i))^{1-y_i}\)</span></p>
+<p>其中 <span class="math inline">\(θ\)</span> 为待求参数。</p>
 <p><strong>注</strong>：我们总是希望出现目前结果的可能性最大，所以想要得到极大化似然函数对应的参数θ。</p>
 <p>为便于求解，我们引入不改变函数单调性的对数函数ln，把连乘变成加法，得到对数似然函数：</p>
-<p>$l(\theta ) =ln(L(\theta )) = \sum<em>{i=1}^{m} (y_iln(g</em>\theta (x<em>i)) + (1-y_i)ln(1-g</em>\theta (x_i)))$</p>
+<p><span class="math inline">\(l(\theta ) =ln(L(\theta )) =
+\sum_{i=1}^{m} (y_iln(g_\theta (x_i)) + (1-y_i)ln(1-g_\theta
+(x_i)))\)</span></p>
 <p>至此，可以用梯度上升法求解对数似然函数，求出使得目前结果的可能性最大的参数θ。也可以由对数似然函数构造损失函数，用梯度下降法求出使得损失最小对应的参数θ，接下来看下逻辑回归中的损失函数。</p>
 <p><strong>注：</strong>使用对数似然函数，不仅仅把连乘变成加法，便于求解，而且对数似然函对应的损失函数是关于未知参数的高阶连续可导的凸函数，便于求其全局最优解。</p>
-<h4 id="构造损失函数"><a href="#构造损失函数" class="headerlink" title="构造损失函数"></a>构造损失函数</h4><p>在机器学习中有损失函数的概念，我们知道损失函数一般定义为预测值和真实值的差，比如我们预测小华在这次考试中能考98分，成绩出来了小华实际考了97分，小华的成绩预测值和真实值差为1，这个1通俗理解就是损失函数的值。</p>
+<h4 id="构造损失函数">构造损失函数</h4>
+<p>在机器学习中有损失函数的概念，我们知道损失函数一般定义为预测值和真实值的差，比如我们预测小华在这次考试中能考98分，成绩出来了小华实际考了97分，小华的成绩预测值和真实值差为1，这个1通俗理解就是损失函数的值。</p>
 <p>从上面的案例知，如果损失函数越小，说明模型预测越准。所以在函数比较复杂没有确定解(解析解)或很难求出确定解的情况下，一般求的是数值解(近似解)。一般模型求数值解可以求出使得损失函数最小对应的参数θ。</p>
 <p>结合逻辑回归中的极大似然函数，如果取整个数据集上的<strong>平均对数似然损失</strong>，我们可以得到:</p>
-<p>$J(\theta) = -\frac{1}{m}ln(L(\theta)) $</p>
-<p>其中$J(θ)$为<strong>损失函数</strong>，由对数似然函数前面添加负号取平均得到。</p>
-<p>即在逻辑回归模型中，最大化似然函数和最小化损失函数实际上是等价的(求最大化对数似然函数对应的参数θ和求最小化平均对数似然损失对应的参数θ是一致的)，即：$max$ $ln(L(\theta))$ $&lt;==&gt;$ $min$ $J(\theta)$</p>
+<p>$J() = -ln(L()) $</p>
+<p>其中<span
+class="math inline">\(J(θ)\)</span>为<strong>损失函数</strong>，由对数似然函数前面添加负号取平均得到。</p>
+<p>即在逻辑回归模型中，最大化似然函数和最小化损失函数实际上是等价的(求最大化对数似然函数对应的参数θ和求最小化平均对数似然损失对应的参数θ是一致的)，即：<span
+class="math inline">\(max\)</span> <span
+class="math inline">\(ln(L(\theta))\)</span> <span
+class="math inline">\(&lt;==&gt;\)</span> <span
+class="math inline">\(min\)</span> <span
+class="math inline">\(J(\theta)\)</span></p>
 <p>那如何求得损失函数最小对应的参数呢？可以用下节讲到的方法：梯度下降法。</p>
-<h4 id="用梯度下降法求解参数"><a href="#用梯度下降法求解参数" class="headerlink" title="用梯度下降法求解参数"></a>用梯度下降法求解参数</h4><p>先以一个人下山为例讲解梯度下降法的步骤：</p>
+<h4 id="用梯度下降法求解参数">用梯度下降法求解参数</h4>
+<p>先以一个人下山为例讲解梯度下降法的步骤：</p>
 <ul>
 <li>step1：明确自己现在所处的位置；</li>
 <li>step2：找到现在所处位置下降最快的方向；</li>
-<li>step3: 沿着第二步找到的方向走一个步长，到达新的位置，且新位置低于刚才的位置；</li>
+<li>step3:
+沿着第二步找到的方向走一个步长，到达新的位置，且新位置低于刚才的位置；</li>
 <li>step4：判断是否下山，如果还没有到最低点继续步骤一，如果已经到最低点，则停止。</li>
 </ul>
 <p>从上面的分析知，用梯度下降法求解参数最重要的是找到<strong>下降最快的方向</strong>和确定要走的<strong>步长</strong>。</p>
 <p>那么什么是函数下降最快的方向？</p>
 <p>如果学过一元函数的导数，应该知道导数的几何意义是某点切线的斜率。除此之外导数还可以表示函数在该点的变化率，导数越大，表示函数在该点的变化越大。</p>
 <p>对于多维向量</p>
-<p><img src="https://ask.qcloudimg.com/http-save/yehe-7700422/4v675mcowc.png?imageView2/2/w/1620" alt="img"></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/4v675mcowc.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>它的导数叫做梯度(偏导数)，当求某个变量的导数时，把其它变量视为常量，对整个函数求导，也就是分别对于它的每个分量求导数，即</p>
-<p><img src="https://ask.qcloudimg.com/http-save/yehe-7700422/j9yz4ygq1z.png?imageView2/2/w/1620" alt="img"></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/j9yz4ygq1z.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>对于函数的某个特定点，它的梯度就表示从该点出发，函数值变化最为迅猛的方向。至此梯度下降法求解参数的方向已经找到，那就是函数的梯度方向。</p>
 <p>接下来推导损失函数的梯度(偏导数)：</p>
 <p>由<strong>损失函数</strong>的公式知：</p>
-<p><img src="https://ask.qcloudimg.com/http-save/yehe-7700422/pjaih6q9sr.png?imageView2/2/w/1620" alt="img"></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/pjaih6q9sr.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>对损失函数求偏导：</p>
-<p><img src="https://ask.qcloudimg.com/http-save/yehe-7700422/0n4za2d9jl.png?imageView2/2/w/1620" alt="img"></p>
-<p><img src="https://ask.qcloudimg.com/http-save/yehe-7700422/ofme4wwct.png?imageView2/2/w/1620" alt="img"></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/0n4za2d9jl.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/ofme4wwct.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>至此，找到了梯度下降中的方向，只要给定一个步长就可以用迭代的方式来求待求参数，迭代的公式为：</p>
-<p><img src="https://ask.qcloudimg.com/http-save/yehe-7700422/ooejbe6xjw.png?imageView2/2/w/1620" alt="img"></p>
-<p><img src="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/5s8cmmtc5a.png?imageView2/2/w/1620" alt="img"></p>
+<figure>
+<img
+src="https://ask.qcloudimg.com/http-save/yehe-7700422/ooejbe6xjw.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img
+src="https://ask.qcloudimg.com/raw/yehe-b344c32fabf35/5s8cmmtc5a.png?imageView2/2/w/1620"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 
     </div>
 
@@ -484,7 +558,7 @@ D = \left \{ (X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n) \right \}</script><p>将每一个
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">什么是逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">线性回归函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">逻辑函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">sigmoid函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">逻辑函数的数学表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">逻辑回归函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">如何求解逻辑回归中的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">极大似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">构造损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E6%B1%82%E8%A7%A3%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">用梯度下降法求解参数</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">什么是逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">sigmoid函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">逻辑函数的数学表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">逻辑回归函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">如何求解逻辑回归中的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">极大似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">构造损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E6%B1%82%E8%A7%A3%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">用梯度下降法求解参数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

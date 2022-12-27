@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、数据建模：思想与方法概念模型 与 数据模型计算机世界里的“数据模型”采用的是关系模型，也分“逻辑”层面的模型，具体实现方面涉及“物理”模型。 模型的几个层面1. 现实世界存在于人脑之外的客观世界。 2. 信息世界信息世界是对现实世界的理解与抽象表达信息世界的模型层概念数据模型，简称概念模型，比如E-R模型（Entity-Relationship Model）。 3. 计算机世界表达计算机世界的">
+  <meta name="description" content="一、数据建模：思想与方法 概念模型 与 数据模型 计算机世界里的“数据模型”采用的是关系模型，也分“逻辑”层面的模型，具体实现方面涉及“物理”模型。 模型的几个层面 1. 现实世界 存在于人脑之外的客观世界。 2. 信息世界 信息世界是对现实世界的理解与抽象表达信息世界的模型层概念数据模型，简称概念模型，比如E-R模型（Entity-Relationship Model）。 3.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库系统概述（8）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%888%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="一、数据建模：思想与方法概念模型 与 数据模型计算机世界里的“数据模型”采用的是关系模型，也分“逻辑”层面的模型，具体实现方面涉及“物理”模型。 模型的几个层面1. 现实世界存在于人脑之外的客观世界。 2. 信息世界信息世界是对现实世界的理解与抽象表达信息世界的模型层概念数据模型，简称概念模型，比如E-R模型（Entity-Relationship Model）。 3. 计算机世界表达计算机世界的">
+<meta property="og:description" content="一、数据建模：思想与方法 概念模型 与 数据模型 计算机世界里的“数据模型”采用的是关系模型，也分“逻辑”层面的模型，具体实现方面涉及“物理”模型。 模型的几个层面 1. 现实世界 存在于人脑之外的客观世界。 2. 信息世界 信息世界是对现实世界的理解与抽象表达信息世界的模型层概念数据模型，简称概念模型，比如E-R模型（Entity-Relationship Model）。 3.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-27T06:48:25.000Z">
-<meta property="article:modified_time" content="2022-12-27T06:48:40.559Z">
+<meta property="article:modified_time" content="2022-12-27T06:52:58.292Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
 
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:48:25 / 修改时间：14:48:40" itemprop="dateCreated datePublished" datetime="2022-12-27T14:48:25+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:48:25 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:48:25+08:00">2022-12-27</time>
             </span>
 
           
@@ -226,85 +226,102 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、数据建模：思想与方法"><a href="#一、数据建模：思想与方法" class="headerlink" title="一、数据建模：思想与方法"></a>一、数据建模：思想与方法</h2><h3 id="概念模型-与-数据模型"><a href="#概念模型-与-数据模型" class="headerlink" title="概念模型 与 数据模型"></a>概念模型 与 数据模型</h3><p>计算机世界里的“<strong>数据模型</strong>”采用的是<strong>关系模型</strong>，也分“<strong>逻辑</strong>”层面的模型，具体实现方面涉及“<strong>物理</strong>”模型。</p>
-<h4 id="模型的几个层面"><a href="#模型的几个层面" class="headerlink" title="模型的几个层面"></a>模型的几个层面</h4><h5 id="1-现实世界"><a href="#1-现实世界" class="headerlink" title="1. 现实世界"></a>1. 现实世界</h5><p>存在于人脑之外的客观世界。</p>
-<h5 id="2-信息世界"><a href="#2-信息世界" class="headerlink" title="2. 信息世界"></a>2. 信息世界</h5><p>信息世界是对现实世界的<strong>理解</strong>与<strong>抽象</strong>表达信息世界的模型层概念数据模型，简称<strong>概念模型</strong>，比如<strong>E-R模型</strong>（Entity-Relationship Model）。</p>
-<h5 id="3-计算机世界"><a href="#3-计算机世界" class="headerlink" title="3. 计算机世界"></a>3. 计算机世界</h5><p>表达计算机世界的模型称<strong>数据模型</strong>；比如<strong>关系模型</strong>、层次模型、网状模型及面向对象的模型等。属于逻辑层的模型。</p>
-<h2 id="二、数据库设计过程"><a href="#二、数据库设计过程" class="headerlink" title="二、数据库设计过程"></a>二、数据库设计过程</h2><p><strong>现实世界</strong>到<strong>信息世界</strong>是一个理解、抽象的过程（<strong>数据建模</strong>），这是<strong>概念级抽象</strong>。</p>
+        <h2 id="一数据建模思想与方法">一、数据建模：思想与方法</h2>
+<h3 id="概念模型-与-数据模型">概念模型 与 数据模型</h3>
+<p>计算机世界里的“<strong>数据模型</strong>”采用的是<strong>关系模型</strong>，也分“<strong>逻辑</strong>”层面的模型，具体实现方面涉及“<strong>物理</strong>”模型。</p>
+<h4 id="模型的几个层面">模型的几个层面</h4>
+<h5 id="现实世界">1. 现实世界</h5>
+<p>存在于人脑之外的客观世界。</p>
+<h5 id="信息世界">2. 信息世界</h5>
+<p>信息世界是对现实世界的<strong>理解</strong>与<strong>抽象</strong>表达信息世界的模型层概念数据模型，简称<strong>概念模型</strong>，比如<strong>E-R模型</strong>（Entity-Relationship
+Model）。</p>
+<h5 id="计算机世界">3. 计算机世界</h5>
+<p>表达计算机世界的模型称<strong>数据模型</strong>；比如<strong>关系模型</strong>、层次模型、网状模型及面向对象的模型等。属于逻辑层的模型。</p>
+<span id="more"></span>
+<h2 id="二数据库设计过程">二、数据库设计过程</h2>
+<p><strong>现实世界</strong>到<strong>信息世界</strong>是一个理解、抽象的过程（<strong>数据建模</strong>），这是<strong>概念级抽象</strong>。</p>
 <p><strong>信息世界</strong>到<strong>计算机世界</strong>是一个抽象/设计的过程（<strong>数据库设计</strong>），这是<strong>实现级抽象</strong>。</p>
-<h3 id="1-抽象概念"><a href="#1-抽象概念" class="headerlink" title="1. 抽象概念"></a>1. 抽象概念</h3><ol>
+<h3 id="抽象概念">1. 抽象概念</h3>
+<ol type="1">
 <li><strong>理解</strong>：理解现实世界的一些事物。</li>
 <li><strong>区分</strong>：表与表的区分，表内数据项的区分，数据项之间关系的区分等。</li>
 <li><strong>命名</strong>：命名表、命名数据项、命名表之间的联系。</li>
 <li><strong>表达</strong>：用他人能理解的方法来表达。</li>
 </ol>
-<h3 id="2-数据模型概念"><a href="#2-数据模型概念" class="headerlink" title="2. 数据模型概念"></a>2. 数据模型概念</h3><p><strong>数据模型</strong>是一组相互关联且严格定义的概念集合，是用于科化或描述现实世界、信息世界或计算机世界的模型。</p>
-<h3 id="3-E-R-模型"><a href="#3-E-R-模型" class="headerlink" title="3. E-R 模型"></a>3. E-R 模型</h3><h4 id="1-E-R-模型的基本观点"><a href="#1-E-R-模型的基本观点" class="headerlink" title="(1) E-R 模型的基本观点"></a>(1) E-R 模型的基本观点</h4><p>世界是由一组称作<strong>实体</strong>的基本对象和这些<strong>对象之间的联系</strong>构成的。</p>
-<h4 id="2-E-R-模型的基本概念"><a href="#2-E-R-模型的基本概念" class="headerlink" title="(2) E-R 模型的基本概念"></a>(2) E-R 模型的基本概念</h4><h5 id="A-实体"><a href="#A-实体" class="headerlink" title="A. 实体"></a>A. 实体</h5><p><strong>实体</strong>：客观存在并可相互区分的事物。实体有<strong>类</strong>（实体的型）和<strong>个体</strong>（实体的<strong>实例</strong>，实体价值）的概念。我们可以用“一个个”、“一件件”等<strong>重叠量词</strong>形容，而非“一个”、“一件”。</p>
-<h5 id="B-属性"><a href="#B-属性" class="headerlink" title="B. 属性"></a>B. 属性</h5><p><strong>属性分类</strong>：</p>
+<h3 id="数据模型概念">2. 数据模型概念</h3>
+<p><strong>数据模型</strong>是一组相互关联且严格定义的概念集合，是用于科化或描述现实世界、信息世界或计算机世界的模型。</p>
+<h3 id="e-r-模型">3. E-R 模型</h3>
+<h4 id="e-r-模型的基本观点">(1) E-R 模型的基本观点</h4>
+<p>世界是由一组称作<strong>实体</strong>的基本对象和这些<strong>对象之间的联系</strong>构成的。</p>
+<h4 id="e-r-模型的基本概念">(2) E-R 模型的基本概念</h4>
+<h5 id="a.-实体">A. 实体</h5>
+<p><strong>实体</strong>：客观存在并可相互区分的事物。实体有<strong>类</strong>（实体的型）和<strong>个体</strong>（实体的<strong>实例</strong>，实体价值）的概念。我们可以用“一个个”、“一件件”等<strong>重叠量词</strong>形容，而非“一个”、“一件”。</p>
+<h5 id="b.-属性">B. 属性</h5>
+<p><strong>属性分类</strong>：</p>
 <ul>
 <li><strong>单一属性与复合属性</strong></li>
 <li><strong>单值属性和多值属性</strong>：每个实例的属性值是一个还是多个。</li>
 <li><strong>可空值属性和非空值属性</strong>：每个实例的属性值能否为空值。</li>
 <li><strong>导出属性</strong>：由其他属性计算而得。</li>
 </ul>
-<h5 id="C-联系"><a href="#C-联系" class="headerlink" title="C. 联系"></a>C. 联系</h5><p><strong>联系</strong>：指一个实体的实例和其他实体实例之间所可能发生的联系。</p>
-<h6 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h6><ul>
+<h5 id="c.-联系">C. 联系</h5>
+<p><strong>联系</strong>：指一个实体的实例和其他实体实例之间所可能发生的联系。</p>
+<h6 id="分类">分类</h6>
+<ul>
 <li><strong>一元联系</strong></li>
 <li><strong>二元联系</strong>：</li>
 </ul>
-<ol>
+<ol type="1">
 <li><p><strong>一对一</strong>：实体A的实例只能和实体B的一个实例发生联系。</p>
-<p>例：人蹲坑。一个人只能蹲一个坑，同样一个坑只能被一个人蹲。</p>
-</li>
+<p>例：人蹲坑。一个人只能蹲一个坑，同样一个坑只能被一个人蹲。</p></li>
 <li><p>一对多：实体A的实例能和实体B的多个实例发生关系。</p>
-<p>例：画家绘制作品。一位画家能绘制多幅作品，但一个作品只能由一位画家来完成。</p>
-</li>
+<p>例：画家绘制作品。一位画家能绘制多幅作品，但一个作品只能由一位画家来完成。</p></li>
 <li><p>多对多：实体A的实例能和实体B的多个实例发生关系，相反也成立。</p>
-<p>例：学生学习课程。一位学生可以选多门课程，同样一门课程可由多位学生来选学。</p>
-</li>
+<p>例：学生学习课程。一位学生可以选多门课程，同样一门课程可由多位学生来选学。</p></li>
 </ol>
-<h5 id="D-关键字-码"><a href="#D-关键字-码" class="headerlink" title="D. 关键字/码"></a>D. 关键字/码</h5><p>实体中用<strong>关键字/码</strong>唯一区分开。</p>
-<h4 id="3-E-R-模型表达方式"><a href="#3-E-R-模型表达方式" class="headerlink" title="(3) E-R 模型表达方式"></a>(3) E-R 模型表达方式</h4><h5 id="A-Chen方法的基本图元及其含义"><a href="#A-Chen方法的基本图元及其含义" class="headerlink" title="A. Chen方法的基本图元及其含义"></a>A. Chen方法的基本图元及其含义</h5><ul>
-<li><p><strong>实体</strong>：矩形框</p>
-</li>
-<li><p><strong>属性</strong>：椭圆</p>
-</li>
-<li><p><strong>多值属性</strong>：双线椭圆</p>
-</li>
-<li><p><strong>导出属性</strong>：虚线椭圆</p>
-</li>
-<li><p><strong>关键字/码</strong>：下划线</p>
-</li>
-<li><p><strong>连接实体和属性</strong>：直线</p>
-</li>
-<li><p><strong>联系</strong>：菱形框</p>
-</li>
-<li><p><strong>连接实体与联系</strong>：直线</p>
-</li>
-<li><p><strong>连接联系和属性</strong>：直线</p>
-</li>
-<li><strong>复合关键字</strong>：标有相同数字</li>
-<li><strong>多组关键字</strong>：标有不同数字</li>
+<h5 id="d.-关键字码">D. 关键字/码</h5>
+<p>实体中用<strong>关键字/码</strong>唯一区分开。</p>
+<h4 id="e-r-模型表达方式">(3) E-R 模型表达方式</h4>
+<h5 id="a.-chen方法的基本图元及其含义">A.
+Chen方法的基本图元及其含义</h5>
+<ul>
+<li><p><strong>实体</strong>：矩形框</p></li>
+<li><p><strong>属性</strong>：椭圆</p></li>
+<li><p><strong>多值属性</strong>：双线椭圆</p></li>
+<li><p><strong>导出属性</strong>：虚线椭圆</p></li>
+<li><p><strong>关键字/码</strong>：下划线</p></li>
+<li><p><strong>连接实体和属性</strong>：直线</p></li>
+<li><p><strong>联系</strong>：菱形框</p></li>
+<li><p><strong>连接实体与联系</strong>：直线</p></li>
+<li><p><strong>连接联系和属性</strong>：直线</p></li>
+<li><p><strong>复合关键字</strong>：标有相同数字</p></li>
+<li><p><strong>多组关键字</strong>：标有不同数字</p></li>
 </ul>
-<h5 id="B-Chen方法中不同“联系”的区分方法"><a href="#B-Chen方法中不同“联系”的区分方法" class="headerlink" title="B. Chen方法中不同“联系”的区分方法"></a>B. Chen方法中不同“联系”的区分方法</h5><h6 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h6><ul>
-<li><p><strong>一对一联系</strong>：箭头直线，由联系指向实体。</p>
-</li>
-<li><p><strong>一对多联系</strong>：指向一端为箭头直线，指向多端为无箭头直线。</p>
-</li>
-<li><p><strong>多对多联系</strong>：无箭头直线。</p>
-</li>
-<li><p><strong>完全参与联系</strong>：双直线</p>
-</li>
-<li><p><strong>部分参与联系</strong>：单直线</p>
-</li>
+<h5 id="b.-chen方法中不同联系的区分方法">B.
+Chen方法中不同“联系”的区分方法</h5>
+<h6 id="第一种">第一种</h6>
+<ul>
+<li><p><strong>一对一联系</strong>：箭头直线，由联系指向实体。</p></li>
+<li><p><strong>一对多联系</strong>：指向一端为箭头直线，指向多端为无箭头直线。</p></li>
+<li><p><strong>多对多联系</strong>：无箭头直线。</p></li>
+<li><p><strong>完全参与联系</strong>：双直线</p></li>
+<li><p><strong>部分参与联系</strong>：单直线</p></li>
 </ul>
-<h6 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h6><ul>
+<h6 id="第二种">第二种</h6>
+<ul>
 <li><strong>一端实体</strong>：直线旁标1</li>
 <li><strong>多段实体</strong>：直线旁边标m或n</li>
 <li>完全/部分参与联系也可以标注<strong><code>最小基数..最大基数</code></strong>进行区分，最小基数0表示部分，1表示完全。</li>
 </ul>
-<h4 id="4-E-R-模型构造步骤"><a href="#4-E-R-模型构造步骤" class="headerlink" title="(4) E-R 模型构造步骤"></a>(4) E-R 模型构造步骤</h4><h5 id="步骤1：理解需求，寻找实体"><a href="#步骤1：理解需求，寻找实体" class="headerlink" title="步骤1：理解需求，寻找实体"></a>步骤1：理解需求，寻找实体</h5><h5 id="步骤2：用属性和关键字刻画每一个实体"><a href="#步骤2：用属性和关键字刻画每一个实体" class="headerlink" title="步骤2：用属性和关键字刻画每一个实体"></a>步骤2：用<u>属性</u>和<u>关键字</u>刻画每一个实体</h5><h5 id="步骤3：⭐分析实体键的联系"><a href="#步骤3：⭐分析实体键的联系" class="headerlink" title="步骤3：⭐分析实体键的联系"></a>步骤3：⭐分析实体键的联系</h5><h2 id="三、函数依赖以及公理定理"><a href="#三、函数依赖以及公理定理" class="headerlink" title="三、函数依赖以及公理定理"></a>三、函数依赖以及公理定理</h2><h2 id="四、关系模式设计之规范化形式"><a href="#四、关系模式设计之规范化形式" class="headerlink" title="四、关系模式设计之规范化形式"></a>四、关系模式设计之规范化形式</h2><h2 id="五、模式分解存在的问题及解决"><a href="#五、模式分解存在的问题及解决" class="headerlink" title="五、模式分解存在的问题及解决"></a>五、模式分解存在的问题及解决</h2>
+<h4 id="e-r-模型构造步骤">(4) E-R 模型构造步骤</h4>
+<h5 id="步骤1理解需求寻找实体">步骤1：理解需求，寻找实体</h5>
+<h5
+id="步骤2用属性和关键字刻画每一个实体">步骤2：用<u>属性</u>和<u>关键字</u>刻画每一个实体</h5>
+<h5 id="步骤3分析实体键的联系">步骤3：⭐分析实体键的联系</h5>
+<h2 id="三函数依赖以及公理定理">三、函数依赖以及公理定理</h2>
+<h2 id="四关系模式设计之规范化形式">四、关系模式设计之规范化形式</h2>
+<h2 id="五模式分解存在的问题及解决">五、模式分解存在的问题及解决</h2>
+
     </div>
 
     
@@ -452,7 +469,9 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%EF%BC%9A%E6%80%9D%E6%83%B3%E4%B8%8E%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一、数据建模：思想与方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B-%E4%B8%8E-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">概念模型 与 数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B1%82%E9%9D%A2"><span class="nav-number">1.1.1.</span> <span class="nav-text">模型的几个层面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 现实世界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%BF%A1%E6%81%AF%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2. 信息世界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">3. 计算机世界</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、数据库设计过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%8A%BD%E8%B1%A1%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">1. 抽象概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E6%A6%82%E5%BF%B5"><span class="nav-number">2.2.</span> <span class="nav-text">2. 数据模型概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-E-R-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">3. E-R 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-E-R-%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%82%E7%82%B9"><span class="nav-number">2.3.1.</span> <span class="nav-text">(1) E-R 模型的基本观点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-E-R-%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.3.2.</span> <span class="nav-text">(2) E-R 模型的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-%E5%AE%9E%E4%BD%93"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">A. 实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">B. 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-%E8%81%94%E7%B3%BB"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">C. 联系</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">2.3.2.3.1.</span> <span class="nav-text">分类</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#D-%E5%85%B3%E9%94%AE%E5%AD%97-%E7%A0%81"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">D. 关键字&#x2F;码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-E-R-%E6%A8%A1%E5%9E%8B%E8%A1%A8%E8%BE%BE%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.3.</span> <span class="nav-text">(3) E-R 模型表达方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-Chen%E6%96%B9%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%85%83%E5%8F%8A%E5%85%B6%E5%90%AB%E4%B9%89"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">A. Chen方法的基本图元及其含义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-Chen%E6%96%B9%E6%B3%95%E4%B8%AD%E4%B8%8D%E5%90%8C%E2%80%9C%E8%81%94%E7%B3%BB%E2%80%9D%E7%9A%84%E5%8C%BA%E5%88%86%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">B. Chen方法中不同“联系”的区分方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="nav-number">2.3.3.2.1.</span> <span class="nav-text">第一种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D"><span class="nav-number">2.3.3.2.2.</span> <span class="nav-text">第二种</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-E-R-%E6%A8%A1%E5%9E%8B%E6%9E%84%E9%80%A0%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.3.4.</span> <span class="nav-text">(4) E-R 模型构造步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E7%90%86%E8%A7%A3%E9%9C%80%E6%B1%82%EF%BC%8C%E5%AF%BB%E6%89%BE%E5%AE%9E%E4%BD%93"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">步骤1：理解需求，寻找实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E5%85%B3%E9%94%AE%E5%AD%97%E5%88%BB%E7%94%BB%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BD%93"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">步骤2：用属性和关键字刻画每一个实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E2%AD%90%E5%88%86%E6%9E%90%E5%AE%9E%E4%BD%93%E9%94%AE%E7%9A%84%E8%81%94%E7%B3%BB"><span class="nav-number">2.3.4.3.</span> <span class="nav-text">步骤3：⭐分析实体键的联系</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E4%BB%A5%E5%8F%8A%E5%85%AC%E7%90%86%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">三、函数依赖以及公理定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%A7%84%E8%8C%83%E5%8C%96%E5%BD%A2%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">四、关系模式设计之规范化形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3"><span class="nav-number">5.</span> <span class="nav-text">五、模式分解存在的问题及解决</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E6%80%9D%E6%83%B3%E4%B8%8E%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一、数据建模：思想与方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B-%E4%B8%8E-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">概念模型 与 数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E5%B1%82%E9%9D%A2"><span class="nav-number">1.1.1.</span> <span class="nav-text">模型的几个层面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 现实世界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2. 信息世界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">3. 计算机世界</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、数据库设计过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">1. 抽象概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E6%A6%82%E5%BF%B5"><span class="nav-number">2.2.</span> <span class="nav-text">2. 数据模型概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-r-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">3. E-R 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#e-r-%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%82%E7%82%B9"><span class="nav-number">2.3.1.</span> <span class="nav-text">(1) E-R 模型的基本观点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e-r-%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.3.2.</span> <span class="nav-text">(2) E-R 模型的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a.-%E5%AE%9E%E4%BD%93"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">A. 实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b.-%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">B. 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c.-%E8%81%94%E7%B3%BB"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">C. 联系</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">2.3.2.3.1.</span> <span class="nav-text">分类</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#d.-%E5%85%B3%E9%94%AE%E5%AD%97%E7%A0%81"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">D. 关键字&#x2F;码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e-r-%E6%A8%A1%E5%9E%8B%E8%A1%A8%E8%BE%BE%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.3.</span> <span class="nav-text">(3) E-R 模型表达方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a.-chen%E6%96%B9%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%85%83%E5%8F%8A%E5%85%B6%E5%90%AB%E4%B9%89"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">A.
+Chen方法的基本图元及其含义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b.-chen%E6%96%B9%E6%B3%95%E4%B8%AD%E4%B8%8D%E5%90%8C%E8%81%94%E7%B3%BB%E7%9A%84%E5%8C%BA%E5%88%86%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">B.
+Chen方法中不同“联系”的区分方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="nav-number">2.3.3.2.1.</span> <span class="nav-text">第一种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D"><span class="nav-number">2.3.3.2.2.</span> <span class="nav-text">第二种</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e-r-%E6%A8%A1%E5%9E%8B%E6%9E%84%E9%80%A0%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.3.4.</span> <span class="nav-text">(4) E-R 模型构造步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41%E7%90%86%E8%A7%A3%E9%9C%80%E6%B1%82%E5%AF%BB%E6%89%BE%E5%AE%9E%E4%BD%93"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">步骤1：理解需求，寻找实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E5%85%B3%E9%94%AE%E5%AD%97%E5%88%BB%E7%94%BB%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BD%93"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">步骤2：用属性和关键字刻画每一个实体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43%E5%88%86%E6%9E%90%E5%AE%9E%E4%BD%93%E9%94%AE%E7%9A%84%E8%81%94%E7%B3%BB"><span class="nav-number">2.3.4.3.</span> <span class="nav-text">步骤3：⭐分析实体键的联系</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E4%BB%A5%E5%8F%8A%E5%85%AC%E7%90%86%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">三、函数依赖以及公理定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%A7%84%E8%8C%83%E5%8C%96%E5%BD%A2%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">四、关系模式设计之规范化形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3"><span class="nav-number">5.</span> <span class="nav-text">五、模式分解存在的问题及解决</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

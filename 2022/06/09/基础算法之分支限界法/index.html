@@ -20,28 +20,19 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="回溯与分支限界 回溯与分支限界是对穷举法的改进。 它们每次只构造候选解的一个分量，然后评估这个部分解： 如果加上剩下的分量也不可能求得一个解，就不在生成剩下的分量。   回溯法和分支限界都是以构造一棵状态空间树为基础，树的节点反映了对一个部分解所做的特定的选择。">
+  <meta name="description" content="回溯与分支限界  回溯与分支限界是对穷举法的改进。 它们每次只构造候选解的一个分量，然后评估这个部分解：  如果加上剩下的分量也不可能求得一个解，就不在生成剩下的分量。  回溯法和分支限界都是以构造一棵状态空间 树为基础，树的节点反映了对一个部分解 所做的特定的选择。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础算法之分支限界法">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/06/09/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="回溯与分支限界 回溯与分支限界是对穷举法的改进。 它们每次只构造候选解的一个分量，然后评估这个部分解： 如果加上剩下的分量也不可能求得一个解，就不在生成剩下的分量。   回溯法和分支限界都是以构造一棵状态空间树为基础，树的节点反映了对一个部分解所做的特定的选择。">
+<meta property="og:description" content="回溯与分支限界  回溯与分支限界是对穷举法的改进。 它们每次只构造候选解的一个分量，然后评估这个部分解：  如果加上剩下的分量也不可能求得一个解，就不在生成剩下的分量。  回溯法和分支限界都是以构造一棵状态空间 树为基础，树的节点反映了对一个部分解 所做的特定的选择。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/Xy06Yt.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/Xy05wj.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/Xy0Hf0.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/Xy0XXF.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/Xy0vm4.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/XyBpkR.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/XyBip6.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/06/09/XyBKht.png">
 <meta property="article:published_time" content="2022-06-09T14:43:57.000Z">
 <meta property="article:modified_time" content="2022-10-07T08:33:01.532Z">
 <meta property="article:author" content="MJ.Smi">
 <meta property="article:tag" content="分支界限算法">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/06/09/Xy06Yt.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/06/09/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95/">
 
@@ -252,37 +243,48 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="回溯与分支限界"><a href="#回溯与分支限界" class="headerlink" title="回溯与分支限界"></a>回溯与分支限界</h3><ul>
+        <h3 id="回溯与分支限界">回溯与分支限界</h3>
+<ul>
 <li>回溯与分支限界是对穷举法的改进。</li>
-<li>它们每次只构造候选解的一个分量，然后评估这个部分解：<ul>
+<li>它们每次只构造候选解的一个分量，然后评估这个部分解：
+<ul>
 <li>如果加上剩下的分量也不可能求得一个解，就不在生成剩下的分量。</li>
-</ul>
-</li>
-<li>回溯法和分支限界都是以构造一棵状态空间<br>树为基础，树的节点反映了对一个部分解<br>所做的特定的选择。</li>
+</ul></li>
+<li>回溯法和分支限界都是以构造一棵状态空间
+树为基础，树的节点反映了对一个部分解 所做的特定的选择。</li>
 </ul>
 <span id="more"></span>
-<h4 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h4><ul>
+<h4 id="分支限界法">分支限界法</h4>
+<ul>
 <li>一般用于优化问题(OP)</li>
-<li>与回溯法相比，分支限界需要两个额外条件：<ul>
+<li>与回溯法相比，分支限界需要两个额外条件：
+<ul>
 <li>对于一棵状态空间树的每一个节点所代表的部分解，需要提供一种方法，计算出通过这个部分解繁衍出的任何解在任何解在目标函数上的最佳值边界。</li>
 <li>口目前求得的最佳解的值。</li>
-</ul>
-</li>
-<li>路径查找终止条件<ul>
+</ul></li>
+<li>路径查找终止条件
+<ul>
 <li>该节点的边界值不能超越目前最佳解的值。</li>
 <li>该节点无法代表任何可行解，因为它已违反了问题的约束。</li>
 <li>该节点代表的可行解的子集只包含一个单独的点(没有更多的选择)。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h5 id="经典例题详解"><a href="#经典例题详解" class="headerlink" title="经典例题详解"></a>经典例题详解</h5><h6 id="任务分配问题"><a href="#任务分配问题" class="headerlink" title="任务分配问题"></a>任务分配问题</h6><blockquote>
+<h5 id="经典例题详解">经典例题详解</h5>
+<h6 id="任务分配问题">任务分配问题</h6>
+<blockquote>
 <p>问题描述：要求把n项任务分配给n个人，每个人完成每项任务的成本不同，要求分配总成本最小的最优分配分案。</p>
 </blockquote>
 <p>【例题】：求下表的最优分配分案</p>
-<div class="table-container">
 <table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
 <th>任务1</th>
 <th>任务2</th>
@@ -291,28 +293,28 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>人员1</td>
 <td>9</td>
 <td><font color="red">2</font></td>
 <td>7</td>
 <td>8</td>
 </tr>
-<tr>
+<tr class="even">
 <td>人员2</td>
 <td>6</td>
 <td>4</td>
 <td><font color="red">3</font></td>
 <td>7</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>人员3</td>
 <td>5</td>
 <td>8</td>
 <td><font color="red">1</font></td>
 <td>8</td>
 </tr>
-<tr>
+<tr class="even">
 <td>人员4</td>
 <td>7</td>
 <td>6</td>
@@ -321,7 +323,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>N个任务分配给n个人，任务 j 分配给人 i 的成本是 C[ i，j ]</p>
 <ul>
 <li>边界（下界）的选择：包括最优解在内，任何解的成本都不会小于矩阵每行中最小元素的和。</li>
@@ -331,25 +332,33 @@
 <li><p>确定上下界：</p>
 <ul>
 <li>上界：贪心得上界为：2 + 3 + 5 + 4 = 14</li>
-<li>下界：由红色标记（每个人员可选的任务最小成本的方案）知下界为：2 + 3 + 1 + 4 = 10</li>
+<li>下界：由红色标记（每个人员可选的任务最小成本的方案）知下界为：2 + 3
++ 1 + 4 = 10</li>
 <li>确定区间为 [ 10 , 14 )</li>
-</ul>
-</li>
+</ul></li>
 <li><p>确定界限函数：</p>
 <ul>
-<li>设当前已对人员1~i 分配了任务，并且获得了成本v，则限界函数可以定义为：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy06Yt"><img src="https://s1.ax1x.com/2022/06/09/Xy06Yt.png" alt="Xy06Yt.png"></a></li>
+<li>设当前已对人员1~i
+分配了任务，并且获得了成本v，则限界函数可以定义为： <a
+target="_blank" rel="noopener" href="https://imgtu.com/i/Xy06Yt"><img
+src="https://s1.ax1x.com/2022/06/09/Xy06Yt.png"
+alt="Xy06Yt.png" /></a></li>
+</ul></li>
+<li><p>广度优先遍历得到最优解：计算 lb的值，如果 lb
+超过（≥）上界，则丢弃，如果在范围内，则参与下一步的筛选，最终得到最优解。<a
+target="_blank" rel="noopener" href="https://imgtu.com/i/Xy05wj"><img
+src="https://s1.ax1x.com/2022/06/09/Xy05wj.png"
+alt="Xy05wj.png" /></a></p></li>
 </ul>
-</li>
-<li><p>广度优先遍历得到最优解：计算 lb的值，如果 lb 超过（≥）上界，则丢弃，如果在范围内，则参与下一步的筛选，最终得到最优解。<a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy05wj"><img src="https://s1.ax1x.com/2022/06/09/Xy05wj.png" alt="Xy05wj.png"></a></p>
-</li>
-</ul>
-<h6 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h6><blockquote>
-<p>问题描述：有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大。具体数据见下表：</p>
+<h6 id="背包问题">0-1背包问题</h6>
+<blockquote>
+<p>问题描述：有n件物品和一个最多能背重量为w
+的背包。第i件物品的重量是weight[i]，得到的价值是value[i]
+。<strong>每件物品只能用一次</strong>，求解将哪些物品装入背包里物品价值总和最大。具体数据见下表：</p>
 </blockquote>
-<div class="table-container">
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>物品</th>
 <th>重量</th>
 <th>价值</th>
@@ -357,25 +366,25 @@
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>1</td>
 <td>4</td>
 <td>40</td>
 <td>10</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>7</td>
 <td>42</td>
 <td>6</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>5</td>
 <td>25</td>
 <td>5</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>3</td>
 <td>12</td>
@@ -383,54 +392,57 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>按如下步骤进行抉择：</p>
 <ul>
-<li><p>按照物品单位重量价值从大到小排序</p>
-</li>
+<li><p>按照物品单位重量价值从大到小排序</p></li>
 <li><p>确定上下界：</p>
 <ul>
-<li>上界：已经选择物品的总价值v加上背包的剩余承重（W-w）与剩下物品的最佳单位回报( v{i+1}/w{i+1} )的乘积 ub。</li>
+<li>上界：已经选择物品的总价值v加上背包的剩余承重（W-w）与剩下物品的最佳单位回报(
+v{i+1}/w{i+1} )的乘积 ub。</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy0Hf0"><img src="https://s1.ax1x.com/2022/06/09/Xy0Hf0.png" alt="Xy0Hf0.png"></a></p>
-</li>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy0Hf0"><img
+src="https://s1.ax1x.com/2022/06/09/Xy0Hf0.png"
+alt="Xy0Hf0.png" /></a></p></li>
+<li><p>下界： 0 , 无需确定。</p></li>
+<li><p>确定区间为 [ 0 , ub )</p></li>
+<li><p>从物品1开始，不断选择物品放入背包，需要检查空间是否合适，如果空间合适，计算目标函数和节点一同放入PT中。然后从PT中选择目标函数最大的节点，继续选择物品，直到计算出结果。</p></li>
+<li><p>广度优先遍历得到最优解：计算 ub 的值，如果 v
+超过（≥）背包总容量，则丢弃，如果在范围内，则参与下一步的筛选，最终得到最优解。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy0XXF"><img
+src="https://s1.ax1x.com/2022/06/09/Xy0XXF.png"
+alt="Xy0XXF.png" /></a></p></li>
 </ul>
-<ul>
-<li><p>下界： 0 , 无需确定。</p>
-</li>
-<li><p>确定区间为 [ 0 , ub )</p>
-</li>
-<li><p>从物品1开始，不断选择物品放入背包，需要检查空间是否合适，如果空间合适，计算目标函数和节点一同放入PT中。然后从PT中选择目标函数最大的节点，继续选择物品，直到计算出结果。</p>
-</li>
-<li><p>广度优先遍历得到最优解：计算 ub 的值，如果 v 超过（≥）背包总容量，则丢弃，如果在范围内，则参与下一步的筛选，最终得到最优解。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy0XXF"><img src="https://s1.ax1x.com/2022/06/09/Xy0XXF.png" alt="Xy0XXF.png"></a></p>
-</li>
-</ul>
-<h6 id="TSP货郎问题"><a href="#TSP货郎问题" class="headerlink" title="TSP货郎问题"></a>TSP货郎问题</h6><blockquote>
+<h6 id="tsp货郎问题">TSP货郎问题</h6>
+<blockquote>
 <p>问题描述：货郎问题（TSP）：某售货员要到若干城市去推销商品，各城市之间的距离为已知.他要选定一条从驻地出发经过所有城市最后回到驻地的周游路线，使得总的路程最短。数据如下图：</p>
 </blockquote>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy0vm4"><img src="https://s1.ax1x.com/2022/06/09/Xy0vm4.png" alt="Xy0vm4.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Xy0vm4"><img
+src="https://s1.ax1x.com/2022/06/09/Xy0vm4.png"
+alt="Xy0vm4.png" /></a></p>
 <p>按如下步骤进行抉择：</p>
 <ul>
 <li><p>确定上下界：</p>
 <ul>
-<li>上界：采用贪心法求得近似解：1-&gt;3-&gt;5-&gt;4-&gt;2-&gt;1 得到路径上界 16<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/XyBpkR"><img src="https://s1.ax1x.com/2022/06/09/XyBpkR.png" alt="XyBpkR.png"></a></li>
+<li>上界：采用贪心法求得近似解：1-&gt;3-&gt;5-&gt;4-&gt;2-&gt;1
+得到路径上界 16 <a target="_blank" rel="noopener" href="https://imgtu.com/i/XyBpkR"><img
+src="https://s1.ax1x.com/2022/06/09/XyBpkR.png"
+alt="XyBpkR.png" /></a></li>
+</ul></li>
+<li><p>下界：根据代价矩阵，将矩阵中每行最小两个元素相加，得到的总和除以2，作为问题下界：[(
+1 + 3 ) + ( 3 + 6 ) + ( 1 + 2 ) + ( 3 + 4 ) + ( 2 + 3 )] / 2 =
+14</p></li>
+<li><p>确定区间为 [ 14 , 16 )</p></li>
+<li><p>确定界限函数： <a target="_blank" rel="noopener" href="https://imgtu.com/i/XyBip6"><img
+src="https://s1.ax1x.com/2022/06/09/XyBip6.png"
+alt="XyBip6.png" /></a></p></li>
+<li><p>广度优先遍历得到最优解：计算 lb
+的值，不断筛选，最终得到最优解。</p></li>
 </ul>
-</li>
-</ul>
-<ul>
-<li><p>下界：根据代价矩阵，将矩阵中每行最小两个元素相加，得到的总和除以2，作为问题下界：[( 1 + 3 ) + ( 3 + 6 ) + ( 1 + 2 ) + ( 3 + 4 ) + ( 2 + 3 )] / 2 = 14</p>
-</li>
-<li><p>确定区间为 [ 14 , 16 )</p>
-</li>
-<li><p>确定界限函数：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/XyBip6"><img src="https://s1.ax1x.com/2022/06/09/XyBip6.png" alt="XyBip6.png"></a></p>
-</li>
-</ul>
-<ul>
-<li>广度优先遍历得到最优解：计算 lb 的值，不断筛选，最终得到最优解。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XyBKht"><img src="https://s1.ax1x.com/2022/06/09/XyBKht.png" alt="XyBKht.png"></a></p>
-<h6 id="批量处理作业调度问题"><a href="#批量处理作业调度问题" class="headerlink" title="批量处理作业调度问题"></a>批量处理作业调度问题</h6>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/XyBKht"><img
+src="https://s1.ax1x.com/2022/06/09/XyBKht.png"
+alt="XyBKht.png" /></a></p>
+<h6 id="批量处理作业调度问题">批量处理作业调度问题</h6>
+
     </div>
 
     
@@ -585,7 +597,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C"><span class="nav-number">1.</span> <span class="nav-text">回溯与分支限界</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">分支限界法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">经典例题详解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%86%E9%85%8D%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">任务分配问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#TSP%E8%B4%A7%E9%83%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">TSP货郎问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">批量处理作业调度问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C"><span class="nav-number">1.</span> <span class="nav-text">回溯与分支限界</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">分支限界法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">经典例题详解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%86%E9%85%8D%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">任务分配问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#tsp%E8%B4%A7%E9%83%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">TSP货郎问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">批量处理作业调度问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

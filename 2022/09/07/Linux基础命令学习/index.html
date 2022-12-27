@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Linux常用命令Linux 是一个免费的，多任务，拥有良好界面，支持多种平台的操作系统内核。学习Linux感觉跟学习git的感觉差不多。随便写写~~~">
+  <meta name="description" content="Linux常用命令 Linux 是一个免费的，多任务，拥有良好界面，支持多种平台的操作系统内核。学习Linux感觉跟学习git的感觉差不多。随便写写~~~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基础命令学习">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/09/07/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="Linux常用命令Linux 是一个免费的，多任务，拥有良好界面，支持多种平台的操作系统内核。学习Linux感觉跟学习git的感觉差不多。随便写写~~~">
+<meta property="og:description" content="Linux常用命令 Linux 是一个免费的，多任务，拥有良好界面，支持多种平台的操作系统内核。学习Linux感觉跟学习git的感觉差不多。随便写写~~~">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-07T12:22:05.000Z">
 <meta property="article:modified_time" content="2022-09-07T12:27:06.623Z">
@@ -226,138 +226,163 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><p>Linux 是一个免费的，多任务，拥有良好界面，支持多种平台的操作系统内核。学习Linux感觉跟学习git的感觉差不多。随便写写~~~</p>
+        <h2 id="linux常用命令">Linux常用命令</h2>
+<p>Linux
+是一个免费的，多任务，拥有良好界面，支持多种平台的操作系统内核。学习Linux感觉跟学习git的感觉差不多。随便写写~~~</p>
 <span id="more"></span>
-<h3 id="有关目录的命令"><a href="#有关目录的命令" class="headerlink" title="有关目录的命令"></a>有关目录的命令</h3><h4 id="pwd-命令："><a href="#pwd-命令：" class="headerlink" title="pwd 命令："></a><code>pwd</code> 命令：</h4><ul>
+<h3 id="有关目录的命令">有关目录的命令</h3>
+<h4 id="pwd-命令"><code>pwd</code> 命令：</h4>
+<ul>
 <li>即<code>print working directory</code>，打印工作路径。</li>
 <li>命令的功能是显示当前的工作路径。</li>
 </ul>
-<h4 id="cd命令："><a href="#cd命令：" class="headerlink" title="cd命令："></a><code>cd</code>命令：</h4><ul>
+<h4 id="cd命令"><code>cd</code>命令：</h4>
+<ul>
 <li><code>cd</code>命令用来切换目录，假设在刚才的目录切换到另一目录。</li>
 <li>cd后可加当前目录下的某一文件夹名或是某一具体位置。</li>
 </ul>
-<h4 id="mkdir命令："><a href="#mkdir命令：" class="headerlink" title="mkdir命令："></a><code>mkdir</code>命令：</h4><ul>
-<li><p>mkdir + 目录名。</p>
-</li>
-<li><p>命令用于建立新目录。如：</p>
-</li>
+<h4 id="mkdir命令"><code>mkdir</code>命令：</h4>
+<ul>
+<li><p>mkdir + 目录名。</p></li>
+<li><p>命令用于建立新目录。如：</p></li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> dir1</span></span><br></pre></td></tr></table></figure>
-<h4 id="rmdir-rm-命令："><a href="#rmdir-rm-命令：" class="headerlink" title="rmdir/rm 命令："></a><code>rmdir/rm 命令</code>：</h4><ul>
+<h4 id="rmdirrm-命令"><code>rmdir/rm 命令</code>：</h4>
+<ul>
 <li>rmdir + 目录名 或 rm + 目录名。该命令用于删除目录。</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rmdir</span> dir1    // 删除目录dir1，但dir1目录下必需没有文件存在，否则无法删除</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> –r dir1    // 删除目录dir1及其子目录下所有文件，注意-r参数</span></span><br></pre></td></tr></table></figure>
-<h3 id="有关文件的命令"><a href="#有关文件的命令" class="headerlink" title="有关文件的命令"></a>有关文件的命令</h3><h4 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a><code>touch</code>命令</h4><ul>
+<h3 id="有关文件的命令">有关文件的命令</h3>
+<h4 id="touch命令"><code>touch</code>命令</h4>
+<ul>
 <li>touch XXX: 创建一个文件</li>
 </ul>
-<h4 id="mv-命令："><a href="#mv-命令：" class="headerlink" title="mv:命令："></a><code>mv:</code>命令：</h4><ul>
+<h4 id="mv命令"><code>mv:</code>命令：</h4>
+<ul>
 <li>mv XXX YYY</li>
 <li>将XXX文件移动到YYY，和cp命令一样，XXX和YYY可以是一个路径；重命名也是用这个命令</li>
 </ul>
-<h4 id="ls命令："><a href="#ls命令：" class="headerlink" title="ls命令："></a><code>ls命令</code>：</h4><ul>
+<h4 id="ls命令"><code>ls命令</code>：</h4>
+<ul>
 <li>语法：ls [-atFlgR] [name]，功能是显示指定目录的内容。</li>
-<li>ls: 列出当前目录下所有文件，蓝色的是文件夹，白色的是普通文件，绿色的是可执行文件</li>
+<li>ls:
+列出当前目录下所有文件，蓝色的是文件夹，白色的是普通文件，绿色的是可执行文件</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> –a                 //此命令显示当前工作目录下的所有文件 (参数“a”表示所有文件，“-”号是用来控制参数)</span></span><br></pre></td></tr></table></figure>
 <p>显示时，文件名前带“.”号表示隐含文件。</p>
 <ul>
-<li>各参数代表的含义如下所示：<ul>
+<li>各参数代表的含义如下所示：
+<ul>
 <li>ls 列出当前目录下的文件名</li>
 <li>ls –a 列出以.开始的隐藏文件的所有文件名</li>
 <li>ls –t 依照文件最后修改时间的顺序列出文件名</li>
-<li>ls –F 列出当前目录下的文件名及其类型，以/结尾表示为目录名，以*结尾表示为可执行文件，以@结尾表示为符号链接。</li>
-<li>ls –lg 列出目录下所有文件的权限、所有者、文件大小、修改时间及名称。</li>
+<li>ls –F
+列出当前目录下的文件名及其类型，以/结尾表示为目录名，以*结尾表示为可执行文件，以@结尾表示为符号链接。</li>
+<li>ls –lg
+列出目录下所有文件的权限、所有者、文件大小、修改时间及名称。</li>
 <li>ls –l 同上，并列出文件的所有者工作组名。</li>
 <li>ls –R 显示出目录下以及其所有子目录的文件名（包括了隐藏文件）</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="cat命令："><a href="#cat命令：" class="headerlink" title="cat命令："></a><code>cat命令</code>：</h4><ul>
+<h4 id="cat命令"><code>cat命令</code>：</h4>
+<ul>
 <li>cat命令的功能是显示文件内容，也可用于文件的连接。此命令常用来快速浏览文件</li>
 <li>cat XXX: 展示文件XXX中的内容</li>
 <li>使用方法如：</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">cat.bashrc</span></span><br></pre></td></tr></table></figure>
 <p>浏览文件的其他命令还有more等。</p>
-<h4 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a><code>cp</code>命令</h4><ul>
-<li>语法：cp [options] 源文件 目标文件</li>
-<li>cp XXX YYY: 将XXX文件复制成YYY，XXX和YYY可以是一个路径，比如../dir_c/a.txt，表示上层目录下的dir_c文件夹下的文件a.txt</li>
-<li><p>cp命令的功能是复制文件或目录，可一次复制多个文件，使用的参数如下：</p>
-</li>
-<li><p>-f：强行覆盖已存在的目标文件。</p>
-</li>
-<li>-i：在强行覆盖已存在的目标文件时给出提示。</li>
-<li>-R：整个目录复制。</li>
+<h4 id="cp命令"><code>cp</code>命令</h4>
+<ul>
+<li><p>语法：cp [options] 源文件 目标文件</p></li>
+<li><p>cp XXX YYY:
+将XXX文件复制成YYY，XXX和YYY可以是一个路径，比如../dir_c/a.txt，表示上层目录下的dir_c文件夹下的文件a.txt</p></li>
+<li><p>cp命令的功能是复制文件或目录，可一次复制多个文件，使用的参数如下：</p></li>
+<li><p>-f：强行覆盖已存在的目标文件。</p></li>
+<li><p>-i：在强行覆盖已存在的目标文件时给出提示。</p></li>
+<li><p>-R：整个目录复制。</p></li>
 </ul>
-<h4 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a><code>rm</code>命令</h4><ul>
-<li><p>语法：rm 文件名</p>
-</li>
-<li><p>rm命令用于删除文件。例如：</p>
-</li>
+<h4 id="rm命令"><code>rm</code>命令</h4>
+<ul>
+<li><p>语法：rm 文件名</p></li>
+<li><p>rm命令用于删除文件。例如：</p></li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> file1  // 删除文件名为file1的文件</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> file?   // 删除文件名中有五个字符且前四个字符为file的文件</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> f*    // 删除文件名中以f为字首的所有文件</span> </span><br></pre></td></tr></table></figure>
-<h4 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a><code>file</code>命令</h4><ul>
+<h4 id="file命令"><code>file</code>命令</h4>
+<ul>
 <li>file命令的功能是探测文件和目录的类型。</li>
 </ul>
-<h4 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a><code>find</code>命令</h4><ul>
-<li><p>语法：find [路径] [匹配表达式]</p>
-</li>
-<li><p>find命令的功能是搜索目录中的文件</p>
-</li>
+<h4 id="find命令"><code>find</code>命令</h4>
+<ul>
+<li><p>语法：find [路径] [匹配表达式]</p></li>
+<li><p>find命令的功能是搜索目录中的文件</p></li>
 </ul>
-<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><h4 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a><code>man</code>命令</h4><ul>
+<h3 id="其他命令">其他命令</h3>
+<h4 id="man命令"><code>man</code>命令</h4>
+<ul>
 <li><p>man命令是联机帮助，类似于DOS中的help，例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">man <span class="built_in">ls</span></span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">man <span class="built_in">ls</span></span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a><code>ps</code>命令</h4><ul>
+<h4 id="ps命令"><code>ps</code>命令</h4>
+<ul>
 <li>ps命令可以列出当前运行的进程相关信息。</li>
 </ul>
-<h4 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a><code>kill</code>命令</h4><ul>
-<li>kill命令的功能是中止一个过程，用法是：<ul>
+<h4 id="kill命令"><code>kill</code>命令</h4>
+<ul>
+<li>kill命令的功能是中止一个过程，用法是：
+<ul>
 <li>kill [-s信号] [p] [-a] 进程号</li>
 <li>kill -l [信号]</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="mount、umount命令"><a href="#mount、umount命令" class="headerlink" title="mount、umount命令"></a><code>mount、umount</code>命令</h4><ul>
+<h4 id="mountumount命令"><code>mount、umount</code>命令</h4>
+<ul>
 <li><p>mount、umount命令的功能分别是安装与卸下一个文件系统。用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mount /mnt/floppy		// 此命令将A驱动器安装上</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">umount /mnt/floppy		// 此命令将A驱动器卸下</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">mount /mnt/floppy		// 此命令将A驱动器安装上</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">umount /mnt/floppy		// 此命令将A驱动器卸下</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="passwd命令"><a href="#passwd命令" class="headerlink" title="passwd命令"></a><code>passwd</code>命令</h4><ul>
+<h4 id="passwd命令"><code>passwd</code>命令</h4>
+<ul>
 <li>passwd命令用于更改登录密码。普通用户只能更改自身密码，root可以更改其它用户的密码。</li>
 </ul>
-<h4 id="reboot命令"><a href="#reboot命令" class="headerlink" title="reboot命令"></a><code>reboot</code>命令</h4><ul>
+<h4 id="reboot命令"><code>reboot</code>命令</h4>
+<ul>
 <li>语法：reboot</li>
 <li>reboot命令的功能是重新启动系统。</li>
 </ul>
-<h4 id="su命令"><a href="#su命令" class="headerlink" title="su命令"></a><code>su</code>命令</h4><ul>
+<h4 id="su命令"><code>su</code>命令</h4>
+<ul>
 <li>su命令的功能是使普通用户以root帐号登录</li>
 <li>用法是：键入su命令，Shell要求root密码。键入密码按回车键则进入root帐号。</li>
 </ul>
-<h4 id="date命令"><a href="#date命令" class="headerlink" title="date命令"></a><code>date</code>命令</h4><ul>
+<h4 id="date命令"><code>date</code>命令</h4>
+<ul>
 <li>语法：date</li>
 <li>date命令的功能是打印或设置系统日期和时间，其用法与DOS中的date命令相似。</li>
 </ul>
-<h4 id="clear命令"><a href="#clear命令" class="headerlink" title="clear命令"></a><code>clear</code>命令</h4><ul>
+<h4 id="clear命令"><code>clear</code>命令</h4>
+<ul>
 <li><p>clear命令的功能是清除屏幕，用法如同DOS中的cls命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clear</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clear</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h4 id="ctrl-c"><a href="#ctrl-c" class="headerlink" title="ctrl c:"></a><code>ctrl c</code>:</h4><ul>
+<h3 id="快捷键">快捷键</h3>
+<h4 id="ctrl-c"><code>ctrl c</code>:</h4>
+<ul>
 <li>取消命令，并且换行</li>
 </ul>
-<h4 id="ctrl-u"><a href="#ctrl-u" class="headerlink" title="ctrl u:"></a><code>ctrl u</code>:</h4><ul>
+<h4 id="ctrl-u"><code>ctrl u</code>:</h4>
+<ul>
 <li>清空本行命令</li>
 </ul>
-<h4 id="tab键："><a href="#tab键：" class="headerlink" title="tab键："></a><code>tab键</code>：</h4><ul>
+<h4 id="tab键"><code>tab键</code>：</h4>
+<ul>
 <li>可以补全命令和文件名，如果补全不了快速按两下tab键，可以显示备选选项</li>
 </ul>
-<h4 id="复制文本"><a href="#复制文本" class="headerlink" title="复制文本"></a>复制文本</h4><ul>
+<h4 id="复制文本">复制文本</h4>
+<ul>
 <li>windows/Linux下：Ctrl + insert，Mac下：command + c</li>
 </ul>
-<h4 id="粘贴文本"><a href="#粘贴文本" class="headerlink" title="粘贴文本"></a>粘贴文本</h4><ul>
+<h4 id="粘贴文本">粘贴文本</h4>
+<ul>
 <li>windows/Linux下：Shift + insert，Mac下：command + v</li>
 </ul>
 
@@ -511,7 +536,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E7%9B%AE%E5%BD%95%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">有关目录的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pwd-%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">pwd 命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cd%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">cd命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">mkdir命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmdir-rm-%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.1.4.</span> <span class="nav-text">rmdir&#x2F;rm 命令：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">有关文件的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">touch命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv-%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">mv:命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.2.3.</span> <span class="nav-text">ls命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cat%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.2.4.</span> <span class="nav-text">cat命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.5.</span> <span class="nav-text">cp命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.6.</span> <span class="nav-text">rm命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.7.</span> <span class="nav-text">file命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.8.</span> <span class="nav-text">find命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#man%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.1.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ps%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.2.</span> <span class="nav-text">ps命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.3.</span> <span class="nav-text">kill命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mount%E3%80%81umount%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.4.</span> <span class="nav-text">mount、umount命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#passwd%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.5.</span> <span class="nav-text">passwd命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reboot%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.6.</span> <span class="nav-text">reboot命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#su%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.7.</span> <span class="nav-text">su命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#date%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.8.</span> <span class="nav-text">date命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clear%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.9.</span> <span class="nav-text">clear命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.4.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-c"><span class="nav-number">1.4.1.</span> <span class="nav-text">ctrl c:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-u"><span class="nav-number">1.4.2.</span> <span class="nav-text">ctrl u:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tab%E9%94%AE%EF%BC%9A"><span class="nav-number">1.4.3.</span> <span class="nav-text">tab键：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E6%9C%AC"><span class="nav-number">1.4.4.</span> <span class="nav-text">复制文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%98%E8%B4%B4%E6%96%87%E6%9C%AC"><span class="nav-number">1.4.5.</span> <span class="nav-text">粘贴文本</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E7%9B%AE%E5%BD%95%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">有关目录的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pwd-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">pwd 命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cd%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.</span> <span class="nav-text">cd命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.3.</span> <span class="nav-text">mkdir命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmdirrm-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.4.</span> <span class="nav-text">rmdir&#x2F;rm 命令：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">有关文件的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">touch命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.2.</span> <span class="nav-text">mv:命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.3.</span> <span class="nav-text">ls命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cat%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.4.</span> <span class="nav-text">cat命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.5.</span> <span class="nav-text">cp命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.6.</span> <span class="nav-text">rm命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.7.</span> <span class="nav-text">file命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.8.</span> <span class="nav-text">find命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#man%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.1.</span> <span class="nav-text">man命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ps%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.2.</span> <span class="nav-text">ps命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.3.</span> <span class="nav-text">kill命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mountumount%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.4.</span> <span class="nav-text">mount、umount命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#passwd%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.5.</span> <span class="nav-text">passwd命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reboot%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.6.</span> <span class="nav-text">reboot命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#su%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.7.</span> <span class="nav-text">su命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#date%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.8.</span> <span class="nav-text">date命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clear%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.9.</span> <span class="nav-text">clear命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.4.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-c"><span class="nav-number">1.4.1.</span> <span class="nav-text">ctrl c:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-u"><span class="nav-number">1.4.2.</span> <span class="nav-text">ctrl u:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tab%E9%94%AE"><span class="nav-number">1.4.3.</span> <span class="nav-text">tab键：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E6%9C%AC"><span class="nav-number">1.4.4.</span> <span class="nav-text">复制文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%98%E8%B4%B4%E6%96%87%E6%9C%AC"><span class="nav-number">1.4.5.</span> <span class="nav-text">粘贴文本</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

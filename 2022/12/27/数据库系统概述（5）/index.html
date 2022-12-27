@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、嵌套查询 一个 SELECT - FROM - WHERE 语句称为一个查询块  将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为嵌套查询   1. (NOT) IN 谓词子查询1SELECT - FROM - WHERE 字段 [NOT] IN (子查询); 2. SOME 与 ALL 子查询(1) SOME表达式的值至少与子查询结果中的一个值相比满">
+  <meta name="description" content="一、嵌套查询  一个 SELECT - FROM - WHERE 语句称为一个查询块 将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为嵌套查询">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库系统概述（5）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%885%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="一、嵌套查询 一个 SELECT - FROM - WHERE 语句称为一个查询块  将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为嵌套查询   1. (NOT) IN 谓词子查询1SELECT - FROM - WHERE 字段 [NOT] IN (子查询); 2. SOME 与 ALL 子查询(1) SOME表达式的值至少与子查询结果中的一个值相比满">
+<meta property="og:description" content="一、嵌套查询  一个 SELECT - FROM - WHERE 语句称为一个查询块 将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为嵌套查询">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-27T06:47:11.000Z">
-<meta property="article:modified_time" content="2022-12-27T06:47:47.172Z">
+<meta property="article:modified_time" content="2022-12-27T06:52:58.302Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
 
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:47:11 / 修改时间：14:47:47" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:11+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:47:11 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:47:11+08:00">2022-12-27</time>
             </span>
 
           
@@ -226,25 +226,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、嵌套查询"><a href="#一、嵌套查询" class="headerlink" title="一、嵌套查询"></a>一、嵌套查询</h2><ol>
-<li><p>一个 SELECT - FROM - WHERE 语句称为一个<strong>查询块</strong></p>
-</li>
-<li><p>将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为<strong>嵌套查询</strong></p>
-</li>
+        <h2 id="一嵌套查询">一、嵌套查询</h2>
+<ol type="1">
+<li><p>一个 SELECT - FROM - WHERE
+语句称为一个<strong>查询块</strong></p></li>
+<li><p>将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING
+短语的条件中的查询称为<strong>嵌套查询</strong></p></li>
 </ol>
-<h3 id="1-NOT-IN-谓词子查询"><a href="#1-NOT-IN-谓词子查询" class="headerlink" title="1. (NOT) IN 谓词子查询"></a>1. (NOT) IN 谓词子查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 [NOT] IN (子查询);</span><br></pre></td></tr></table></figure>
-<h3 id="2-SOME-与-ALL-子查询"><a href="#2-SOME-与-ALL-子查询" class="headerlink" title="2. SOME 与 ALL 子查询"></a>2. SOME 与 ALL 子查询</h3><h4 id="1-SOME"><a href="#1-SOME" class="headerlink" title="(1) SOME"></a>(1) SOME</h4><p>表达式的值<u>至少</u>与子查询结果中的<u>一个值</u>相比满足条件。</p>
+<span id="more"></span>
+<h3 id="not-in-谓词子查询">1. (NOT) IN 谓词子查询</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 [NOT] IN (子查询);</span><br></pre></td></tr></table></figure>
+<h3 id="some-与-all-子查询">2. SOME 与 ALL 子查询</h3>
+<h4 id="some">(1) SOME</h4>
+<p>表达式的值<u>至少</u>与子查询结果中的<u>一个值</u>相比满足条件。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 &gt;/&lt;/= SOME (子查询);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：IN 可以等效于 ’= SOME‘。</p>
 </blockquote>
-<h4 id="2-ALL"><a href="#2-ALL" class="headerlink" title="(2) ALL"></a>(2) ALL</h4><p>表达式的值与子查询结果中的<u>所有值</u>相比满足条件。</p>
+<h4 id="all">(2) ALL</h4>
+<p>表达式的值与子查询结果中的<u>所有值</u>相比满足条件。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 &gt;/&lt;/= ALL (子查询);</span><br></pre></td></tr></table></figure>
-<h3 id="3-NOT-EXISTS-子查询"><a href="#3-NOT-EXISTS-子查询" class="headerlink" title="3. (NOT) EXISTS 子查询"></a>3. (NOT) EXISTS 子查询</h3><p>子查询结果中有无元组存在</p>
+<h3 id="not-exists-子查询">3. (NOT) EXISTS 子查询</h3>
+<p>子查询结果中有无元组存在</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT - FROM - WHERE 字段 [NOT] EXISTS (子查询);</span><br></pre></td></tr></table></figure>
-<h2 id="二、集合查询"><a href="#二、集合查询" class="headerlink" title="二、集合查询"></a>二、集合查询</h2><h3 id="1-UNION（并操作）"><a href="#1-UNION（并操作）" class="headerlink" title="1. UNION（并操作）"></a>1. UNION（并操作）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) UNION (查询);</span><br></pre></td></tr></table></figure>
-<h3 id="2-INTERSECT（交操作）"><a href="#2-INTERSECT（交操作）" class="headerlink" title="2. INTERSECT（交操作）"></a>2. INTERSECT（交操作）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) INTERSECT (查询);</span><br></pre></td></tr></table></figure>
-<h3 id="3-EXCEPT（差操作）"><a href="#3-EXCEPT（差操作）" class="headerlink" title="3. EXCEPT（差操作）"></a>3. EXCEPT（差操作）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) EXCEPT (查询);</span><br></pre></td></tr></table></figure>
+<h2 id="二集合查询">二、集合查询</h2>
+<h3 id="union并操作">1. UNION（并操作）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) UNION (查询);</span><br></pre></td></tr></table></figure>
+<h3 id="intersect交操作">2. INTERSECT（交操作）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) INTERSECT (查询);</span><br></pre></td></tr></table></figure>
+<h3 id="except差操作">3. EXCEPT（差操作）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(查询) EXCEPT (查询);</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -396,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">一、嵌套查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NOT-IN-%E8%B0%93%E8%AF%8D%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.1.</span> <span class="nav-text">1. (NOT) IN 谓词子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-SOME-%E4%B8%8E-ALL-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.2.</span> <span class="nav-text">2. SOME 与 ALL 子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SOME"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1) SOME</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ALL"><span class="nav-number">1.2.2.</span> <span class="nav-text">(2) ALL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-NOT-EXISTS-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.3.</span> <span class="nav-text">3. (NOT) EXISTS 子查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9B%86%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.</span> <span class="nav-text">二、集合查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UNION%EF%BC%88%E5%B9%B6%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">1. UNION（并操作）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-INTERSECT%EF%BC%88%E4%BA%A4%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">2. INTERSECT（交操作）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-EXCEPT%EF%BC%88%E5%B7%AE%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">3. EXCEPT（差操作）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">一、嵌套查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#not-in-%E8%B0%93%E8%AF%8D%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.1.</span> <span class="nav-text">1. (NOT) IN 谓词子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-%E4%B8%8E-all-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.2.</span> <span class="nav-text">2. SOME 与 ALL 子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#some"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1) SOME</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#all"><span class="nav-number">1.2.2.</span> <span class="nav-text">(2) ALL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#not-exists-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.3.</span> <span class="nav-text">3. (NOT) EXISTS 子查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%9B%86%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.</span> <span class="nav-text">二、集合查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#union%E5%B9%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">1. UNION（并操作）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intersect%E4%BA%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">2. INTERSECT（交操作）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#except%E5%B7%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">3. EXCEPT（差操作）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

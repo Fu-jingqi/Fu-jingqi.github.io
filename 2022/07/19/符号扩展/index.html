@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="关于整型数据符号扩展的基础知识：一、短数据类型扩展为长数据类型1.要扩展的短数据类型为有符号数进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。 1：char x&#x3D;10001001b; short y&#x3D;x; 则y的值应为11111111 10001001b；2：char x&#x3D;00001001b; short y&#x3D;x; 则y的值应">
+  <meta name="description" content="关于整型数据符号扩展的基础知识： 一、短数据类型扩展为长数据类型 1.要扩展的短数据类型为有符号数 进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。 1：char x&#x3D;10001001b; short y&#x3D;x; 则y的值应为11111111 10001001b； 2：char x&#x3D;00001001b; short y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="符号扩展">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/07/19/%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="关于整型数据符号扩展的基础知识：一、短数据类型扩展为长数据类型1.要扩展的短数据类型为有符号数进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。 1：char x&#x3D;10001001b; short y&#x3D;x; 则y的值应为11111111 10001001b；2：char x&#x3D;00001001b; short y&#x3D;x; 则y的值应">
+<meta property="og:description" content="关于整型数据符号扩展的基础知识： 一、短数据类型扩展为长数据类型 1.要扩展的短数据类型为有符号数 进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。 1：char x&#x3D;10001001b; short y&#x3D;x; 则y的值应为11111111 10001001b； 2：char x&#x3D;00001001b; short y">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-19T02:23:06.000Z">
 <meta property="article:modified_time" content="2022-07-19T02:28:48.024Z">
@@ -235,12 +235,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="关于整型数据符号扩展的基础知识："><a href="#关于整型数据符号扩展的基础知识：" class="headerlink" title="关于整型数据符号扩展的基础知识："></a>关于整型数据符号扩展的基础知识：</h2><h3 id="一、短数据类型扩展为长数据类型"><a href="#一、短数据类型扩展为长数据类型" class="headerlink" title="一、短数据类型扩展为长数据类型"></a>一、短数据类型扩展为长数据类型</h3><h4 id="1-要扩展的短数据类型为有符号数"><a href="#1-要扩展的短数据类型为有符号数" class="headerlink" title="1.要扩展的短数据类型为有符号数"></a>1.要扩展的短数据类型为有符号数</h4><p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
-<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；<br>2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
-<h4 id="2-要扩展的短数据类型为无符号数"><a href="#2-要扩展的短数据类型为无符号数" class="headerlink" title="2.要扩展的短数据类型为无符号数"></a>2.要扩展的短数据类型为无符号数</h4><p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
-<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000 10001001b；<br>2：unsigned char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
-<h3 id="二、长数据类型缩减为短数据类型"><a href="#二、长数据类型缩减为短数据类型" class="headerlink" title="二、长数据类型缩减为短数据类型"></a>二、长数据类型缩减为短数据类型</h3><p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
-<h3 id="三、同一长度的数据类型中有符号数与无符号数的相互转化"><a href="#三、同一长度的数据类型中有符号数与无符号数的相互转化" class="headerlink" title="三、同一长度的数据类型中有符号数与无符号数的相互转化"></a>三、同一长度的数据类型中有符号数与无符号数的相互转化</h3><p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
+        <h2
+id="关于整型数据符号扩展的基础知识">关于整型数据符号扩展的基础知识：</h2>
+<h3
+id="一短数据类型扩展为长数据类型">一、短数据类型扩展为长数据类型</h3>
+<h4
+id="要扩展的短数据类型为有符号数">1.要扩展的短数据类型为有符号数</h4>
+<p>进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变。</p>
+<p>1：char x=10001001b; short y=x; 则y的值应为11111111 10001001b；
+2：char x=00001001b; short y=x; 则y的值应为00000000 00001001b；</p>
+<h4
+id="要扩展的短数据类型为无符号数">2.要扩展的短数据类型为无符号数</h4>
+<p>进行零扩展，即用零来填充长数据类型的高字节位。</p>
+<p>1：unsigned char x=10001001b; short y=x; 则y的值应为00000000
+10001001b； 2：unsigned char x=00001001b; short y=x; 则y的值应为00000000
+00001001b；</p>
+<h3
+id="二长数据类型缩减为短数据类型">二、长数据类型缩减为短数据类型</h3>
+<p>如果长数据类型的高字节全为1或全为0，则会直接截取低字节赋给短数据类型；如果长数据类型的高字节不全为1或不全为0，则转会就会发生错误。</p>
+<h3
+id="三同一长度的数据类型中有符号数与无符号数的相互转化">三、同一长度的数据类型中有符号数与无符号数的相互转化</h3>
+<p>直接将内存中的数据赋给要转化的类型，数值大小则会发生变化。另短类型扩展为长类型时，但短类型与长类型分属有符号数与无符号数时，则先按规则一进行类型的扩展，再按本规则直接将内存中的数值原封不动的赋给对方。</p>
 
     </div>
 
@@ -392,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B4%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">关于整型数据符号扩展的基础知识：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95%E4%B8%BA%E9%95%BF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">一、短数据类型扩展为长数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%A6%81%E6%89%A9%E5%B1%95%E7%9A%84%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.要扩展的短数据类型为有符号数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%A6%81%E6%89%A9%E5%B1%95%E7%9A%84%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.要扩展的短数据类型为无符号数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%95%BF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%BC%A9%E5%87%8F%E4%B8%BA%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">二、长数据类型缩减为短数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%8C%E4%B8%80%E9%95%BF%E5%BA%A6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%AD%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B0%E4%B8%8E%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">三、同一长度的数据类型中有符号数与无符号数的相互转化</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B4%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">关于整型数据符号扩展的基础知识：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%89%A9%E5%B1%95%E4%B8%BA%E9%95%BF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">一、短数据类型扩展为长数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%81%E6%89%A9%E5%B1%95%E7%9A%84%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.要扩展的短数据类型为有符号数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%81%E6%89%A9%E5%B1%95%E7%9A%84%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.要扩展的短数据类型为无符号数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%95%BF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%BC%A9%E5%87%8F%E4%B8%BA%E7%9F%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">二、长数据类型缩减为短数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%90%8C%E4%B8%80%E9%95%BF%E5%BA%A6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%AD%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B0%E4%B8%8E%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">三、同一长度的数据类型中有符号数与无符号数的相互转化</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

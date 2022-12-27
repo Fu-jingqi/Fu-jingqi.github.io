@@ -20,25 +20,17 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="决策树熵 是表示随机变量不确定性的度量 解释：说白了就是物体内部的混乱程度  信息熵信息熵是度量样本集合“纯度”最常用的一种指标  选择哪个属性进行分支划分就很关键  最优划分标准：我们希望每次选择的属性可以让划分后的分支数据更有区分性，使各个分支的数据分类纯度更高，最好是每个分支的样本数据尽可能属于同一类别。  常用的最优属性选取方法有三种：  信息增益：在 ID3 决策树中使用 信息增益率：在">
+  <meta name="description" content="决策树 熵  是表示随机变量不确定性的度量 解释：说白了就是物体内部的混乱程度  信息熵 信息熵是度量样本集合“纯度”最常用的一种指标  选择哪个属性进行分支划分就很关键  最优划分标准：我们希望每次选择的属性可以让划分后的分支数据更有区分性，使各个分支的数据分类纯度更高，最好是每个分支的样本数据尽可能属于同一类别。  常用的最优属性选取方法有三种：  信息增益：在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习之决策树">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/10/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="决策树熵 是表示随机变量不确定性的度量 解释：说白了就是物体内部的混乱程度  信息熵信息熵是度量样本集合“纯度”最常用的一种指标  选择哪个属性进行分支划分就很关键  最优划分标准：我们希望每次选择的属性可以让划分后的分支数据更有区分性，使各个分支的数据分类纯度更高，最好是每个分支的样本数据尽可能属于同一类别。  常用的最优属性选取方法有三种：  信息增益：在 ID3 决策树中使用 信息增益率：在">
+<meta property="og:description" content="决策树 熵  是表示随机变量不确定性的度量 解释：说白了就是物体内部的混乱程度  信息熵 信息熵是度量样本集合“纯度”最常用的一种指标  选择哪个属性进行分支划分就很关键  最优划分标准：我们希望每次选择的属性可以让划分后的分支数据更有区分性，使各个分支的数据分类纯度更高，最好是每个分支的样本数据尽可能属于同一类别。  常用的最优属性选取方法有三种：  信息增益：在">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/09/xYVYyF.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/09/xYVBJx.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/09/xYMUcq.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/09/xYVcOe.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/09/xYZSpV.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/09/xYZVt1.png">
-<meta property="og:image" content="c:%5CUsers%5C10706%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221010173434908.png">
 <meta property="article:published_time" content="2022-10-09T15:15:46.000Z">
 <meta property="article:modified_time" content="2022-10-10T13:35:21.308Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/09/xYVYyF.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/10/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/">
 
@@ -240,12 +232,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><h3 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h3><ul>
+        <h2 id="决策树">决策树</h2>
+<h3 id="熵">熵</h3>
+<ul>
 <li>是表示随机变量不确定性的度量</li>
 <li>解释：说白了就是物体内部的混乱程度</li>
 </ul>
-<h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p>信息熵是度量样本集合“纯度”最常用的一种指标</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYVYyF"><img src="https://s1.ax1x.com/2022/10/09/xYVYyF.png" alt="xYVYyF.png"></a></p>
+<h3 id="信息熵">信息熵</h3>
+<p>信息熵是度量样本集合“纯度”最常用的一种指标</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYVYyF"><img
+src="https://s1.ax1x.com/2022/10/09/xYVYyF.png"
+alt="xYVYyF.png" /></a></p>
 <p>选择哪个属性进行分支划分就很关键</p>
 <blockquote>
 <p>最优划分标准：我们希望每次选择的属性可以让划分后的分支数据更有区分性，使各个分支的数据分类纯度更高，最好是每个分支的样本数据尽可能属于同一类别。</p>
@@ -256,42 +253,77 @@
 <li>信息增益率：在 C4.5 决策树中使用</li>
 <li>基尼系数：在 CART 决策树中使用</li>
 </ul>
-<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYVBJx"><img src="https://s1.ax1x.com/2022/10/09/xYVBJx.png" alt="xYVBJx.png"></a></p>
-<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYMUcq"><img src="https://s1.ax1x.com/2022/10/09/xYMUcq.png" alt="xYMUcq.png"></a></p>
-<h3 id="举例子"><a href="#举例子" class="headerlink" title="举例子"></a>举例子</h3><p>14天的打球情况，数据当中有四个特征：</p>
+<h3 id="信息增益">信息增益</h3>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYVBJx"><img
+src="https://s1.ax1x.com/2022/10/09/xYVBJx.png"
+alt="xYVBJx.png" /></a></p>
+<h3 id="增益率">增益率</h3>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYMUcq"><img
+src="https://s1.ax1x.com/2022/10/09/xYMUcq.png"
+alt="xYMUcq.png" /></a></p>
+<h3 id="举例子">举例子</h3>
+<p>14天的打球情况，数据当中有四个特征：</p>
 <ul>
-<li>x1 ：天气  x2：温度  x3：湿度  x4：风速</li>
+<li>x1 ：天气 x2：温度 x3：湿度 x4：风速</li>
 </ul>
 <p>目标：构造决策树</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYVcOe"><img src="https://s1.ax1x.com/2022/10/09/xYVcOe.png" alt="xYVcOe.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYVcOe"><img
+src="https://s1.ax1x.com/2022/10/09/xYVcOe.png"
+alt="xYVcOe.png" /></a></p>
 <p>在选择决策树的根节点时，我们从四个特征出发。选谁当根节点呢？依据是信息增益。</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYZSpV"><img src="https://s1.ax1x.com/2022/10/09/xYZSpV.png" alt="xYZSpV.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYZSpV"><img
+src="https://s1.ax1x.com/2022/10/09/xYZSpV.png"
+alt="xYZSpV.png" /></a></p>
 <p>首先我们计算一下原始数据的信息熵</p>
 <p>在历史14天的数据中，有9天打球，5天不打，所以此时的熵为：</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYZVt1"><img src="https://s1.ax1x.com/2022/10/09/xYZVt1.png" alt="xYZVt1.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xYZVt1"><img
+src="https://s1.ax1x.com/2022/10/09/xYZVt1.png"
+alt="xYZVt1.png" /></a></p>
 <p>当选择天气为根节点时，我们计算一下它的信息增益。</p>
 <p>当根节点为天气outlook时，根据上图情况，我们能够知道：</p>
 <ul>
-<li>Outlook =  sunny时，熵值为 - (2 / 5) <em> log(2 / 5) - (3 / 5) </em> log(3 / 5) = 0.971</li>
-<li>Outlook =  overcast 时，熵值为 - (5 / 5) <em> log(5 / 5) - (0 / 5) </em> log(0 / 5) = 0</li>
-<li>Outlook =  Rainny时，熵值为 - (3 / 5) <em> log(3 / 5) - (2 / 5) </em> log(2 / 5) = 0.971</li>
+<li>Outlook = sunny时，熵值为 - (2 / 5) * log(2 / 5) - (3 / 5) * log(3 /
+5) = 0.971</li>
+<li>Outlook = overcast 时，熵值为 - (5 / 5) * log(5 / 5) - (0 / 5) *
+log(0 / 5) = 0</li>
+<li>Outlook = Rainny时，熵值为 - (3 / 5) * log(3 / 5) - (2 / 5) * log(2
+/ 5) = 0.971</li>
 </ul>
-<p>根据数据统计，outlook取值分别为sunny,overcast,,rainy的概率分别为5 / 14 ，4 / 14 , 5 / 14</p>
-<p>此时选择其为根节点的熵值为：5 / 14 × 0.971 + 4 / 14 × 0 + 5 / 14 × 0.971 = 0.693</p>
+<p>根据数据统计，outlook取值分别为sunny,overcast,,rainy的概率分别为5 /
+14 ，4 / 14 , 5 / 14</p>
+<p>此时选择其为根节点的熵值为：5 / 14 × 0.971 + 4 / 14 × 0 + 5 / 14 ×
+0.971 = 0.693</p>
 <p>则信息增益为0.940 - 0.693 = 0.247</p>
 <p>同理计算出其他特征的信息增益：0.029；0.152；0.048。选择最大的那个作为此次选择的结点（根节点），再继续通过信息增益找第二个结点。。。。。</p>
 <p>当使用信息增益率来抉择时：</p>
 <p>由上述计算知：</p>
 <p>四个特征的信息增益分别为：0.247；0.029；0.152；0.048</p>
-<p>以Outlook为根，有三个抉择方向sunny、overcast、rainny，在十四天中有5天sunny，4天overcast，5天rainny因此分母 IV 就是 - 5 / 14 × log(5 / 14) - 4 / 14 × log(4 / 14) - 5 / 14 × log(5 / 14)；得到以Outlook为根的信息增益率。</p>
-<h3 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># <span class="string">&quot;天气&quot;</span> 划分举例：</span><br><span class="line"></span><br><span class="line">Gini(X,A) </span><br><span class="line">= p(sunny) * Gini(X|Outlook=sunny) </span><br><span class="line">+ p(rainny) * Gini(X|Outlook=rainny) </span><br><span class="line">+ p(overcast) * Gini(X|Outlook=overcast) </span><br><span class="line">= p(sunny) * &#123;<span class="number">1</span> - [p(可以打球|sunny)^<span class="number">2</span> + p(不可以打球|sunny)^<span class="number">2</span>]&#125;</span><br><span class="line">+ p(rainny) * &#123;<span class="number">1</span> - [p(可以打球|rainny)^<span class="number">2</span> + p(不可以打球|rainny)^<span class="number">2</span>]&#125;</span><br><span class="line">+ p(overcast) * &#123;<span class="number">1</span> - [p(可以打球|overcast)^<span class="number">2</span> + p(不可以打球|overcast)^<span class="number">2</span>]&#125;</span><br><span class="line">= <span class="number">5</span> / <span class="number">14</span> * &#123;<span class="number">1</span> - (<span class="number">2</span> \ <span class="number">5</span>)^<span class="number">2</span> - (<span class="number">3</span> \ <span class="number">5</span>)^<span class="number">2</span>&#125; + <span class="number">4</span> / <span class="number">14</span> * &#123;<span class="number">1</span> - (<span class="number">4</span> \ <span class="number">4</span>)^<span class="number">2</span> - (<span class="number">0</span> \ <span class="number">4</span>)^<span class="number">2</span>&#125; + <span class="number">5</span> / <span class="number">14</span> * &#123;<span class="number">1</span> - (<span class="number">2</span> \ <span class="number">5</span>)^<span class="number">2</span> - (<span class="number">3</span> \ <span class="number">5</span>)^<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>属性 <em>a</em> 的可能取值数目越多 (即 <em>V</em> 越大)，则 IV(<em>a</em>) 的值通常就越大。Gini(<em>D</em>) 越小，数据集 <em>D</em> 的纯度越高</p>
-<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><h3 id="线性函数"><a href="#线性函数" class="headerlink" title="线性函数"></a>线性函数</h3><script type="math/tex; mode=display">
-f(x,W) = Wx + (b)</script><p>给定一个图片，如下图：<br><img src="C:%5CUsers%5C10706%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221010173434908.png" alt="image-20221010173434908"></p>
+<p>以Outlook为根，有三个抉择方向sunny、overcast、rainny，在十四天中有5天sunny，4天overcast，5天rainny因此分母
+IV 就是 - 5 / 14 × log(5 / 14) - 4 / 14 × log(4 / 14) - 5 / 14 × log(5 /
+14)；得到以Outlook为根的信息增益率。</p>
+<h3 id="基尼指数">基尼指数</h3>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># <span class="string">&quot;天气&quot;</span> 划分举例：</span><br><span class="line"></span><br><span class="line">Gini(X,A) </span><br><span class="line">= p(sunny) * Gini(X|Outlook=sunny) </span><br><span class="line">+ p(rainny) * Gini(X|Outlook=rainny) </span><br><span class="line">+ p(overcast) * Gini(X|Outlook=overcast) </span><br><span class="line">= p(sunny) * &#123;<span class="number">1</span> - [p(可以打球|sunny)^<span class="number">2</span> + p(不可以打球|sunny)^<span class="number">2</span>]&#125;</span><br><span class="line">+ p(rainny) * &#123;<span class="number">1</span> - [p(可以打球|rainny)^<span class="number">2</span> + p(不可以打球|rainny)^<span class="number">2</span>]&#125;</span><br><span class="line">+ p(overcast) * &#123;<span class="number">1</span> - [p(可以打球|overcast)^<span class="number">2</span> + p(不可以打球|overcast)^<span class="number">2</span>]&#125;</span><br><span class="line">= <span class="number">5</span> / <span class="number">14</span> * &#123;<span class="number">1</span> - (<span class="number">2</span> \ <span class="number">5</span>)^<span class="number">2</span> - (<span class="number">3</span> \ <span class="number">5</span>)^<span class="number">2</span>&#125; + <span class="number">4</span> / <span class="number">14</span> * &#123;<span class="number">1</span> - (<span class="number">4</span> \ <span class="number">4</span>)^<span class="number">2</span> - (<span class="number">0</span> \ <span class="number">4</span>)^<span class="number">2</span>&#125; + <span class="number">5</span> / <span class="number">14</span> * &#123;<span class="number">1</span> - (<span class="number">2</span> \ <span class="number">5</span>)^<span class="number">2</span> - (<span class="number">3</span> \ <span class="number">5</span>)^<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>属性 <em>a</em> 的可能取值数目越多 (即 <em>V</em> 越大)，则
+IV(<em>a</em>) 的值通常就越大。Gini(<em>D</em>) 越小，数据集 <em>D</em>
+的纯度越高</p>
+<h2 id="神经网络">神经网络</h2>
+<h3 id="线性函数">线性函数</h3>
+<p><span class="math display">\[
+f(x,W) = Wx + (b)
+\]</span></p>
+<p>给定一个图片，如下图： <img
+src="C:%5CUsers%5C10706%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221010173434908.png"
+alt="image-20221010173434908" /></p>
 <p>很显然，这是一个猫的图片。当我们将该图片传给计算机时，它是如何让计算机识别这是猫的图片呢？</p>
-<p>计算机通过分析图片的像素。假设将该图片传给计算机，并给它十种选项（其中有一种为猫），让计算机识别出图片是猫，那么当计算机拿到该图片时，该图片是由32 × 32 × 3 = 3072个像素单元组成，因此当计算机分析每一个像素点时，每个像素点对最终结果的影响是不同的，（比如图片中猫的眼睛范围上的像素和环境的像素）因此每个像素 $x$ 所对应的权重 $w_i$ 也是不同的。其中 $b$ 是偏置参数，用于微调最终结果。权重决定了输入对输出影响的大小。</p>
-<p>在计算改此问题的该函数时，对于上述问题则是：</p>
-<script type="math/tex; mode=display">
+<p>计算机通过分析图片的像素。假设将该图片传给计算机，并给它十种选项（其中有一种为猫），让计算机识别出图片是猫，那么当计算机拿到该图片时，该图片是由32
+× 32 × 3 =
+3072个像素单元组成，因此当计算机分析每一个像素点时，每个像素点对最终结果的影响是不同的，（比如图片中猫的眼睛范围上的像素和环境的像素）因此每个像素
+<span class="math inline">\(x\)</span> 所对应的权重 <span
+class="math inline">\(w_i\)</span> 也是不同的。其中 <span
+class="math inline">\(b\)</span>
+是偏置参数，用于微调最终结果。权重决定了输入对输出影响的大小。</p>
+<p>在计算改此问题的该函数时，对于上述问题则是： <span
+class="math display">\[
 \begin{pmatrix}
 (w_1 :1*3072的行矩阵)×\\
 (w_2 :1*3072的行矩阵)×\\
@@ -310,7 +342,10 @@ x_{3072}
 b_{1} \\
 \vdots \\
 b_{3072}
-\end{pmatrix}_{3072*1}</script><p>$a^{j}_i$：j表示所在层，i表示项号。<br>$θ^{j}$：是由第j+1层的项数作为行，第j层的项数+1作为列的权重矩阵。</p>
+\end{pmatrix}_{3072*1}
+\]</span> <span
+class="math inline">\(a^{j}_i\)</span>：j表示所在层，i表示项号。 <span
+class="math inline">\(θ^{j}\)</span>：是由第j+1层的项数作为行，第j层的项数+1作为列的权重矩阵。</p>
 
     </div>
 

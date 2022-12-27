@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、创建数据库和表1. 创建Datebase123CREATE DATABASE 数据库名称;或者CREATE DATABASE 数据库名称 charset &#x3D; utf8;  注：   关键字大写或小写都可以 如果建表过程中，DEFAULT默认值含有中文，或有需要用到中文的地方，则需要加上charset &#x3D; utf8    2. 创建Table123456789CREATE TABLE 表名(字段">
+  <meta name="description" content="一、创建数据库和表 1. 创建Datebase 123CREATE DATABASE 数据库名称;或者CREATE DATABASE 数据库名称 charset &#x3D; utf8;  注：   关键字大写或小写都可以 如果建表过程中，DEFAULT默认值含有中文，或有需要用到中文的地方，则需要加上charset &#x3D; utf8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库系统概述（3）">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%883%EF%BC%89/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="一、创建数据库和表1. 创建Datebase123CREATE DATABASE 数据库名称;或者CREATE DATABASE 数据库名称 charset &#x3D; utf8;  注：   关键字大写或小写都可以 如果建表过程中，DEFAULT默认值含有中文，或有需要用到中文的地方，则需要加上charset &#x3D; utf8    2. 创建Table123456789CREATE TABLE 表名(字段">
+<meta property="og:description" content="一、创建数据库和表 1. 创建Datebase 123CREATE DATABASE 数据库名称;或者CREATE DATABASE 数据库名称 charset &#x3D; utf8;  注：   关键字大写或小写都可以 如果建表过程中，DEFAULT默认值含有中文，或有需要用到中文的地方，则需要加上charset &#x3D; utf8">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-27T06:46:29.000Z">
-<meta property="article:modified_time" content="2022-12-27T06:47:24.512Z">
+<meta property="article:modified_time" content="2022-12-27T06:52:58.268Z">
 <meta property="article:author" content="MJ.Smi">
 <meta name="twitter:card" content="summary">
 
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-12-27 14:46:29 / 修改时间：14:47:24" itemprop="dateCreated datePublished" datetime="2022-12-27T14:46:29+08:00">2022-12-27</time>
+              <time title="创建时间：2022-12-27 14:46:29 / 修改时间：14:52:58" itemprop="dateCreated datePublished" datetime="2022-12-27T14:46:29+08:00">2022-12-27</time>
             </span>
 
           
@@ -226,209 +226,264 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、创建数据库和表"><a href="#一、创建数据库和表" class="headerlink" title="一、创建数据库和表"></a>一、创建数据库和表</h2><h3 id="1-创建Datebase"><a href="#1-创建Datebase" class="headerlink" title="1. 创建Datebase"></a>1. 创建Datebase</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名称;</span><br><span class="line">或者</span><br><span class="line">CREATE DATABASE 数据库名称 charset = utf8;</span><br></pre></td></tr></table></figure>
+        <h2 id="一创建数据库和表">一、创建数据库和表</h2>
+<h3 id="创建datebase">1. 创建Datebase</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名称;</span><br><span class="line">或者</span><br><span class="line">CREATE DATABASE 数据库名称 charset = utf8;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：</p>
 <blockquote>
-<ol>
+<ol type="1">
 <li>关键字大写或小写都可以</li>
-<li>如果建表过程中，DEFAULT默认值含有中文，或有需要用到中文的地方，则需要加上charset = utf8</li>
+<li>如果建表过程中，DEFAULT默认值含有中文，或有需要用到中文的地方，则需要加上charset
+= utf8</li>
 </ol>
 </blockquote>
 </blockquote>
-<h3 id="2-创建Table"><a href="#2-创建Table" class="headerlink" title="2. 创建Table"></a>2. 创建Table</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(</span><br><span class="line">字段1 数据类型1 列级完整性约束条件1,</span><br><span class="line">字段2 数据类型2 列级完整性约束条件2,</span><br><span class="line">...</span><br><span class="line">表级完整性约束条件1,</span><br><span class="line">表级完整性约束条件2,</span><br><span class="line">...</span><br><span class="line">表级完整性约束条件n</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="创建table">2. 创建Table</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(</span><br><span class="line">字段1 数据类型1 列级完整性约束条件1,</span><br><span class="line">字段2 数据类型2 列级完整性约束条件2,</span><br><span class="line">...</span><br><span class="line">表级完整性约束条件1,</span><br><span class="line">表级完整性约束条件2,</span><br><span class="line">...</span><br><span class="line">表级完整性约束条件n</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：</p>
 <blockquote>
-<ol>
+<ol type="1">
 <li>字段和数据类型是必须写，其余可省略</li>
 <li>最后一行不加逗号</li>
 </ol>
 </blockquote>
 </blockquote>
-<h3 id="3-常用数据类型"><a href="#3-常用数据类型" class="headerlink" title="3. 常用数据类型"></a>3. 常用数据类型</h3><div class="table-container">
+<h3 id="常用数据类型">3. 常用数据类型</h3>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>常用数据类型</th>
 <th>释义</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>char(n)</td>
 <td>固定长度字符串</td>
 </tr>
-<tr>
+<tr class="even">
 <td>varchar(n)</td>
 <td>可变长度字符串</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>tinyint</td>
 <td>小整数值 (-127到-128)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>int</td>
 <td>大整数值 (-2147483648到2147483647)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>data</td>
 <td>日期 (如2003-09-12)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>time</td>
 <td>时间 (如23: 15: 003)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>datatime</td>
 <td>日期和时间</td>
 </tr>
-<tr>
+<tr class="even">
 <td>float</td>
 <td>单精度浮点</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>double</td>
 <td>双精度浮点</td>
 </tr>
 </tbody>
 </table>
-</div>
 <blockquote>
 <p>注：现行商用DBMS的数据类型有时和上面有些差异，但总体上是一致的。</p>
 </blockquote>
-<h2 id="二、表字段的增删改查"><a href="#二、表字段的增删改查" class="headerlink" title="二、表字段的增删改查"></a>二、表字段的增删改查</h2><h3 id="1-添加约束"><a href="#1-添加约束" class="headerlink" title="1. 添加约束"></a>1. 添加约束</h3><h4 id="1-列级完整性约束条件"><a href="#1-列级完整性约束条件" class="headerlink" title="(1) 列级完整性约束条件"></a>(1) 列级完整性约束条件</h4><div class="table-container">
+<h2 id="二表字段的增删改查">二、表字段的增删改查</h2>
+<h3 id="添加约束">1. 添加约束</h3>
+<h4 id="列级完整性约束条件">(1) 列级完整性约束条件</h4>
 <table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>列级完整性约束条件</th>
 <th>对单一列的值进行约束</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td><strong>PRIMARY KEY</strong></td>
 <td>指定该字段为<strong>主键</strong>，可唯一识别对应的元组（<strong>实体完整性约束</strong>）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>NULL / NOT NULL</td>
 <td>指定该字段的值<strong>能为空/不能为空</strong>，若无约束条件，则默认为NULL</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>UNIQUE</td>
 <td>指定该字段的值是<strong>唯一的</strong>，该字段不能重复出现</td>
 </tr>
-<tr>
+<tr class="even">
 <td>AUTO_INCREMENT</td>
 <td>指定该字段的值<strong>自动递增</strong>，一个表中只能是主键可以用它约束</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>DEFAULT 默认值</td>
 <td>为该属性设置<strong>默认值</strong></td>
 </tr>
-<tr>
+<tr class="even">
 <td>CHECK（条件表达式）</td>
 <td>对于输入值进行<strong>条件判断</strong>，满足则进，反之（<strong>用户自定义完整性约束</strong>）</td>
 </tr>
 </tbody>
 </table>
-</div>
 <blockquote>
 <p>注：</p>
 <blockquote>
-<ol>
-<li><p>主键PRIMARY KEY 不用定义是否为空，因为它本是不能为空的。</p>
-</li>
-<li><p>AUTO_INCREMENT 定义后可在表尾加上<code>AUTO_INCREMENT = 数值</code>，以此来定义自增初始值。</p>
-<p>如果不定义，则默认从1开始递增。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(...)AUTO_INCREMENT = 数值;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若DEFAULT后有中文（中文需要用单引号引上），则表尾需加上<code>DEFAULT CHARSET=utf8</code>，加不加因你使用的商用DBMS而异。</p>
-<p><strong>建议建数据库时就直接在句尾定义</strong><code>CHARSET = utf8</code>，否则每建一次表都要定义一次。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(...)DEFAULT CHARSET = utf8;</span><br></pre></td></tr></table></figure>
-</li>
+<ol type="1">
+<li><p>主键PRIMARY KEY 不用定义是否为空，因为它本是不能为空的。</p></li>
+<li><p>AUTO_INCREMENT
+定义后可在表尾加上<code>AUTO_INCREMENT = 数值</code>，以此来定义自增初始值。</p></li>
 </ol>
 </blockquote>
 </blockquote>
-<h4 id="2-表级完整性约束条件"><a href="#2-表级完整性约束条件" class="headerlink" title="(2)表级完整性约束条件"></a>(2)表级完整性约束条件</h4><div class="table-container">
+<pre><code>   &gt; &gt;
+   &gt; &gt;    如果不定义，则默认从1开始递增。
+   &gt; &gt;
+   &gt; &gt;    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(...)AUTO_INCREMENT = 数值;</span><br></pre></td></tr></table></figure></code></pre>
+<blockquote>
+<blockquote>
+<ol start="3" type="1">
+<li>若DEFAULT后有中文（中文需要用单引号引上），则表尾需加上<code>DEFAULT CHARSET=utf8</code>，加不加因你使用的商用DBMS而异。</li>
+</ol>
+</blockquote>
+</blockquote>
+<pre><code>   &gt; &gt;
+   &gt; &gt;    **建议建数据库时就直接在句尾定义**`CHARSET = utf8`，否则每建一次表都要定义一次。
+   &gt; &gt;
+   &gt; &gt;    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(...)DEFAULT CHARSET = utf8;</span><br></pre></td></tr></table></figure></code></pre>
+<h4 id="表级完整性约束条件">(2)表级完整性约束条件</h4>
 <table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 76%" />
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>表级完整性约束条件</th>
 <th>对多列值进行约束</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>PRIMARY KEY</td>
 <td>定义表级<strong>主键</strong>约束（<strong>实体完整性约束</strong>）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>FOREIGN KEY</td>
 <td>指定某字段为<strong>外键</strong>，用于联系其它表（<strong>参照完整性规则</strong>）</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h4 id="3-列级约束"><a href="#3-列级约束" class="headerlink" title="(3)列级约束"></a>(3)列级约束</h4><p>基本定义语法：</p>
+<h4 id="列级约束">(3)列级约束</h4>
+<p>基本定义语法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 [约束条件],</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：[ ] 符号的意思是非必须写的条件</p>
 </blockquote>
-<h4 id="4-表级约束"><a href="#4-表级约束" class="headerlink" title="(4)表级约束"></a>(4)表级约束</h4><p>1) 定义主键语法：</p>
+<h4 id="表级约束">(4)表级约束</h4>
+<ol type="1">
+<li>定义主键语法：</li>
+</ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PRIMARY KEY (字段名1, 字段名2,...), </span><br><span class="line">或者</span><br><span class="line">CONSTRAINT 约束名 PRIMARY KEY (字段名), </span><br><span class="line">或者</span><br><span class="line">CONSTRAINT 约束名 PRIMARY KEY [CLUSTERED](字段名1,字段名2,...),</span><br></pre></td></tr></table></figure>
-<p>2) 定义外键语法：</p>
+<ol start="2" type="1">
+<li>定义外键语法：</li>
+</ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FOREIGN KEY(字段名) REFERENCES 引用表名(字段名),</span><br><span class="line">或者</span><br><span class="line">CONSTRAINT 约束名 FOREIGN KEY(字段名) REFERENCES 引用表名(字段名),</span><br></pre></td></tr></table></figure>
-<p>3) 定义CHECK约束语法：</p>
+<ol start="3" type="1">
+<li>定义CHECK约束语法：</li>
+</ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CHECK(判断条件),</span><br><span class="line">或者</span><br><span class="line">CONSTRAINT 约束名 CHECK(判断条件),</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：</p>
 <blockquote>
-<ol>
+<ol type="1">
 <li>除了此3种约束条件可用表级约束，其余的只能用列级约束</li>
 <li>建议用第一种，简单好记</li>
 </ol>
 </blockquote>
 </blockquote>
-<h3 id="2-删除Table"><a href="#2-删除Table" class="headerlink" title="2. 删除Table"></a>2. 删除Table</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS 表名;</span><br></pre></td></tr></table></figure>
-<h3 id="3-修改Table"><a href="#3-修改Table" class="headerlink" title="3. 修改Table"></a>3. 修改Table</h3><h4 id="1-1-添加-字段"><a href="#1-1-添加-字段" class="headerlink" title="(1.1) 添加 字段"></a>(1.1) 添加 字段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD 新字段名 数据类型 [约束条件] [FIRST | AFTER 已存在字段名]; </span><br></pre></td></tr></table></figure>
+<h3 id="删除table">2. 删除Table</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS 表名;</span><br></pre></td></tr></table></figure>
+<h3 id="修改table">3. 修改Table</h3>
+<h4 id="添加-字段">(1.1) 添加 字段</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD 新字段名 数据类型 [约束条件] [FIRST | AFTER 已存在字段名]; </span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：</p>
 <blockquote>
-<ol>
-<li>[FIRST] 表示在第一列添加，[AFTER 已存在字段名] 表示在已知字段后添加</li>
+<ol type="1">
+<li>[FIRST] 表示在第一列添加，[AFTER 已存在字段名]
+表示在已知字段后添加</li>
 <li>不写 [FIRST|AFTER]，则默认把新字段添加到最后一列</li>
-<li>| 符号表示选择其中一个</li>
+<li><div class="line-block">符号表示选择其中一个</div></li>
 </ol>
 </blockquote>
 </blockquote>
-<h4 id="1-2-添加-完整性约束"><a href="#1-2-添加-完整性约束" class="headerlink" title="(1.2) 添加 完整性约束"></a>(1.2) 添加 完整性约束</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD CONSTRAINT 限制名 限制类型(字段名/限制条件); </span><br></pre></td></tr></table></figure>
-<h4 id="2-1-修改-表名"><a href="#2-1-修改-表名" class="headerlink" title="(2.1) 修改 表名"></a>(2.1) 修改 表名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 旧表名 RENAME 新表名;</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-修改-字段名"><a href="#2-2-修改-字段名" class="headerlink" title="(2.2) 修改 字段名"></a>(2.2) 修改 字段名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 CHANGE 旧字段名 新字段名 新数据类型;</span><br></pre></td></tr></table></figure>
-<h4 id="2-3-修改-字段排列位置"><a href="#2-3-修改-字段排列位置" class="headerlink" title="(2.3) 修改 字段排列位置"></a>(2.3) 修改 字段排列位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 MODIFY 字段1 数据类型 FIRST | AFTER 字段2;</span><br></pre></td></tr></table></figure>
-<h4 id="2-4-修改-数据类型"><a href="#2-4-修改-数据类型" class="headerlink" title="(2.4) 修改 数据类型"></a>(2.4) 修改 数据类型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 MODIFY 字段名 新数据类型;</span><br></pre></td></tr></table></figure>
-<h4 id="3-1-删除-字段"><a href="#3-1-删除-字段" class="headerlink" title="(3.1) 删除 字段"></a>(3.1) 删除 字段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 DROP 字段名; </span><br></pre></td></tr></table></figure>
-<h4 id="3-2-删除-表的外键约束"><a href="#3-2-删除-表的外键约束" class="headerlink" title="(3.2) 删除 表的外键约束"></a>(3.2) 删除 表的外键约束</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 DROP FOREIGN KEY 外键约束名;</span><br></pre></td></tr></table></figure>
+<h4 id="添加-完整性约束">(1.2) 添加 完整性约束</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD CONSTRAINT 限制名 限制类型(字段名/限制条件); </span><br></pre></td></tr></table></figure>
+<h4 id="修改-表名">(2.1) 修改 表名</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 旧表名 RENAME 新表名;</span><br></pre></td></tr></table></figure>
+<h4 id="修改-字段名">(2.2) 修改 字段名</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 CHANGE 旧字段名 新字段名 新数据类型;</span><br></pre></td></tr></table></figure>
+<h4 id="修改-字段排列位置">(2.3) 修改 字段排列位置</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 MODIFY 字段1 数据类型 FIRST | AFTER 字段2;</span><br></pre></td></tr></table></figure>
+<h4 id="修改-数据类型">(2.4) 修改 数据类型</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 MODIFY 字段名 新数据类型;</span><br></pre></td></tr></table></figure>
+<h4 id="删除-字段">(3.1) 删除 字段</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 DROP 字段名; </span><br></pre></td></tr></table></figure>
+<h4 id="删除-表的外键约束">(3.2) 删除 表的外键约束</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 DROP FOREIGN KEY 外键约束名;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：主键不能删除</p>
 </blockquote>
-<h3 id="4-查看Table"><a href="#4-查看Table" class="headerlink" title="4. 查看Table"></a>4. 查看Table</h3><h4 id="1-查看表基本组成"><a href="#1-查看表基本组成" class="headerlink" title="(1) 查看表基本组成"></a>(1) 查看表基本组成</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC / DESCRIBE 表名;</span><br></pre></td></tr></table></figure>
-<pre><code>    `DESC / DESCRIBE`可以查看表的字段信息，包括：字段名、字段数据类型、是否为主键、是否有默认值等。
-</code></pre><h4 id="2-查看表结构信息"><a href="#2-查看表结构信息" class="headerlink" title="(2) 查看表结构信息"></a>(2) 查看表结构信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE 表名;</span><br></pre></td></tr></table></figure>
-<pre><code>    不仅仅可以返回给我们建表时所写的详细语句，而且还可以查看存储引擎和字符编码。
-</code></pre><h2 id="三、数据的增删改查"><a href="#三、数据的增删改查" class="headerlink" title="三、数据的增删改查"></a>三、数据的增删改查</h2><h3 id="1-添加数据（插入数据）"><a href="#1-添加数据（插入数据）" class="headerlink" title="1. 添加数据（插入数据）"></a>1. 添加数据（插入数据）</h3><h4 id="1-为表添加单条数据"><a href="#1-为表添加单条数据" class="headerlink" title="(1) 为表添加单条数据"></a>(1) 为表添加<u>单条</u>数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名 [(字段名1, 字段名2...)]</span><br><span class="line">VALUES (值1, 值2...);</span><br></pre></td></tr></table></figure>
+<h3 id="查看table">4. 查看Table</h3>
+<h4 id="查看表基本组成">(1) 查看表基本组成</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC / DESCRIBE 表名;</span><br></pre></td></tr></table></figure>
+<pre><code>    `DESC / DESCRIBE`可以查看表的字段信息，包括：字段名、字段数据类型、是否为主键、是否有默认值等。</code></pre>
+<h4 id="查看表结构信息">(2) 查看表结构信息</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE 表名;</span><br></pre></td></tr></table></figure>
+<pre><code>    不仅仅可以返回给我们建表时所写的详细语句，而且还可以查看存储引擎和字符编码。</code></pre>
+<h2 id="三数据的增删改查">三、数据的增删改查</h2>
+<h3 id="添加数据插入数据">1. 添加数据（插入数据）</h3>
+<h4 id="为表添加单条数据">(1) 为表添加<u>单条</u>数据</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名 [(字段名1, 字段名2...)]</span><br><span class="line">VALUES (值1, 值2...);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：若字段名省略，则须与存储的字段名顺序一致；若未省略，则须与语句中字段名顺序一致</p>
 </blockquote>
-<h4 id="2-为表添加多条数据"><a href="#2-为表添加多条数据" class="headerlink" title="(2) 为表添加多条数据"></a>(2) 为表添加<u>多条</u>数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名 [(字段名1, 字段名2...)] </span><br><span class="line">VALUES (内容1), (内容2), (内容3);</span><br></pre></td></tr></table></figure>
-<h3 id="2-删除数据"><a href="#2-删除数据" class="headerlink" title="2. 删除数据"></a>2. 删除数据</h3><h4 id="1-删除表的指定行"><a href="#1-删除表的指定行" class="headerlink" title="(1) 删除表的指定行"></a>(1) 删除表的指定行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名 WHERE 条件语句; </span><br></pre></td></tr></table></figure>
-<h4 id="2-删除表中所有行"><a href="#2-删除表中所有行" class="headerlink" title="(2) 删除表中所有行"></a>(2) 删除表中所有行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名;</span><br></pre></td></tr></table></figure>
-<h3 id="3-修改数据（更新数据）"><a href="#3-修改数据（更新数据）" class="headerlink" title="3. 修改数据（更新数据）"></a>3. 修改数据（更新数据）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名 SET 字段名1 = 内容1, 字段名2 = 内容2,... WHERE 过滤条件</span><br></pre></td></tr></table></figure>
-<h3 id="4-查看数据"><a href="#4-查看数据" class="headerlink" title="4. 查看数据"></a>4. 查看数据</h3><blockquote>
+<h4 id="为表添加多条数据">(2) 为表添加<u>多条</u>数据</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名 [(字段名1, 字段名2...)] </span><br><span class="line">VALUES (内容1), (内容2), (内容3);</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据">2. 删除数据</h3>
+<h4 id="删除表的指定行">(1) 删除表的指定行</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名 WHERE 条件语句; </span><br></pre></td></tr></table></figure>
+<h4 id="删除表中所有行">(2) 删除表中所有行</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名;</span><br></pre></td></tr></table></figure>
+<h3 id="修改数据更新数据">3. 修改数据（更新数据）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名 SET 字段名1 = 内容1, 字段名2 = 内容2,... WHERE 过滤条件</span><br></pre></td></tr></table></figure>
+<h3 id="查看数据">4. 查看数据</h3>
+<blockquote>
 <p>略，其它章节详细说明</p>
 </blockquote>
-<h2 id="本章补充与小结"><a href="#本章补充与小结" class="headerlink" title="本章补充与小结"></a>本章补充与小结</h2><h3 id="按位与运算"><a href="#按位与运算" class="headerlink" title="按位与运算"></a>按位与运算</h3><p><code>例子：3 &amp; 5 = 1</code></p>
-<p>解读：相当于二进制 011 和 101相加，两个二进制位都为1则为1，否则为0，所以结果是 001（十进制为1）。</p>
+<h2 id="本章补充与小结">本章补充与小结</h2>
+<h3 id="按位与运算">按位与运算</h3>
+<p><code>例子：3 &amp; 5 = 1</code></p>
+<p>解读：相当于二进制 011 和
+101相加，两个二进制位都为1则为1，否则为0，所以结果是
+001（十进制为1）。</p>
 
     </div>
 
@@ -580,7 +635,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">一、创建数据库和表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BADatebase"><span class="nav-number">1.1.</span> <span class="nav-text">1. 创建Datebase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BATable"><span class="nav-number">1.2.</span> <span class="nav-text">2. 创建Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 常用数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%A1%A8%E5%AD%97%E6%AE%B5%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">2.</span> <span class="nav-text">二、表字段的增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.1.</span> <span class="nav-text">1. 添加约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%97%E7%BA%A7%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">(1) 列级完整性约束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%A1%A8%E7%BA%A7%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">(2)表级完整性约束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%97%E7%BA%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.1.3.</span> <span class="nav-text">(3)列级约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%A1%A8%E7%BA%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.1.4.</span> <span class="nav-text">(4)表级约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%A0%E9%99%A4Table"><span class="nav-number">2.2.</span> <span class="nav-text">2. 删除Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BF%AE%E6%94%B9Table"><span class="nav-number">2.3.</span> <span class="nav-text">3. 修改Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%B7%BB%E5%8A%A0-%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.1.</span> <span class="nav-text">(1.1) 添加 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%B7%BB%E5%8A%A0-%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.2.</span> <span class="nav-text">(1.2) 添加 完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%BF%AE%E6%94%B9-%E8%A1%A8%E5%90%8D"><span class="nav-number">2.3.3.</span> <span class="nav-text">(2.1) 修改 表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E4%BF%AE%E6%94%B9-%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="nav-number">2.3.4.</span> <span class="nav-text">(2.2) 修改 字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E4%BF%AE%E6%94%B9-%E5%AD%97%E6%AE%B5%E6%8E%92%E5%88%97%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.3.5.</span> <span class="nav-text">(2.3) 修改 字段排列位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E4%BF%AE%E6%94%B9-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.6.</span> <span class="nav-text">(2.4) 修改 数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E5%88%A0%E9%99%A4-%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.7.</span> <span class="nav-text">(3.1) 删除 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E5%88%A0%E9%99%A4-%E8%A1%A8%E7%9A%84%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.8.</span> <span class="nav-text">(3.2) 删除 表的外键约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9F%A5%E7%9C%8BTable"><span class="nav-number">2.4.</span> <span class="nav-text">4. 查看Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E8%A1%A8%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="nav-number">2.4.1.</span> <span class="nav-text">(1) 查看表基本组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.4.2.</span> <span class="nav-text">(2) 查看表结构信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">3.</span> <span class="nav-text">三、数据的增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%EF%BC%88%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">1. 添加数据（插入数据）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%8D%95%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text">(1) 为表添加单条数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%A4%9A%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">(2) 为表添加多条数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">3.2.</span> <span class="nav-text">2. 删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%A0%E9%99%A4%E8%A1%A8%E7%9A%84%E6%8C%87%E5%AE%9A%E8%A1%8C"><span class="nav-number">3.2.1.</span> <span class="nav-text">(1) 删除表的指定行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%AD%E6%89%80%E6%9C%89%E8%A1%8C"><span class="nav-number">3.2.2.</span> <span class="nav-text">(2) 删除表中所有行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%EF%BC%88%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">3. 修改数据（更新数据）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">3.4.</span> <span class="nav-text">4. 查看数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E8%A1%A5%E5%85%85%E4%B8%8E%E5%B0%8F%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">本章补充与小结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E%E8%BF%90%E7%AE%97"><span class="nav-number">4.1.</span> <span class="nav-text">按位与运算</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">一、创建数据库和表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAdatebase"><span class="nav-number">1.1.</span> <span class="nav-text">1. 创建Datebase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAtable"><span class="nav-number">1.2.</span> <span class="nav-text">2. 创建Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3. 常用数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%A1%A8%E5%AD%97%E6%AE%B5%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">2.</span> <span class="nav-text">二、表字段的增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.1.</span> <span class="nav-text">1. 添加约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E7%BA%A7%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">(1) 列级完整性约束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%BA%A7%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">(2)表级完整性约束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E7%BA%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.1.3.</span> <span class="nav-text">(3)列级约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%BA%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.1.4.</span> <span class="nav-text">(4)表级约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4table"><span class="nav-number">2.2.</span> <span class="nav-text">2. 删除Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9table"><span class="nav-number">2.3.</span> <span class="nav-text">3. 修改Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.1.</span> <span class="nav-text">(1.1) 添加 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.2.</span> <span class="nav-text">(1.2) 添加 完整性约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-%E8%A1%A8%E5%90%8D"><span class="nav-number">2.3.3.</span> <span class="nav-text">(2.1) 修改 表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="nav-number">2.3.4.</span> <span class="nav-text">(2.2) 修改 字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-%E5%AD%97%E6%AE%B5%E6%8E%92%E5%88%97%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.3.5.</span> <span class="nav-text">(2.3) 修改 字段排列位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.6.</span> <span class="nav-text">(2.4) 修改 数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-%E5%AD%97%E6%AE%B5"><span class="nav-number">2.3.7.</span> <span class="nav-text">(3.1) 删除 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-%E8%A1%A8%E7%9A%84%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.8.</span> <span class="nav-text">(3.2) 删除 表的外键约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Btable"><span class="nav-number">2.4.</span> <span class="nav-text">4. 查看Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="nav-number">2.4.1.</span> <span class="nav-text">(1) 查看表基本组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.4.2.</span> <span class="nav-text">(2) 查看表结构信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">3.</span> <span class="nav-text">三、数据的增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">1. 添加数据（插入数据）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%8D%95%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text">(1) 为表添加单条数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E8%A1%A8%E6%B7%BB%E5%8A%A0%E5%A4%9A%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">(2) 为表添加多条数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">3.2.</span> <span class="nav-text">2. 删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8%E7%9A%84%E6%8C%87%E5%AE%9A%E8%A1%8C"><span class="nav-number">3.2.1.</span> <span class="nav-text">(1) 删除表的指定行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%AD%E6%89%80%E6%9C%89%E8%A1%8C"><span class="nav-number">3.2.2.</span> <span class="nav-text">(2) 删除表中所有行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">3.3.</span> <span class="nav-text">3. 修改数据（更新数据）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">3.4.</span> <span class="nav-text">4. 查看数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E8%A1%A5%E5%85%85%E4%B8%8E%E5%B0%8F%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">本章补充与小结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E%E8%BF%90%E7%AE%97"><span class="nav-number">4.1.</span> <span class="nav-text">按位与运算</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

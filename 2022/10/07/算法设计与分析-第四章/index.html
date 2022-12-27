@@ -20,22 +20,18 @@
     var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="大二下学期课程—算法设计与分析复习第四章针对老师的ppt精简内容中的知识点，仅具参考">
+  <meta name="description" content="大二下学期课程--算法设计与分析复习第四章 针对老师的ppt精简内容中的知识点，仅具参考">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法设计与分析--第四章">
 <meta property="og:url" content="https://fu-jingqi.github.io/2022/10/07/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E5%9B%9B%E7%AB%A0/index.html">
 <meta property="og:site_name" content="MJ.Smi">
-<meta property="og:description" content="大二下学期课程—算法设计与分析复习第四章针对老师的ppt精简内容中的知识点，仅具参考">
+<meta property="og:description" content="大二下学期课程--算法设计与分析复习第四章 针对老师的ppt精简内容中的知识点，仅具参考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/07/x3zVEQ.md.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/07/x3b4zD.md.png">
-<meta property="og:image" content="https://s1.ax1x.com/2022/10/07/x3bzQg.md.png">
 <meta property="article:published_time" content="2022-10-07T06:04:57.000Z">
 <meta property="article:modified_time" content="2022-10-09T11:24:40.109Z">
 <meta property="article:author" content="MJ.Smi">
 <meta property="article:tag" content="算法设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/07/x3zVEQ.md.png">
 
 <link rel="canonical" href="https://fu-jingqi.github.io/2022/10/07/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90-%E7%AC%AC%E5%9B%9B%E7%AB%A0/">
 
@@ -237,69 +233,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="大二下学期课程—算法设计与分析复习第四章"><a href="#大二下学期课程—算法设计与分析复习第四章" class="headerlink" title="大二下学期课程—算法设计与分析复习第四章"></a>大二下学期课程—算法设计与分析复习第四章</h2><p>针对老师的ppt精简内容中的知识点，仅具参考<br><span id="more"></span></p>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>贪心法与动态规划算法不太一样：</p>
+        <h2
+id="大二下学期课程--算法设计与分析复习第四章">大二下学期课程--算法设计与分析复习第四章</h2>
+<p>针对老师的ppt精简内容中的知识点，仅具参考 <span id="more"></span></p>
+<h4 id="概述">概述</h4>
+<p>贪心法与动态规划算法不太一样：</p>
 <ul>
 <li>动态规划算法在某一步决定优化函数的最大或最小值时，需要<strong>考虑到它的所有子问题的优化函数值</strong>，然后从中选出最优的结果；</li>
 <li>而贪心算法每步判断时<strong>不考虑子问题</strong>的计算结果，而是根据当时情况采取某种<strong>“只顾眼前”</strong>的贪心策略来进行取舍。</li>
 <li>贪心算法的“短视的”贪心策略有时只会使局部最优，而不是全局最优，因此选择贪心算法时，要证明该策略的正确性至关重要。</li>
 </ul>
-<h4 id="典例一-活动安排问题"><a href="#典例一-活动安排问题" class="headerlink" title="典例一  活动安排问题"></a>典例一  活动安排问题</h4><p><a href="https://fu-jingqi.github.io/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">这里</a></p>
+<h4 id="典例一-活动安排问题">典例一 活动安排问题</h4>
+<p><a
+href="https://fu-jingqi.github.io/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">这里</a></p>
 <p>贪心法策略：按活动结束时间进行从小到大排序</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3zVEQ"><img src="https://s1.ax1x.com/2022/10/07/x3zVEQ.md.png" alt="x3zVEQ.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3zVEQ"><img
+src="https://s1.ax1x.com/2022/10/07/x3zVEQ.md.png"
+alt="x3zVEQ.md.png" /></a></p>
 <p>时间复杂度：O(nlogn)</p>
-<h4 id="典例二-最小延迟调度问题"><a href="#典例二-最小延迟调度问题" class="headerlink" title="典例二  最小延迟调度问题"></a>典例二  最小延迟调度问题</h4><p><a href="https://fu-jingqi.github.io/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">这里</a></p>
+<h4 id="典例二-最小延迟调度问题">典例二 最小延迟调度问题</h4>
+<p><a
+href="https://fu-jingqi.github.io/2022/04/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">这里</a></p>
 <p>时间复杂度：O(nlogn)</p>
-<h4 id="典例三-最优装载问题"><a href="#典例三-最优装载问题" class="headerlink" title="典例三  最优装载问题"></a>典例三  最优装载问题</h4><p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3b4zD"><img src="https://s1.ax1x.com/2022/10/07/x3b4zD.md.png" alt="x3b4zD.md.png"></a></p>
+<h4 id="典例三-最优装载问题">典例三 最优装载问题</h4>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3b4zD"><img
+src="https://s1.ax1x.com/2022/10/07/x3b4zD.md.png"
+alt="x3b4zD.md.png" /></a></p>
 <p>贪心法策略：轻者先装</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3bzQg"><img src="https://s1.ax1x.com/2022/10/07/x3bzQg.md.png" alt="x3bzQg.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x3bzQg"><img
+src="https://s1.ax1x.com/2022/10/07/x3bzQg.md.png"
+alt="x3bzQg.md.png" /></a></p>
 <p>时间复杂度：O(nlogn)</p>
-<h4 id="贪心算法正确性的证明"><a href="#贪心算法正确性的证明" class="headerlink" title="贪心算法正确性的证明"></a>贪心算法正确性的证明</h4><h5 id="方法一-数学归纳法"><a href="#方法一-数学归纳法" class="headerlink" title="方法一  数学归纳法"></a>方法一  数学归纳法</h5><ul>
-<li>叙述一个描述算法正确性命题P(n),n为算法步数或者问题规模</li>
-<li>归纳基础：P(1)或P(n0)为真，n0为某个自然数</li>
-<li>归纳步骤：P(k)-&gt;p(k+1)——第一数学归纳法<h5 id="方法二-交换论证的法"><a href="#方法二-交换论证的法" class="headerlink" title="方法二  交换论证的法"></a>方法二  交换论证的法</h5></li>
-</ul>
+<h4 id="贪心算法正确性的证明">贪心算法正确性的证明</h4>
+<h5 id="方法一-数学归纳法">方法一 数学归纳法</h5>
 <ul>
-<li>交换论证的思想：从任意一个最优解出发，经过不断用新的成分替换解中的原有成分来改变这个解.</li>
-<li>在替换时要注意：<ul>
+<li><p>叙述一个描述算法正确性命题P(n),n为算法步数或者问题规模</p></li>
+<li><p>归纳基础：P(1)或P(n0)为真，n0为某个自然数</p></li>
+<li><p>归纳步骤：P(k)-&gt;p(k+1)----第一数学归纳法 ##### 方法二
+交换论证的法</p></li>
+<li><p>交换论证的思想：从任意一个最优解出发，经过不断用新的成分替换解中的原有成分来改变这个解.</p></li>
+<li><p>在替换时要注意：</p>
+<ul>
 <li>(1)替换的目的是将它逐步改变成贪心法 的解；</li>
 <li>(2)在替换中保证解的优化函数值不变坏；</li>
-<li>(3)替换的步骤是有限的 通过有限步替换，把这个最优解改变成贪心法的解.由于替换中保证了贪心解的优化函数值至少和这个最优解的优化函数值一样好，从而证明了贪心法的解也是最优解</li>
+<li>(3)替换的步骤是有限的
+通过有限步替换，把这个最优解改变成贪心法的解.由于替换中保证了贪心解的优化函数值至少和这个最优解的优化函数值一样好，从而证明了贪心法的解也是最优解</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="贪心策略两基本要素："><a href="#贪心策略两基本要素：" class="headerlink" title="贪心策略两基本要素："></a>贪心策略两基本要素：</h4><ul>
+<h4 id="贪心策略两基本要素">贪心策略两基本要素：</h4>
+<ul>
 <li>最优子结构</li>
 <li>贪心选择</li>
 </ul>
 <blockquote>
-<p>什么是最优子结构? </p>
-<p>当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质。问题的最优子结构性质是该问题可用动态规划算法或贪心算法求解的关键特征。 </p>
+<p>什么是最优子结构?</p>
+<p>当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质。问题的最优子结构性质是该问题可用动态规划算法或贪心算法求解的关键特征。</p>
 </blockquote>
-<h4 id="典例四-霍夫码编码"><a href="#典例四-霍夫码编码" class="headerlink" title="典例四  霍夫码编码"></a>典例四  霍夫码编码</h4><h4 id="典例五-最小生成树"><a href="#典例五-最小生成树" class="headerlink" title="典例五  最小生成树"></a>典例五  最小生成树</h4><ul>
-<li>掌握克鲁斯卡尔算法<ul>
+<h4 id="典例四-霍夫码编码">典例四 霍夫码编码</h4>
+<h4 id="典例五-最小生成树">典例五 最小生成树</h4>
+<ul>
+<li>掌握克鲁斯卡尔算法
+<ul>
 <li>算法时间复杂度为O(m*logn),其中n为顶点个数，m为边个数</li>
-</ul>
-</li>
-<li>掌握Prim算法<ul>
+</ul></li>
+<li>掌握Prim算法
+<ul>
 <li>算法时间复杂度为O(n^2),其中n为顶点个数</li>
-</ul>
-</li>
-<li>算法的比较<ul>
-<li>如果图中含有较多的边，比如m=0(n2),使用Kruskal算法的运行时间是O(n2logn),这时Prim算法效率高一些.但是如果是稀疏图，m=0(n),那么使用Kruskal算法的运行时间是O(nlogn),比Prim算法效率更高.<h4 id="典例六-最短路径"><a href="#典例六-最短路径" class="headerlink" title="典例六  最短路径"></a>典例六  最短路径</h4></li>
-</ul>
-</li>
-<li>掌握Djakarta算法<ul>
+</ul></li>
+<li>算法的比较
+<ul>
+<li>如果图中含有较多的边，比如m=0(n2),使用Kruskal算法的运行时间是O(n2logn),这时Prim算法效率高一些.但是如果是稀疏图，m=0(n),那么使用Kruskal算法的运行时间是O(nlogn),比Prim算法效率更高.
+#### 典例六 最短路径</li>
+</ul></li>
+<li>掌握Djakarta算法
+<ul>
 <li>算法时间复杂度为O(n^2),其中n为顶点个数</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="贪心法小结"><a href="#贪心法小结" class="headerlink" title="贪心法小结"></a>贪心法小结</h4><ol>
-<li>适用于优化问题，求解过程是多步判断.判断的依据是局部最优策略，使目标值达到最大（或最小），与前面的子问题计算结果无关 </li>
-<li>局部最优策略的选择是算法正确性的关键. </li>
-<li>正确性证明方法：数学归纳法、交换论证.使用数学归纳法主要通过对算法步数或者问题规模进行归纳.如果要证明贪心策略是错误的，只需举出反例. </li>
-<li>自顶向下求解，通过选择将问题归约为小的子问题. </li>
-<li>如果贪心法得不到最优解，可以对问题的输入进行分析或者估计算法的近似比. </li>
+<h4 id="贪心法小结">贪心法小结</h4>
+<ol type="1">
+<li>适用于优化问题，求解过程是多步判断.判断的依据是局部最优策略，使目标值达到最大（或最小），与前面的子问题计算结果无关</li>
+<li>局部最优策略的选择是算法正确性的关键.</li>
+<li>正确性证明方法：数学归纳法、交换论证.使用数学归纳法主要通过对算法步数或者问题规模进行归纳.如果要证明贪心策略是错误的，只需举出反例.</li>
+<li>自顶向下求解，通过选择将问题归约为小的子问题.</li>
+<li>如果贪心法得不到最优解，可以对问题的输入进行分析或者估计算法的近似比.</li>
 <li>如果对原始数据排序之后，贪心法往往是一轮处理，时间复杂度和空间复杂度低.</li>
 </ol>
 
@@ -456,7 +473,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E4%BA%8C%E4%B8%8B%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E2%80%94%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%A4%8D%E4%B9%A0%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">大二下学期课程—算法设计与分析复习第四章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%80-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.2.</span> <span class="nav-text">典例一  活动安排问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%BA%8C-%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.3.</span> <span class="nav-text">典例二  最小延迟调度问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%89-%E6%9C%80%E4%BC%98%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.4.</span> <span class="nav-text">典例三  最优装载问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%AD%A3%E7%A1%AE%E6%80%A7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="nav-number">1.0.5.</span> <span class="nav-text">贪心算法正确性的证明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">方法一  数学归纳法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E4%BA%A4%E6%8D%A2%E8%AE%BA%E8%AF%81%E7%9A%84%E6%B3%95"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">方法二  交换论证的法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5%E4%B8%A4%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0%EF%BC%9A"><span class="nav-number">1.0.6.</span> <span class="nav-text">贪心策略两基本要素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E5%9B%9B-%E9%9C%8D%E5%A4%AB%E7%A0%81%E7%BC%96%E7%A0%81"><span class="nav-number">1.0.7.</span> <span class="nav-text">典例四  霍夫码编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%BA%94-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.0.8.</span> <span class="nav-text">典例五  最小生成树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E5%85%AD-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="nav-number">1.0.9.</span> <span class="nav-text">典例六  最短路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E6%B3%95%E5%B0%8F%E7%BB%93"><span class="nav-number">1.0.10.</span> <span class="nav-text">贪心法小结</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E4%BA%8C%E4%B8%8B%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B--%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%A4%8D%E4%B9%A0%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">大二下学期课程--算法设计与分析复习第四章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%80-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.2.</span> <span class="nav-text">典例一 活动安排问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%BA%8C-%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.3.</span> <span class="nav-text">典例二 最小延迟调度问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%B8%89-%E6%9C%80%E4%BC%98%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.4.</span> <span class="nav-text">典例三 最优装载问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%AD%A3%E7%A1%AE%E6%80%A7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="nav-number">1.0.5.</span> <span class="nav-text">贪心算法正确性的证明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">方法一 数学归纳法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5%E4%B8%A4%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="nav-number">1.0.6.</span> <span class="nav-text">贪心策略两基本要素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E5%9B%9B-%E9%9C%8D%E5%A4%AB%E7%A0%81%E7%BC%96%E7%A0%81"><span class="nav-number">1.0.7.</span> <span class="nav-text">典例四 霍夫码编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E4%BE%8B%E4%BA%94-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.0.8.</span> <span class="nav-text">典例五 最小生成树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E6%B3%95%E5%B0%8F%E7%BB%93"><span class="nav-number">1.0.9.</span> <span class="nav-text">贪心法小结</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
