@@ -1,0 +1,102 @@
+::selection {
+  background: #ffffff00;
+  color: #f00;
+}
+
+.icon {
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+pre::selection, pre ::selection {
+  background: #fff;
+}
+
+[data-user-color-scheme='light'] pre::selection, [data-user-color-scheme='light'] pre ::selection {
+  background: #424858;
+  color: #fff;
+}
+
+/* 标题,目录...不可选中 */
+h1, h2, h3, h4, h5, h6, .line, footer, #toc, time, #subtitle.h2, .nav-link, .post-meta.mr-2, #busuanzi_container_page_pv, .note, .hover-with-bg {
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+.hljs-comment, .hljs-quote {
+  color: #ff6262;
+  font-family: auto;
+  font-style: normal;
+}
+
+
+figure.highlight {
+  /*background: #838383;*/
+  /*border-radius: 5px;*/
+  /*padding-top: 30px;*/
+  /*box-shadow: 0 5px 10px #a1a1a1;*/
+  background: #011627;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .4);
+  padding-top: 30px;
+}
+
+[data-user-color-scheme='light'] figure.highlight {
+  background: #000;
+}
+
+/*!* 该伪元素用于展示代码语言,若不需要可删除 *!*/
+/*figure.highlight::before {*/
+/*  content: attr(data-type);*/
+/*  z-index: 999;*/
+/*  color: #ff8d33;*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  position: absolute;*/
+/*  top: 2px;*/
+/*  text-align: center;*/
+/*  font-weight: 600;*/
+/*}*/
+
+figure.highlight::after {
+  background: #fc625d;
+  border-radius: 100%;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+  content: '';
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 9px;
+  left: 12px;
+}
+
+.hljs {
+  background-color: #fc625d;
+}
+
+/* 代码块颜色 */
+figure.highlight tr {
+  background-color: #f9fffa;
+}
+
+[data-user-color-scheme='light'] .markdown-body table tr {
+  background-color: #25272d;
+}
+
+figure.highlight > table {
+  border-radius: 0 0 5px 5px;
+}
+
+.gutter {
+  background-color: #f9fffa;
+}
+
+[data-user-color-scheme='light'] .gutter {
+  background-color: #25272d;
+}

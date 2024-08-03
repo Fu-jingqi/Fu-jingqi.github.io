@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/venom.png">
+  <link rel="icon" href="/img/venom.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1f3144">
+  <meta name="author" content="coderfjq">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="逻辑回归是一种分类方法，而并不是回归方法。 逻辑回归（Logistic Regression）是一种广泛使用的线性分类算法，主要用于二分类问题。尽管它的名字中包含“回归”二字，但它实际上是一种分类算法。逻辑回归通过预测一个事件发生的概率，来决定该事件是否发生。  数据集： https:&#x2F;&#x2F;cdn.aibydoing.com&#x2F;hands-on-ai&#x2F;files&#x2F;course-8-data.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习之逻辑回归实现与应用">
+<meta property="og:url" content="https://fu-jingqi.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="逻辑回归是一种分类方法，而并不是回归方法。 逻辑回归（Logistic Regression）是一种广泛使用的线性分类算法，主要用于二分类问题。尽管它的名字中包含“回归”二字，但它实际上是一种分类算法。逻辑回归通过预测一个事件发生的概率，来决定该事件是否发生。  数据集： https:&#x2F;&#x2F;cdn.aibydoing.com&#x2F;hands-on-ai&#x2F;files&#x2F;course-8-data.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fu-jingqi.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8/pic_1.jpg">
+<meta property="article:published_time" content="2024-07-19T11:31:08.000Z">
+<meta property="article:modified_time" content="2024-07-22T12:32:40.000Z">
+<meta property="article:author" content="coderfjq">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="逻辑回归">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fu-jingqi.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8/pic_1.jpg">
+  
+  
+  
+  <title>机器学习之逻辑回归实现与应用 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/selection.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"GLs0Fk5kDJRvtMtrrPLxpe9N-gzGzoHsz","app_key":"8HX35yqR37ANJT5XnkHqUADc","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>小qiqi&#39;s_Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="机器学习之逻辑回归实现与应用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-19 19:31" pubdate>
+          2024年7月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">机器学习之逻辑回归实现与应用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>逻辑回归是一种分类方法，而并不是回归方法。</strong></p>
+<p>逻辑回归（Logistic
+Regression）是一种广泛使用的线性分类算法，主要用于二分类问题。尽管它的名字中包含“回归”二字，但它实际上是一种分类算法。逻辑回归通过预测一个事件发生的概率，来决定该事件是否发生。</p>
+<blockquote>
+<p>数据集：
+https://cdn.aibydoing.com/hands-on-ai/files/course-8-data.csv</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">df = pd.read_csv(<span class="hljs-string">&#x27;./course-8-data.csv&#x27;</span>)<br>x = df[[<span class="hljs-string">&quot;X0&quot;</span>, <span class="hljs-string">&quot;X1&quot;</span>]].values<br>y = df[<span class="hljs-string">&quot;Y&quot;</span>].values<br>lr = <span class="hljs-number">0.01</span>  <span class="hljs-comment"># 学习率</span><br>num_iter = <span class="hljs-number">30000</span>  <span class="hljs-comment"># 迭代次数</span><br><br>model = LogisticRegression(<br>    tol=<span class="hljs-number">0.001</span>,<br>    max_iter=<span class="hljs-number">10000</span>,<br>    solver=<span class="hljs-string">&#x27;liblinear&#x27;</span><br>)<br>model.fit(x,y)<br><span class="hljs-comment"># print(model.coef_,model.intercept_)</span><br><br>plt.scatter(df[<span class="hljs-string">&#x27;X0&#x27;</span>],df[<span class="hljs-string">&#x27;X1&#x27;</span>],c=y)<br>plt.xlabel(<span class="hljs-string">&#x27;X0&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;X1&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="机器学习之逻辑回归实现与应用/pic_1.jpg" srcset="/img/loading.gif" lazyload /></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(model.coef_.shape)<br><span class="hljs-built_in">print</span>(model.intercept_.shape)<br><span class="hljs-built_in">print</span>(x.shape)<br><span class="hljs-built_in">print</span>(y.shape)<br></code></pre></td></tr></table></figure>
+<p>输出如下： <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs clojure">(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span>)<br>(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>)<br>(<span class="hljs-number">150</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span>)<br>(<span class="hljs-number">150</span><span class="hljs-punctuation">,</span>)<br></code></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br>plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">6</span>))<br>plt.scatter(df[<span class="hljs-string">&quot;X0&quot;</span>], df[<span class="hljs-string">&quot;X1&quot;</span>], c=df[<span class="hljs-string">&quot;Y&quot;</span>])<br><br>x1_min, x1_max = df[<span class="hljs-string">&quot;X0&quot;</span>].<span class="hljs-built_in">min</span>(), df[<span class="hljs-string">&quot;X0&quot;</span>].<span class="hljs-built_in">max</span>()<br>x2_min, x2_max = df[<span class="hljs-string">&quot;X1&quot;</span>].<span class="hljs-built_in">min</span>(), df[<span class="hljs-string">&quot;X1&quot;</span>].<span class="hljs-built_in">max</span>()<br><br>xx1, xx2 = np.meshgrid(np.linspace(x1_min, x1_max), np.linspace(x2_min, x2_max))<br><span class="hljs-built_in">print</span>(xx1.shape)<br><span class="hljs-built_in">print</span>(xx2.shape)<br><span class="hljs-built_in">print</span>(xx1.ravel().shape)<br><span class="hljs-built_in">print</span>(xx2.ravel().shape)<br>grid = np.c_[xx1.ravel(), xx2.ravel()]<br><span class="hljs-built_in">print</span>(grid.shape)<br>probs = (np.dot(grid, model.coef_.T) + model.intercept_).reshape(xx1.shape)<br><span class="hljs-comment"># 绘制等高线图</span><br><span class="hljs-comment"># probs = w1 * x1 + w2 * x2 + b</span><br>plt.contour(xx1, xx2, probs, levels=[<span class="hljs-number">0</span>], linewidths=<span class="hljs-number">1</span>, colors=<span class="hljs-string">&quot;red&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<p>输出如下： <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clojure">(<span class="hljs-number">50</span><span class="hljs-punctuation">,</span> <span class="hljs-number">50</span>)<br>(<span class="hljs-number">50</span><span class="hljs-punctuation">,</span> <span class="hljs-number">50</span>)<br>(<span class="hljs-number">2500</span><span class="hljs-punctuation">,</span>)<br>(<span class="hljs-number">2500</span><span class="hljs-punctuation">,</span>)<br>(<span class="hljs-number">2500</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure> <img
+src="机器学习之逻辑回归实现与应用/pic_2.jpg" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="知识点">知识点</h2>
+<h3 id="np.meshgrid">np.meshgrid</h3>
+<p><code>np.meshgrid</code>是NumPy库中的一个函数，它用于生成坐标网格。在多维空间中，当你需要对一个区域进行网格化，以便进行计算或绘图时，<code>np.meshgrid</code>非常有用。</p>
+<p>具体来说，<code>np.meshgrid</code>可以接收两个一维数组，分别表示x轴和y轴的坐标点，并返回两个二维数组，这两个二维数组的行和列分别对应输入数组的坐标点。这样，你可以很容易地对这些坐标点进行矩阵运算或在这些点上进行函数评估。</p>
+<p>下面是<code>np.meshgrid</code>的基本用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>x = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br>y = np.array([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>])<br><br>X, Y = np.meshgrid(x, y)<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，<code>X</code>和<code>Y</code>将是这样的二维数组：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs inform7">X = <span class="hljs-comment">[<span class="hljs-comment">[1, 2, 3]</span>,</span><br><span class="hljs-comment">     <span class="hljs-comment">[1, 2, 3]</span>,</span><br><span class="hljs-comment">     <span class="hljs-comment">[1, 2, 3]</span>,</span><br><span class="hljs-comment">     <span class="hljs-comment">[1, 2, 3]</span>]</span><br><br>Y = <span class="hljs-comment">[<span class="hljs-comment">[4, 4, 4]</span>,</span><br><span class="hljs-comment">     <span class="hljs-comment">[5, 5, 5]</span>,</span><br><span class="hljs-comment">     <span class="hljs-comment">[6, 6, 6]</span>,</span><br><span class="hljs-comment">     <span class="hljs-comment">[7, 7, 7]</span>]</span><br></code></pre></td></tr></table></figure>
+<p>这样，<code>X[i, j]</code>和<code>Y[i, j]</code>就代表了网格中的一个点，其中<code>i</code>是行索引，<code>j</code>是列索引。</p>
+<p><code>np.meshgrid</code>函数还有几个可选参数，例如：</p>
+<ul>
+<li><code>indexing</code>：默认值为'xy'，表示第一个参数对应x轴，第二个参数对应y轴。如果设置为'ij'，则表示第一个参数对应行索引，第二个参数对应列索引。</li>
+<li><code>sparse</code>：默认为False，如果设置为True，则返回稀疏数组，这在处理大型网格时可以节省内存。</li>
+</ul>
+<p><code>np.meshgrid</code>在科学计算和数据可视化中非常常见，特别是在需要对函数进行二维或多维插值、计算或绘制图形时。</p>
+<h3 id="np.c_">np.c_</h3>
+<p><code>np.c_</code> 是 NumPy
+库中的一个函数，用于沿着列方向（即沿着第二个轴）堆叠数组。它是用于列向量或列矩阵的堆叠的快捷方式。当你想要将多个数组并排放置，形成一个新的二维数组时，可以使用
+<code>np.c_</code>。</p>
+<p><code>np.c_</code> 的使用示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 创建两个一维数组</span><br>a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br>b = np.array([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>])<br><br><span class="hljs-comment"># 使用 np.c_ 将数组 a 和 b 沿着列方向堆叠</span><br>c = np.c_[a, b]<br></code></pre></td></tr></table></figure>
+<p>执行上述代码后，<code>c</code> 将变成：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">array(<span class="hljs-string">[[1, 4],</span><br><span class="hljs-string">       [2, 5],</span><br><span class="hljs-string">       [3, 6]]</span>)<br></code></pre></td></tr></table></figure>
+<p>这里，<code>np.c_[a, b]</code> 等价于
+<code>np.column_stack((a, b))</code>，<code>np.column_stack</code>
+函数是 <code>np.c_</code>
+的等效函数，用于将多个一维数组或列向量堆叠成一个二维数组。</p>
+<p><code>np.c_</code> 也可以用于堆叠更多的数组，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">d = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br>e = np.c_[a, b, d]  <span class="hljs-comment"># 将 a, b, d 堆叠成列</span><br></code></pre></td></tr></table></figure>
+<p>这将得到：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">array(<span class="hljs-string">[[1, 4, 7],</span><br><span class="hljs-string">       [2, 5, 8],</span><br><span class="hljs-string">       [3, 6, 9]]</span>)<br></code></pre></td></tr></table></figure>
+<p><code>np.c_</code>
+通常用于数据预处理或在进行矩阵运算时需要将多个数组组合成一个矩阵的场景。</p>
+<h3 id="ravel方法">.ravel()方法</h3>
+<p>在NumPy中，<code>.ravel()</code>方法用于将多维数组（ndarray）降维成一维数组。如果数组已经是一维的，<code>.ravel()</code>方法将返回其自身的视图。如果数组是多维的，<code>.ravel()</code>会返回数组的一维副本，但不会改变原始数组的形状。</p>
+<p>使用<code>.ravel()</code>方法时，可以指定一个可选的<code>order</code>参数，它控制数组的展开顺序。默认情况下，<code>order</code>参数是<code>'C'</code>，表示按C语言的行优先顺序展开数组。如果设置为<code>'F'</code>或<code>'A'</code>，则会按列优先顺序（即Fortran顺序）展开数组。</p>
+<p>下面是<code>.ravel()</code>方法的使用示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 创建一个二维数组</span><br>a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br><span class="hljs-comment"># 使用 ravel() 将数组降维成一维数组</span><br>b = a.ravel()<br><br><span class="hljs-built_in">print</span>(b)  <span class="hljs-comment"># 输出: [1 2 3 4 5 6]</span><br><br><span class="hljs-comment"># 如果数组已经是一维的，ravel() 将返回其自身的视图</span><br>c = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>])<br>d = c.ravel()<br><br><span class="hljs-built_in">print</span>(d <span class="hljs-keyword">is</span> c)  <span class="hljs-comment"># 输出: True，表示 d 和 c 是同一个对象</span><br></code></pre></td></tr></table></figure>
+<p>使用<code>order='F'</code>参数时：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建一个二维数组</span><br>e = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br><span class="hljs-comment"># 使用 ravel() 并指定 order=&#x27;F&#x27; 按列优先顺序展开数组</span><br>f = e.ravel(order=<span class="hljs-string">&#x27;F&#x27;</span>)<br><br><span class="hljs-built_in">print</span>(f)  <span class="hljs-comment"># 输出: [1 4 2 5 3 6]</span><br></code></pre></td></tr></table></figure>
+<p><code>.ravel()</code>方法在需要将多维数组转换为一维数组进行操作时非常有用，例如在机器学习算法中对特征向量进行处理。</p>
+<h3 id="plt.contour">plt.contour</h3>
+<p><code>plt.contour</code> 是 Matplotlib
+库中的一个函数，用于绘制等高线图（contour
+plot），这种图表可以展示数据的三维形状在二维平面上的投影。</p>
+<p>等高线图通常用于表示一个二维区域内的数值变化，例如地形图、温度分布图或任何二维函数的等值线图。在机器学习中，等高线图常用于可视化决策边界。</p>
+<p>下面是 <code>plt.contour</code> 函数的一些常用参数及其作用：</p>
+<ul>
+<li><p><code>X</code> 和 <code>Y</code>:
+这两个参数是可选的，它们分别代表数据点的 x 轴和 y 轴坐标网格。如果提供了
+<code>X</code> 和 <code>Y</code>，则 <code>Z</code> 参数必须是一个与
+<code>X</code> 和 <code>Y</code> 形状相同的二维数组。如果没有提供
+<code>X</code> 和 <code>Y</code>，则 <code>Z</code> 必须是二维数组，并且
+<code>plt.contour</code> 会隐式地使用 <code>Z</code>
+的行索引和列索引作为坐标。</p></li>
+<li><p><code>Z</code>:
+这是一个二维数组，包含了要绘制的数值数据。等高线图将展示这些数值的等值线。</p></li>
+<li><p><code>levels</code>:
+这个参数定义了要绘制的等值线的具体数值。如果未指定，<code>plt.contour</code>
+将自动选择等值线的数量和位置。如果指定为一个数组，将绘制数组中定义的特定等值线。</p></li>
+<li><p><code>linewidths</code>:
+这个参数控制等高线的宽度。它可以是一个数值，表示所有等高线使用相同的线宽，或者是一个与
+<code>levels</code> 数量相同的数组，表示每条等高线的具体线宽。</p></li>
+<li><p><code>colors</code>:
+这个参数定义了等高线的颜色。它可以是一个颜色名称、十六进制颜色代码，或者是一个颜色映射表的名称。</p></li>
+<li><p><code>alpha</code>: 这个参数控制等高线的透明度。</p></li>
+<li><p><code>label</code>: 用于图例的标签。</p></li>
+<li><p><code>norm</code>: 一个归一化对象，它将 <code>Z</code>
+中的值映射到 <code>colors</code> 参数指定的颜色。</p></li>
+<li><p><code>extent</code>: 用于指定 <code>X</code> 和 <code>Y</code>
+轴的范围，如果没有提供 <code>X</code> 和
+<code>Y</code>，则这个参数特别有用。</p></li>
+<li><p><code>transform</code>: 用于指定坐标轴的变换。</p></li>
+</ul>
+<p>等高线图的绘制通常需要三个主要步骤：</p>
+<ol type="1">
+<li>准备数值数据（Z）。</li>
+<li>使用 <code>np.meshgrid</code> 生成坐标网格（如果需要）。</li>
+<li>调用 <code>plt.contour</code> 绘制等高线。</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 创建数据</span><br>x = np.linspace(-<span class="hljs-number">3.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">100</span>)<br>y = np.linspace(-<span class="hljs-number">3.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">100</span>)<br>X, Y = np.meshgrid(x, y)<br>Z = np.sin(X) * np.cos(Y)<br><br><span class="hljs-comment"># 绘制等高线图</span><br>plt.contour(X, Y, Z, levels=<span class="hljs-number">14</span>, linewidths=<span class="hljs-number">1</span>, colors=<span class="hljs-string">&#x27;red&#x27;</span>)<br>plt.colorbar()  <span class="hljs-comment"># 显示颜色条</span><br>plt.show()<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Machine-Learning/" class="category-chain-item">Machine_Learning</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+        <a href="/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" class="print-no-link">#逻辑回归</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>机器学习之逻辑回归实现与应用</div>
+      <div>https://fu-jingqi.github.io/2024/07/19/机器学习之逻辑回归实现与应用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>coderfjq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8Bk%E8%BF%91%E9%82%BB%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8/" title="机器学习之k近邻回归算法实现与应用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机器学习之k近邻回归算法实现与应用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E4%B9%8B%E4%BD%BF%E7%94%A8CNN%E5%9C%A8CIFAR-10%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8A%E8%BF%9B%E8%A1%8C%E8%AF%86%E5%88%AB/" title="深度学习实践之使用CNN在CIFAR-10数据集上进行识别">
+                        <span class="hidden-mobile">深度学习实践之使用CNN在CIFAR-10数据集上进行识别</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

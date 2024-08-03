@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/venom.png">
+  <link rel="icon" href="/img/venom.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1f3144">
+  <meta name="author" content="coderfjq">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="长短期记忆网络 LSTM 长短期记忆网络（Long Short-Term Memory，简称LSTM）是一种特殊的递归神经网络（RNN），它被设计用来解决传统RNN在处理长序列数据时遇到的梯度消失或梯度爆炸问题。LSTM通过引入三个门控机制来控制信息的流动，从而能够学习到长期依赖关系。 LSTM的关键组成部分包括：  遗忘门（Forget Gate）：决定从上一个状态中丢弃哪些信息。遗忘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LSTM：长短期记忆网络">
+<meta property="og:url" content="https://fu-jingqi.github.io/2024/08/01/LSTM%EF%BC%9A%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="长短期记忆网络 LSTM 长短期记忆网络（Long Short-Term Memory，简称LSTM）是一种特殊的递归神经网络（RNN），它被设计用来解决传统RNN在处理长序列数据时遇到的梯度消失或梯度爆炸问题。LSTM通过引入三个门控机制来控制信息的流动，从而能够学习到长期依赖关系。 LSTM的关键组成部分包括：  遗忘门（Forget Gate）：决定从上一个状态中丢弃哪些信息。遗忘">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-01T03:18:56.000Z">
+<meta property="article:modified_time" content="2024-08-01T11:15:48.000Z">
+<meta property="article:author" content="coderfjq">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="LSTM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>LSTM：长短期记忆网络 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/selection.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"GLs0Fk5kDJRvtMtrrPLxpe9N-gzGzoHsz","app_key":"8HX35yqR37ANJT5XnkHqUADc","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>小qiqi&#39;s_Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LSTM：长短期记忆网络"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-01 11:18" pubdate>
+          2024年8月1日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LSTM：长短期记忆网络</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="长短期记忆网络-lstm">长短期记忆网络 LSTM</h3>
+<p>长短期记忆网络（<code>Long Short-Term Memory</code>，简称<code>LSTM</code>）是一种特殊的递归神经网络（<code>RNN</code>），它被设计用来解决传统RNN在处理长序列数据时遇到的梯度消失或梯度爆炸问题。LSTM通过引入三个门控机制来控制信息的流动，从而能够学习到长期依赖关系。</p>
+<p>LSTM的关键组成部分包括：</p>
+<ol type="1">
+<li><p><strong>遗忘门（Forget
+Gate）</strong>：决定从上一个状态中丢弃哪些信息。遗忘门通过sigmoid函数输出0到1之间的值，表示保留信息的程度。</p></li>
+<li><p><strong>输入门</strong>：由两个部分组成，一个是更新门（Update
+Gate），它决定哪些新信息将被存储在单元状态中；另一个是候选状态（Candidate
+State），它通过tanh函数生成新的候选值，这些值将被加入到当前单元状态中。</p></li>
+<li><p><strong>输出门（Output
+Gate）</strong>：决定下一个隐藏状态的值，这通常用于预测下一个时间步的输出。</p></li>
+</ol>
+<p><code>LSTM</code>单元的工作原理可以概括为以下几个步骤：</p>
+<ul>
+<li>遗忘门决定从细胞状态中丢弃哪些信息。</li>
+<li>输入门的更新门决定哪些新信息将被加入到细胞状态中，而候选状态生成这些新信息。</li>
+<li>更新后的细胞状态通过细胞状态向量和隐藏状态向量更新。</li>
+<li>输出门决定隐藏状态的输出，这通常用于下一个时间步的预测。</li>
+</ul>
+<p><code>LSTM</code>因其能够处理长序列数据而广泛应用于自然语言处理、语音识别、时间序列预测等领域。</p>
+<p>传统的循环神经网络（<code>RNN</code>）虽然建立了不同时刻隐藏层之间的关系，实现了记忆的效果，但只是基于前一时刻，是一种<code>short</code>
+<code>memory</code>。为了实现长期记忆，RNN开始引入一种门电路结构来“记笔记”,从而实现长期记忆。</p>
+<ul>
+<li>我们先看RNN的平面结构，如下图所示：</li>
+</ul>
+<p><img
+src="https://pic.imgdb.cn/item/66aaffb4d9c307b7e9e3e7c1.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>和RNN相比，<code>LSTM</code>增加了一条新的时间链，记录长期记忆（<code>Long Term Memory</code>），我们这里用<code>C</code>表示，同时它增加了两条链之间的关系，见下图所示</li>
+</ul>
+<p><img
+src="https://pic.imgdb.cn/item/66ab00a0d9c307b7e9e49d51.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>新增加的链条<code>C</code>就是相当于记事本。以<code>t</code>时刻为例，和<code>RNN</code>相比,<code>t</code>时刻的隐层输入除了来自输入<span
+class="math inline">\(x_t\)</span>和<span
+class="math inline">\(s_{t-1}\)</span>,还包含记事<span
+class="math inline">\(c_t\)</span>的信息，如下图所示：</li>
+</ul>
+<p><img
+src="https://pic.imgdb.cn/item/66ab01a7d9c307b7e9e55d06.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>让我们把<span class="math inline">\(S_t\)</span>和<span
+class="math inline">\(c_t\)</span>之间的关联放大看清楚：一条线拆成三条线：</li>
+</ul>
+<p><img
+src="https://pic.imgdb.cn/item/66ab0236d9c307b7e9e5c628.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/66ab029ad9c307b7e9e61825.png" srcset="/img/loading.gif" lazyload /></p>
+<p>将删除和增加操作结合起来得到输出：</p>
+<p><span class="math display">\[ c_t = f_1 * c_{t-1} + f2 \]</span></p>
+<p>而<span
+class="math inline">\(c_t\)</span>除了会被向下传递，还会用来更新当前短期记忆<span
+class="math inline">\(s_t\)</span>,最后可以计算输出得到<span
+class="math inline">\(y_t\)</span>，同时保持短期记忆链<span
+class="math inline">\(s\)</span>和长期记忆链<span
+class="math inline">\(c\)</span>并相互更新.</p>
+<p>聊聊LSTM的梯度消失与梯度爆炸 LSTM的梯度消失
+首先明确，真正意义上来说，LSTM是不会梯度消失的(解决了RNN的问题，所以为啥呢？)。</p>
+<p>LSTM的梯度消失与MLP
+或者CNN中梯度消失不一样。MLP/CNN中不同层有不同的参数，梯度各算各的；RNN中同样的权重在各时间步共享参数，最终的梯度是各时间步梯度之和。即使梯度越传越弱，远距离的梯度接近消失，近距离的梯度还在，所以总的梯度之和不会消失。进一步说，LSTM的梯度由RNN结构的梯度和线性变换函数的梯度组成。即使RNN的梯度接近0，线性变换函数的梯度就是其斜率，是一个常数，LSTM的梯度趋向于一个常数，这就解决了梯度消失的问题。
+LSTM所谓的梯度消失：梯度被近距离梯度主导，导致模型难以学到远距离的依赖关系。</p>
+<h3
+id="一个简单且熟悉的例子使用lstm预测大气臭氧浓度">一个简单且熟悉的例子：使用LSTM预测大气臭氧浓度</h3>
+<ul>
+<li>数据预处理</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> xgboost <span class="hljs-keyword">as</span> xgb<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.optim <span class="hljs-keyword">as</span> optim<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> StandardScaler<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader,Dataset<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split,GridSearchCV<br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> mean_squared_error,mean_absolute_error,r2_score<br><br>data=pd.read_csv(<span class="hljs-string">&quot;./datasets/datasets_beijing.csv&quot;</span>)<br>data[<span class="hljs-string">&quot;AQI&quot;</span>]=data[<span class="hljs-string">&quot;AQI&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">int</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;CO&quot;</span>]=data[<span class="hljs-string">&quot;CO&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;CO_24h&quot;</span>]=data[<span class="hljs-string">&quot;CO_24h&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;NO2&quot;</span>]=data[<span class="hljs-string">&quot;NO2&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;PM10&quot;</span>]=data[<span class="hljs-string">&quot;PM10&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;PM2_5&quot;</span>]=data[<span class="hljs-string">&quot;PM2_5&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;SO2&quot;</span>]=data[<span class="hljs-string">&quot;SO2&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br>data[<span class="hljs-string">&quot;O3&quot;</span>]=data[<span class="hljs-string">&quot;O3&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x:<span class="hljs-built_in">float</span>(<span class="hljs-built_in">str</span>(x).replace(<span class="hljs-string">&quot;—&quot;</span>,<span class="hljs-string">&quot;0&quot;</span>)))<br><br>datasets=data.loc[:,[<span class="hljs-string">&#x27;AQI&#x27;</span>, <span class="hljs-string">&#x27;CO&#x27;</span>, <span class="hljs-string">&#x27;CO_24h&#x27;</span>, <span class="hljs-string">&#x27;Latitude&#x27;</span>, <span class="hljs-string">&#x27;Longitude&#x27;</span>, <span class="hljs-string">&#x27;NO2&#x27;</span>, <span class="hljs-string">&#x27;PM10&#x27;</span>, <span class="hljs-string">&#x27;PM2_5&#x27;</span>, <span class="hljs-string">&#x27;SO2&#x27;</span>,<span class="hljs-string">&#x27;O3&#x27;</span>]].values<br>datasets=StandardScaler().fit_transform(datasets)<br>datasets_lstm,labels=[],[]<br>n_window=<span class="hljs-number">10</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data)-n_window)):<br>    data_temp=datasets[i:i+n_window,:-<span class="hljs-number">1</span>]<br>    data_temp_flatten=data_temp.flatten()<br>    datasets_lstm.append(data_temp)<br>    datasets_xgb.append(data_temp_flatten)<br>    labels.append(datasets[i+n_window,-<span class="hljs-number">1</span>])<br><br>datasets_lstm=np.array(datasets_lstm)<br>labels=np.array(labels)<br><span class="hljs-built_in">print</span>(datasets_lstm.shape,labels.shape)<br><br>datasets_lstm_train,datasets_lstm_test,labels_train,labels_test=train_test_split(datasets_lstm,labels,train_size=<span class="hljs-number">0.8</span>)<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>构造数据loader</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DataGenerator</span>(<span class="hljs-title class_ inherited__">Dataset</span>):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,x,y</span>):<br>        <span class="hljs-built_in">super</span>(DataGenerator, <span class="hljs-variable language_">self</span>).__init__()<br>        <span class="hljs-variable language_">self</span>.x,<span class="hljs-variable language_">self</span>.y=x,y<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.y)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, item</span>):<br>        <span class="hljs-keyword">return</span> torch.FloatTensor(<span class="hljs-variable language_">self</span>.x[item,:,:]),torch.FloatTensor([<span class="hljs-variable language_">self</span>.y[item]])<br>        <br>train_loader=DataLoader(DataGenerator(x=datasets_lstm_train,y=labels_train),batch_size=<span class="hljs-number">64</span>,shuffle=<span class="hljs-literal">True</span>)<br>val_loader=DataLoader(DataGenerator(x=datasets_lstm_test,y=labels_test),batch_size=<span class="hljs-number">128</span>,shuffle=<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>LSTM模型构建</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">LstmModel</span>(nn.Module):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>(LstmModel, <span class="hljs-variable language_">self</span>).__init__()<br>        <span class="hljs-variable language_">self</span>.lstm1=nn.LSTM(input_size=<span class="hljs-number">9</span>,hidden_size=<span class="hljs-number">16</span>,bidirectional=<span class="hljs-literal">True</span>,batch_first=<span class="hljs-literal">True</span>)<br>        <span class="hljs-variable language_">self</span>.fc=nn.Sequential(<br>            nn.Linear(<span class="hljs-number">32</span>,<span class="hljs-number">128</span>),<br>            nn.LeakyReLU(),<br>            nn.Linear(<span class="hljs-number">128</span>,<span class="hljs-number">1</span>)<br>        )<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self,x</span>):<br>        outputs1,(h1,c1)=<span class="hljs-variable language_">self</span>.lstm1(x)<br>        out1=torch.cat([h1[<span class="hljs-number">0</span>,:,:],h1[<span class="hljs-number">1</span>,:,:]],dim=-<span class="hljs-number">1</span>)<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.fc(out1)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>训练模型以及可视化训练效果</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">model_name</span>):<br>    device=torch.device(<span class="hljs-string">&quot;cpu&quot;</span>)<br>    model=LstmModel().to(device)<br>    <br>    optimizer=optim.Adam(model.parameters(),lr=<span class="hljs-number">1e-5</span>)<br>    loss_func=nn.MSELoss()<br>    <br>    scheduler=optim.lr_scheduler.StepLR(optimizer,step_size=<span class="hljs-number">5</span>,gamma=<span class="hljs-number">0.9</span>)<br>    <br>    <span class="hljs-comment"># 训练准确率train_accs和训练损失train_losses</span><br>    train_accs,train_losses=[],[]<br>    val_accs,val_losses=[],[]<br>    min_val_loss=<span class="hljs-number">1000</span><br>    <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">30</span>):<br>        <br>        train_loss = train_one_epoch(model,train_loader,optimizer,scheduler,loss_func,device,epoch)<br>        <br>        val_loss=get_val_result(model,val_loader,loss_func,device)<br>        <br>        train_losses.append(train_loss)<br>        <br>        val_losses.append(val_loss)<br>        <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;model:<span class="hljs-subst">&#123;model_name&#125;</span>,epoch:<span class="hljs-subst">&#123;epoch + <span class="hljs-number">1</span>&#125;</span>,train loss:<span class="hljs-subst">&#123;train_loss&#125;</span>,val loss:<span class="hljs-subst">&#123;val_loss&#125;</span>&quot;</span>)<br>        <br>        <span class="hljs-keyword">if</span> val_loss&lt;min_val_loss:<br>            torch.save(model,<span class="hljs-string">f&quot;models/<span class="hljs-subst">&#123;model_name&#125;</span>_best.pth&quot;</span>)<br>            min_val_loss=val_loss<br>        <span class="hljs-keyword">if</span> (epoch+<span class="hljs-number">1</span>) % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>:<br>            torch.save(model,<span class="hljs-string">f&quot;models/<span class="hljs-subst">&#123;model_name&#125;</span>_epoch<span class="hljs-subst">&#123;epoch+<span class="hljs-number">1</span>&#125;</span>.pth&quot;</span>)<br><br>    plot_acc_loss(train_losses,val_losses,model_name)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train_one_epoch</span>(<span class="hljs-params">model,train_loader,optimizer,scheduler,loss_func,device,epoch</span>):<br>    <br>    model.train()<br>    <br>    data_tqdm=tqdm(train_loader)<br>    <br>    losses=[]<br>    <br>    <span class="hljs-keyword">for</span> batch,(x,y) <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(data_tqdm):<br>        <span class="hljs-comment"># x_train,y_train=x.to(device),y.to(device)</span><br>        output=model(x_train)<br>        loss=loss_func(output,y_train)<br>        losses.append(loss.item())<br>        optimizer.zero_grad()<br>        loss.backward()<br>        optimizer.step()<br>        data_tqdm.set_description_str(<span class="hljs-string">f&quot;epoch:<span class="hljs-subst">&#123;epoch+<span class="hljs-number">1</span>&#125;</span>,batch:<span class="hljs-subst">&#123;batch+<span class="hljs-number">1</span>&#125;</span>,loss:<span class="hljs-subst">&#123;loss.item()&#125;</span>,lr:<span class="hljs-subst">&#123;scheduler.get_last_lr()[<span class="hljs-number">0</span>]:<span class="hljs-number">.7</span>f&#125;</span>&quot;</span>)<br>    scheduler.step()<br><br>    losses=<span class="hljs-built_in">float</span>(np.mean(losses))<br><br>    <span class="hljs-keyword">return</span> losses<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_val_result</span>(<span class="hljs-params">model,val_loader,loss_func,device</span>):<br>    model.<span class="hljs-built_in">eval</span>()<br>    data_tqdm=tqdm(val_loader)<br>    losses=[]<br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-keyword">for</span> x,y <span class="hljs-keyword">in</span> data_tqdm:<br>            x_val,y_val=x.to(device),y.to(device)<br>            output=model(x_val)<br>            loss=loss_func(output,y_val)<br>            losses.append(loss.item())<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">float</span>(np.mean(losses))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_acc_loss</span>(<span class="hljs-params">train_losses,val_losses,model_name</span>):<br>    plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>))<br>    plt.plot(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(train_losses)+<span class="hljs-number">1</span>),train_losses,<span class="hljs-string">&quot;r&quot;</span>,label=<span class="hljs-string">&quot;train&quot;</span>)<br>    plt.plot(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(val_losses)+<span class="hljs-number">1</span>),val_losses,<span class="hljs-string">&quot;g&quot;</span>,label=<span class="hljs-string">&quot;val&quot;</span>)<br>    plt.title(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;model_name&#125;</span>_loss-epoch&quot;</span>)<br>    plt.xlabel(<span class="hljs-string">&quot;epoch&quot;</span>)<br>    plt.ylabel(<span class="hljs-string">&quot;loss&quot;</span>)<br>    plt.legend()<br>    plt.savefig(<span class="hljs-string">f&quot;images/<span class="hljs-subst">&#123;model_name&#125;</span>_epoch_acc_loss.jpg&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Deep-Learning/" class="category-chain-item">Deep_Learning</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="print-no-link">#深度学习</a>
+      
+        <a href="/tags/LSTM/" class="print-no-link">#LSTM</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LSTM：长短期记忆网络</div>
+      <div>https://fu-jingqi.github.io/2024/08/01/LSTM：长短期记忆网络/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>coderfjq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/08/01/ResNet%EF%BC%9A%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C/" title="ResNet：残差网络">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ResNet：残差网络</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/01/RNN%EF%BC%9A%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="RNN：循环神经网络">
+                        <span class="hidden-mobile">RNN：循环神经网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

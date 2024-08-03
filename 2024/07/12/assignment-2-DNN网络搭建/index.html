@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/venom.png">
+  <link rel="icon" href="/img/venom.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1f3144">
+  <meta name="author" content="coderfjq">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DNN的定义 深度神经网络（Deep Neural Network，简称DNN）是一种包含多个隐藏层的神经网络。与传统的浅层神经网络相比，DNN能够学习更复杂的数据特征和模式，这使得它们在处理高维度数据和解决复杂问题方面表现出色。  DNN原理 DNN的原理基于以下几个关键概念：  层次结构：DNN由多个层次组成，包括输入层、多个隐藏层和输出层。每个层次包含多个神经元。  多层次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="assignment_2_DNN网络搭建">
+<meta property="og:url" content="https://fu-jingqi.github.io/2024/07/12/assignment-2-DNN%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DNN的定义 深度神经网络（Deep Neural Network，简称DNN）是一种包含多个隐藏层的神经网络。与传统的浅层神经网络相比，DNN能够学习更复杂的数据特征和模式，这使得它们在处理高维度数据和解决复杂问题方面表现出色。  DNN原理 DNN的原理基于以下几个关键概念：  层次结构：DNN由多个层次组成，包括输入层、多个隐藏层和输出层。每个层次包含多个神经元。  多层次">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-12T14:03:37.000Z">
+<meta property="article:modified_time" content="2024-07-16T02:10:50.000Z">
+<meta property="article:author" content="coderfjq">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="DNN网络">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>assignment_2_DNN网络搭建 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/selection.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"fu-jingqi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"GLs0Fk5kDJRvtMtrrPLxpe9N-gzGzoHsz","app_key":"8HX35yqR37ANJT5XnkHqUADc","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>小qiqi&#39;s_Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="assignment_2_DNN网络搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-12 22:03" pubdate>
+          2024年7月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">assignment_2_DNN网络搭建</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="dnn的定义">DNN的定义</h2>
+<p>深度神经网络（Deep Neural
+Network，简称DNN）是一种包含多个隐藏层的神经网络。与传统的浅层神经网络相比，DNN能够学习更复杂的数据特征和模式，这使得它们在处理高维度数据和解决复杂问题方面表现出色。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pk4Bk8g"><img
+src="https://s21.ax1x.com/2024/07/13/pk4Bk8g.png" srcset="/img/loading.gif" lazyload
+alt="pk4Bk8g.png" /></a></p>
+<h2 id="dnn原理">DNN原理</h2>
+<p>DNN的原理基于以下几个关键概念：</p>
+<ol type="1">
+<li><strong>层次结构</strong>：DNN由多个层次组成，包括输入层、多个隐藏层和输出层。每个层次包含多个神经元。
+<ul>
+<li>多层次非线性变换：
+每一层神经元通过接收前一层的输出，并通过非线性激活函数（如sigmoid、ReLU等）进行处理，将原始数据逐步转化为更抽象和复杂的特征表示。在图像识别任务中，底层神经元可能学习到边缘、纹理等低级特征，而高层神经元则能够捕捉到更高级别的特征，如物体的部件和整体形态。</li>
+</ul></li>
+<li><strong>参数化</strong>：每个神经元与前一个层次的神经元通过权重连接，并且每个神经元有一个偏置项。</li>
+<li><strong>前向传播</strong>：输入数据在网络中前向传递，每层的输出是下一层的输入。</li>
+<li><strong>激活函数</strong>：在每层的输出上应用非线性激活函数，以引入非线性特性，使网络能够学习复杂的函数。</li>
+<li><strong>损失函数</strong>：定义一个损失函数来衡量模型预测与真实值之间的差异，常见的损失函数包括均方误差（MSE）和交叉熵损失。</li>
+<li><strong>反向传播</strong>：利用链式法则计算损失函数对每个参数的梯度，从而更新网络的权重和偏置。
+<ul>
+<li>反向传播与优化：DNN的训练采用反向传播算法（Backpropagation）配合梯度下降（Gradient
+Descent）或其他优化算法（如Adam、Adagrad等），通过计算损失函数相对于权重的梯度，更新网络权重以最小化损失函数，从而实现对训练数据的良好拟合。</li>
+</ul></li>
+<li><strong>优化算法</strong>：使用梯度下降或其变体（如Adam、RMSprop等）来更新网络的参数，以最小化损失函数。</li>
+</ol>
+<h2 id="dnn模型构建步骤">DNN模型构建步骤</h2>
+<p>构建DNN模型通常遵循以下步骤：</p>
+<ol type="1">
+<li><strong>定义网络结构</strong>：确定网络的层数、每层的神经元数量以及激活函数。</li>
+<li><strong>初始化参数</strong>：为网络中的权重和偏置分配初始值，通常使用随机初始化。</li>
+<li><strong>选择损失函数</strong>：根据任务类型（如分类或回归）选择合适的损失函数。</li>
+<li><strong>选择优化器</strong>：选择一个优化算法来更新网络的参数。</li>
+<li><strong>前向传播</strong>：在训练数据上执行前向传播，计算预测输出。</li>
+<li><strong>计算损失</strong>：使用损失函数计算预测输出与真实标签之间的差异。</li>
+<li><strong>反向传播</strong>：执行反向传播算法，计算损失相对于每个参数的梯度。</li>
+<li><strong>参数更新</strong>：根据计算出的梯度和选择的学习率更新网络的参数。</li>
+<li><strong>迭代训练</strong>：重复步骤5到8，直到模型在验证集上的性能不再显著提升或达到预定的迭代次数。</li>
+<li><strong>评估和调优</strong>：在测试集上评估模型性能，根据需要调整网络结构或训练过程。</li>
+<li><strong>应用模型</strong>：将训练好的模型应用于实际问题或数据。</li>
+</ol>
+<p>DNN模型的构建和训练是一个迭代和试错的过程，可能需要多次调整和优化以达到最佳性能。</p>
+<h2 id="代码实现">代码实现</h2>
+<p>下面用一个识别手写数字的例子来搭建深度神经网络（DNN）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.optim <span class="hljs-keyword">as</span> optim<br><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> datasets,transforms<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>torch.manual_seed(<span class="hljs-number">1024</span>)<br>transform = transforms.Compose([<br>    transforms.ToTensor(),<br>    transforms.Normalize((<span class="hljs-number">0.5</span>,),(<span class="hljs-number">0.5</span>,))<br>])<br>train_dataset = datasets.MNIST(root=<span class="hljs-string">&#x27;./data&#x27;</span>,train=<span class="hljs-literal">True</span>,transform=transforms.ToTensor(),download=<span class="hljs-literal">False</span>)<br><span class="hljs-comment"># load test set</span><br>test_dataset = datasets.MNIST(root=<span class="hljs-string">&#x27;./data&#x27;</span>,train=<span class="hljs-literal">False</span>,transform=transforms.ToTensor(),download=<span class="hljs-literal">False</span>)<br>train_loader = DataLoader(train_dataset,batch_size=<span class="hljs-number">64</span>,shuffle=<span class="hljs-literal">True</span>)<br>test_loader = DataLoader(test_dataset,batch_size=<span class="hljs-number">64</span>,shuffle=<span class="hljs-literal">False</span>)<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Net</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        <span class="hljs-variable language_">self</span>.fc1 = nn.Linear(<span class="hljs-number">28</span> * <span class="hljs-number">28</span>, <span class="hljs-number">256</span>) <br>        <span class="hljs-variable language_">self</span>.fc2 = nn.Linear(<span class="hljs-number">256</span>, <span class="hljs-number">128</span>)<br>        <span class="hljs-variable language_">self</span>.fc3 = nn.Linear(<span class="hljs-number">128</span>, <span class="hljs-number">64</span>)  <br>        <span class="hljs-variable language_">self</span>.fc4 = nn.Linear(<span class="hljs-number">64</span>, <span class="hljs-number">10</span>)   <br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self,x</span>):<br>        x = torch.flatten(x,start_dim=<span class="hljs-number">1</span>)<br>        x = torch.relu(<span class="hljs-variable language_">self</span>.fc1(x))<br>        x = torch.relu(<span class="hljs-variable language_">self</span>.fc2(x))<br>        x = torch.relu(<span class="hljs-variable language_">self</span>.fc3(x))<br>        x = <span class="hljs-variable language_">self</span>.fc4(x)<br>        <span class="hljs-keyword">return</span> x<br>net = Net()<br><span class="hljs-built_in">print</span>(net)<br>criterion = nn.CrossEntropyLoss()<br>optimizer = optim.Adam(net.parameters(), lr=<span class="hljs-number">0.001</span>)<br>train_losses = []<br>train_accuracies = []<br>test_accuracies = []<br>epochs = <span class="hljs-number">10</span><br>best_accuracy = <span class="hljs-number">0.0</span><br>best_model_path = <span class="hljs-string">&#x27;best_mnist_path.pth&#x27;</span> <br><br><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(epochs):<br>    running_loss = <span class="hljs-number">0.0</span><br>    correct_train = <span class="hljs-number">0</span> <br>    total_train = <span class="hljs-number">0</span>    <br><br>    <span class="hljs-comment"># 训练过程</span><br>    net.train()<br>    <span class="hljs-keyword">for</span> inputs,labels <span class="hljs-keyword">in</span> train_loader:<br>        optimizer.zero_grad()             <span class="hljs-comment"># 梯度清零</span><br>        outputs = net(inputs)             <span class="hljs-comment"># 前向传播</span><br>        loss = criterion(outputs,labels)  <span class="hljs-comment"># 计算损失</span><br>        loss.backward()                   <span class="hljs-comment"># 反向传播</span><br>        optimizer.step()                  <span class="hljs-comment"># 更新参数</span><br>        running_loss += loss.item()       <span class="hljs-comment"># 累加损失</span><br><br>        _,predicted = torch.<span class="hljs-built_in">max</span>(outputs,<span class="hljs-number">1</span>) <br>        total_train += labels.size(<span class="hljs-number">0</span>)      <span class="hljs-comment"># 累加样本数量</span><br>        correct_train += (predicted == labels).<span class="hljs-built_in">sum</span>().item()<br>    train_accuracy = correct_train / total_train<br>    train_losses.append(running_loss / <span class="hljs-built_in">len</span>(train_loader))<br>    train_accuracies.append((train_accuracy))<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Epoch <span class="hljs-subst">&#123;epoch + <span class="hljs-number">1</span>&#125;</span> / <span class="hljs-subst">&#123;epochs&#125;</span>, Loss: <span class="hljs-subst">&#123;running_loss / <span class="hljs-built_in">len</span>(train_loader):<span class="hljs-number">.4</span>f&#125;</span>,Train Accuracy :<span class="hljs-subst">&#123;train_accuracy:<span class="hljs-number">.2</span>%&#125;</span>&quot;</span>)<br>    net.<span class="hljs-built_in">eval</span>()<br>    correct = <span class="hljs-number">0</span><br>    total = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-keyword">for</span> inputs,labels <span class="hljs-keyword">in</span> test_loader:<br>            outputs = net(inputs)<br>            _,predicted = torch.<span class="hljs-built_in">max</span>(outputs,<span class="hljs-number">1</span>)<br>            total += labels.size(<span class="hljs-number">0</span>)<br>            correct += (predicted == labels).<span class="hljs-built_in">sum</span>().item()<br><br>    test_accuracy = correct / total<br>    test_accuracies.append(test_accuracy)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Epoch <span class="hljs-subst">&#123;epoch+<span class="hljs-number">1</span>&#125;</span>/<span class="hljs-subst">&#123;epochs&#125;</span>,Test Accuracy:<span class="hljs-subst">&#123;test_accuracy:<span class="hljs-number">.2</span>%&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">if</span> test_accuracy &gt; best_accuracy:<br>        best_accuracy = test_accuracy<br>        torch.save(net.state_dict(),best_model_path)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Best model saved with accuracy:<span class="hljs-subst">&#123;best_accuracy:<span class="hljs-number">.2</span>%&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Best Accuracy on test set:<span class="hljs-subst">&#123;best_accuracy:<span class="hljs-number">.2</span>%&#125;</span>&quot;</span>)<br>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">5</span>))<br>plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)                              <br>plt.plot(train_losses,label=<span class="hljs-string">&#x27;Training Loss&#x27;</span>)    <br>plt.xlabel(<span class="hljs-string">&#x27;Epoch&#x27;</span>)                             <br>plt.ylabel(<span class="hljs-string">&#x27;Loss&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Training Loss over Epochs&#x27;</span>)          <br>plt.legend()                                   <br>plt.grid(<span class="hljs-literal">True</span>)                               <br>plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)<br>plt.plot(train_accuracies,label=<span class="hljs-string">&#x27;Train Accuracy&#x27;</span>)<br>plt.plot(test_accuracies,label=<span class="hljs-string">&#x27;Test Accuracy&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;Epoch&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Accuracy&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Train and Test Accuracy over Epochs&#x27;</span>)<br>plt.legend()<br>plt.grid(<span class="hljs-literal">True</span>)<br>plt.tight_layout()<br>plt.savefig(<span class="hljs-string">&#x27;loss_and_accuracy_curves.png&#x27;</span>)<br>plt.show()   <br></code></pre></td></tr></table></figure>
+<p><a
+href="https://fu-jingqi.github.io/2024/07/15/深度学习实践之手写数字识别/">实现细节注释</a></p>
+<h2 id="参考">参考</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1"
+class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/693940030">参考资料1</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span><a target="_blank" rel="noopener" href="https://hwcoder.top/Manual-Coding-2">参考资料2</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Assignments/" class="category-chain-item">Assignments</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="print-no-link">#深度学习</a>
+      
+        <a href="/tags/DNN%E7%BD%91%E7%BB%9C/" class="print-no-link">#DNN网络</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>assignment_2_DNN网络搭建</div>
+      <div>https://fu-jingqi.github.io/2024/07/12/assignment-2-DNN网络搭建/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>coderfjq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/13/assignment-3-transformer/" title="assignment_3_transformer">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">assignment_3_transformer</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/12/assignment-1-BP%E7%AE%97%E6%B3%95/" title="assignment_1_BP算法">
+                        <span class="hidden-mobile">assignment_1_BP算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
